@@ -1,1 +1,22 @@
-This is Main
+ThisIsMain
+
+<wxs module="egs">
+   var  item={
+      index:1,
+      msg:'this is template',
+      time:'2020-11-5'
+    }
+  module.exports = {
+    item: JSON.stringify( item)
+  }
+
+</wxs>
+<!-- <template name="msgItem">
+  <view>
+    <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+  </view>
+</template>
+
+<template is="msgItem" data="{{egs.item}}"/> -->
+<view>{{egs.item}}</view>

@@ -2,6 +2,7 @@
 App({
   onLaunch: function () {
 
+  
     //启动时更新
     const updateManager = wx.getUpdateManager();
 
