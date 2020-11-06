@@ -1,22 +1,17 @@
-ThisIsMain
+<swiper class="swipper" indicator-dots="true" autoplay="true" interval="3000">
+  <block wx:for="{{Banners}}" >
+    <swiper-item >
+      <view class="{{item}}">{{item}}</view>
+    </swiper-item>
+  </block>
+</swiper>
 
-<wxs module="egs">
-   var  item={
-      index:1,
-      msg:'this is template',
-      time:'2020-11-5'
-    }
-  module.exports = {
-    item: JSON.stringify( item)
-  }
-
-</wxs>
-<!-- <template name="msgItem">
-  <view>
-    <text> {{index}}: {{msg}} </text>
-    <text> Time: {{time}} </text>
-  </view>
-</template>
-
-<template is="msgItem" data="{{egs.item}}"/> -->
-<view>{{egs.item}}</view>
+<view class="door">
+  <block wx:for="{{Doors}}">
+    <view class="{{item.img}}">
+      <view class="door-status">{{item.status}}</view>
+      <view class="door-title">{{item.txt}}</view>
+      <view class="door-desc">{{item.desc}}</view>
+    </view>
+  </block>
+</view>

@@ -1,1 +1,45 @@
 /* pages/main/main.wxss */
+/*1px = 2.78rpx*/
+/*269*468*/
+.swipper{
+  height: 342rpx;
+}
+.banner1,.banner2,.banner3{
+  height: 342rpx;
+  text-align: center;
+  line-height: 342rpx;
+}
+.banner1{
+  background-color: #1AAD19;
+}
+.banner2{
+  background-color: #2782D7;
+}
+.banner3{
+  background-color: #F1F1F1;
+}
+.door{
+  margin-top: 44.48rpx;
+  margin: 44.48rpx auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.door .img1,.door .img2{
+  border: 1px solid red;
+  margin-bottom: 33.36rpx;
+  border-radius: 15rpx;
+  width: 653.3rpx;
+  height: 347.5rpx;
+}
+.door-title{
+  margin-top: 167rpx;
+  margin-left: 26rpx;
+  font-size:20px;
+}
+.door-desc{
+  color: #826532;
+  margin-left: 26rpx;
+  font-size: 18px;
+
+}

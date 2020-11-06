@@ -5,7 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-     
+     Banners:['banner1','banner2','banner3'],
+     Doors:[{
+       img:'img1',
+       txt:'door1',
+       desc:'desc1',
+       status:'open'
+     },
+     {
+      img:'img2',
+      txt:'door2',
+      desc:'desc2',
+      status:'close'
+    }]
   },
 
   /**
