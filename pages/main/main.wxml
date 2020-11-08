@@ -1,17 +1,49 @@
-<swiper class="swipper" indicator-dots="true" autoplay="true" interval="3000">
-  <block wx:for="{{Banners}}" >
-    <swiper-item >
-      <view class="{{item}}">{{item}}</view>
-    </swiper-item>
-  </block>
-</swiper>
+<wxs module="ProcessStatus">
+  var transStatus = function (status) {
+    switch (status) {
+      case '营业中':
+        return 'open';
+      case '预售中':
+        return 'prev';
+      case '停业中':
+        return 'close'
+      default: return 'open';
+    }
+  };
+  module.exports.status = transStatus;
+</wxs>
+<view>
+  <view class="topbar">
 
-<view class="door">
-  <block wx:for="{{Doors}}">
-    <view class="{{item.img}}">
-      <view class="door-status">{{item.status}}</view>
-      <view class="door-title">{{item.txt}}</view>
-      <view class="door-desc">{{item.desc}}</view>
-    </view>
-  </block>
+    <picker class="topbar-select" mode="region" bindchange="bindRegionChange" value="{{Region}}" custom-item="全部">
+      <view class="picker">
+        {{Position}}
+        <l-icon class="picker-down" name="down" color="#000" size="25"/>
+      </view>
+    </picker>
+    <l-icon class="topbar-scan" name="scan" color="#000" size="40"/>
+  </view>
+  <swiper class="swipper" indicator-dots="true" autoplay="true" interval="3000">
+    <block wx:for="{{Banners}}" wx:key="id">
+      <navigator url="{{item.url}}">
+        <swiper-item>
+          <image src="{{item.img}}"></image>
+        </swiper-item>
+      </navigator>
+    </block>
+  </swiper>
+
+  <view class="door">
+    <block wx:for="{{Doors}}" wx:key="id">
+      <view class="door-box" data-door-id="{{item.id}}" style="background:url('{{item.img}}') no-repeat center;">
+        <view class="door-status {{ProcessStatus.status(item.status)}}">{{item.status}}</view>
+        <view class="door-text">
+          <view class="door-name">{{item.name}}</view>
+          <view class="door-add">{{item.address}}</view>
+        </view>
+
+      </view>
+
+    </block>
+  </view>
 </view>

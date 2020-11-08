@@ -1,0 +1,25 @@
+{
+  "name": "enjoyappointment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/murundong/EnjoyAppointment.git"
+  },
+  "keywords": [
+    "EnjoyAppointment"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/murundong/EnjoyAppointment/issues"
+  },
+  "homepage": "https://github.com/murundong/EnjoyAppointment#readme",
+  "dependencies": {
+    "lin-ui": "^0.8.10"
+  }
+}
