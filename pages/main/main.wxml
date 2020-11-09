@@ -15,7 +15,7 @@
 <view>
   <view class="topbar">
 
-    <picker class="topbar-select" mode="region" bindchange="bindRegionChange" value="{{Region}}" custom-item="全部">
+    <picker class="topbar-select" mode="region" bindchange="bindRegionChange" value="{{Region}}" >
       <view class="picker">
         {{Position}}
         <l-icon class="picker-down" name="down" color="#000" size="25"/>

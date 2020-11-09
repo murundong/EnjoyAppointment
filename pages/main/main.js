@@ -2,7 +2,7 @@
 
 // var local_banner = require('../../MockData/data.js')
 import {local_banners,local_doors} from '../../MockData/data.js'
-
+var bmap = require('../../libs/bmap-wx.min');
 Page({
 
   /**
@@ -12,7 +12,7 @@ Page({
      Banners:[],
      Doors:[],
      Region:[],
-     Position:''
+     Position:'',
   },
 
  
@@ -32,6 +32,17 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    let BMap = new bmap.BMapWX({ak:'sRA0Psclmq7P67iKmmIOXKb9plFxTecc'});
+    
+    //地理位置
+    BMap.regeocoding({
+       success: res=>{
+        this.setData({
+          Region:[res.originalData.result.addressComponent.province,res.originalData.result.addressComponent.city,res.originalData.result.addressComponent.district],
+          Position:res.originalData.result.addressComponent.province+'-'+res.originalData.result.addressComponent.city+'-'+res.originalData.result.addressComponent.district
+         })}
+    })
+   
     
   },
   /**
@@ -78,7 +89,7 @@ Page({
   bindRegionChange(e){
     this.setData({
       Region: e.detail.value,
-      Position:this.data.Region[0]+'-'+this.data.Region[1]+'-'+this.data.Region[2]
+      Position: e.detail.value[0]+'-'+ e.detail.value[1]+'-'+ e.detail.value[2]
     })
   }
 })
