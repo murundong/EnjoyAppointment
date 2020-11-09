@@ -94,6 +94,12 @@ Page({
       }
     })
   },
+  onDoorNav(e){
+    var doorId = e.currentTarget.dataset.doorId;
+    wx.navigateTo({
+      url:`../Lesson/Lesson?doorId=${doorId}`
+    })
+  },
   bindRegionChange(e){
     this.setData({
       Region: e.detail.value,

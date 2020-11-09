@@ -1,10 +1,11 @@
 {
-  "pages":[
+  "pages": [
     "pages/main/main",
     "pages/index/index",
     "pages/logs/logs",
     "pages/appointment/appointment",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/Lesson/Lesson"
   ],
   "tabBar": {
     "list": [
@@ -22,20 +23,25 @@
       }
     ]
   },
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "EnjoyAppointment",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "lazyCodeLoading": "requiredComponents",
-  "requiredBackgroundModes": ["audio", "location"],
+  "requiredBackgroundModes": [
+    "audio",
+    "location"
+  ],
   "permission": {
     "scope.userLocation": {
       "desc": "您的位置信息将用于小程序定位使用"
     }
   },
-  "useExtendedLib": {"weui":true},
+  "useExtendedLib": {
+    "weui": true
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

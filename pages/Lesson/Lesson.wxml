@@ -1,0 +1,3 @@
+<!--pages/Lesson/Lesson.wxml-->
+<text>pages/Lesson/Lesson.wxml</text>
+<view>{{DoorId}}</view>
