@@ -86,6 +86,14 @@ Page({
   onShareAppMessage: function () {
     console.log('onShareAppMessage')
   },
+  onScan(option){
+    wx.scanCode({
+      onlyFromCamera: true,
+      success:res=>{
+        console.log(res)
+      }
+    })
+  },
   bindRegionChange(e){
     this.setData({
       Region: e.detail.value,

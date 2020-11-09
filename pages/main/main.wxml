@@ -18,10 +18,10 @@
     <picker class="topbar-select" mode="region" bindchange="bindRegionChange" value="{{Region}}" >
       <view class="picker">
         {{Position}}
-        <l-icon class="picker-down" name="down" color="#000" size="25"/>
+        <l-icon class="picker-down" name="down" color="#000" size="25" b/>
       </view>
     </picker>
-    <l-icon class="topbar-scan" name="scan" color="#000" size="40"/>
+    <l-icon class="topbar-scan" name="scan" color="#000" size="40" bindtap="onScan"/>
   </view>
   <swiper class="swipper" indicator-dots="true" autoplay="true" interval="3000">
     <block wx:for="{{Banners}}" wx:key="id">
