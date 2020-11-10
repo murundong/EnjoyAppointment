@@ -55,6 +55,7 @@
         {
           "name": "pages/Lesson/Lesson",
           "pathName": "pages/Lesson/Lesson",
+          "query": "doorId=1",
           "scene": null
         }
       ]
