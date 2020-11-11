@@ -8,7 +8,7 @@
 <view>{{defaultData}}</view>
 </picker>
 </view> -->
-<view class="calender">
+<!-- <view class="calender">
   <swiper>
     <block wx:for="{{testdata}}" wx:key="index">
       <swiper-item>
@@ -17,4 +17,12 @@
       </swiper-item>
     </block>
   </swiper>
+</view> -->
+<view class="calender">
+  <block  wx:for="{{testdata}}" wx:key="index">
+    <view class="calender-item">
+      <text>{{item.week}}</text>
+      <text class="{{item.date==11?'current':''}}">{{item.date}}</text>
+    </view>
+  </block>
 </view>

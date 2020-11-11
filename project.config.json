@@ -57,6 +57,18 @@
           "pathName": "pages/Lesson/Lesson",
           "query": "doorId=1",
           "scene": null
+        },
+        {
+          "name": "pages/Lesson/Lesson",
+          "pathName": "pages/Lesson/Lesson",
+          "query": "DoorId=1",
+          "scene": null
+        },
+        {
+          "name": "pages/Lesson/Lesson",
+          "pathName": "pages/Lesson/Lesson",
+          "query": "doorId=1",
+          "scene": null
         }
       ]
     }
