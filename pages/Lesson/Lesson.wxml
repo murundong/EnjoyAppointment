@@ -1,4 +1,2 @@
 <!--pages/Lesson/Lesson.wxml-->
-<text>pages/Lesson/Lesson.wxml</text>
-<view>{{DoorId}}</view>
-<r-calender></r-calender>
+<r-calender bind:onItemTap="onItemTap"></r-calender>

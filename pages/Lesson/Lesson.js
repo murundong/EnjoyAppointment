@@ -64,5 +64,8 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onItemTap(e){
+    console.log(e.detail.citem);
   }
 })

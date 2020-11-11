@@ -5,7 +5,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    currentday:Object
   },
   
   /**
@@ -49,6 +49,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onTap:function (event){
+      this.triggerEvent("onItemTap",{
+        citem:event.currentTarget.dataset.calenderItem
+      });
+    },
     weekDate: function () {
       //获取周数据
       var myDate = new Date();// hehe

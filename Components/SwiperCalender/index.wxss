@@ -2,18 +2,23 @@
 .calender{
   height: 130rpx;
   display: flex;
+  white-space: nowrap;
   flex-direction: row;
-  color: #71706c;
+  color: #1a1916;
   font-family:KaiTi;
-  border-top: 1px solid #ccc;
+  /* border-top: 1px solid #ccc; */
   border-bottom: 1px solid #ccc;
 }
 .calender-item{
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  width: 120rpx;
+  width: 146rpx;
   justify-content: center;
   align-items: center;
+  height: 130rpx;
+}
+.calender-item text:first-child{
+  margin-bottom: 10rpx;
 }
 .calender-item .current{
   height: 50rpx;
