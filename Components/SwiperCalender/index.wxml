@@ -4,13 +4,24 @@
 <!-- https://www.bbsmax.com/A/n2d917lvdD/ -->
 <!--https://zhuanlan.zhihu.com/p/117244248-->
 
+<wxs module="CalCompute">
+  var IsCurrentday=function(item,current){
+    var res=
+    item.day==current.day && 
+    item.month==current.month &&
+    item.year==current.year;
+    return res;
+  }
+  module.exports.IsCurrentDay= IsCurrentday;
+</wxs>
 
 <view>
   <scroll-view class="calender"scroll-X="true"  >
-    <block wx:for="{{testdata}}" wx:key="index">
+    <block wx:for="{{daylist}}" wx:key="index">
       <view class="calender-item" bindtap="onTap" data-calender-item="{{item}}">
         <text>{{item.week}}</text>
-        <text class="{{item.date==11?'current':''}}">{{item.date}}</text>
+        <text class="{{CalCompute.IsCurrentDay(item,currentday)?'current':''}}" wx:if="{{CalCompute.IsCurrentDay(item,currentday)}}">{{(item.month+'-'+item.day+'今')}}</text>
+        <text wx:else>{{item.day}}</text>
       </view>
     </block>
   </scroll-view>

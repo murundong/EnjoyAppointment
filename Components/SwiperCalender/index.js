@@ -5,44 +5,28 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    currentday:Object
+    currentday:Object,
+    daylist:Object
   },
-  
+  lifetimes:{
+    attached(){
+      // console.log('attached',this)
+      this.setData({
+        currentday:this.GetCurrentDay(new Date()),
+        daylist:this.GenerateDayList(new Date(),7)
+      })
+    },
+  },
+  pageLifetimes:{
+    show(){
+      // console.log('show',this)
+    }
+  },
   /**
    * 组件的初始数据
    */
   data: {
-    // defaultData:new Date().toLocaleDateString()
-   
-    testdata: [{
-      week: '周二',
-      date: '今'
-    },
-    {
-      week: '周三',
-      date: '11'
-    },
-    {
-      week: '周四',
-      date: '12'
-    },
-    {
-      week: '周五',
-      date: '13'
-    },
-    {
-      week: '周六',
-      date: '14'
-    },
-    {
-      week: '周日',
-      date: '15'
-    },
-    {
-      week: '周一',
-      date: '16'
-    },
-    ]
+    
   },
 
   /**
@@ -54,32 +38,23 @@ Component({
         citem:event.currentTarget.dataset.calenderItem
       });
     },
-    weekDate: function () {
-      //获取周数据
-      var myDate = new Date();// hehe
-      myDate.toLocaleDateString();
-      var month = myDate.getMonth() + 1;
-      var time = myDate.getFullYear() + '年' + month + '月' + myDate.getDate() + '日';
-   
-      var total = 1;// 个数
-      var dayList = [];
-      dayList.push({
-        'day': myDate.getDate(),
-        'month': myDate.getMonth() + total,
-        'week': toWeekDay(myDate.getDay()),
-        'year': myDate.getFullYear()
-      });
-      for (var i = 0; i < 6; i++) {
-        myDate.setDate(myDate.getDate() + total); // number 是最近几天  则会自动计算
-        // 需求  月份-日   星期几
-        dayList.push({
-          'day': myDate.getDate(),
-          'month': myDate.getMonth() + total,
-          'week': toWeekDay(myDate.getDay()),
-          'year': myDate.getFullYear()
-        });
+    GetCurrentDay(dt){
+        let obj={};
+        obj.year = dt.getFullYear();
+        obj.month = dt.getMonth()+1;
+        obj.day = dt.getDate();
+        obj.week ='周'+ this.toWeekDay( dt.getDay());
+        return obj;
+    },
+    GenerateDayList(startdt,length){
+      let arr = new Array();
+      
+      for (let index = 0; index < length; index++) {
+        let arr_item = this.GetCurrentDay(startdt);
+        arr.push(arr_item);
+        startdt= new Date( startdt.getTime()+1000*60*60*24*1);
       }
-      return dayList;
+      return arr;
     },
     toWeekDay(weekDay) {// 传入数据  讲一周的某一天返回成中文状态下的字符
       switch (weekDay) {

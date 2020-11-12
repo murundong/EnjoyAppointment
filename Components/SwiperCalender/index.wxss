@@ -22,9 +22,10 @@
 }
 .calender-item .current{
   height: 50rpx;
-  width: 50rpx;
   text-align: center;
+  vertical-align: middle;
   border-radius: 25rpx;
   background-color: #2D2F3B;
   color: #ffffff;
+  padding: 0 15rpx;
 }
