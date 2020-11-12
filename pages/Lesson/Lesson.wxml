@@ -1,2 +1,3 @@
 <!--pages/Lesson/Lesson.wxml-->
-<r-calender bind:onItemTap="onItemTap"></r-calender>
+<r-calender  bind:onItemTap="onItemTap">
+</r-calender>

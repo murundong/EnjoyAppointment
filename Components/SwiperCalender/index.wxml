@@ -5,14 +5,14 @@
 <!--https://zhuanlan.zhihu.com/p/117244248-->
 
 <wxs module="CalCompute">
-  var IsCurrentday=function(item,current){
+  var IsEquaday=function(item,current){
     var res=
     item.day==current.day && 
     item.month==current.month &&
     item.year==current.year;
     return res;
   }
-  module.exports.IsCurrentDay= IsCurrentday;
+  module.exports.IsEquaday= IsEquaday;
 </wxs>
 
 <view>
@@ -20,8 +20,12 @@
     <block wx:for="{{daylist}}" wx:key="index">
       <view class="calender-item" bindtap="onTap" data-calender-item="{{item}}">
         <text>{{item.week}}</text>
-        <text class="{{CalCompute.IsCurrentDay(item,currentday)?'current':''}}" wx:if="{{CalCompute.IsCurrentDay(item,currentday)}}">{{(item.month+'-'+item.day+'今')}}</text>
-        <text wx:else>{{item.day}}</text>
+
+        <text class="{{CalCompute.IsEquaday(item,SelectedDay)?'current':''}}" wx:if="{{CalCompute.IsEquaday(item,SelectedDay) &&CalCompute.IsEquaday(item,currentday)}}">{{(item.month+'-'+item.day+'今')}}</text>
+        <text class="{{CalCompute.IsEquaday(item,SelectedDay)?'current':''}}" wx:elif="{{CalCompute.IsEquaday(item,SelectedDay)}}">{{(item.month+'-'+item.day)}}</text>
+        <text class="{{CalCompute.IsEquaday(item,SelectedDay)?'current':''}}" wx:elif="{{CalCompute.IsEquaday(item,currentday)}}">今</text>
+        <text wx:else>{{item.day}}</text> 
+       
       </view>
     </block>
   </scroll-view>
