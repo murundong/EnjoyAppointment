@@ -1,0 +1,7 @@
+<!--Components/SwipperTopBar/index.wxml-->
+
+<scroll-view class="top-scroll" scroll-x="true">
+  <block wx:for="{{datalist}}" wx:key="index">
+    <text class="top-scroll-item">{{item}}</text>
+  </block>
+</scroll-view>
