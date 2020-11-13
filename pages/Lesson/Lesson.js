@@ -1,4 +1,5 @@
 // pages/Lesson/Lesson.js
+import {local_classes} from '../../MockData/data.js'
 Page({
 
   /**
@@ -7,6 +8,7 @@ Page({
   data: {
     DoorId:0,
     st:'2020/11/11',
+    classes:local_classes
   },
 
   /**

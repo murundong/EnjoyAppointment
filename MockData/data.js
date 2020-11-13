@@ -26,7 +26,7 @@ var local_doors={
     }
     ]
 }
-
+ var local_classes=['全部课程','力量型','有氧']
 var local_banners=[
 {
   id:1,
@@ -52,5 +52,5 @@ var local_banners=[
 // }
 
 export{
-  local_banners,local_doors
+  local_banners,local_doors,local_classes
 }

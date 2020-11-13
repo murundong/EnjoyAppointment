@@ -12,7 +12,16 @@
     item.year==current.year;
     return res;
   }
+  var RetName=function(item,current,selected){
+    var res = ''
+    if(IsEquaday(item,selected) && IsEquaday(item,current) ) res= item.month+'-'+item.day+'今'
+    else if(IsEquaday(item,selected)) res = item.month+'-'+item.day
+    else if(IsEquaday(item,current)) res='今'
+    else res=item.day
+    return res;
+  }
   module.exports.IsEquaday= IsEquaday;
+  module.exports.RetName =RetName;
 </wxs>
 
 <view>
@@ -20,12 +29,14 @@
     <block wx:for="{{daylist}}" wx:key="index">
       <view class="calender-item" bindtap="onTap" data-calender-item="{{item}}">
         <text>{{item.week}}</text>
-
+<!-- 
         <text class="{{CalCompute.IsEquaday(item,SelectedDay)?'current':''}}" wx:if="{{CalCompute.IsEquaday(item,SelectedDay) &&CalCompute.IsEquaday(item,currentday)}}">{{(item.month+'-'+item.day+'今')}}</text>
         <text class="{{CalCompute.IsEquaday(item,SelectedDay)?'current':''}}" wx:elif="{{CalCompute.IsEquaday(item,SelectedDay)}}">{{(item.month+'-'+item.day)}}</text>
         <text class="{{CalCompute.IsEquaday(item,SelectedDay)?'current':''}}" wx:elif="{{CalCompute.IsEquaday(item,currentday)}}">今</text>
-        <text wx:else>{{item.day}}</text> 
+        <text wx:else>{{item.day}}</text>  -->
        
+        <text class="{{CalCompute.IsEquaday(item,SelectedDay)?'current':''}}">{{CalCompute.RetName(item,currentday,SelectedDay)}}</text>
+
       </view>
     </block>
   </scroll-view>

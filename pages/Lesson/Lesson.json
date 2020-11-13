@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "r-calender":"../../Components/SwiperCalender/index"
+    "r-calender":"../../Components/SwiperCalender/index",
+    "r-class":"../../Components/SwipperTopBar/index"
   }
 }
