@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "r-calender":"../../Components/SwiperCalender/index",
-    "r-class":"../../Components/SwipperTopBar/index"
+    "r-class":"../../Components/SwipperTopBar/index",
+    "l-sticky":"../../miniprogram_npm/lin-ui/sticky",
+    "l-sticky-item":"../../miniprogram_npm/lin-ui/sticky-item"
   }
 }

@@ -1,3 +1,56 @@
 <!--pages/Lesson/Lesson.wxml-->
-<r-calender  bind:onItemTap="onItemTap"></r-calender>
-<r-class datalist="{{classes}}"></r-class>
+<view>
+  <l-sticky scrollTop="{{scrollTop}}">
+    <l-sticky-item l-header-class="sticky-top">
+      <view slot="header">
+        <r-calender bind:onItemTap="onCanlenderItemTap"></r-calender>
+        <view class="r-line-dash"></view>
+        <r-class id="comp-class" datalist="{{classes_type}}" bind:onItemTap="onTopbarItemTap"></r-class>
+        <view class="r-line"></view>
+      </view>
+      <view slot="body">
+        <view class="content">
+          <block wx:for="{{classes}}" wx:key="id">
+            <view class="class-card">
+              <view class="class-card-img">
+                <image src="{{item.img}}"></image>
+              </view>
+              <view class="class-card-content">
+                <view class="class-card-title">
+                  <text class="card-title">{{item.title}}</text>
+                  <text class="{{item.status==''?'':'card-title-status'}}">{{item.status}}</text>
+                </view>
+
+                <view class="class-card-tag">
+                  <block wx:for="{{item.tags}}" wx:for-item="itags" wx:key="index">
+                    <text>{{itags}}</text>
+                  </block>
+                </view>
+                <view class="class-card-time">
+                  <text class="card-time-teacher">{{item.teacher}}</text>
+                  <text class="card-time-time">{{item.timeStr}}</text>
+                </view>
+                <view class="class-card-status">
+                  <text class="{{item.nowNum<item.lessNum?'dot':''}}">{{item.lessNum}}人/最低</text>
+                  <text class="{{item.nowNum>=item.fullNum?'dot':''}}">{{item.fullNum}}人/满员</text>
+                  <text class="{{item.nowNum>=item.lessNum?'dot':''}}">{{item.nowNum}}人/已约</text>
+                </view>
+                <view bindtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.btnStatus==0}}">
+                  预约
+                </view>
+                <view bindtap="onFullTap" class="card-order-unbtn" wx:else>已预约</view>
+              </view>
+
+            </view>
+          </block>
+        </view>
+
+      </view>
+
+
+    </l-sticky-item>
+  </l-sticky>
+
+
+
+</view>

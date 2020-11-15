@@ -2,6 +2,6 @@
 
 <scroll-view class="top-scroll" scroll-x="true">
   <block wx:for="{{datalist}}" wx:key="index">
-    <text class="top-scroll-item">{{item}}</text>
+    <text class="top-scroll-item {{_selectedIndex==index?'current':''}}" bindtap="onTap" data-index="{{index}}" data-str="{{item}}">{{item}}</text>
   </block>
 </scroll-view>

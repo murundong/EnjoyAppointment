@@ -1,1 +1,125 @@
 /* pages/Lesson/Lesson.wxss */
+.sticky-top{
+  z-index: 9999;
+  background-color: white;
+}
+.sticky-body{
+  z-index: 1;
+  background-color: red;
+}
+.r-line-dash{
+  border-bottom: 1px solid #eeeff1;
+}
+.r-line{
+  border-bottom: 3rpx solid #e1e1e1;
+}
+.content{
+  padding: 0 25rpx 0 20rpx;
+  display: flex;
+  flex-direction: column;
+  font-family:KaiTi;
+}
+.class-card:first-child{
+  margin-top: 30rpx;
+}
+.class-card{
+ height: 230rpx; 
+ display: flex;
+ flex-direction: row;
+ padding: 15rpx 0 35rpx;
+ position: relative;
+ margin-bottom: 20rpx;
+ /* box-shadow: 5rpx 4rpx 22rpx #ccc;
+ border-radius: 10rpx; */
+ border-bottom: 1rpx solid #ececec;
+}
+.class-card-img{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 25rpx;
+}
+.class-card-img image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 75rpx;
+}
+.card-title{
+  font-size: 40rpx;
+  font-weight: bold;
+  font-family:KaiTi;
+  color: #525562;
+}
+.card-title-status{
+  border: 1px solid #fd4d4d;
+  color: #fd4d4d;
+  padding: 5rpx 10rpx;
+  font-size: 26rpx;
+  margin-left: 10rpx;
+  border-radius: 5rpx;
+  height: 25rpx;
+  line-height: 25rpx;
+}
+.class-card-tag{
+  margin-top: 20rpx;
+}
+.class-card-tag text{
+  margin-right: 15rpx;
+  padding: 2rpx 10rpx;
+  background-color: #F1F2F5;
+  color: #b3b6bd;
+  border-radius: 4rpx;
+}
+.class-card-time{
+  color: #525562;
+}
+.class-card-time text{
+  height: 45rpx;
+  line-height: 45rpx;
+  display: inline-block;
+  font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+.card-time-teacher{
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+.card-time-time{
+  font-size: 25rpx;
+}
+.class-card-status .dot{
+  color: #fd4d4d;
+}
+.class-card-status text{
+  border: 1px solid #b3b6bd;
+  font-size: 25rpx;
+  padding: 5rpx 20rpx;
+  border-radius: 3rpx;
+}
+.class-card-status text:not(:first-child){
+  border-left: none;
+}
+.card-order-btn{
+  background-color: #fd4d4d;
+  color: #fff;
+  width: 120rpx;
+  height: 60rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  line-height: 60rpx;
+  position: absolute;
+  top: 85rpx;
+  right: 0;
+}
+
+.card-order-unbtn{
+  width: 120rpx;
+  height: 60rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  line-height: 60rpx;
+  position: absolute;
+  top: 85rpx;
+  right: 0;
+  background-color: #b3b6bd;
+  color: #525562;
+}

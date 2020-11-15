@@ -1,14 +1,16 @@
 // pages/Lesson/Lesson.js
-import {local_classes} from '../../MockData/data.js'
+import { local_classes_type, local_classes } from '../../MockData/data.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    DoorId:0,
-    st:'2020/11/11',
-    classes:local_classes
+    scrollTop: undefined,
+    DoorId: 200,
+    st: '2020/11/11',
+    classes_type: local_classes_type,
+    classes: local_classes.data
   },
 
   /**
@@ -16,7 +18,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      DoorId:options.doorId
+      DoorId: options.doorId
     })
   },
 
@@ -24,7 +26,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.componentClass = this.selectComponent('#comp-class');
   },
 
   /**
@@ -52,14 +54,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log('onPullDownRefresh');
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log('onReachBottom');
   },
 
   /**
@@ -68,7 +70,33 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onItemTap(e){
+  onCanlenderItemTap(e) {
     console.log(e.detail.citem);
-  }
+    this.componentClass.selectInit();
+    // wx.lin.flushSticky();
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+
+  },
+  onTopbarItemTap(e) {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+  },
+  onFullTap(e) {
+    wx.showToast({
+      title: '已预约过了哟！',
+    })
+  },
+  onOrderTap(e) {
+    console.log(e.currentTarget.dataset.cid);
+  }, 
+  onPageScroll(res) {
+    // wx.lin.setScrollTop(res.scrollTop)
+    this.setData({
+      scrollTop: res.scrollTop
+    })
+  },
+
 })

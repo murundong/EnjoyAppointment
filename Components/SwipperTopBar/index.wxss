@@ -1,11 +1,20 @@
 /* Components/SwipperTopBar/index.wxss */
-.top-scroll{
-  height: 50rpx; 
+.top-scroll {
+  height: 80rpx;
+  line-height: 80rpx;
   display: flex;
   white-space: nowrap;
   flex-direction: row;
   font-family: KaiTi;
 }
-.top-scroll-item{
+
+.top-scroll-item {
   display: inline-block;
+  text-align: center;
+  padding: 0 20rpx;
+  color: #b3b6bd;
+}
+.top-scroll .current{
+  color: #525562;
+  font-weight: bold;
 }

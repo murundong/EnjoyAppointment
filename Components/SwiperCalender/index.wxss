@@ -4,10 +4,9 @@
   display: flex;
   white-space: nowrap;
   flex-direction: row;
-  color: #1a1916;
+  color: #525562;
   font-family:KaiTi;
-  /* border-top: 1px solid #ccc; */
-  border-bottom: 1px solid #ccc;
+  
 }
 .calender-item{
   display: inline-flex;
@@ -25,7 +24,7 @@
   text-align: center;
   vertical-align: middle;
   border-radius: 25rpx;
-  background-color: #3E414E;
+  background-color: #525562;
   color: #ffffff;
   padding: 0 15rpx;
 }
