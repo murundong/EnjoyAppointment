@@ -62,5 +62,8 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onTabChange(e){
+   console.log(e);
   }
 })

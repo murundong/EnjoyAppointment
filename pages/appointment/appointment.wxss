@@ -1,9 +1,6 @@
 /* pages/appointment/appointment.wxss */
-.tab-line-active{
 
-}
-.tab-line-inactive{
-  border-bottom: 1px solid yellow;
+.tab-header-line{
   width: 70%;
   margin: 0 auto;
 }

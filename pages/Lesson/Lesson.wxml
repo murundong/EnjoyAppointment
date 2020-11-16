@@ -13,7 +13,7 @@
           <block wx:for="{{classes}}" wx:key="id">
             <view class="class-card">
               <view class="class-card-img">
-                <image src="{{item.img}}"></image>
+                <image src="{{item.teacher_img}}"></image>
               </view>
               <view class="class-card-content">
                 <view class="class-card-title">
