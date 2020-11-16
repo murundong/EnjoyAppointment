@@ -1,1 +1,8 @@
-This is Appointment
+<l-tabs swipeable="true" animated-for-line="true" l-line-class="tab-line-active" l-header-line-class="tab-line-inactive"  l-active-class="tab-active" l-inactive-class="tab-inactive">
+  <l-tabpanel tab="待完成" key="wait" slot="wait">
+  
+  </l-tabpanel>
+  <l-tabpanel tab="已完成" key="comp" slot="comp">
+
+  </l-tabpanel>
+</l-tabs>

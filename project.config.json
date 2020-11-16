@@ -76,6 +76,11 @@
           "pathName": "pages/Lesson/Lesson",
           "query": "doorId=1",
           "scene": null
+        },
+        {
+          "name": "pages/appointment/appointment",
+          "pathName": "pages/appointment/appointment",
+          "scene": null
         }
       ]
     }
