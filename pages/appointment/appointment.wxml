@@ -1,6 +1,28 @@
-<l-tabs bind:linchange="onTabChange" swipeable="true" inactive-color="#b3b6bd" active-color="#525562" animated-for-line="true" l-header-line-class="tab-header-line" >
+<l-tabs bind:linchange="onTabChange" swipeable="true" inactive-color="#b3b6bd" active-color="#525562"
+  animated-for-line="true" l-header-line-class="tab-header-line">
   <l-tabpanel tab="待完成" key="wait" slot="wait">
-  
+    <view class="wait-content">
+      <block wx:for="{{wait_classes}}" wx:key="id">
+        <view class="wait-class-card">
+          <view class="wait-class-card-img">
+            <image src="{{item.teacher_img}}"></image>
+          </view>
+          <view class="wait-class-card-content">
+            <view class="wait-class-card-title">
+              <text class="wait-card-title">{{item.title}}</text>
+              <text class="wait-card-title-status">进行中</text>
+            </view>
+            <view class="wait-class-card-body">
+              <text>人数：{{item.nowNum}}人</text>
+              <text>时间：{{item.startTime}}</text>
+              <text>场馆：{{item.Venue}}</text>
+              <text>地址：{{item.address}}</text>
+            </view>
+
+          </view>
+        </view>
+      </block>
+    </view>
   </l-tabpanel>
   <l-tabpanel tab="已完成" key="comp" slot="comp">
 

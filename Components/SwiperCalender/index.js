@@ -1,5 +1,5 @@
 // Components/SwiperCalender/index.js
-// var utils = require('../../libs/util.js')
+ var util  = require('../../libs/util.js')
 Component({
   /**
    * 组件的属性列表
@@ -52,7 +52,7 @@ Component({
       obj.year = dt.getFullYear();
       obj.month = dt.getMonth() + 1;
       obj.day = dt.getDate();
-      obj.week = '周' + this.toWeekDay(dt.getDay());
+      obj.week = '周' + util.toWeekDay(dt.getDay());
       return obj;
     },
     GenerateDayList(startdt, length) {
@@ -65,18 +65,6 @@ Component({
       }
       return arr;
     },
-    toWeekDay(weekDay) {// 传入数据  讲一周的某一天返回成中文状态下的字符
-      switch (weekDay) {
-        case 1: return '一'; break;
-        case 2: return '二'; break;
-        case 3: return '三'; break;
-        case 4: return '四'; break;
-        case 5: return '五'; break;
-        case 6: return '六'; break;
-        case 0: return '日'; break;
-        default: break;
-      }
-      return '传入未知参数';
-    },
+ 
   }
 })

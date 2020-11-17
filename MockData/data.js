@@ -64,7 +64,9 @@ var local_classes = {
       'nowNum': 8,
       'level': 3,
       'timeStr': '08:00~09:00',
-      'btnStatus': 0
+      'btnStatus': 0,
+      'Venue':'上海梅赛德斯',
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 2,
@@ -81,7 +83,9 @@ var local_classes = {
       'nowNum': 8,
       'level': 3,
       'timeStr': '14:00~15:00',
-      'btnStatus': -1
+      'btnStatus': -1,
+      'Venue':'上海梅赛德斯',
+      'address':'上海市浦东新区世博大道1200号'
     }, {
       'id': 3,
       'price': 0,
@@ -97,7 +101,9 @@ var local_classes = {
       'nowNum': 3,
       'level': 3,
       'timeStr': '17:00~18:00',
-      'btnStatus': 0
+      'btnStatus': 0,
+      'Venue':'上海梅赛德斯',
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 4,
@@ -114,7 +120,9 @@ var local_classes = {
       'lessNum': 4,
       'level': 3,
       'timeStr': '20:00~20:30',
-      'btnStatus': 0
+      'btnStatus': 0,
+      'Venue':'上海梅赛德斯',
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 2,
@@ -131,7 +139,9 @@ var local_classes = {
       'nowNum': 8,
       'level': 3,
       'timeStr': '14:00~15:00',
-      'btnStatus': -1
+      'btnStatus': -1,
+      'Venue':'上海梅赛德斯',
+      'address':'上海市浦东新区世博大道1200号'
     }, {
       'id': 3,
       'price': 0,
@@ -147,7 +157,9 @@ var local_classes = {
       'nowNum': 3,
       'level': 3,
       'timeStr': '17:00~18:00',
-      'btnStatus': 0
+      'btnStatus': 0,
+      'Venue':'上海梅赛德斯',
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 4,
@@ -164,7 +176,9 @@ var local_classes = {
       'lessNum': 4,
       'level': 3,
       'timeStr': '20:00~20:30',
-      'btnStatus': 0
+      'btnStatus': 0,
+      'Venue':'上海梅赛德斯',
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 2,
@@ -181,7 +195,9 @@ var local_classes = {
       'nowNum': 8,
       'level': 3,
       'timeStr': '14:00~15:00',
-      'btnStatus': -1
+      'btnStatus': -1,
+      'Venue':'上海梅赛德斯',
+      'address':'上海市浦东新区世博大道1200号'
     }, {
       'id': 3,
       'price': 0,
@@ -197,7 +213,9 @@ var local_classes = {
       'nowNum': 3,
       'level': 3,
       'timeStr': '17:00~18:00',
-      'btnStatus': 0
+      'btnStatus': 0,
+      'Venue':'上海梅赛德斯',
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 4,
@@ -214,7 +232,9 @@ var local_classes = {
       'lessNum': 4,
       'level': 3,
       'timeStr': '20:00~20:30',
-      'btnStatus': 0
+      'btnStatus': 0,
+      'Venue':'上海梅赛德斯',
+      'address':'上海市浦东新区世博大道1200号'
     }
   ]
 }

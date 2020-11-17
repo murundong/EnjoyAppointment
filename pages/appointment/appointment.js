@@ -1,11 +1,13 @@
 // pages/appointment/appointment.js
+import {local_classes} from '../../MockData/data.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    wait_classes:local_classes.data,
+    comp_classes:local_classes.data
   },
 
   /**
@@ -19,7 +21,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log(this.data.wait_classes);
+    console.log(this.data.comp_classes);
   },
 
   /**

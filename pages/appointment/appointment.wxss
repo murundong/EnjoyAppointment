@@ -1,6 +1,66 @@
 /* pages/appointment/appointment.wxss */
 
-.tab-header-line{
+.tab-header-line {
   width: 70%;
   margin: 0 auto;
+}
+
+.wait-content {
+  padding: 0 25rpx 0 20rpx;
+  display: flex;
+  flex-direction: column;
+  font-family: KaiTi;
+}
+
+.wait-class-card {
+  height: 230rpx;
+  display: flex;
+  flex-direction: row;
+  padding: 15rpx 0 35rpx;
+  position: relative;
+  margin-bottom: 20rpx;
+  /* box-shadow: 5rpx 4rpx 22rpx #ccc;
+ border-radius: 10rpx; */
+  border-bottom: 1rpx solid #ececec;
+}
+.wait-class-card:first-child{
+  margin-top: 30rpx;
+}
+.wait-class-card-img{
+  display: flex;
+  flex-direction: column;
+  margin-right: 25rpx;
+}
+.wait-class-card-img image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  margin-top: 16rpx;
+}
+.wait-class-card-content{
+  display: flex;
+  flex-direction: column;
+}
+.wait-card-title{
+  font-size: 35rpx;
+  font-weight: bold;
+  font-family:KaiTi;
+  color: #525562;
+}
+.wait-card-title-status{
+  color: #fd4d4d;
+  padding: 5rpx 10rpx;
+  font-size: 26rpx;
+  margin-left: 10rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  float: right;
+}
+.wait-class-card-body{
+  display: flex;
+  flex-direction: column;
+}
+.wait-class-card-body text{
+  color: #808082;
+  font-size: 30rpx;
 }
