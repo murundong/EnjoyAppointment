@@ -66,7 +66,8 @@ var local_classes = {
       'timeStr': '08:00~09:00',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      'address':'上海市浦东新区世博大道1200号',
+      'timeStr2':'2020/11/15 (周日) 08:00~09:00'
     },
     {
       'id': 2,
@@ -85,7 +86,8 @@ var local_classes = {
       'timeStr': '14:00~15:00',
       'btnStatus': -1,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      'address':'上海市浦东新区世博大道1200号',
+      'timeStr2':'2020/11/15 (周日) 14:00~15:00'
     }, {
       'id': 3,
       'price': 0,
@@ -103,7 +105,8 @@ var local_classes = {
       'timeStr': '17:00~18:00',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      'address':'上海市浦东新区世博大道1200号',
+      'timeStr2':'2020/11/15 (周日) 17:00~18:00'
     },
     {
       'id': 4,
@@ -122,7 +125,8 @@ var local_classes = {
       'timeStr': '20:00~20:30',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      'address':'上海市浦东新区世博大道1200号',
+      'timeStr2':'2020/11/15 (周日) 20:00~20:30'
     },
     {
       'id': 2,
@@ -141,7 +145,8 @@ var local_classes = {
       'timeStr': '14:00~15:00',
       'btnStatus': -1,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      'address':'上海市浦东新区世博大道1200号',
+      'timeStr2':'2020/11/15 (周日) 14:00~15:00'
     }, {
       'id': 3,
       'price': 0,
@@ -159,7 +164,8 @@ var local_classes = {
       'timeStr': '17:00~18:00',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      'address':'上海市浦东新区世博大道1200号',
+      'timeStr2':'2020/11/15 (周日) 17:00~18:00'
     },
     {
       'id': 4,
@@ -178,7 +184,8 @@ var local_classes = {
       'timeStr': '20:00~20:30',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      'address':'上海市浦东新区世博大道1200号',
+      'timeStr2':'2020/11/15 (周日) 20:00~20:30'
     },
     {
       'id': 2,
@@ -197,7 +204,8 @@ var local_classes = {
       'timeStr': '14:00~15:00',
       'btnStatus': -1,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      'address':'上海市浦东新区世博大道1200号',
+      'timeStr2':'2020/11/15 (周日) 14:00~015:00'
     }, {
       'id': 3,
       'price': 0,
@@ -215,7 +223,8 @@ var local_classes = {
       'timeStr': '17:00~18:00',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      'address':'上海市浦东新区世博大道1200号',
+      'timeStr2':'2020/11/15 (周日) 17:00~18:00'
     },
     {
       'id': 4,
@@ -234,7 +243,8 @@ var local_classes = {
       'timeStr': '20:00~20:30',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      'address':'上海市浦东新区世博大道1200号',
+      'timeStr2':'2020/11/15 (周日) 20:00~20:30'
     }
   ]
 }

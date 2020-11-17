@@ -1,11 +1,15 @@
 /* pages/appointment/appointment.wxss */
-
+.l-tabpanel-swiper{
+  border: 1px solid red;
+  height: 960rpx;
+}
 .tab-header-line {
   width: 70%;
   margin: 0 auto;
 }
 
 .wait-content {
+  height: 960rpx;
   padding: 0 25rpx 0 20rpx;
   display: flex;
   flex-direction: column;
@@ -59,6 +63,7 @@
 .wait-class-card-body{
   display: flex;
   flex-direction: column;
+  font-family: "Arial","KaiTi",sans-serif;
 }
 .wait-class-card-body text{
   color: #808082;

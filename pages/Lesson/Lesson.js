@@ -6,7 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scrollTop: undefined,
     DoorId: 200,
     st: '2020/11/11',
     classes_type: local_classes_type,
@@ -93,10 +92,7 @@ Page({
     console.log(e.currentTarget.dataset.cid);
   }, 
   onPageScroll(res) {
-    // wx.lin.setScrollTop(res.scrollTop)
-    this.setData({
-      scrollTop: res.scrollTop
-    })
+   
   },
 
 })
