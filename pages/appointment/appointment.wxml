@@ -1,5 +1,21 @@
-<l-tabs bind:linchange="onTabChange" swipeable="true" inactive-color="#b3b6bd" active-color="#525562"
-  animated-for-line="true" l-header-line-class="tab-header-line" >
+<wxs module="AppointWxs">
+  var parse = function (fmt) {
+    fmt1 = fmt.substring(0, 19);
+    var reg = getRegExp("-", "g");
+    fmt2 = fmt1.replace(reg, '/');
+    var timestamp = getDate(fmt2).getTime();
+    return timestamp;
+  }
+  var GenerateTime = function (st, ed) {
+
+    var realDate = getDate(parse(st));
+    console.log(realDate)
+  }
+  module.exports.GenerateTime = GenerateTime;
+</wxs>
+
+<l-tabs bind:linchange="onTabChange" inactive-color="#b3b6bd" active-color="#525562" animated-for-line="true"
+  l-header-line-class="tab-header-line">
   <l-tabpanel tab="待完成" key="wait" slot="wait">
     <scroll-view class="wait-content" scroll-y="true">
       <block wx:for="{{wait_classes}}" wx:key="id">
@@ -14,7 +30,8 @@
             </view>
             <view class="wait-class-card-body">
               <text>人数：{{item.nowNum}}人</text>
-              <text>时间：{{item.timeStr2}}</text>
+              <!-- <text>时间：{{item.timeStr2}}</text> -->
+              <text>时间：{{AppointWxs.GenerateTime( item.startTime)}}</text>
               <text>场馆：{{item.Venue}}</text>
               <text>地址：{{item.address}}</text>
             </view>

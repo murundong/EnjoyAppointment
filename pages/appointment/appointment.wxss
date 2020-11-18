@@ -9,7 +9,6 @@
 }
 
 .wait-content {
-  height: 960rpx;
   padding: 0 25rpx 0 20rpx;
   display: flex;
   flex-direction: column;
