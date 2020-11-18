@@ -57,8 +57,8 @@ var local_classes = {
       'status': '紧张',
       'tags': ['体态纠正', '塑性'],
       'teacher': 'GEM',
-      'startTime': '2020/11/15 08:00',
-      'endTime': '2020/11/15 09:00',
+      'startTime': '2020/11/19 08:00',
+      'endTime': '2020/11/19 09:00',
       'fullNum': 10,
       'lessNum': 2,
       'nowNum': 8,
@@ -66,9 +66,7 @@ var local_classes = {
       'timeStr': '08:00~09:00',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号',
-      'timeStr2':'2020/11/15 (周日) 08:00~09:00',
-      'timeStatus':'进行中'
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 2,
@@ -78,8 +76,8 @@ var local_classes = {
       'status': '满员',
       'tags': ['体态纠正', '塑形', '增肌'],
       'teacher': '彭于晏',
-      'startTime': '2020/11/15 14:00',
-      'endTime': '2020/11/15 15:00',
+      'startTime': '2020/11/19 14:00',
+      'endTime': '2020/11/19 15:00',
       'fullNum': 8,
       'lessNum': 2,
       'nowNum': 8,
@@ -87,9 +85,7 @@ var local_classes = {
       'timeStr': '14:00~15:00',
       'btnStatus': -1,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号',
-      'timeStr2':'2020/11/15 (周日) 14:00~15:00',
-      'timeStatus':'进行中'
+      'address':'上海市浦东新区世博大道1200号'
     }, {
       'id': 3,
       'price': 0,
@@ -98,8 +94,8 @@ var local_classes = {
       'status': '',
       'tags': ['力量型', '引体向上'],
       'teacher': 'GEM',
-      'startTime': '2020/11/15 17:00',
-      'endTime': '2020/11/15 18:00',
+      'startTime': '2020/11/19 17:00',
+      'endTime': '2020/11/19 18:00',
       'fullNum': 10,
       'lessNum': 2,
       'nowNum': 3,
@@ -107,9 +103,7 @@ var local_classes = {
       'timeStr': '17:00~18:00',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号',
-      'timeStr2':'2020/11/15 (周日) 17:00~18:00',
-      'timeStatus':'进行中'
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 4,
@@ -119,8 +113,8 @@ var local_classes = {
       'status': '',
       'tags': ['协调', '减脂'],
       'teacher': 'CC',
-      'startTime': '2020/11/15 20:00',
-      'endTime': '2020/11/15 20:30',
+      'startTime': '2020/11/19 20:00',
+      'endTime': '2020/11/19 22:30',
       'fullNum': 12,
       'nowNum': 3,
       'lessNum': 4,
@@ -128,9 +122,7 @@ var local_classes = {
       'timeStr': '20:00~20:30',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号',
-      'timeStr2':'2020/11/15 (周日) 20:00~20:30',
-      'timeStatus':'进行中'
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 2,
@@ -140,8 +132,8 @@ var local_classes = {
       'status': '满员',
       'tags': ['体态纠正', '塑形', '增肌'],
       'teacher': '彭于晏',
-      'startTime': '2020/11/15 14:00',
-      'endTime': '2020/11/15 15:00',
+      'startTime': '2020/11/19 14:00',
+      'endTime': '2020/11/19 15:00',
       'fullNum': 8,
       'lessNum': 2,
       'nowNum': 8,
@@ -149,9 +141,7 @@ var local_classes = {
       'timeStr': '14:00~15:00',
       'btnStatus': -1,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号',
-      'timeStr2':'2020/11/15 (周日) 14:00~15:00',
-      'timeStatus':'进行中'
+      'address':'上海市浦东新区世博大道1200号'
     }, {
       'id': 3,
       'price': 0,
@@ -160,8 +150,8 @@ var local_classes = {
       'status': '',
       'tags': ['力量型', '引体向上'],
       'teacher': 'GEM',
-      'startTime': '2020/11/15 17:00',
-      'endTime': '2020/11/15 18:00',
+      'startTime': '2020/11/19 17:00',
+      'endTime': '2020/11/19 18:00',
       'fullNum': 10,
       'lessNum': 2,
       'nowNum': 3,
@@ -169,9 +159,7 @@ var local_classes = {
       'timeStr': '17:00~18:00',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号',
-      'timeStr2':'2020/11/15 (周日) 17:00~18:00',
-      'timeStatus':'未开始'
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 4,
@@ -181,8 +169,8 @@ var local_classes = {
       'status': '',
       'tags': ['协调', '减脂'],
       'teacher': 'CC',
-      'startTime': '2020/11/15 20:00',
-      'endTime': '2020/11/15 20:30',
+      'startTime': '2020/11/19 20:00',
+      'endTime': '2020/11/19 22:30',
       'fullNum': 12,
       'nowNum': 3,
       'lessNum': 4,
@@ -190,9 +178,7 @@ var local_classes = {
       'timeStr': '20:00~20:30',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号',
-      'timeStr2':'2020/11/15 (周日) 20:00~20:30',
-      'timeStatus':'进行中'
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 2,
@@ -202,8 +188,8 @@ var local_classes = {
       'status': '满员',
       'tags': ['体态纠正', '塑形', '增肌'],
       'teacher': '彭于晏',
-      'startTime': '2020/11/15 14:00',
-      'endTime': '2020/11/15 15:00',
+      'startTime': '2020/11/19 14:00',
+      'endTime': '2020/11/19 15:00',
       'fullNum': 8,
       'lessNum': 2,
       'nowNum': 8,
@@ -211,9 +197,7 @@ var local_classes = {
       'timeStr': '14:00~15:00',
       'btnStatus': -1,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号',
-      'timeStr2':'2020/11/15 (周日) 14:00~015:00',
-      'timeStatus':'未开始'
+      'address':'上海市浦东新区世博大道1200号'
     }, {
       'id': 3,
       'price': 0,
@@ -222,8 +206,8 @@ var local_classes = {
       'status': '',
       'tags': ['力量型', '引体向上'],
       'teacher': 'GEM',
-      'startTime': '2020/11/15 17:00',
-      'endTime': '2020/11/15 18:00',
+      'startTime': '2020/11/19 17:00',
+      'endTime': '2020/11/19 18:00',
       'fullNum': 10,
       'lessNum': 2,
       'nowNum': 3,
@@ -231,9 +215,7 @@ var local_classes = {
       'timeStr': '17:00~18:00',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号',
-      'timeStr2':'2020/11/15 (周日) 17:00~18:00',
-      'timeStatus':'进行中'
+      'address':'上海市浦东新区世博大道1200号'
     },
     {
       'id': 4,
@@ -243,8 +225,8 @@ var local_classes = {
       'status': '',
       'tags': ['协调', '减脂'],
       'teacher': 'CC',
-      'startTime': '2020/11/15 20:00',
-      'endTime': '2020/11/15 20:30',
+      'startTime': '2020/11/19 20:00',
+      'endTime': '2020/11/19 22:30',
       'fullNum': 12,
       'nowNum': 3,
       'lessNum': 4,
@@ -252,9 +234,7 @@ var local_classes = {
       'timeStr': '20:00~20:30',
       'btnStatus': 0,
       'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号',
-      'timeStr2':'2020/11/15 (周日) 20:00~20:30',
-      'timeStatus':'未开始'
+      'address':'上海市浦东新区世博大道1200号'
     }
   ]
 }
