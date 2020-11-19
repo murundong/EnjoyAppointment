@@ -7,7 +7,8 @@ Page({
    */
   data: {
     wait_classes:local_classes.data,
-    comp_classes:local_com_classes.data
+    comp_classes:local_com_classes.data,
+    default_expand:['comp-0']
   },
 
   /**

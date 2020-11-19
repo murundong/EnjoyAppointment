@@ -254,6 +254,7 @@ var local_com_classes={
            'Venue':'上海梅赛德斯',
            'startTime': '2020/11/19 20:00',
            'endTime': '2020/11/19 22:30',
+           'judgeStatus':false
         },
         {
           "id": 2, 
@@ -262,6 +263,7 @@ var local_com_classes={
           'Venue':'北京小巨蛋',
           'startTime': '2020/11/19 17:00',
           'endTime': '2020/11/19 18:00',
+          'judgeStatus':true
        }
       ]
     },
@@ -277,6 +279,7 @@ var local_com_classes={
            'Venue':'上海梅赛德斯',
            'startTime': '2020/11/19 20:00',
            'endTime': '2020/11/19 22:30',
+           'judgeStatus':false
         },
         {
           "id": 2, 
@@ -285,6 +288,7 @@ var local_com_classes={
           'Venue':'北京小巨蛋',
           'startTime': '2020/11/19 17:00',
           'endTime': '2020/11/19 18:00',
+          'judgeStatus':true
        }
       ]
     }

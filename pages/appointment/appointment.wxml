@@ -39,6 +39,25 @@
     }
     else return st + '~' + ed;
   }
+  var GenerateTimeNoYear = function (st, ed) {
+    // var st_dt = getDate(parse(st));
+    // var ed_dt = getDate(parse(ed));
+    var st_dt = getDate(st);
+    var ed_dt = getDate(ed);
+    if (st_dt.getFullYear() == ed_dt.getFullYear()
+      && st_dt.getMonth() == ed_dt.getMonth()
+      && st_dt.getDate() == ed_dt.getDate()) {
+      var month = st_dt.getMonth() + 1;
+      var day = st_dt.getDate();
+      var week = toWeekDay(st_dt.getDay());
+      var st_hour = st_dt.getHours();
+      var st_minutes = st_dt.getMinutes();
+      var ed_hour = ed_dt.getHours();
+      var ed_minutes = ed_dt.getMinutes();
+      return (month.toString()[1] ? month : ('0' + month)) + '/' + (day.toString()[1] ? day : ('0' + day)) + ' (周' + week + ')  '+(st_hour.toString()[1]?st_hour:('0'+st_hour))+': '+(st_minutes==0?'00':st_minutes)+'~'+(ed_hour.toString()[1]?ed_hour:('0'+ed_hour))+': '+(ed_minutes==0?'00':ed_minutes);
+    }
+    else return st + '~' + ed;
+  }
   var GenerateStatus = function (st, ed) {
     var st_dt = getDate(st);
     var ed_dt = getDate(ed);
@@ -50,6 +69,7 @@
     return res;
   }
   module.exports.GenerateTime = GenerateTime;
+  module.exports.GenerateTimeNoYear =GenerateTimeNoYear;
   module.exports.GenerateStatus = GenerateStatus; </wxs>
 
     <l-tabs bind:linchange="onTabChange" inactive-color="#b3b6bd" active-color="#525562" animated-for-line="true"
@@ -83,10 +103,10 @@
      
     </view> -->
       </l-tabpanel>
-      <l-tabpanel tab="已完成" key="comp" slot="comp">
-        <l-collapse>
+      <l-tabpanel tab="已完成" key="comp" slot="comp" >
+        <l-collapse expand-item-id="{{default_expand}}">
           <block wx:for="{{comp_classes}}" wx:key="index">
-            <l-collapse-item customTitle="true">
+            <l-collapse-item customTitle="true" item-id="comp-{{index}}">
               <view slot="title" class="com-coll-title">
                 <view class="com-coll-title-left">
                   <text class="coll-title-month">{{item.month}} </text>
@@ -97,20 +117,19 @@
                   <l-icon name="down" size="16" color="#999" />
                 </view>
               </view>
-              <scroll-view class="wait-content" scroll-y="true">
+              <scroll-view class="coll-wait-content" scroll-y="true">
                 <block wx:for="{{item.lst}}" wx:key="id">
-                  <view class="wait-class-card">
-                    <view class="wait-class-card-img">
+                  <view class="coll-wait-class-card">
+                    <view class="coll-wait-class-card-img">
                       <image src="{{item.teacher_img}}"></image>
                     </view>
-                    <view class="wait-class-card-content">
-                      <view class="wait-class-card-title">
-                        <text class="wait-card-title">{{item.title}}</text>
-                       <text>评价</text>
+                    <view class="coll-wait-class-card-content">
+                      <view class="coll-wait-class-card-title">
+                        <text class="coll-wait-card-title">{{item.title}}</text>
+                       <text data-id="{{item.id}}" class="coll-wait-class-card-judge {{item.judgeStatus?'no-judge':''}}">{{item.judgeStatus?'已评':'评价'}}</text>
                       </view>
-                      <view class="wait-class-card-body">
-                        <text>{{item.title}}</text>
-                        <text>{{AppointWxs.GenerateTime(item.startTime,item.endTime)}}</text>
+                      <view class="coll-wait-class-card-body">
+                        <text>{{AppointWxs.GenerateTimeNoYear(item.startTime,item.endTime)}}</text>
                         <text>{{item.Venue}}</text>
                       </view>
                     </view>
