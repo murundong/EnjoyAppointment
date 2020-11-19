@@ -1,6 +1,9 @@
 {
   "usingComponents": {
     "l-tabs":"../../miniprogram_npm/lin-ui/tabs/index",
-    "l-tabpanel":"../../miniprogram_npm/lin-ui/tabpanel/index"
+    "l-tabpanel":"../../miniprogram_npm/lin-ui/tabpanel/index",
+    "l-collapse":"../../miniprogram_npm/lin-ui/collapse/index",
+    "l-collapse-item":"../../miniprogram_npm/lin-ui/collapse-item/index",
+    "l-icon":"../../miniprogram_npm/lin-ui/icon/index"
   }
 }

@@ -239,10 +239,61 @@ var local_classes = {
   ]
 }
 
+var local_com_classes={
+  errCode: 0,
+  data: [
+    {
+      "month":"5月",
+      "year":"2020",
+      "count":3,
+      "lst":[
+        {
+           "id": 1, 
+           'title': 'Hit燃脂战神',
+           'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+           'Venue':'上海梅赛德斯',
+           'startTime': '2020/11/19 20:00',
+           'endTime': '2020/11/19 22:30',
+        },
+        {
+          "id": 2, 
+          'title': '有氧战斗',
+          'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
+          'Venue':'北京小巨蛋',
+          'startTime': '2020/11/19 17:00',
+          'endTime': '2020/11/19 18:00',
+       }
+      ]
+    },
+    {
+      "month":"4月",
+      "year":"2020",
+      "count":3,
+      "lst":[
+        {
+           "id": 1, 
+           'title': 'Hit燃脂战神',
+           'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+           'Venue':'上海梅赛德斯',
+           'startTime': '2020/11/19 20:00',
+           'endTime': '2020/11/19 22:30',
+        },
+        {
+          "id": 2, 
+          'title': '有氧战斗',
+          'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
+          'Venue':'北京小巨蛋',
+          'startTime': '2020/11/19 17:00',
+          'endTime': '2020/11/19 18:00',
+       }
+      ]
+    }
+  ]
+}
 // module.exports={
 //   local_banner:local_banner
 // }
 
 export {
-  local_banners, local_doors, local_classes_type, local_classes
+  local_banners, local_doors, local_classes_type, local_classes,local_com_classes
 }

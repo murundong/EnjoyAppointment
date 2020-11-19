@@ -1,5 +1,5 @@
 // pages/appointment/appointment.js
-import {local_classes} from '../../MockData/data.js';
+import {local_classes,local_com_classes} from '../../MockData/data.js';
 Page({
 
   /**
@@ -7,7 +7,7 @@ Page({
    */
   data: {
     wait_classes:local_classes.data,
-    comp_classes:local_classes.data
+    comp_classes:local_com_classes.data
   },
 
   /**
