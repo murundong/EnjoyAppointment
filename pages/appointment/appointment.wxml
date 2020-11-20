@@ -126,7 +126,7 @@
                     <view class="coll-wait-class-card-content">
                       <view class="coll-wait-class-card-title">
                         <text class="coll-wait-card-title">{{item.title}}</text>
-                       <text data-id="{{item.id}}" class="coll-wait-class-card-judge {{item.judgeStatus?'no-judge':''}}">{{item.judgeStatus?'已评':'评价'}}</text>
+                       <text data-id="{{item.id}}" bindtap="onJudge" class="coll-wait-class-card-judge {{item.judgeStatus?'no-judge':''}}">{{item.judgeStatus?'已评':'评价'}}</text>
                       </view>
                       <view class="coll-wait-class-card-body">
                         <text>{{AppointWxs.GenerateTimeNoYear(item.startTime,item.endTime)}}</text>

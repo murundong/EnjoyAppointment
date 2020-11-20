@@ -69,5 +69,11 @@ Page({
   },
   onTabChange(e){
    console.log(e);
+  },
+  onJudge(e){
+    var cid = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `../judge/judge?cid=${cid}`,
+    })
   }
 })

@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/appointment/appointment",
     "pages/mine/mine",
-    "pages/Lesson/Lesson"
+    "pages/Lesson/Lesson",
+    "pages/judge/judge"
   ],
   "tabBar": {
     "list": [
