@@ -1,0 +1,15 @@
+<!--pages/judge/judge.wxml-->
+<view>
+  <view>
+    <text>bodypump身体充电</text>
+  </view>
+  <view>
+    是个图片
+  </view>
+  <view>
+    评分
+  </view>
+  <view>输入框</view>
+  <view>标签</view>
+  <view>提交</view>
+</view>
