@@ -1,0 +1,95 @@
+/* pages/EnsureAppointment/EnsureAppointment.wxss */
+.content{
+  color: #525562;
+  font-family: "Arial","KaiTi",sans-serif;
+  position: relative;
+}
+.content-body{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 120rpx 0 0 0rpx;
+  top: 0;
+  width: 100%;
+}
+.class-head{
+  width: 100%;
+  height: 388rpx;
+  -webkit-filter:blur(10rpx);
+}
+.content-head{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 20rpx;
+}
+.content-head image{
+  width: 150rpx;
+    height: 150rpx;
+    border-radius: 75rpx;
+}
+.content-head text{
+  margin-left: 30rpx;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 3rpx;
+}
+.class-title{
+  font-size: 35rpx;
+  margin-left: 37rpx;
+  font-weight: bold;
+}
+.class-info{
+  /* background-color: #f9f9f9; */
+  background:linear-gradient(to top right, #fd4d4d , #ff6f11);
+  width: 95%;
+  height: 400rpx;
+  padding-top: 20rpx;
+  margin: 65rpx auto;
+  border-radius: 20rpx;
+  position: relative;
+}
+.class-info::before{
+  content: "";
+  border: 16px solid #FE5F2F;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  position: absolute;
+  top: -63rpx;
+  left: 40rpx;
+}
+.class-info-item:last-child{
+  padding-bottom: 20rpx;
+}
+
+.class-info-item{
+  display: flex;
+  flex-direction: row;
+}
+.info-item-title{
+  width: 100rpx;
+  color: #f9f9f9;
+  text-align: right;
+  padding-right: 25rpx;
+}
+.info-item-content{
+  font-size: 30rpx;
+  color: white;
+}
+.class-btn{
+  width: 300rpx;
+  height: 80rpx;
+  border-radius: 50rpx;
+  margin-top: 30rpx;
+  margin-right: 30rpx;
+  color: #fd4d4d;
+  background-color: white;
+  letter-spacing: 2rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  font-weight: bold;
+}

@@ -1,0 +1,86 @@
+/* pages/Sign/Sign.wxss */
+.content {
+  font-family: "Arial", "KaiTi", sans-serif;
+  color: #525562;
+  width: 90%;
+  box-shadow: 2rpx 10rpx 4rpx 2rpx #ebeef3;
+  margin: 50rpx auto;
+}
+
+.content-head {
+  border-radius: 18rpx;
+  height: 400rpx;
+  border: 1px solid red;
+  background: linear-gradient(to top right, #fd4d4d, #ff6f11);
+  position: relative;
+}
+
+
+.head-icon-out {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 80rpx;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50rpx auto;
+}
+
+.head-icon-in {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  background-color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.head-msg {
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 40rpx;
+}
+
+.content-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.content-body image {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+}
+
+.body-title {
+  font-weight: bold;
+  font-size: 45rpx;
+  margin-top: 30rpx;
+  letter-spacing: 1rpx;
+}
+
+.body-sign-num {
+  font-size: 30rpx;
+  color: #b3b6bd;
+  font-weight: bold;
+}
+
+.body-btn {
+  width: 320rpx;
+  height: 80rpx;
+  border-radius: 50rpx;
+  margin: 50rpx auto;
+  background-color: #fd4d4d;
+  color: white;
+  letter-spacing: 5rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

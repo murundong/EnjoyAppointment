@@ -1,0 +1,17 @@
+<view class="content">
+  <view class="content-head">
+    <view class="head-icon-out">
+      <view class="head-icon-in">
+        <icon size="75rpx" color="white"  type="success_no_circle"></icon>
+      </view>
+    </view>
+    
+    <text class="head-msg">恭喜您签到成功！</text>
+  </view>
+  <view class="content-body">
+    <image src="{{_pageData.teacherImg}}" />
+    <text class="body-title">{{_pageData.title}}</text>
+    <text class="body-sign-num">签到人数：{{_pageData.nowSign}}人</text>
+    <view bindtap="onSignTap" class="body-btn">确定</view>
+  </view>
+</view>

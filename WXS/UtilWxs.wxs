@@ -1,0 +1,73 @@
+  var parse = function (fmt) {
+    fmt1 = fmt.substring(0, 19);
+    var reg = getRegExp("-", "g");
+    fmt2 = fmt1.replace(reg, '/');
+    var timestamp = getDate(fmt2).getTime();
+    return timestamp;
+  }
+  function toWeekDay(weekDay) {// 传入数据 讲一周的某一天返回成中文状态下的字符
+    switch (weekDay) {
+      case 1: return '一'; break;
+      case 2: return '二'; break;
+      case 3: return '三'; break;
+      case 4: return '四'; break;
+      case 5: return '五'; break;
+      case 6: return '六'; break;
+      case 0: return '日'; break;
+      default: break;
+    }
+    return '传入未知参数';
+  }
+  var GenerateTime = function (st, ed) {
+    // var st_dt = getDate(parse(st));
+    // var ed_dt = getDate(parse(ed));
+    var st_dt = getDate(st);
+    var ed_dt = getDate(ed);
+    if (st_dt.getFullYear() == ed_dt.getFullYear()
+      && st_dt.getMonth() == ed_dt.getMonth()
+      && st_dt.getDate() == ed_dt.getDate()) {
+      var year = st_dt.getFullYear();
+      var month = st_dt.getMonth() + 1;
+      var day = st_dt.getDate();
+      var week = toWeekDay(st_dt.getDay());
+      var st_hour = st_dt.getHours();
+      var st_minutes = st_dt.getMinutes();
+      var ed_hour = ed_dt.getHours();
+      var ed_minutes = ed_dt.getMinutes();
+      return year + '/' + (month.toString()[1] ? month : ('0' + month)) + '/' + (day.toString()[1] ? day : ('0' + day)) + ' (周' + week + ')'+(st_hour.toString()[1]?st_hour:('0'+st_hour))+': '+(st_minutes==0?'00':st_minutes)+'~'+(ed_hour.toString()[1]?ed_hour:('0'+ed_hour))+': '+(ed_minutes==0?'00':ed_minutes);
+    }
+    else return st + '~' + ed;
+  }
+  var GenerateTimeNoYear = function (st, ed) {
+    // var st_dt = getDate(parse(st));
+    // var ed_dt = getDate(parse(ed));
+    var st_dt = getDate(st);
+    var ed_dt = getDate(ed);
+    if (st_dt.getFullYear() == ed_dt.getFullYear()
+      && st_dt.getMonth() == ed_dt.getMonth()
+      && st_dt.getDate() == ed_dt.getDate()) {
+      var month = st_dt.getMonth() + 1;
+      var day = st_dt.getDate();
+      var week = toWeekDay(st_dt.getDay());
+      var st_hour = st_dt.getHours();
+      var st_minutes = st_dt.getMinutes();
+      var ed_hour = ed_dt.getHours();
+      var ed_minutes = ed_dt.getMinutes();
+      return (month.toString()[1] ? month : ('0' + month)) + '/' + (day.toString()[1] ? day : ('0' + day)) + ' (周' + week + ')  '+(st_hour.toString()[1]?st_hour:('0'+st_hour))+': '+(st_minutes==0?'00':st_minutes)+'~'+(ed_hour.toString()[1]?ed_hour:('0'+ed_hour))+': '+(ed_minutes==0?'00':ed_minutes);
+    }
+    else return st + '~' + ed;
+  }
+  var GenerateStatus = function (st, ed) {
+    var st_dt = getDate(st);
+    var ed_dt = getDate(ed);
+    var now_dt = getDate();
+    var res = '';
+
+    if (st_dt > now_dt) res = '未开始';
+    else if (now_dt >= st_dt && now_dt < ed_dt) res = '进行中'; 
+    return res;
+  }
+  module.exports.GenerateTime = GenerateTime;
+  module.exports.GenerateTimeNoYear =GenerateTimeNoYear;
+  module.exports.GenerateStatus = GenerateStatus;
+
