@@ -1,15 +1,35 @@
 <!--pages/judge/judge.wxml-->
-<view>
-  <view>
-    <text>bodypump身体充电</text>
+<view class="content">
+  <text class="judge-title">{{class_data.title}}</text>
+  <view class="judge-teacher">
+    <image src="{{class_data.teacherImg}}"></image>
+    <text>{{class_data.teacherName}}</text>
+  </view>
+  <view class="judge-rate">
+    <view class="judge-rate-item">
+      <text class="judge-rate-item-title">课程氛围</text>
+      <l-rate bind:linchange="onRate1Tap" score="{{rate_score1}}" inActive-color="#b3b6bd" active-color="#ff6f11" l-class="judge-lrate" size="48" />
+      <text class="judge-rate-item-desc">{{rate_status1}}</text>
+    </view>
+    <view class="judge-rate-item">
+      <text class="judge-rate-item-title">教练专业度</text>
+      <l-rate bind:linchange="onRate2Tap" score="{{rate_score2}}" inActive-color="#b3b6bd" active-color="#ff6f11" l-class="judge-lrate" size="48" />
+      <text class="judge-rate-item-desc">{{rate_status2}}</text>
+    </view>
+    <view class="judge-rate-item">
+      <text class="judge-rate-item-title">场馆环境</text>
+      <l-rate score="{{rate_score3}}" bind:linchange="onRate3Tap" inActive-color="#b3b6bd" active-color="#ff6f11" l-class="judge-lrate" size="48" />
+      <text class="judge-rate-item-desc">{{rate_status3}}</text>
+    </view>
+  </view>
+  <view class="judge-textarea">
+    <l-textarea bind:lininput="onTextareaComplete" value="{{textarea_value}}" l-class="judge-textarea-body"   indicator="true" maxlength="140" placeholder="告诉我们更多~" />
+   
   </view>
   <view>
-    是个图片
+    <block wx:for="{{class_data.tags}}" wx:key="index">
+
+    </block>
   </view>
-  <view>
-    评分
-  </view>
-  <view>输入框</view>
-  <view>标签</view>
-  <view>提交</view>
+  <view bindtap="onJudgeSubmit" class="judge-submit">确认提交</view>
 </view>

@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    wait_classes:local_classes.data,
+    wait_classes:local_classes.data.lstClasses,
     comp_classes:local_com_classes.data,
     default_expand:['comp-0']
   },

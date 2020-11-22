@@ -1,4 +1,10 @@
 /* pages/appointment/appointment.wxss */
+.l-header-tabs{
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: white;
+}
 .l-tabpanel-swiper{
   border: 1px solid red;
   height: 960rpx;

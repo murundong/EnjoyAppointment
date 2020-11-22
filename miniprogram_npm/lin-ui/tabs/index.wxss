@@ -1,4 +1,3 @@
-
 .l-tabs {
   display: flex;
   border-radius: 8rpx;

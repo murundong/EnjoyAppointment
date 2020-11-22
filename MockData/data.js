@@ -48,256 +48,301 @@ var local_banners = [
 var local_classes = {
   errCode: 0,
   total: 12,
+  data:
+  {
+    doorName: '梅斯奔驰中心',
+    lstClasses: [
+      {
+        'id': 1,
+        'price': 0,
+        'title': 'BODYPUMP身体充电',
+        'teacher_img': 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4134179624,1189954365&fm=26&gp=0.jpg',
+        'status': '紧张',
+        'tags': ['体态纠正', '塑性'],
+        'teacher': 'GEM',
+        'startTime': '2020/11/19 08:00',
+        'endTime': '2020/11/19 09:00',
+        'fullNum': 10,
+        'lessNum': 2,
+        'nowNum': 8,
+        'level': 3,
+        'timeStr': '08:00~09:00',
+        'btnStatus': 0,
+        'Venue': '上海梅赛德斯',
+        'address': '上海市浦东新区世博大道1200号'
+      },
+      {
+        'id': 2,
+        'price': 0,
+        'title': '综合全能训练课程',
+        'teacher_img': 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036239060,1500073520&fm=26&gp=0.jpg',
+        'status': '满员',
+        'tags': ['体态纠正', '塑形', '增肌'],
+        'teacher': '彭于晏',
+        'startTime': '2020/11/19 14:00',
+        'endTime': '2020/11/19 15:00',
+        'fullNum': 8,
+        'lessNum': 2,
+        'nowNum': 8,
+        'level': 3,
+        'timeStr': '14:00~15:00',
+        'btnStatus': -1,
+        'Venue': '上海梅赛德斯',
+        'address': '上海市浦东新区世博大道1200号'
+      }, {
+        'id': 3,
+        'price': 0,
+        'title': '有氧战斗',
+        'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
+        'status': '',
+        'tags': ['力量型', '引体向上'],
+        'teacher': 'GEM',
+        'startTime': '2020/11/19 17:00',
+        'endTime': '2020/11/19 18:00',
+        'fullNum': 10,
+        'lessNum': 2,
+        'nowNum': 3,
+        'level': 3,
+        'timeStr': '17:00~18:00',
+        'btnStatus': 0,
+        'Venue': '上海梅赛德斯',
+        'address': '上海市浦东新区世博大道1200号'
+      },
+      {
+        'id': 4,
+        'price': 0,
+        'title': 'Hit燃脂战神',
+        'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+        'status': '',
+        'tags': ['协调', '减脂'],
+        'teacher': 'CC',
+        'startTime': '2020/11/19 20:00',
+        'endTime': '2020/11/19 22:30',
+        'fullNum': 12,
+        'nowNum': 3,
+        'lessNum': 4,
+        'level': 3,
+        'timeStr': '20:00~20:30',
+        'btnStatus': 0,
+        'Venue': '上海梅赛德斯',
+        'address': '上海市浦东新区世博大道1200号'
+      },
+      {
+        'id': 2,
+        'price': 0,
+        'title': '综合全能训练课程',
+        'teacher_img': 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036239060,1500073520&fm=26&gp=0.jpg',
+        'status': '满员',
+        'tags': ['体态纠正', '塑形', '增肌'],
+        'teacher': '彭于晏',
+        'startTime': '2020/11/19 14:00',
+        'endTime': '2020/11/19 15:00',
+        'fullNum': 8,
+        'lessNum': 2,
+        'nowNum': 8,
+        'level': 3,
+        'timeStr': '14:00~15:00',
+        'btnStatus': -1,
+        'Venue': '上海梅赛德斯',
+        'address': '上海市浦东新区世博大道1200号'
+      }, {
+        'id': 3,
+        'price': 0,
+        'title': '有氧战斗',
+        'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
+        'status': '',
+        'tags': ['力量型', '引体向上'],
+        'teacher': 'GEM',
+        'startTime': '2020/11/19 17:00',
+        'endTime': '2020/11/19 18:00',
+        'fullNum': 10,
+        'lessNum': 2,
+        'nowNum': 3,
+        'level': 3,
+        'timeStr': '17:00~18:00',
+        'btnStatus': 0,
+        'Venue': '上海梅赛德斯',
+        'address': '上海市浦东新区世博大道1200号'
+      },
+      {
+        'id': 4,
+        'price': 0,
+        'title': 'Hit燃脂战神',
+        'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+        'status': '',
+        'tags': ['协调', '减脂'],
+        'teacher': 'CC',
+        'startTime': '2020/11/19 20:00',
+        'endTime': '2020/11/19 22:30',
+        'fullNum': 12,
+        'nowNum': 3,
+        'lessNum': 4,
+        'level': 3,
+        'timeStr': '20:00~20:30',
+        'btnStatus': 0,
+        'Venue': '上海梅赛德斯',
+        'address': '上海市浦东新区世博大道1200号'
+      },
+      {
+        'id': 2,
+        'price': 0,
+        'title': '综合全能训练课程',
+        'teacher_img': 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036239060,1500073520&fm=26&gp=0.jpg',
+        'status': '满员',
+        'tags': ['体态纠正', '塑形', '增肌'],
+        'teacher': '彭于晏',
+        'startTime': '2020/11/19 14:00',
+        'endTime': '2020/11/19 15:00',
+        'fullNum': 8,
+        'lessNum': 2,
+        'nowNum': 8,
+        'level': 3,
+        'timeStr': '14:00~15:00',
+        'btnStatus': -1,
+        'Venue': '上海梅赛德斯',
+        'address': '上海市浦东新区世博大道1200号'
+      }, {
+        'id': 3,
+        'price': 0,
+        'title': '有氧战斗',
+        'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
+        'status': '',
+        'tags': ['力量型', '引体向上'],
+        'teacher': 'GEM',
+        'startTime': '2020/11/19 17:00',
+        'endTime': '2020/11/19 18:00',
+        'fullNum': 10,
+        'lessNum': 2,
+        'nowNum': 3,
+        'level': 3,
+        'timeStr': '17:00~18:00',
+        'btnStatus': 0,
+        'Venue': '上海梅赛德斯',
+        'address': '上海市浦东新区世博大道1200号'
+      },
+      {
+        'id': 4,
+        'price': 0,
+        'title': 'Hit燃脂战神',
+        'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+        'status': '',
+        'tags': ['协调', '减脂'],
+        'teacher': 'CC',
+        'startTime': '2020/11/19 20:00',
+        'endTime': '2020/11/19 22:30',
+        'fullNum': 12,
+        'nowNum': 3,
+        'lessNum': 4,
+        'level': 3,
+        'timeStr': '20:00~20:30',
+        'btnStatus': 0,
+        'Venue': '上海梅赛德斯',
+        'address': '上海市浦东新区世博大道1200号'
+      }
+    ]
+  }
+}
+
+var local_com_classes = {
+  errCode: 0,
   data: [
     {
-      'id': 1,
-      'price': 0,
-      'title': 'BODYPUMP身体充电',
-      'teacher_img': 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4134179624,1189954365&fm=26&gp=0.jpg',
-      'status': '紧张',
-      'tags': ['体态纠正', '塑性'],
-      'teacher': 'GEM',
-      'startTime': '2020/11/19 08:00',
-      'endTime': '2020/11/19 09:00',
-      'fullNum': 10,
-      'lessNum': 2,
-      'nowNum': 8,
-      'level': 3,
-      'timeStr': '08:00~09:00',
-      'btnStatus': 0,
-      'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      "month": "5月",
+      "year": "2020",
+      "count": 3,
+      "lst": [
+        {
+          "id": 1,
+          'title': 'Hit燃脂战神',
+          'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+          'Venue': '上海梅赛德斯',
+          'startTime': '2020/11/19 20:00',
+          'endTime': '2020/11/19 22:30',
+          'judgeStatus': false
+        },
+        {
+          "id": 2,
+          'title': '有氧战斗',
+          'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
+          'Venue': '北京小巨蛋',
+          'startTime': '2020/11/19 17:00',
+          'endTime': '2020/11/19 18:00',
+          'judgeStatus': true
+        }
+      ]
     },
     {
-      'id': 2,
-      'price': 0,
-      'title': '综合全能训练课程',
-      'teacher_img': 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036239060,1500073520&fm=26&gp=0.jpg',
-      'status': '满员',
-      'tags': ['体态纠正', '塑形', '增肌'],
-      'teacher': '彭于晏',
-      'startTime': '2020/11/19 14:00',
-      'endTime': '2020/11/19 15:00',
-      'fullNum': 8,
-      'lessNum': 2,
-      'nowNum': 8,
-      'level': 3,
-      'timeStr': '14:00~15:00',
-      'btnStatus': -1,
-      'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
-    }, {
-      'id': 3,
-      'price': 0,
-      'title': '有氧战斗',
-      'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
-      'status': '',
-      'tags': ['力量型', '引体向上'],
-      'teacher': 'GEM',
-      'startTime': '2020/11/19 17:00',
-      'endTime': '2020/11/19 18:00',
-      'fullNum': 10,
-      'lessNum': 2,
-      'nowNum': 3,
-      'level': 3,
-      'timeStr': '17:00~18:00',
-      'btnStatus': 0,
-      'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
-    },
-    {
-      'id': 4,
-      'price': 0,
-      'title': 'Hit燃脂战神',
-      'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
-      'status': '',
-      'tags': ['协调', '减脂'],
-      'teacher': 'CC',
-      'startTime': '2020/11/19 20:00',
-      'endTime': '2020/11/19 22:30',
-      'fullNum': 12,
-      'nowNum': 3,
-      'lessNum': 4,
-      'level': 3,
-      'timeStr': '20:00~20:30',
-      'btnStatus': 0,
-      'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
-    },
-    {
-      'id': 2,
-      'price': 0,
-      'title': '综合全能训练课程',
-      'teacher_img': 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036239060,1500073520&fm=26&gp=0.jpg',
-      'status': '满员',
-      'tags': ['体态纠正', '塑形', '增肌'],
-      'teacher': '彭于晏',
-      'startTime': '2020/11/19 14:00',
-      'endTime': '2020/11/19 15:00',
-      'fullNum': 8,
-      'lessNum': 2,
-      'nowNum': 8,
-      'level': 3,
-      'timeStr': '14:00~15:00',
-      'btnStatus': -1,
-      'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
-    }, {
-      'id': 3,
-      'price': 0,
-      'title': '有氧战斗',
-      'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
-      'status': '',
-      'tags': ['力量型', '引体向上'],
-      'teacher': 'GEM',
-      'startTime': '2020/11/19 17:00',
-      'endTime': '2020/11/19 18:00',
-      'fullNum': 10,
-      'lessNum': 2,
-      'nowNum': 3,
-      'level': 3,
-      'timeStr': '17:00~18:00',
-      'btnStatus': 0,
-      'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
-    },
-    {
-      'id': 4,
-      'price': 0,
-      'title': 'Hit燃脂战神',
-      'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
-      'status': '',
-      'tags': ['协调', '减脂'],
-      'teacher': 'CC',
-      'startTime': '2020/11/19 20:00',
-      'endTime': '2020/11/19 22:30',
-      'fullNum': 12,
-      'nowNum': 3,
-      'lessNum': 4,
-      'level': 3,
-      'timeStr': '20:00~20:30',
-      'btnStatus': 0,
-      'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
-    },
-    {
-      'id': 2,
-      'price': 0,
-      'title': '综合全能训练课程',
-      'teacher_img': 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036239060,1500073520&fm=26&gp=0.jpg',
-      'status': '满员',
-      'tags': ['体态纠正', '塑形', '增肌'],
-      'teacher': '彭于晏',
-      'startTime': '2020/11/19 14:00',
-      'endTime': '2020/11/19 15:00',
-      'fullNum': 8,
-      'lessNum': 2,
-      'nowNum': 8,
-      'level': 3,
-      'timeStr': '14:00~15:00',
-      'btnStatus': -1,
-      'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
-    }, {
-      'id': 3,
-      'price': 0,
-      'title': '有氧战斗',
-      'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
-      'status': '',
-      'tags': ['力量型', '引体向上'],
-      'teacher': 'GEM',
-      'startTime': '2020/11/19 17:00',
-      'endTime': '2020/11/19 18:00',
-      'fullNum': 10,
-      'lessNum': 2,
-      'nowNum': 3,
-      'level': 3,
-      'timeStr': '17:00~18:00',
-      'btnStatus': 0,
-      'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
-    },
-    {
-      'id': 4,
-      'price': 0,
-      'title': 'Hit燃脂战神',
-      'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
-      'status': '',
-      'tags': ['协调', '减脂'],
-      'teacher': 'CC',
-      'startTime': '2020/11/19 20:00',
-      'endTime': '2020/11/19 22:30',
-      'fullNum': 12,
-      'nowNum': 3,
-      'lessNum': 4,
-      'level': 3,
-      'timeStr': '20:00~20:30',
-      'btnStatus': 0,
-      'Venue':'上海梅赛德斯',
-      'address':'上海市浦东新区世博大道1200号'
+      "month": "4月",
+      "year": "2020",
+      "count": 3,
+      "lst": [
+        {
+          "id": 1,
+          'title': 'Hit燃脂战神',
+          'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+          'Venue': '上海梅赛德斯',
+          'startTime': '2020/11/19 20:00',
+          'endTime': '2020/11/19 22:30',
+          'judgeStatus': false
+        },
+        {
+          "id": 2,
+          'title': '有氧战斗',
+          'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
+          'Venue': '北京小巨蛋',
+          'startTime': '2020/11/19 17:00',
+          'endTime': '2020/11/19 18:00',
+          'judgeStatus': true
+        }
+      ]
     }
   ]
 }
 
-var local_com_classes={
+var local_rate_class = {
   errCode: 0,
-  data: [
-    {
-      "month":"5月",
-      "year":"2020",
-      "count":3,
-      "lst":[
-        {
-           "id": 1, 
-           'title': 'Hit燃脂战神',
-           'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
-           'Venue':'上海梅赛德斯',
-           'startTime': '2020/11/19 20:00',
-           'endTime': '2020/11/19 22:30',
-           'judgeStatus':false
-        },
-        {
-          "id": 2, 
-          'title': '有氧战斗',
-          'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
-          'Venue':'北京小巨蛋',
-          'startTime': '2020/11/19 17:00',
-          'endTime': '2020/11/19 18:00',
-          'judgeStatus':true
-       }
-      ]
-    },
-    {
-      "month":"4月",
-      "year":"2020",
-      "count":3,
-      "lst":[
-        {
-           "id": 1, 
-           'title': 'Hit燃脂战神',
-           'teacher_img': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
-           'Venue':'上海梅赛德斯',
-           'startTime': '2020/11/19 20:00',
-           'endTime': '2020/11/19 22:30',
-           'judgeStatus':false
-        },
-        {
-          "id": 2, 
-          'title': '有氧战斗',
-          'teacher_img': 'http://img.idol001.com/thumbnail/2014/09/27/8b3c232b4bae2599823251991f01e1b71411828841.jpg',
-          'Venue':'北京小巨蛋',
-          'startTime': '2020/11/19 17:00',
-          'endTime': '2020/11/19 18:00',
-          'judgeStatus':true
-       }
-      ]
-    }
-  ]
+  data: {
+    'id': 1,
+    'title': 'Hit燃脂战神',
+    'teacherImg': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+    'teacherName': 'GEM',
+    'tags': []
+  }
+}
+var local_ensureappoint_class = {
+  errCode: 0,
+  data: {
+    'id': 1,
+    'title': 'Hit燃脂战神',
+    'teacherImg': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+    'teacherName': 'GEM',
+    'startTime': '2020/11/19 08:00',
+    'endTime': '2020/11/19 09:00',
+    'Venue': '上海梅赛德斯',
+    'address': '上海市浦东新区世博大道1200号'
+  }
+
+}
+var local_sign_daga={
+  errCode: 0,
+  data: {
+    'id': 1,
+    'title': 'Hit燃脂战神',
+    'teacherImg': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+    'nowSign':3
+  }
 }
 // module.exports={
 //   local_banner:local_banner
 // }
 
 export {
-  local_banners, local_doors, local_classes_type, local_classes,local_com_classes
+  local_banners, 
+  local_doors, 
+  local_classes_type,
+  local_classes, 
+  local_com_classes, 
+  local_rate_class,
+  local_ensureappoint_class,
+  local_sign_daga
 }

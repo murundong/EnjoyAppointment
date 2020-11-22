@@ -1,1 +1,106 @@
 /* pages/mine/mine.wxss */
+.content {
+  font-family: "Arial", "KaiTi", sans-serif;
+  color: #525562;
+}
+
+.img-header {
+  width: 100%;
+  height: 350rpx;
+  position: relative;
+}
+
+.img-header::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 450rpx;
+  background: linear-gradient(to top right, rgba(253, 77, 77,1), rgba(255, 111, 17, 0.8));
+  background: -webkit-linear-gradient(to top right, rgba(253, 77, 77,1), rgba(255, 111, 17, 0.8));
+  background: -moz-linear-gradient(to top right, rgba(253, 77, 77,1), rgba(255, 111, 17, 0.8));
+}
+
+.mine-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  top: 80rpx;
+}
+
+.mine-content-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 40rpx;
+  margin-top: 30
+}
+
+.mine-content-head image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+}
+
+.mine-content-head-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30rpx;
+}
+
+.head-info-name {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 3rpx;
+}
+
+.head-info-tel {
+  color: white;
+  font-size: 30rpx;
+  letter-spacing: 1rpx;
+}
+
+.content-title {
+  width: 93%;
+  background-color: white;
+  border-radius: 20rpx;
+  height: 360rpx;
+  margin: 60rpx auto;
+  box-shadow: 2rpx 10rpx 4rpx -6rpx #ebeef3;
+}
+.content-title-head{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 60rpx;
+}
+.title-head-desc{
+  color: #b6b6b6;
+  font-size: 26rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}
+.title-head-body{
+  font-size: 43rpx;
+  color: #fd4d4d;
+  font-weight: bold;
+}
+.content-title-body{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+}
+.content-title-body-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.content-list{
+  margin: 20rpx auto;
+  width: 88%;
+}
+.content-list-item{
+  font-size: 32rpx;
+}

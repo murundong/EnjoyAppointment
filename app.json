@@ -6,7 +6,9 @@
     "pages/appointment/appointment",
     "pages/mine/mine",
     "pages/Lesson/Lesson",
-    "pages/judge/judge"
+    "pages/judge/judge",
+    "pages/EnsureAppointment/EnsureAppointment",
+    "pages/Sign/Sign"
   ],
   "tabBar": {
     "list": [
@@ -27,7 +29,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "EnjoyAppointment",
+    "navigationBarTitleText": "EnjoyAppoint",
     "navigationBarTextStyle": "black"
   },
   "lazyCodeLoading": "requiredComponents",

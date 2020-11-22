@@ -1,1 +1,84 @@
 /* pages/judge/judge.wxss */
+.content {
+  color: #525562;
+  font-family: "Arial","KaiTi",sans-serif;
+}
+
+.judge-title {
+  font-size: 50rpx;
+  display: block;
+  text-align: center;
+  margin-top: 20rpx;
+  letter-spacing: 3rpx;
+}
+
+.judge-teacher {
+  margin-top: 25rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.judge-teacher image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 75rpx;
+}
+
+.judge-teacher text {
+  font-size: 20rpx;
+  margin-top: 13rpx;
+  letter-spacing: 3rpx;
+}
+
+.judge-rate {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.judge-rate-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+}
+
+.judge-rate-item-title {
+  font-size: 30rpx;
+  width: 187rpx;
+  text-align: right;
+  padding-right: 30rpx;
+  white-space: nowrap;
+}
+
+.judge-rate-item-desc {
+  font-size: 28rpx;
+  color: #b3b6bd;
+  width: 20%;
+  margin-left: 30rpx;
+}
+.judge-textarea{
+  width: 90%;
+  margin: 40rpx auto;
+}
+.judge-textarea-body{
+  height: 300rpx;
+}
+.judge-submit{
+    width: 70%;
+    height: 80rpx;
+    border-radius: 50rpx;
+    margin: 50rpx auto;
+    background-color: #fd4d4d;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 10rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

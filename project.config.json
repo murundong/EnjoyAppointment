@@ -60,33 +60,9 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/Lesson/Lesson",
-          "pathName": "pages/Lesson/Lesson",
-          "query": "doorId=1",
-          "scene": null
-        },
-        {
-          "name": "pages/Lesson/Lesson",
-          "pathName": "pages/Lesson/Lesson",
-          "query": "DoorId=1",
-          "scene": null
-        },
-        {
-          "name": "pages/Lesson/Lesson",
-          "pathName": "pages/Lesson/Lesson",
-          "query": "doorId=1",
-          "scene": null
-        },
-        {
-          "name": "pages/appointment/appointment",
-          "pathName": "pages/appointment/appointment",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/appointment/appointment",
-          "pathName": "pages/appointment/appointment",
-          "query": "doorId=1",
+          "name": "pages/Sign/Sign",
+          "pathName": "pages/Sign/Sign",
+          "query": "cid=1",
           "scene": null
         }
       ]

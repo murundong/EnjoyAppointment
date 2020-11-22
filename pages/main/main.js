@@ -91,6 +91,9 @@ Page({
       onlyFromCamera: true,
       success:res=>{
         console.log(res)
+        wx.navigateTo({
+          url: `../Sign/Sign?cid=1`,
+        })
       }
     })
   },
