@@ -2,7 +2,7 @@
 .card-content{
   font-family: Tahoma,Helvetica,Arial,’宋体’,sans-serif;
   color: #525562;
-  
+  border:1px solid #eaeaea;
   width: 90%;
   margin: 0 auto;
   padding:10rpx 20rpx;
@@ -12,6 +12,7 @@
   margin-top: 10rpx;
 }
 .card-title{
+  color: #b3b6bd;
   display: flex;
   flex-direction: column;
 }
@@ -23,6 +24,8 @@
   border-radius: 10rpx;
   background: linear-gradient(to top right, rgb(31, 30, 30), rgba(70, 70, 70, 0.8));
   color: white;
+  position: relative;
+  padding-bottom: 35rpx;
 }
 .card-body-left{
   display: flex;
@@ -40,28 +43,32 @@
 .card-body-right{
   display: flex;
   flex-direction: column;
-  position: relative;
   margin-left: 30rpx;
   padding: 30rpx 20rpx 20rpx;
   font-size: 30rpx;
 }
 .body-right-tips{
   position: absolute;
-  top: 0;
-  display: flex;
-  flex-direction: row;
-  font-size: 20rpx;
-  background-color: #cccccc;
+  right: 0;
+  bottom: 0;
+  font-size: 26rpx;
+  background-color:#3f4548;
+  text-align: right;
+  padding: 5rpx 20rpx;
+  border-radius: 4rpx;
 }
 .body-right{
   display: flex;
   flex-direction: column;
 }
-.body-right-l{
+.body-right-l,.body-right-lf{
   font-size: 24rpx;
   margin-right: 10rpx;
   display: inline-block;
   width: 120rpx;
+}
+.body-right-lf{
+  letter-spacing: 3rpx;
 }
 .body-right-r{
   font-size: 30rpx;
@@ -69,4 +76,7 @@
 .body-bottom-tips{
   font-size: 25rpx;
   color: red;
+}
+.tips-time{
+  margin-left: 20rpx;
 }

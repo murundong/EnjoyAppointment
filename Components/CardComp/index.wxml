@@ -1,34 +1,40 @@
 <view class="card-content">
   <view class="card-title">
-    {{cardTitle}}
+    {{cardInfo.door_name}}
   </view>
-  <view class="card-body">
+
+  <block wx:for="{{cardInfo.cards}}" wx:key="index">
+    <view class="card-body">
     <view class="card-body-left">
-      <view class="body-left-title">{{cardInfo.card_type}}</view>
-      <image class="body-left-img" src="{{doorImg}}"></image>
+      <view class="body-left-title">{{item.card_name}}</view>
+      <image class="body-left-img" src="{{cardInfo.door_img}}"></image>
     </view>
     <view class="card-body-right">
-      <view class="body-right-tips">
-        <text>有效期至:{{cardInfo.st_time}}</text>
-        <text>{{cardInfo.times}}次</text>
-      </view>
+      
       <view class="body-right">
         <view>
-          <text class="body-right-l">冻结致:</text>
-          <text class="body-right-r">{{cardInfo.ed_time}}</text>
+          <text class="body-right-lf">冻结至：</text>
+          <text class="body-right-r">{{item.ed_time}}</text>
         </view>
         <view>
           <text class="body-right-l"> 频次/周：</text>
-          <text class="body-right-r">无限制</text>
+          <text class="body-right-r">{{item.perweek<=0?'无限制':(item.perweek+'次/周')}}</text>
         </view>
         <view> 
           <text class="body-right-l">频次/日：</text>
-          <text class="body-right-r">无限制</text>
+          <text class="body-right-r">{{item.peerday<=0?'无限制':(item.peerday+'次/日')}}</text>
         </view>
         <view>
-          <text class="body-bottom-tips">*仅限本人使用</text>
+          <text class="body-bottom-tips">注意:仅限本人使用</text>
         </view>
       </view>
     </view>
+    <view class="body-right-tips">
+        <text>有效期至:{{item.st_time}}</text>
+        <text class="tips-time" wx:if="{{item.times>0}}">次数:{{item.times}}</text>
+      </view>
   </view>
+  </block>
+
+  
 </view>

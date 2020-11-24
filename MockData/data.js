@@ -356,6 +356,7 @@ var local_card_info = {
       {
         'card_id':1,
         'card_type':'年卡',
+        'card_name':'尊享年卡',
         'st_time':'2020/1/12',
         'ed_time':'2020/12/31',
         'times':-1,
@@ -364,6 +365,7 @@ var local_card_info = {
       },{
         'card_id':2,
         'card_type':'季卡',
+        'card_name':'尊享季卡',
         'st_time':'2020/11/12',
         'ed_time':'2021/1/31',
         'times':28,
@@ -372,6 +374,7 @@ var local_card_info = {
       },{
         'card_id':3,
         'card_type':'次卡',
+        'card_name':'尊享次卡',
         'st_time':'2020/1/12',
         'ed_time':'2020/12/31',
         'times':5,
@@ -380,6 +383,7 @@ var local_card_info = {
       },{
         'card_id':1,
         'card_type':'体验卡',
+        'card_name':'尊享体验卡',
         'st_time':'2020/1/12',
         'ed_time':'2020/12/31',
         'times':2,
@@ -390,6 +394,7 @@ var local_card_info = {
   } ,{
     'door_id': 1,
     'door_name': 'EnjoyYoga',
+    'door_img':'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
     'cards':[
       {
         'card_id':1,

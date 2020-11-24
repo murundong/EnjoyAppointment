@@ -1,9 +1,11 @@
 <l-tabs  bind:linchange="onTabChange" inactive-color="#b3b6bd" active-color="#525562" animated-for-line="true"  l-header-line-class="tab-header-line">
   <l-tabpanel tab="我的卡片" key="mycard" slot="mycard">
+   
+    <block wx:for="{{_cardLst}}" wx:key="index">
+      <l-card cardInfo="{{item}}">
+      </l-card>
+    </block>
     
-    <l-card >
-
-    </l-card>
 
   </l-tabpanel>
   <l-tabpanel tab="过期卡片" key="excard" slot="excard">
