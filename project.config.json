@@ -60,8 +60,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/Sign/Sign",
-          "pathName": "pages/Sign/Sign",
+          "name": "pages/Card/Card",
+          "pathName": "pages/Card/Card",
           "query": "cid=1",
           "scene": null
         }

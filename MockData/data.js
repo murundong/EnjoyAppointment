@@ -323,26 +323,124 @@ var local_ensureappoint_class = {
   }
 
 }
-var local_sign_daga={
+var local_sign_daga = {
   errCode: 0,
   data: {
     'id': 1,
     'title': 'Hit燃脂战神',
     'teacherImg': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
-    'nowSign':3
+    'nowSign': 3
   }
+}
+
+var local_user_info = {
+  errCode: 0,
+  data: {
+    'teacherImg': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+    'teacherName': 'Gem',
+    'tel': '18976710206',
+    'total_minutes': 120,
+    'total_count': 120,
+    'total_days': 12
+
+  }
+}
+
+var local_card_info = {
+  errCode: 0,
+  data: [{
+    'door_id': 1,
+    'door_name': '梅赛德斯奔驰中心',
+    'door_img':'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+    'cards':[
+      {
+        'card_id':1,
+        'card_type':'年卡',
+        'st_time':'2020/1/12',
+        'ed_time':'2020/12/31',
+        'times':-1,
+        'perweek':-1,
+        'peerday':-1,
+      },{
+        'card_id':2,
+        'card_type':'季卡',
+        'st_time':'2020/11/12',
+        'ed_time':'2021/1/31',
+        'times':28,
+        'perweek':-1,
+        'peerday':-1,
+      },{
+        'card_id':3,
+        'card_type':'次卡',
+        'st_time':'2020/1/12',
+        'ed_time':'2020/12/31',
+        'times':5,
+        'perweek':-1,
+        'peerday':-1,
+      },{
+        'card_id':1,
+        'card_type':'体验卡',
+        'st_time':'2020/1/12',
+        'ed_time':'2020/12/31',
+        'times':2,
+        'perweek':-1,
+        'peerday':-1,
+      }
+    ]
+  } ,{
+    'door_id': 1,
+    'door_name': 'EnjoyYoga',
+    'cards':[
+      {
+        'card_id':1,
+        'card_type':'年卡',
+        'st_time':'2020/1/12',
+        'ed_time':'2020/12/31',
+        'times':-1,
+        'perweek':-1,
+        'peerday':-1,
+      },{
+        'card_id':2,
+        'card_type':'季卡',
+        'st_time':'2020/11/12',
+        'ed_time':'2021/1/31',
+        'times':28,
+        'perweek':-1,
+        'peerday':-1,
+      },{
+        'card_id':3,
+        'card_type':'次卡',
+        'st_time':'2020/1/12',
+        'ed_time':'2020/12/31',
+        'times':5,
+        'perweek':-1,
+        'peerday':-1,
+      },{
+        'card_id':1,
+        'card_type':'体验卡',
+        'st_time':'2020/1/12',
+        'ed_time':'2020/12/31',
+        'times':2,
+        'perweek':-1,
+        'peerday':-1,
+      }
+    ]
+  } 
+  ]
 }
 // module.exports={
 //   local_banner:local_banner
 // }
 
 export {
-  local_banners, 
-  local_doors, 
+  local_banners,
+  local_doors,
   local_classes_type,
-  local_classes, 
-  local_com_classes, 
+  local_classes,
+  local_com_classes,
   local_rate_class,
   local_ensureappoint_class,
-  local_sign_daga
+  local_sign_daga,
+  local_user_info,
+  local_card_info
 }

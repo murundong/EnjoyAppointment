@@ -5,34 +5,34 @@
     <view class="mine-content-head">
       <image src="{{_yogaImg}}" />
       <view class="mine-content-head-info">
-        <text class="head-info-name">GEM</text>
-        <text class="head-info-tel">18976710206</text>
+        <text class="head-info-name">{{_userInfo.teacherName}}</text>
+        <text class="head-info-tel">{{_userInfo.tel}}</text>
       </view>
     </view>
     <view class="content-title">
       <view class="content-title-head">
         <text class="title-head-desc">总训练时间(分钟)</text>
-        <text class="title-head-body">120</text>
+        <text class="title-head-body">{{_userInfo.total_minutes}}</text>
       </view>
       <view class="content-title-body">
         <view class="content-title-body-item">
           <text class="title-head-desc">总训练次数(次)</text>
-          <text class="title-head-body">120</text>
+          <text class="title-head-body">{{_userInfo.total_count}}</text>
         </view>
         <view class="content-title-body-item">
           <text class="title-head-desc">总训练天数(天)</text>
-          <text class="title-head-body">120</text>
+          <text class="title-head-body">{{_userInfo.total_days}}</text>
         </view>
-        <view class="content-title-body-item">
+        <!-- <view class="content-title-body-item">
           <text class="title-head-desc">总消耗(卡路里)</text>
           <text class="title-head-body">24366</text>
-        </view>
+        </view> -->
       </view>
     </view>
     <view class="content-list">
       <l-list l-content-class="content-list-item" icon-color="#525562" title="消息通知" icon="comment"/>
       <l-list l-content-class="content-list-item" icon-color="#525562" title="我的预约" icon="history" url="../appointment/appointment" link-type="switchTab"/>
-      <l-list l-content-class="content-list-item" icon-color="#525562" title="我的卡片" icon="phone"/>
+      <l-list l-content-class="content-list-item" icon-color="#525562" title="我的卡片" icon="phone" url="../Card/Card" />
       <l-list l-content-class="content-list-item" icon-color="#525562" title="个人信息" icon="user"/>
     </view>
   </view>

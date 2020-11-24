@@ -1,0 +1,72 @@
+/* Components/CardComp/index.wxss */
+.card-content{
+  font-family: Tahoma,Helvetica,Arial,’宋体’,sans-serif;
+  color: #525562;
+  
+  width: 90%;
+  margin: 0 auto;
+  padding:10rpx 20rpx;
+  border-radius: 20rpx;
+  /* box-shadow: 2rpx 10rpx 4rpx -6rpx #ebeef3; */
+  box-shadow: -2rpx 10rpx 30rpx -22rpx #0b0c0c;
+  margin-top: 10rpx;
+}
+.card-title{
+  display: flex;
+  flex-direction: column;
+}
+.card-body{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+  border: 1px solid #cccccc;
+  border-radius: 10rpx;
+  background: linear-gradient(to top right, rgb(31, 30, 30), rgba(70, 70, 70, 0.8));
+  color: white;
+}
+.card-body-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rpx;
+}
+.body-left-img{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-top: 20rpx;
+}
+.card-body-right{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: 30rpx;
+  padding: 30rpx 20rpx 20rpx;
+  font-size: 30rpx;
+}
+.body-right-tips{
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  font-size: 20rpx;
+  background-color: #cccccc;
+}
+.body-right{
+  display: flex;
+  flex-direction: column;
+}
+.body-right-l{
+  font-size: 24rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+  width: 120rpx;
+}
+.body-right-r{
+  font-size: 30rpx;
+}
+.body-bottom-tips{
+  font-size: 25rpx;
+  color: red;
+}

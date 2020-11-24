@@ -1,21 +1,19 @@
-// pages/mine/mine.js
-import {local_user_info} from '../../MockData/data.js'
+// pages/Card/Card.js
+import {local_card_info} from '../../MockData/data.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    //_yogaImg:"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=628256926,2528163524&fm=15&gp=0.jpg"
-    _yogaImg:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=918711330,485019288&fm=26&gp=0.jpg',
-    _userInfo:local_user_info.data
+    _cardLst : local_card_info.data
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(this.data._cardLst);
   },
 
   /**
@@ -65,5 +63,8 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onTabChange: function (e) {
+    console.log(e)
   }
 })

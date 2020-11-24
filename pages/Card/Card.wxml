@@ -1,0 +1,15 @@
+<l-tabs  bind:linchange="onTabChange" inactive-color="#b3b6bd" active-color="#525562" animated-for-line="true"  l-header-line-class="tab-header-line">
+  <l-tabpanel tab="我的卡片" key="mycard" slot="mycard">
+    
+    <l-card >
+
+    </l-card>
+
+  </l-tabpanel>
+  <l-tabpanel tab="过期卡片" key="excard" slot="excard">
+
+  </l-tabpanel>
+  <l-tabpanel tab="冻结卡片" key="freezcard" slot="freezcard">
+
+  </l-tabpanel>
+</l-tabs>
