@@ -2,16 +2,17 @@
   <l-tabpanel tab="我的卡片" key="mycard" slot="mycard">
    
     <block wx:for="{{_cardLst}}" wx:key="index">
-      <l-card cardInfo="{{item}}">
-      </l-card>
+      <l-card cardInfo="{{item}}" />
     </block>
-    
-
   </l-tabpanel>
   <l-tabpanel tab="过期卡片" key="excard" slot="excard">
-
+    <block wx:for="{{_cardLst}}" wx:key="index">
+      <l-card cardInfo="{{item}}" Expired="true"/>
+    </block>
   </l-tabpanel>
   <l-tabpanel tab="冻结卡片" key="freezcard" slot="freezcard">
-
+    <block wx:for="{{_cardLst}}" wx:key="index">
+      <l-card cardInfo="{{item}}" Freeze="true"/>
+    </block>
   </l-tabpanel>
 </l-tabs>

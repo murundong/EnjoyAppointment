@@ -23,10 +23,6 @@
           <text class="title-head-desc">总训练天数(天)</text>
           <text class="title-head-body">{{_userInfo.total_days}}</text>
         </view>
-        <!-- <view class="content-title-body-item">
-          <text class="title-head-desc">总消耗(卡路里)</text>
-          <text class="title-head-body">24366</text>
-        </view> -->
       </view>
     </view>
     <view class="content-list">

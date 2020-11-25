@@ -5,6 +5,8 @@ Component({
    */
   properties: {
     cardInfo: Object,
+    Expired:Boolean,
+    Freeze:Boolean
   },
 
   /**
@@ -15,6 +17,7 @@ Component({
   },
   lifetimes: {
     attached() {
+      
     }
   },
   pageLifetimes: {

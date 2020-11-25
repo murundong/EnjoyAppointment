@@ -12,7 +12,6 @@
   margin-top: 10rpx;
 }
 .card-title{
-  color: #b3b6bd;
   display: flex;
   flex-direction: column;
 }
@@ -26,6 +25,7 @@
   color: white;
   position: relative;
   padding-bottom: 35rpx;
+  overflow: hidden;
 }
 .card-body-left{
   display: flex;
@@ -57,6 +57,66 @@
   padding: 5rpx 20rpx;
   border-radius: 4rpx;
 }
+.body-subscript{
+  position: absolute;
+  font-size: 20rpx;
+  background: linear-gradient(to top right, rgba(253, 77, 77,1), rgba(255, 111, 17, 0.8));
+  color: white;
+  padding: 4rpx 10rpx;
+  width: 120rpx;
+  text-align: center;
+  right: -36rpx;
+  top: 17rpx;
+  transform: rotate(45deg);
+}
+.body-expired::before{
+  content: '';
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+  border: 1px solid #b3b6bd;
+  position: absolute;
+  letter-spacing: 2rpx;
+}
+.body-expired{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  color: #b3b6bd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+  border: 1px dashed #b3b6bd;
+  position: absolute;
+  right: 30rpx;
+  top: 50rpx;
+}
+
+.body-freeze::before{
+  content: '';
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+  border: 1px solid #fd4d4d;
+  position: absolute;
+  letter-spacing: 2rpx;
+}
+.body-freeze{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  color: #fd4d4d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+  border: 1px dashed #fd4d4d;
+  position: absolute;
+  right: 30rpx;
+  top: 50rpx;
+}
+
 .body-right{
   display: flex;
   flex-direction: column;

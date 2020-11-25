@@ -29,6 +29,9 @@
         </view>
       </view>
     </view>
+    <view wx:if="{{Expired}}" class="body-expired">已过期</view>
+    <view wx:elif="{{Freeze}}" class="body-freeze">冻结中</view>
+    <view wx:else class="body-subscript">{{item.card_type}}</view>
     <view class="body-right-tips">
         <text>有效期至:{{item.st_time}}</text>
         <text class="tips-time" wx:if="{{item.times>0}}">次数:{{item.times}}</text>
