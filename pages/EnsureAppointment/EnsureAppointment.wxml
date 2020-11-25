@@ -29,13 +29,71 @@
           <text class="info-item-title">地址</text>
           <text class="info-item-content">{{_doorInfo.address}}</text>
         </view>
-        <view bindtap="onEnsureAppointment" class="class-btn">确认预约</view>
+        <view class="ensure">
+          <view class="ensure-card">
+            <text >两张卡片可用</text>
+            <l-icon name="down" size="20"/>
+          </view>
+          
+          <view bindtap="onEnsureAppointment" class="class-btn">确认预约</view>
+        </view>
+        
       </view>
-      
+    </view>
+    <view class="class-detail">
+      <view class="detail-tips">
+        <text>预约备注：</text>
+        <text class="tips-info">课程开始前1个小时不可取消预约</text>
+      </view>
+      <view class="detail-cancel">
+        <text class="cancel-title">取消时限：</text>
+        <text class="cancel-time">1小时</text>
+      </view>
+      <view class="detail-card">
+        <text>可使用会员卡:</text>
+        <view class="card-info">
+          <text>尊享年卡</text>
+          <text>尊享年卡</text>
+          <text>尊享年卡</text>
+          <text>尊享年卡</text>
+          <text>尊享年卡</text>
+          <text>畅联此卡</text>
+          <text>月卡</text>
+        </view>
+      </view>
+
+      <view class="class-users">
+        <text>预约名单：</text>
+        <view>
+          <view class="user-item">
+            <view class="user-item-left">
+              <image src="{{_yogaImg}}" />
+              <text>相濡以沫</text>
+            </view>
+            <text>第一名</text>
+          </view>
+          <view class="user-item">
+            <view class="user-item-left">
+              <image src="{{_yogaImg}}" />
+              <text>相濡以沫</text>
+            </view>
+            <text>第一名</text>
+          </view>
+          <view class="user-item">
+            <view class="user-item-left">
+              <image src="{{_yogaImg}}" />
+              <text>相濡以沫</text>
+            </view>
+            <text>第一名</text>
+          </view>
+        </view>
+      </view>
     </view>
 
-    
+
+
   </view>
 
 
 </view>
+

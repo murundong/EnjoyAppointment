@@ -1,47 +1,54 @@
 /* pages/EnsureAppointment/EnsureAppointment.wxss */
-.content{
+.content {
   color: #525562;
-  font-family: "Arial","KaiTi",sans-serif;
+  font-family: "Arial", "KaiTi", sans-serif;
   position: relative;
 }
-.content-body{
+
+.content-body {
   position: absolute;
   display: flex;
   flex-direction: column;
-  padding: 120rpx 0 0 0rpx;
+  padding: 120rpx 0 50rpx 0rpx;
   top: 0;
   width: 100%;
 }
-.class-head{
+
+.class-head {
   width: 100%;
   height: 388rpx;
-  -webkit-filter:blur(10rpx);
+  -webkit-filter: blur(10rpx);
 }
-.content-head{
+
+.content-head {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding-left: 20rpx;
 }
-.content-head image{
+
+.content-head image {
   width: 150rpx;
-    height: 150rpx;
-    border-radius: 75rpx;
+  height: 150rpx;
+  border-radius: 75rpx;
 }
-.content-head text{
+
+.content-head text {
   margin-left: 30rpx;
   color: white;
   font-weight: bold;
   letter-spacing: 3rpx;
 }
-.class-title{
+
+.class-title {
   font-size: 35rpx;
   margin-left: 37rpx;
   font-weight: bold;
 }
-.class-info{
+
+.class-info {
   /* background-color: #f9f9f9; */
-  background:linear-gradient(to top right, #fd4d4d , #ff6f11);
+  background: linear-gradient(to top right, #fd4d4d, #ff6f11);
   width: 95%;
   height: 400rpx;
   padding-top: 20rpx;
@@ -49,7 +56,8 @@
   border-radius: 20rpx;
   position: relative;
 }
-.class-info::before{
+
+.class-info::before {
   content: "";
   border: 16px solid #FE5F2F;
   border-left-color: transparent;
@@ -59,25 +67,109 @@
   top: -63rpx;
   left: 40rpx;
 }
-.class-info-item:last-child{
+
+.class-info-item:last-child {
   padding-bottom: 20rpx;
 }
 
-.class-info-item{
+.class-info-item {
   display: flex;
   flex-direction: row;
 }
-.info-item-title{
+
+.info-item-title {
   width: 100rpx;
   color: #f9f9f9;
   text-align: right;
   padding-right: 25rpx;
 }
-.info-item-content{
+
+.info-item-content {
   font-size: 30rpx;
   color: white;
 }
-.class-btn{
+
+
+.class-detail {
+  width: 88%;
+  margin: -68rpx auto;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ece8e8;
+  border-top: none;
+  border-radius: 10rpx;
+}
+
+.detail-cancel,
+.detail-tips {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+
+.detail-tips {
+  margin-top: 40rpx;
+}
+
+/* .detail-cancel::after,
+.detail-card::after,
+.detail-tips::after,
+.user-item::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  border-bottom: 1px solid #ece8e8;
+  bottom: 0;
+} */
+
+.card-info {
+  text-align: right;
+}
+
+.detail-card,.user-item {
+  position: relative;
+}
+
+.card-info text {
+  padding: 5rpx 10rpx;
+  background-color: #ece8e8;
+  border-radius: 4rpx;
+  margin-left: 20rpx;
+  display: inline-flex;
+  margin-bottom: 10rpx;
+}
+.user-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.user-item:first-child{
+  margin-top: 20rpx;
+}
+.user-item image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  margin-right: 10rpx;
+}
+.user-item-left{
+  display: flex;
+  align-items: center;
+}
+.ensure{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.ensure-card{
+  display: inline-flex;
+  border: 1px solid red;
+}
+.class-btn {
   width: 300rpx;
   height: 80rpx;
   border-radius: 50rpx;
