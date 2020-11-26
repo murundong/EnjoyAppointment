@@ -11,7 +11,9 @@ Page({
     //_yogaImg:'https://wx3.sinaimg.cn/large/a14b87edly1fk19syzerej20iw0cl0u4.jpg',
     _yogaImg:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606036435674&di=e61c00d9acf989c34c5f19fec0a80e99&imgtype=0&src=http%3A%2F%2Fpic.mt-bbs.com%2Fforum%2F201312%2F04%2F131519mc779dh6gzrchjkr.jpg',
     //_yogaImg:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2906162657,1788026645&fm=26&gp=0.jpg',
-    _doorInfo:local_ensureappoint_class.data
+    _doorInfo:local_ensureappoint_class.data,
+    selectCard:'选择卡片',
+    cardLst:['年卡','季卡','次卡']
   },
 
   /**
@@ -71,6 +73,8 @@ Page({
 
   },
   onEnsureAppointment:function(e){
+    console.log(this.data.selectCard);
+    // if(this.data.selectCard)
     wx.showToast({
       title: '预约成功~',
       duration:3000,
@@ -81,5 +85,9 @@ Page({
         delta: 0,
       })
     }, 1000);
+  },
+  bindCardChange:function(e){
+    console.log(e);
   }
+
 })

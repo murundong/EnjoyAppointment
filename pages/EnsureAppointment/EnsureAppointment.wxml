@@ -29,14 +29,22 @@
           <text class="info-item-title">地址</text>
           <text class="info-item-content">{{_doorInfo.address}}</text>
         </view>
-        <view class="ensure">
+        
+        <view class="coll-bottom">
           <view class="ensure-card">
-            <text >两张卡片可用</text>
-            <l-icon name="down" size="20"/>
-          </view>
           
+
+            <picker class="topbar-select" mode="selector" bindchange="bindCardChange" range="{{cardLst}}">
+              <view class="picker">
+                {{selectCard}}
+                <l-icon class="picker-down" name="down" color="#000" size="25" b />
+              </view>
+            </picker>
+
+          </view>
           <view bindtap="onEnsureAppointment" class="class-btn">确认预约</view>
         </view>
+       
         
       </view>
     </view>

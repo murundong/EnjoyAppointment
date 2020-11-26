@@ -70,6 +70,11 @@
           "pathName": "pages/EnsureAppointment/EnsureAppointment",
           "query": "cid=1",
           "scene": null
+        },
+        {
+          "name": "pages/EnsureAppointment/EnsureAppointment",
+          "pathName": "pages/EnsureAppointment/EnsureAppointment",
+          "scene": null
         }
       ]
     }
