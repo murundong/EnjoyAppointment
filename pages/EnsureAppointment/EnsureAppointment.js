@@ -88,6 +88,9 @@ Page({
   },
   bindCardChange:function(e){
     console.log(e);
+    this.setData({
+      selectCard:e.detail.value
+    })
   }
 
 })
