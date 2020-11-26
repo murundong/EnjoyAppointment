@@ -22,10 +22,10 @@
 }
 
 .wait-class-card {
-  height: 230rpx;
+  /* height: 275rpx; */
   display: flex;
   flex-direction: row;
-  padding: 15rpx 0 35rpx;
+  padding: 15rpx 0 10rpx;
   position: relative;
   margin-bottom: 20rpx;
   /* box-shadow: 5rpx 4rpx 22rpx #ccc;
@@ -76,6 +76,21 @@
 .wait-class-card-body text{
   color: #808082;
   font-size: 30rpx;
+}
+
+.wait-class-card-foot{
+  display: flex;
+    justify-content: flex-end;  
+}
+.wait-class-card-foot view{
+  background-color: #fd4d4d;
+  color: #fff;
+  width: 200rpx;
+  height: 50rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  line-height: 50rpx;
+  font-size: 25rpx;
 }
 /*tab2*/
 .coll-wait-content {

@@ -12,7 +12,7 @@
                 <view class="wait-class-card-title">
                   <text class="wait-card-title">{{item.title}}</text>
                   <text
-                    class="wait-card-title-status {{AppointWxs.GenerateStatus( item.startTime,item.endTime)=='未开始'?'no-start':'' }}">{{AppointWxs.GenerateStatus( item.startTime,item.endTime)}}</text>
+                    class="wait-card-title-status {{AppointWxs.GenerateStatus( item.startTime,item.endTime)=='未开始'?'no-start':'' }}">{{AppointWxs.GenerateStatus( item.startTime,item.endTime)}}</text>                 
                 </view>
                 <view class="wait-class-card-body">
                   <text>人数：{{item.nowNum}}人</text>
@@ -21,7 +21,9 @@
                   <text>场馆：{{item.Venue}}</text>
                   <text>地址：{{item.address}}</text>
                 </view>
-
+                <view class="wait-class-card-foot">
+                  <view data-id="{{item.id}}" bindtap="onCancelAppointment">取消预约</view>   
+                </view>
               </view>
             </view>
           </block>

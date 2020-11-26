@@ -10,7 +10,7 @@ Page({
     doorName:local_classes.data.doorName,
     st: '2020/11/11',
     classes_type: local_classes_type,
-    classes: local_classes.data.lstClasses
+    classes: local_classes.data.lstClasses,
   },
 
   /**

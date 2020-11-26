@@ -34,6 +34,7 @@
               <text class="{{item.nowNum<item.lessNum?'dot':''}}">{{item.lessNum}}人/最低</text>
               <text class="{{item.nowNum>=item.fullNum?'dot':''}}">{{item.fullNum}}人/满员</text>
               <text class="{{item.nowNum>=item.lessNum?'dot':''}}">{{item.nowNum}}人/已约</text>
+              <text class="already-appoint" wx:if="{{item.btnStatus==-1}}">已约</text>
             </view>
             <view bindtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.btnStatus==0}}">
               预约

@@ -88,6 +88,10 @@
 .class-card-status .dot{
   color: #fd4d4d;
 }
+.already-appoint{
+  background-color: #39B54A;
+  color: white;
+}
 .class-card-status text{
   border: 1px solid #b3b6bd;
   font-size: 25rpx;

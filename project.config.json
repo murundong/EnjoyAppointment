@@ -74,6 +74,13 @@
         {
           "name": "pages/EnsureAppointment/EnsureAppointment",
           "pathName": "pages/EnsureAppointment/EnsureAppointment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/appointment/appointment",
+          "pathName": "pages/appointment/appointment",
+          "query": "",
           "scene": null
         }
       ]

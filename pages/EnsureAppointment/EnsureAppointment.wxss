@@ -99,6 +99,7 @@
   border: 1px solid #ece8e8;
   border-top: none;
   border-radius: 10rpx;
+  color: #b3b6bd;
 }
 
 .detail-cancel,
@@ -166,9 +167,11 @@
 }
 .coll-bottom{
   display: flex;
-  justify-content: space-around;
-  /* background: linear-gradient(to top right, #FD4F4A, #FE612A); */
-  /* border-radius: 30rpx; */
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin:  0 auto;
+  padding-left: 30rpx;
 }
 .ensure-card{
   display: inline-flex;
@@ -191,4 +194,12 @@
   align-items: center;
   float: right;
   font-weight: bold;
+}
+.picker{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.picker-down{
+  margin-left: 20rpx;
 }

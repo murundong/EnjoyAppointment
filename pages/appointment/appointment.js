@@ -75,5 +75,18 @@ Page({
     wx.navigateTo({
       url: `../judge/judge?cid=${cid}`,
     })
+  },
+  onCancelAppointment(e){
+    var id = e.currentTarget.dataset.id;
+    console.log(id);
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消预约吗？',
+      success: function (res) {
+        if (res.confirm) {
+            // 用户点击了确定 可以调用删除方法了
+          }
+        }
+      })
   }
 })

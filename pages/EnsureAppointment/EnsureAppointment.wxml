@@ -32,11 +32,9 @@
         
         <view class="coll-bottom">
           <view class="ensure-card">
-          
-
             <picker class="topbar-select" mode="selector" bindchange="bindCardChange" range="{{cardLst}}">
               <view class="picker">
-                {{selectCard}}
+                我的卡片：{{selectCard}}
                 <l-icon class="picker-down" name="down" color="#000" size="25" b />
               </view>
             </picker>
@@ -71,7 +69,7 @@
       </view>
 
       <view class="class-users">
-        <text>预约名单：</text>
+        <text>已预约名单：</text>
         <view>
           <view class="user-item">
             <view class="user-item-left">
