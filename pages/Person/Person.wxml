@@ -1,0 +1,19 @@
+<!--pages/Person/Person.wxml-->
+<view class="content">
+  <view class="content-header">
+    <image src="{{userInfo.avatar}}"/>
+  </view>
+  <view class="content-body">
+    <view class="body-tips">
+      <text class="tips-icon"></text>
+      <text class="tips-text">基本信息</text>
+    </view>
+    <l-input disabled="true" label="昵称" value="{{userInfo.nick}}" />
+    <l-input disabled="true" label="性别" value="{{userInfo.gender==1?'男':'女'}}" />
+    <l-input bind:lininput="onTeliput" type="number" label="电话号码" placeholder="手机号码" value="{{tel}}"/>
+    <l-input bind:lininput="onAgeiput" type="number" label="年龄" placeholder="年龄" value="{{age}}">
+      <text slot="right">岁</text>
+    </l-input>
+  </view>
+  <view bindtap="onSaveInfo" class="content-foot">保存</view>
+</view>

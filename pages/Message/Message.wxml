@@ -1,0 +1,14 @@
+<wxs module="AppointWxs" src="../../WXS/UtilWxs.wxs"/>
+
+<view>
+
+  <block wx:for="{{msgLst}}" wx:key="index">
+    <l-card type="avatar" l-class="card" image="{{item.teacherImg}}" title="{{item.teacherName}}" describe="{{AppointWxs.TimeToNow(item.sendTime)}}">
+      <!-- 此处为content -->
+      <view class="avter-content">
+        {{item.msg}}
+      </view>
+    </l-card>
+  </block>
+
+</view>

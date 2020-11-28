@@ -1,10 +1,41 @@
-  var parse = function (fmt) {
-    fmt1 = fmt.substring(0, 19);
-    var reg = getRegExp("-", "g");
-    fmt2 = fmt1.replace(reg, '/');
-    var timestamp = getDate(fmt2).getTime();
-    return timestamp;
+var parse = function (fmt) {
+  fmt1 = fmt.substring(0, 19);
+  var reg = getRegExp("-", "g");
+  fmt2 = fmt1.replace(reg, '/');
+  var timestamp = getDate(fmt2).getTime();
+  return timestamp;
+}
+  var TimeToNow= function TimeToNow(time){
+    var timespan= getDate(time) /1000;
+    var now_timespan = getDate() /1000;
+    
+    var minute = 60;
+    var hour = minute*60;
+    var day = hour*24;
+    var week = day*7;
+    var halfmonth = day*15;
+    var month = day*30;
+    var year = month*12;
+
+    var result = '';
+    var diff = now_timespan - timespan;
+    if(diff<0) return result;
+    var monthc = diff/month;
+    var weekc = diff/week;
+    var dayc = diff/day;
+    var hourc = diff/hour;
+    var minc = diff/minute;
+    var yearc=  diff/year  ;
+    if(yearc>=1) result += parseInt(yearc)+'年前';
+    else if(monthc>=1) result += parseInt(monthc)+'月前';
+    else if(weekc>=1) result += parseInt(weekc)+'周前';
+    else if(dayc>=1) result += parseInt(dayc)+'天前';
+    else if(hourc>=1) result += parseInt(hourc)+'小时前';
+    else if(minc>=1) result += parseInt(minc)+'分钟前';
+    else result ='刚刚';
+    return result;
   }
+
   function toWeekDay(weekDay) {// 传入数据 讲一周的某一天返回成中文状态下的字符
     switch (weekDay) {
       case 1: return '一'; break;
@@ -70,4 +101,5 @@
   module.exports.GenerateTime = GenerateTime;
   module.exports.GenerateTimeNoYear =GenerateTimeNoYear;
   module.exports.GenerateStatus = GenerateStatus;
+  module.exports.TimeToNow = TimeToNow;
 

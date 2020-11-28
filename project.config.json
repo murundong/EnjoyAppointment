@@ -82,6 +82,12 @@
           "pathName": "pages/appointment/appointment",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/Lesson/Lesson",
+          "pathName": "pages/Lesson/Lesson",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -13,6 +13,7 @@ Page({
      Doors:[],
      Region:[],
      Position:'',
+     NewMessage:'是否显示通告栏'
   },
 
  

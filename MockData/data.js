@@ -433,6 +433,36 @@ var local_card_info = {
   } 
   ]
 }
+
+var local_message_lst={
+  errCode:0,
+  data:[
+    {
+      'teacherImg':'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
+      'teacherName':'CC',
+      'msg':'《行尸走肉》是一部由弗兰克·德拉邦特执导的美国恐怖电视系列剧，安德鲁·林肯、诺曼·瑞杜斯、劳伦·科汉、史蒂文·元等主演。改编自同名漫画，该剧于2010年10月31日在AMC有线电视网开播，是电视史上第一部正宗的丧尸电视剧。',
+      'sendTime':'2020/11/28'
+    },
+    {
+      'teacherImg':'http://img.improve-yourmemory.com/pic/4f138809da94a79d0bf71b8881a84add-2.jpg',
+      'teacherName':'Gem',
+      'msg':'《行尸走肉》是一部由弗兰克·德拉邦特执导的美国恐怖电视系列剧，安德鲁·林肯、诺曼·瑞杜斯、劳伦·科汉、史蒂文·元等主演。改编自同名漫画，该剧于2010年10月31日在AMC有线电视网开播，是电视史上第一部正宗的丧尸电视剧。',
+      'sendTime':'2020/11/20'
+    }
+  ]
+}
+
+var local_personal_data={
+  errCode:0,
+  data:{
+    'avatar':'http://img.improve-yourmemory.com/pic/4f138809da94a79d0bf71b8881a84add-2.jpg',
+    'nick':'Roden',
+    'tel':'',
+    'gender':1,
+    'age':''
+  }
+}
+
 // module.exports={
 //   local_banner:local_banner
 // }
@@ -447,5 +477,7 @@ export {
   local_ensureappoint_class,
   local_sign_daga,
   local_user_info,
-  local_card_info
+  local_card_info,
+  local_personal_data,
+  local_message_lst
 }

@@ -12,7 +12,7 @@
     <view class="card-body-right">
       
       <view class="body-right">
-        <view>
+        <view wx:if="{{Freeze}}">
           <text class="body-right-lf">冻结至：</text>
           <text class="body-right-r">{{item.ed_time}}</text>
         </view>

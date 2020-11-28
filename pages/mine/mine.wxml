@@ -26,10 +26,10 @@
       </view>
     </view>
     <view class="content-list">
-      <l-list l-content-class="content-list-item" icon-color="#525562" title="消息通知" icon="comment"/>
+      <l-list l-content-class="content-list-item" icon-color="#525562" title="消息通知" icon="comment" url="../Message/Message" />
       <l-list l-content-class="content-list-item" icon-color="#525562" title="我的预约" icon="history" url="../appointment/appointment" link-type="switchTab"/>
       <l-list l-content-class="content-list-item" icon-color="#525562" title="我的卡片" icon="phone" url="../Card/Card" />
-      <l-list l-content-class="content-list-item" icon-color="#525562" title="个人信息" icon="user"/>
+      <l-list l-content-class="content-list-item" icon-color="#525562" title="个人信息" icon="user" url="../Person/Person"/>
     </view>
   </view>
 </view>

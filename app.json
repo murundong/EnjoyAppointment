@@ -9,7 +9,9 @@
     "pages/judge/judge",
     "pages/EnsureAppointment/EnsureAppointment",
     "pages/Sign/Sign",
-    "pages/Card/Card"
+    "pages/Card/Card",
+    "pages/Person/Person",
+    "pages/Message/Message"
   ],
   "tabBar": {
     "list": [

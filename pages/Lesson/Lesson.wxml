@@ -3,11 +3,27 @@
 <view>
 
   <view class="sticky-top">
-    <r-calender bind:onItemTap="onCanlenderItemTap"></r-calender>
+    <view class="choose-date">
+      <view class="choose-date-title">
+        <text class="date-title-icon"></text>
+        <text class="date-title-text">周课表</text>
+      </view>
+      <view class="choose-date-cal">
+        <l-icon class="choose-date-icon" size="28" color="#525562" name="history" />
+        <picker mode="date" value="{{startDay}}" bindchange="onDateChange">
+          <view>{{startDay}}</view>
+        </picker>
+        
+      </view>
+    </view>
+    <r-calender id="r-cal" StartDay="{{startDay}}" class="sticky-cal" bind:onItemTap="onCanlenderItemTap"></r-calender>
     <view class="r-line-dash"></view>
     <r-class id="comp-class" datalist="{{classes_type}}" bind:onItemTap="onTopbarItemTap"></r-class>
     <view class="r-line"></view>
+    <l-notice-bar speed="2000" front-icon-name="notification" close="true" type="roll" show="{{true}}">{{NewMessage}}
+    </l-notice-bar>
   </view>
+
   <view>
     <view class="content">
       <block wx:for="{{classes}}" wx:key="id">
@@ -39,7 +55,7 @@
             <view bindtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.btnStatus==0}}">
               预约
             </view>
-            <view bindtap="onFullTap" class="card-order-unbtn" wx:else>已预约</view>
+            <view bindtap="onFullTap" class="card-order-unbtn" data-cid="{{item.id}}" wx:else>取消</view>
           </view>
 
         </view>

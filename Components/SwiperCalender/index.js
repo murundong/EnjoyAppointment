@@ -21,17 +21,17 @@ Component({
   },
   lifetimes: {
     attached() {
-      let ds = this.data.days;
-      let sd = this.data.StartDay ?new Date( this.data.StartDay ) : new Date();
       this.setData({
-        currentday: this.GetCurrentDay(new Date()),
-        SelectedDay: this.GetCurrentDay(new Date()),
-        daylist: this.GenerateDayList(sd, ds),
+        currentday:this.GetCurrentDay(new Date())
       })
+      console.log(this.data.currentday);
+      let _start= this.data.StartDay ?new Date( this.data.StartDay ) : new Date();
+      this.onGenerateDate(_start)
     },
   },
   pageLifetimes: {
     show() {
+     
     }
   },
 
@@ -39,6 +39,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onGenerateDate(dt){
+      let ds = this.data.days;
+      this.setData({
+        SelectedDay: this.GetCurrentDay(new Date(dt)),
+        daylist: this.GenerateDayList(dt, ds),
+      })
+    },
     onTap: function (event) {
       this.setData({
         SelectedDay:event.currentTarget.dataset.calenderItem

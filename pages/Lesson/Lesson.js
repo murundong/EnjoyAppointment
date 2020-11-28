@@ -8,17 +8,24 @@ Page({
   data: {
     DoorId: 200,
     doorName:local_classes.data.doorName,
-    st: '2020/11/11',
     classes_type: local_classes_type,
     classes: local_classes.data.lstClasses,
+    NewMessage:'场馆通知',
+    startDay:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth()+1;
+    var day = now.getDate();
+
     this.setData({
-      DoorId: options.doorId
+      DoorId: options.doorId,
+      startDay:`${year}-${month}-${day}`
     })
   },
 
@@ -30,6 +37,7 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.doorName,
     })
+    this.componentCalender = this.selectComponent('#r-cal');
   },
 
   /**
@@ -88,9 +96,18 @@ Page({
     })
   },
   onFullTap(e) {
-    wx.showToast({
-      title: '已预约过了哟！',
-    })
+
+    var id = e.currentTarget.dataset.cid;
+    console.log(id);
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消预约吗？',
+      success: function (res) {
+        if (res.confirm) {
+            // 用户点击了确定 可以调用删除方法了
+          }
+        }
+      })
   },
   onOrderTap(e) {
     wx.navigateTo({
@@ -100,5 +117,11 @@ Page({
   onPageScroll(res) {
    
   },
-
+  onDateChange(e){
+    this.setData({
+      startDay:e.detail.value
+    })
+    this.componentCalender.onGenerateDate(new Date( e.detail.value));
+    this.componentClass.selectInit();
+  }
 })

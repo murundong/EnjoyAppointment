@@ -1,0 +1,45 @@
+/* pages/Person/Person.wxss */
+.content-header {
+  width: 100%;
+  height: 380rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to top right, rgba(253, 77, 77,1), rgba(255, 111, 17, 0.8));
+  
+}
+
+.content-header image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 80rpx;
+}
+
+.content-body {
+  width: 90%;
+  margin: 0 auto;
+}
+.body-tips{
+  display: flex;
+  margin: 10rpx;
+}
+
+.tips-icon{
+  border-left: 10rpx solid #fd4d4d;
+  border-radius: 6rpx;
+  margin-right: 20rpx;
+}
+.content-foot{
+  width: 70%;
+    height: 80rpx;
+    border-radius: 50rpx;
+    margin: 50rpx auto;
+    background-color: #fd4d4d;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 10rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

@@ -13,6 +13,7 @@
   module.exports.status = transStatus;
 </wxs>
 <view>
+  <l-notice-bar  speed="2000"  front-icon-name="notification"  close="true" type="roll" show="{{true}}">{{NewMessage}}</l-notice-bar>
   <view class="topbar">
 
     <picker class="topbar-select" mode="region" bindchange="bindRegionChange" value="{{Region}}" >
@@ -32,7 +33,8 @@
       </navigator>
     </block>
   </swiper>
-
+  
+ 
   <view class="door">
     <block wx:for="{{Doors}}" wx:key="id">
       <view bindtap="onDoorNav" class="door-box" data-door-id="{{item.id}}" style="background:url('{{item.img}}') no-repeat center;">
