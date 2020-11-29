@@ -1,6 +1,6 @@
 <!--pages/Lesson/Lesson.wxml-->
 
-<view>
+<view class="content-root">
 
   <view class="sticky-top">
     <view class="choose-date">
@@ -13,19 +13,18 @@
         <picker mode="date" value="{{startDay}}" bindchange="onDateChange">
           <view>{{startDay}}</view>
         </picker>
-        
+
       </view>
     </view>
     <r-calender id="r-cal" StartDay="{{startDay}}" class="sticky-cal" bind:onItemTap="onCanlenderItemTap"></r-calender>
     <view class="r-line-dash"></view>
     <r-class id="comp-class" datalist="{{classes_type}}" bind:onItemTap="onTopbarItemTap"></r-class>
     <view class="r-line"></view>
-    <l-notice-bar speed="2000" front-icon-name="notification" close="true" type="roll" show="{{true}}">{{NewMessage}}
-    </l-notice-bar>
+   
   </view>
-
-  <view>
-    <view class="content">
+  <view class="content">
+    <l-notice-bar l-class="notice-bar" speed="2000" front-icon-name="notification" close="true" type="roll" show="{{true}}">{{NewMessage}}
+      </l-notice-bar>
       <block wx:for="{{classes}}" wx:key="id">
         <view class="class-card">
           <view class="class-card-img">
@@ -34,7 +33,7 @@
           <view class="class-card-content">
             <view class="class-card-title">
               <text class="card-title">{{item.title}}</text>
-              <text class="{{item.status==''?'':'card-title-status'}}">{{item.status}}</text>
+              <!-- <text class="{{item.status==''?'':'card-title-status'}}">{{item.status}}</text> -->
             </view>
 
             <view class="class-card-tag">
@@ -47,10 +46,18 @@
               <text class="card-time-time">{{item.timeStr}}</text>
             </view>
             <view class="class-card-status">
-              <text class="{{item.nowNum<item.lessNum?'dot':''}}">{{item.lessNum}}人/最低</text>
+              <!-- <text class="{{item.nowNum<item.lessNum?'dot':''}}">{{item.lessNum}}人/最低</text>
               <text class="{{item.nowNum>=item.fullNum?'dot':''}}">{{item.fullNum}}人/满员</text>
               <text class="{{item.nowNum>=item.lessNum?'dot':''}}">{{item.nowNum}}人/已约</text>
-              <text class="already-appoint" wx:if="{{item.btnStatus==-1}}">已约</text>
+              <text class="already-appoint" wx:if="{{item.btnStatus==-1}}">已预约</text> -->
+              <view class="class-card-status-border">
+                <text class="status-num">{{item.nowNum}}人/{{item.fullNum}}人</text>
+                <text class="status-less">(最低{{item.lessNum}}人)</text>
+              </view>
+              <view>
+                <text class="already-appoint" wx:if="{{item.btnStatus==-1}}">已预约</text>
+              </view>
+
             </view>
             <view bindtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.btnStatus==0}}">
               预约
@@ -61,6 +68,4 @@
         </view>
       </block>
     </view>
-
-  </view>
 </view>

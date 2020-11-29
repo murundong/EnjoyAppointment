@@ -1,7 +1,6 @@
-// pages/main/main.js
 
-// var local_banner = require('../../MockData/data.js')
 import {local_banners,local_doors} from '../../MockData/data.js'
+var utils = require ('../../utils/util.js');
 var bmap = require('../../libs/bmap-wx.min');
 Page({
 
@@ -88,15 +87,7 @@ Page({
     console.log('onShareAppMessage')
   },
   onScan(option){
-    wx.scanCode({
-      onlyFromCamera: true,
-      success:res=>{
-        console.log(res)
-        wx.navigateTo({
-          url: `../Sign/Sign?cid=1`,
-        })
-      }
-    })
+    utils.scan_event(option);
   },
   onDoorNav(e){
     var doorId = e.currentTarget.dataset.doorId;

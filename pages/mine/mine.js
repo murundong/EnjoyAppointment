@@ -1,5 +1,6 @@
 // pages/mine/mine.js
 import {local_user_info} from '../../MockData/data.js'
+var utils = require ('../../utils/util.js');
 Page({
 
   /**
@@ -65,5 +66,8 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onScanTap(e){
+    utils.scan_event(e);
   }
 })

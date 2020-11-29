@@ -13,7 +13,18 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-
+ const scan_event= e=>{
+  wx.scanCode({
+    onlyFromCamera: true,
+    success:res=>{
+      console.log(res)
+      wx.navigateTo({
+        url: `../Sign/Sign?cid=1`,
+      })
+    }
+  })
+}
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  scan_event:scan_event
 }

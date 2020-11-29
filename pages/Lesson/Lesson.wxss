@@ -1,10 +1,18 @@
 /* pages/Lesson/Lesson.wxss */
+page {
+	width: 100%;
+}
+.content-root{
+  width: 100%;
+  overflow: hidden;
+}
 .sticky-top{
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 9999;
   background-color: white;
   padding-left: 5rpx;
+  width: 100%;
 }
 .sticky-cal{
   width: 98%;
@@ -44,17 +52,21 @@
   display: flex;
   flex-direction: column;
   font-family:KaiTi;
+  margin-top: 258rpx;
+}
+.notice-bar{
+  margin-left: -20rpx;
 }
 .class-card:first-child{
-  margin-top: 30rpx;
+  margin-top: 10rpx;
 }
 .class-card{
- height: 230rpx; 
+ height: 210rpx; 
  display: flex;
  flex-direction: row;
  padding: 15rpx 0 35rpx;
  position: relative;
- margin-bottom: 20rpx;
+ margin-bottom: 10rpx;
  /* box-shadow: 5rpx 4rpx 22rpx #ccc;
  border-radius: 10rpx; */
  border-bottom: 1rpx solid #ececec;
@@ -70,8 +82,13 @@
   height: 150rpx;
   border-radius: 75rpx;
 }
+.status-less{
+  border-left: none;
+    margin-left: -14rpx;
+}
+
 .card-title{
-  font-size: 40rpx;
+  font-size: 36rpx;
   font-weight: bold;
   font-family:KaiTi;
   color: #525562;
@@ -87,17 +104,21 @@
   line-height: 25rpx;
 }
 .class-card-tag{
-  margin-top: 20rpx;
+  margin-top: 6rpx;
 }
+
 .class-card-tag text{
   margin-right: 15rpx;
   padding: 2rpx 10rpx;
   background-color: #F1F2F5;
   color: #b3b6bd;
   border-radius: 4rpx;
+  font-size: 24rpx;
 }
 .class-card-time{
-  color: #525562;
+  color: #b3b6bd;
+  margin-top: 2rpx;
+  margin-bottom: 2rpx;
 }
 .class-card-time text{
   height: 45rpx;
@@ -106,23 +127,47 @@
   font-family: "Arial","KaiTi",sans-serif;
 }
 .card-time-teacher{
-  font-size: 30rpx;
+  font-size: 26rpx;
   margin-right: 20rpx;
+  margin-left: 6rpx;
+
 }
 .card-time-time{
-  font-size: 25rpx;
+  font-size: 26rpx;
+}
+.class-card-status{
+  color:#b3b6bd;
+  display: flex;
+
+ 
+}
+.class-card-status-border{
+  padding: 0 4rpx;
+}
+.status-num{
+  border: 1px solid #ececec;
+  border-right: none;
+}
+.status-less{
+  border: 1px solid #ececec;
+  border-left: none;
 }
 .class-card-status .dot{
   color: #fd4d4d;
 }
 .already-appoint{
-  background-color: #39B54A;
-  color: white;
+  border: 1px solid #ececec;
+  margin-left: -6rpx;
+  /* background-color: #39B54A;
+  
+  color: white; */
+  /* background-color: #F1F2F5; */
+    color: red;
 }
 .class-card-status text{
-  border: 1px solid #b3b6bd;
-  font-size: 25rpx;
-  padding: 5rpx 20rpx;
+  letter-spacing: 1.8rpx;
+  font-size: 24rpx;
+  padding: 4rpx 10rpx;
   border-radius: 3rpx;
 }
 .class-card-status text:not(:first-child){
