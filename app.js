@@ -1,4 +1,5 @@
 //app.js
+import urls from './utils/urls.js';
 App({
   onLaunch: function () {
 
@@ -28,6 +29,26 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res);
+        console.log('url',this.globalData.baseURL+ urls.data.GetOpenidByCode);
+        wx.request({
+          url:this.globalData.baseURL+urls.data.GetOpenidByCode,
+          method:'get',
+          data:{code:res.code},
+          success:function(res){
+            console.log(11,res.data.openid);
+            var openid = res.data.openid;
+            var sk = res.data.session_key;
+            wx.setStorage({
+              data: openid,
+              key: 'loginSessionKey',
+            })
+            //没他的数据，保存到数据库
+            if(!res.data.hasdata){
+              
+            }
+            
+          }
+        })
       }
     })
     // 获取用户信息
@@ -53,6 +74,7 @@ App({
   },
 
   globalData: {
-    userInfo: null
+    userInfo: null,
+    baseURL:'http://localhost:54180/api'
   }
 })
