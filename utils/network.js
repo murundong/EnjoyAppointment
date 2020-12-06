@@ -8,12 +8,12 @@ export default function request(option){
       title: '加载中……',
     })
     wx.request({
-      url: baseURL+ option.url,
+      url: BaseURL+ option.url,
       method:option.method||'get',
       data:option.data || {},
       success:function(res){
         wx.hideLoading();
-        resolve(res);
+        resolve(res.data);
       },
       fail:function(error){
         wx.hideLoading();

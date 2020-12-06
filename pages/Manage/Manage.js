@@ -1,39 +1,18 @@
-// pages/mine/mine.js
-import urls  from '../../utils/urls.js';
-import request from '../../utils/network.js';
-const utils = require ('../../utils/util.js');
-const app = getApp();
+// pages/Manage/Manage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    _yogaImg:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=918711330,485019288&fm=26&gp=0.jpg',
-    _userInfo:{},
-    total_minutes:0,
-    total_count:0,
-    total_days:0
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   if(app.globalData.userInfo) 
-      this.setData({
-        _userInfo:app.globalData.userInfo
-      })
-    else{
-      request({
-        url:urls.data.GetUInfoByOpenId,
-        data:{openid:wx.getStorageSync('loginSessionKey')}
-      }).then(res=>{
-        this.setData({
-          _userInfo: res.data
-        })
-      })
-    }
+
   },
 
   /**
@@ -83,8 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  onScanTap(e){
-    utils.scan_event(e);
   }
 })

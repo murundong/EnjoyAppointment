@@ -1,11 +1,11 @@
 <wxs module="ProcessStatus">
   var transStatus = function (status) {
     switch (status) {
-      case '营业中':
+      case 0:
         return 'open';
-      case '预售中':
+      case 1:
         return 'prev';
-      case '停业中':
+      case 2:
         return 'close'
       default: return 'open';
     }
@@ -37,11 +37,11 @@
  
   <view class="door">
     <block wx:for="{{Doors}}" wx:key="id">
-      <view bindtap="onDoorNav" class="door-box" data-door-id="{{item.id}}" style="background:url('{{item.img}}') no-repeat center;">
+      <view bindtap="onDoorNav" class="door-box" data-door-id="{{item.id}}" style="background:url('{{item.door_img}}') no-repeat center;">
         <view class="door-status {{ProcessStatus.status(item.status)}}">{{item.status}}</view>
         <view class="door-text">
-          <view class="door-name">{{item.name}}</view>
-          <view class="door-add">{{item.address}}</view>
+          <view class="door-name">{{item.door_name}}</view>
+          <view class="door-add">{{item.door_address}}</view>
         </view>
 
       </view>

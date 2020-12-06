@@ -59,8 +59,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/Card/Card",
-          "pathName": "pages/Card/Card",
+          "name": "pages/Manage/Manage",
+          "pathName": "pages/Manage/Manage",
           "query": "cid=1",
           "scene": null
         },

@@ -1,5 +1,5 @@
-
-import {local_banners,local_doors} from '../../MockData/data.js'
+import urls from  '../../utils/urls.js';
+import request from '../../utils/network.js';
 var utils = require ('../../utils/util.js');
 var bmap = require('../../libs/bmap-wx.min');
 Page({
@@ -20,9 +20,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    request({
+      url:urls.data.GetBanners
+    }).then(res=>{
+      if(res.errCode==0){
+        this.setData({
+          Banners:res.data,
+        })
+      }
+    })
+
+    request({
+      url:urls.data.GetDoors,
+      method:'post',
+      data:{openid:wx.getStorageSync('loginSessionKey')}
+    }).then(res=>{
+      if(res.errCode==0)
+        this.setData({
+          Doors:res.data
+        })
+    })
+
     this.setData({
-      Banners:local_banners,
-      Doors:local_doors.data,
       Region:['上海市','上海市','浦东新区'],
       Position:'上海市-上海市-浦东新区'
     })

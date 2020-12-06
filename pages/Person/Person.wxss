@@ -43,3 +43,13 @@
     justify-content: center;
     align-items: center;
 }
+.picker{
+  display: flex;
+  align-items: center;
+}
+.person-birth{
+  color: #333;
+}
+.picker-down{
+  margin-left: 10rpx;
+}

@@ -11,7 +11,8 @@
     "pages/Sign/Sign",
     "pages/Card/Card",
     "pages/Person/Person",
-    "pages/Message/Message"
+    "pages/Message/Message",
+    "pages/Manage/Manage"
   ],
   "tabBar": {
     "list": [

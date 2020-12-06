@@ -27,24 +27,7 @@ var local_doors = {
   ]
 }
 var local_classes_type = ['全部课程', '力量型', '有氧', '引体向上', '体态纠正', '塑性']
-var local_banners = [
-  {
-    id: 1,
-    img: 'http://n.sinaimg.cn/sinacn10/480/w1280h800/20180613/f9e9-hcwpcmp9678486.jpg',
-    url: '123'
 
-  }, {
-    id: 2,
-    img: 'http://img.improve-yourmemory.com/pic/4f138809da94a79d0bf71b8881a84add-2.jpg',
-    url: '456'
-  }, {
-    id: 3,
-    img: 'http://www.aihami.com/uploads/allimg/180818/170-1PQP0525J41.jpg',
-    url: '789'
-  }
-
-
-]
 var local_classes = {
   errCode: 0,
   total: 12,
@@ -333,18 +316,6 @@ var local_sign_daga = {
   }
 }
 
-var local_user_info = {
-  errCode: 0,
-  data: {
-    'teacherImg': 'http://img1.cache.netease.com/catchpic/A/A5/A5F8F7A546CF3CF7C0EF6F1D02AC94D5.jpg',
-    'teacherName': 'Gem',
-    'tel': '18976710206',
-    'total_minutes': 120,
-    'total_count': 120,
-    'total_days': 12
-
-  }
-}
 
 var local_card_info = {
   errCode: 0,
@@ -452,23 +423,13 @@ var local_message_lst={
   ]
 }
 
-var local_personal_data={
-  errCode:0,
-  data:{
-    'avatar':'http://img.improve-yourmemory.com/pic/4f138809da94a79d0bf71b8881a84add-2.jpg',
-    'nick':'Roden',
-    'tel':'',
-    'gender':1,
-    'age':''
-  }
-}
+
 
 // module.exports={
 //   local_banner:local_banner
 // }
 
 export {
-  local_banners,
   local_doors,
   local_classes_type,
   local_classes,
@@ -476,8 +437,6 @@ export {
   local_rate_class,
   local_ensureappoint_class,
   local_sign_daga,
-  local_user_info,
   local_card_info,
-  local_personal_data,
   local_message_lst
 }

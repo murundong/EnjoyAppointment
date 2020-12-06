@@ -1,0 +1,17 @@
+<view class="content">
+  <l-grid show-col-border="true">
+    <l-grid-item key="one" slot="one">
+      <l-icon name="add" />
+      <view class="text">新增场馆</view>
+    </l-grid-item>
+    <l-grid-item key="two" slot="two">
+      <l-icon name="add" />
+      <view class="text">我的场馆</view>
+    </l-grid-item>
+    <l-grid-item key="three" slot="three">
+      <l-icon name="add" />
+      <view class="text">新增场馆</view>
+    </l-grid-item>
+  </l-grid>
+
+</view>

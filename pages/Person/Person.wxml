@@ -8,10 +8,19 @@
       <text class="tips-icon"></text>
       <text class="tips-text">基本信息</text>
     </view>
-    <l-input disabled="true" label="昵称" value="{{userInfo.nick}}" />
+    <l-input disabled="true" label="昵称" value="{{userInfo.nick_name}}" />
     <l-input disabled="true" label="性别" value="{{userInfo.gender==1?'男':'女'}}" />
-    <l-input bind:lininput="onTeliput" type="number" label="电话号码" placeholder="手机号码" value="{{tel}}"/>
-    <l-input bind:lininput="onAgeiput" type="number" label="年龄" placeholder="年龄" value="{{age}}">
+    <l-input bind:lininput="onNameiput"  label="真实姓名" placeholder="真实姓名" value="{{userInfo.real_name}}"/>
+    <l-input bind:lininput="onTeliput" type="number" label="电话号码" placeholder="手机号码" value="{{userInfo.tel}}"/>
+    <l-input disabled="true" label="出生年月" placeholder="出生年月" value="{{userInfo.birthday}}">
+      <picker slot="right" class="person-birth" mode="date" bindchange="bindBirthChange" value="{{userInfo.birthday}}" >
+      <view class="picker">
+        <text>出生年月</text>
+        <l-icon class="picker-down" color="#333" name="down" size="25" b/>
+      </view>
+    </picker>
+    </l-input>
+    <l-input disabled="true"  type="number" label="年龄" placeholder="年龄" value="{{age}}">
       <text slot="right">岁</text>
     </l-input>
   </view>
