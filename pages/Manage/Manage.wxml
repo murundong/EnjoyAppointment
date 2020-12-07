@@ -12,6 +12,10 @@
       <l-icon name="add" />
       <view class="text">新增场馆</view>
     </l-grid-item>
+    <l-grid-item key="four" slot="four">
+      <l-icon name="add" />
+      <view class="text">冻结卡片</view>
+    </l-grid-item>
   </l-grid>
 
 </view>
