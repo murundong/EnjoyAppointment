@@ -12,7 +12,9 @@
     "pages/Card/Card",
     "pages/Person/Person",
     "pages/Message/Message",
-    "pages/Manage/Manage"
+    "pages/Manage/Manage",
+    "pages/MyDoors/MyDoors",
+    "pages/AddDoor/AddDoor"
   ],
   "tabBar": {
     "list": [

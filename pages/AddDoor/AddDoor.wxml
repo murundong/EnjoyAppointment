@@ -1,0 +1,55 @@
+<view class="content">
+
+  <view class="conten-header">
+    <view>场馆信息</view>
+  </view>
+
+  <view class="content-body">
+    <view class="content-form-item">
+      <l-input label-width="150" label="名称" placeholder="场馆名称" required="true"/>
+    </view>
+    <view class="content-form-item">
+      <l-input  label-width="150" label="电话" placeholder="咨询电话" type="number"/>
+    </view>
+    <view class="content-form-item">
+      <l-input label-width="150"  label="地址" placeholder="场馆地址" />
+    </view>
+
+    <view class="content-form-item">
+      <l-textarea placeholder="场馆简介" l-class="textarea-body" maxlength="2000" indicator="true" />
+    </view>
+    <view class="content-form-item">
+      <text class="item-text">场馆展示图片</text>
+      <l-image count="4" />
+    </view>
+
+ 
+
+    <view class="content-form-item">
+      <text class="item-text">是否只允许正式会员预约</text>
+      <l-radio-group bind:linchange="onMemberChanged" current="2" none-checked="false" placement="row">
+        <l-radio class="item-radio" key="1" select-color="#ff6f11">开启</l-radio>
+        <l-radio class="item-radio" key="2" select-color="#ff6f11">不开启</l-radio>
+      </l-radio-group>
+    </view>
+
+    <view class="content-form-item">
+      <text class="item-text">生效</text>
+      <l-radio-group bind:linchange="onActiveChanged" current="1" none-checked="false" placement="row">
+        <l-radio class="item-radio" key="1" select-color="#ff6f11">生效</l-radio>
+        <l-radio class="item-radio" key="2" select-color="#ff6f11">不生效</l-radio>
+      </l-radio-group>
+    </view>
+    <view class="content-form-item">
+      <text class="item-text">场馆状态</text>
+      <l-radio-group bind:linchange="onStatusChanged" current="1" none-checked="false" placement="row">
+        <l-radio class="item-radio" key="1" select-color="#ff6f11">营业中</l-radio>
+        <l-radio class="item-radio" key="2" select-color="#ff6f11">预售中</l-radio>
+        <l-radio class="item-radio" key="3" select-color="#ff6f11">停业</l-radio>
+      </l-radio-group>
+    </view>
+  </view>
+  <view class="content-footer">
+    <view bindtap="onSaveInfo" class="foot-btn">保存</view>
+  </view>
+</view>

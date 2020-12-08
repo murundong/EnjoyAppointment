@@ -1,0 +1,22 @@
+<!--pages/MyDoors/MyDoors.wxml-->
+<view class="content">
+  <view class="content-head">
+    <view class="content-title">我的场馆</view>
+    <view class="content-add" bindtap="onDoorAdd">
+      <l-icon class="add-icon" color="#525562" size="28" name="add" />新增场馆
+    </view>
+  </view>
+
+  <view class="content-doors">
+    <block wx:for="{{Doors}}" wx:key="{{id}}">
+      <l-card data-id="{{item.id}}" bindtap="onDoorTap" position="right" image="{{item.door_img}}" title="{{item.door_name}}">
+        <view>{{item.door_desc}}</view>
+        <view>{{item.door_address}}</view>
+      </l-card>
+    </block>
+  </view>
+
+
+ 
+
+</view>

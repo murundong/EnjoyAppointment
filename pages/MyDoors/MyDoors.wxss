@@ -1,0 +1,26 @@
+/* pages/MyDoors/MyDoors.wxss */
+.content-head{
+  display: flex;
+  justify-content: space-between;
+  margin: 30rpx auto;
+  padding-right: 30rpx;
+  padding-left: 10rpx;
+}
+.content-title::before{
+  content: '';
+  height: 30rpx;
+  border-left:10rpx solid #ff6f11;
+  margin-right: 4rpx;
+  border-radius: 6rpx;
+}
+.content-add{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #b3b6bd;
+  padding: 1rpx 25rpx;
+  border-radius: 50rpx;
+}
+.add-icon{
+  margin-right: 12rpx;
+}

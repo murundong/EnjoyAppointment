@@ -16,7 +16,7 @@
       <picker slot="right" class="person-birth" mode="date" bindchange="bindBirthChange" value="{{userInfo.birthday}}" >
       <view class="picker">
         <text>出生年月</text>
-        <l-icon class="picker-down" color="#333" name="down" size="25" b/>
+        <l-icon class="picker-down" color="#333" name="down" size="25" />
       </view>
     </picker>
     </l-input>

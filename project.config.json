@@ -68,14 +68,14 @@
           "scene": null
         },
         {
-          "name": "pages/EnsureAppointment/EnsureAppointment",
-          "pathName": "pages/EnsureAppointment/EnsureAppointment",
+          "name": "pages/MyDoors/MyDoors",
+          "pathName": "pages/MyDoors/MyDoors",
           "query": "cid=1",
           "scene": null
         },
         {
-          "name": "pages/EnsureAppointment/EnsureAppointment",
-          "pathName": "pages/EnsureAppointment/EnsureAppointment",
+          "name": "pages/AddDoor/AddDoor",
+          "pathName": "pages/AddDoor/AddDoor",
           "query": "",
           "scene": null
         },

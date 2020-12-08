@@ -4,7 +4,8 @@ export default{
     GetUInfoByOpenId:'/Data/GetUserInfoByOpenId',
     UpdateUserInfoHome:'/Data/UpdateUserInfoHome',
     GetBanners:'/Data/GetBanners',
-    GetDoors:'/Data/GetDoors'
+    GetDoors:'/Data/GetDoors',
+    GetTeacherDoors:'/Data/GetTeacherDoors'
   },
   process:{
     CreateDoors:'/Data/CreateDoors',
