@@ -6,21 +6,21 @@
 
   <view class="content-body">
     <view class="content-form-item">
-      <l-input label-width="150" label="名称" placeholder="场馆名称" required="true"/>
+      <l-input label-width="150" label="名称" placeholder="场馆名称" required="true"  bind:lininput="onNameiput"/>
     </view>
     <view class="content-form-item">
-      <l-input  label-width="150" label="电话" placeholder="咨询电话" type="number"/>
+      <l-input  label-width="150" label="电话" placeholder="咨询电话" type="number" bind:lininput="onTeliput"/>
     </view>
     <view class="content-form-item">
-      <l-input label-width="150"  label="地址" placeholder="场馆地址" />
+      <l-input label-width="150"  label="地址" placeholder="场馆地址" bind:lininput="onAddiput"/>
     </view>
 
     <view class="content-form-item">
-      <l-textarea placeholder="场馆简介" l-class="textarea-body" maxlength="2000" indicator="true" />
+      <l-textarea placeholder="场馆简介" l-class="textarea-body" maxlength="2000" indicator="true" bind:lininput="onDesciput"/>
     </view>
     <view class="content-form-item">
       <text class="item-text">场馆展示图片</text>
-      <l-image count="4" />
+      <l-image count="4" bind:linchange="onImgChangeTap" bind:linremove="onImgRemoveTap"	/>
     </view>
 
  
