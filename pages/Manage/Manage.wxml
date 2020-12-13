@@ -1,20 +1,32 @@
 <view class="content">
-  <l-grid show-col-border="true">
-    <l-grid-item key="one" slot="one">
-      <l-icon name="add" />
-      <view class="text">新增场馆</view>
+  <l-grid show-border="true" bind:lintap="onGridTap">
+    <l-grid-item key="editDoor" slot="editDoor">
+      <l-icon name="edit" color="#525562"/>
+      <view class="text">编辑场馆</view>
     </l-grid-item>
-    <l-grid-item key="two" slot="two">
-      <l-icon name="add" />
-      <view class="text">我的场馆</view>
+    <l-grid-item key="member" slot="member">
+      <l-icon name="user" color="#525562"/>
+      <view class="text">会员管理</view>
     </l-grid-item>
-    <l-grid-item key="three" slot="three">
-      <l-icon name="add" />
-      <view class="text">新增场馆</view>
+    <l-grid-item key="classes" slot="classes">
+      <l-icon name="order" color="#525562"/>
+      <view class="text">课程管理</view>
     </l-grid-item>
-    <l-grid-item key="four" slot="four">
-      <l-icon name="add" />
+    <l-grid-item key="arrange" slot="arrange">
+      <l-icon name="time" color="#525562" />
+      <view class="text">排课</view>
+    </l-grid-item>
+    <l-grid-item key="templete" slot="templete">
+      <l-icon name="phone" color="#525562"/>
+      <view class="text">会员卡模板</view>
+    </l-grid-item>
+    <l-grid-item key="freeze" slot="freeze">
+      <l-icon name="picture" color="#525562"/>
       <view class="text">冻结卡片</view>
+    </l-grid-item>
+    <l-grid-item key="notice" slot="notice">
+      <l-icon name="soud" color="#525562"/>
+      <view class="text">新增公告</view>
     </l-grid-item>
   </l-grid>
 

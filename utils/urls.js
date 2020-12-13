@@ -9,7 +9,10 @@ export default{
     GetDoorsById:'/Data/GetDoorsById'
   },
   process:{
+    UploadFile:'/Home/UploadFile',
+    MvcUploadFile:'/Homemvc/UploadFile',
     CreateDoors:'/Data/CreateDoors',
+    UpdateDoors:'/Data/UpdateDoors',
     UpdateUInfoSetting:'/Data/UpdateUserInfoSetting'
   }
 }

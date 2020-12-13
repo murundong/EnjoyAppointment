@@ -84,7 +84,6 @@ Page({
     res.rate2 = this.data.rate_score2;
     res.rate3 = this.data.rate_score3;
     res.content = this.data.textarea_value
-    console.log(res);
     wx.showToast({
       title: '评价成功~',
       duration:3000,

@@ -77,6 +77,7 @@ App({
 
   globalData: {
     userInfo: null,
-    baseURL: 'http://localhost:54180/api'
+    baseURL: 'http://localhost:54180/api',
+    baseMVCURL:'http://localhost:54180/'
   }
 })

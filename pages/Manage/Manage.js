@@ -5,14 +5,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    _doorId:'',
+    _doorName:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var doorId = options.doorId;
+    var doorName = options.doorName;
+    this.setData({
+      _doorId:doorId,
+      _doorName:doorName
+    })
+   
   },
 
   /**
@@ -26,7 +33,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.setNavigationBarTitle({
+      title: this.data._doorName,
+    })
   },
 
   /**
@@ -62,5 +71,49 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onGridTap(e){
+    var _that = this;
+    switch(e.detail.index){
+      case 0:
+        {
+          wx.navigateTo({
+            url: '../AddDoor/AddDoor?doorId='+_that.data._doorId,
+          })
+        }
+        break;
+        case 1:
+        {
+
+        }
+        break;
+        case 2:
+        {
+
+        }
+        break;
+        case 3:
+        {
+
+        }
+        break;
+        case 4:
+        {
+
+        }
+        break;
+        case 5:
+        {
+
+        }
+        break;
+        case 6:
+        {
+
+        }
+        break;
+      default:
+        break;
+    }
   }
 })

@@ -10,7 +10,19 @@
       default: return 'open';
     }
   };
+  var transStatusText = function(status){
+    switch (status) {
+      case 0:
+        return '营业中';
+      case 1:
+        return '预售中';
+      case 2:
+        return '停业中'
+      default: return '营业中';
+    }
+  };
   module.exports.status = transStatus;
+  module.exports.statusTxt = transStatusText;
 </wxs>
 <view>
   <l-notice-bar  speed="2000"  front-icon-name="notification"  close="true" type="roll" show="{{true}}">{{NewMessage}}</l-notice-bar>
@@ -37,8 +49,8 @@
  
   <view class="door">
     <block wx:for="{{Doors}}" wx:key="id">
-      <view bindtap="onDoorNav" class="door-box" data-door-id="{{item.id}}" style="background:url('{{item.door_img}}') no-repeat center;">
-        <view class="door-status {{ProcessStatus.status(item.status)}}">{{item.status}}</view>
+      <view bindtap="onDoorNav" class="door-box" data-door-id="{{item.id}}" style="background:url('{{baseURL+item.door_img}}') no-repeat;background-size:100% 100%; ">
+        <view class="door-status {{ProcessStatus.status(item.status)}}">{{ProcessStatus.statusTxt(item.status)}}</view>
         <view class="door-text">
           <view class="door-name">{{item.door_name}}</view>
           <view class="door-add">{{item.door_address}}</view>

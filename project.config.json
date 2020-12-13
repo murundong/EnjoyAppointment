@@ -76,7 +76,7 @@
         {
           "name": "pages/AddDoor/AddDoor",
           "pathName": "pages/AddDoor/AddDoor",
-          "query": "",
+          "query": "doorId=10000",
           "scene": null
         },
         {

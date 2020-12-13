@@ -1,4 +1,8 @@
 /* pages/MyDoors/MyDoors.wxss */
+.content{
+  font-family: "Arial", "KaiTi", sans-serif;
+  color: #525562;
+}
 .content-head{
   display: flex;
   justify-content: space-between;
@@ -23,4 +27,9 @@
 }
 .add-icon{
   margin-right: 12rpx;
+}
+.content-door-desc,.content-door-address{
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  color: #b3b6bd;
 }

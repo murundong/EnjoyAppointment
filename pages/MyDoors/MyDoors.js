@@ -1,13 +1,15 @@
 // pages/MyDoors/MyDoors.js
 import urls from '../../utils/urls';
 import request from '../../utils/network.js';
-
+const app = getApp();
+var baseURL= app.globalData.baseMVCURL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    baseURL:baseURL,
     Doors:[]
   },
 
@@ -15,13 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    request({
-      url:urls.data.GetTeacherDoors,
-      method:'post',
-      data:{open_id:wx.getStorageSync('loginSessionKey')}
-    }).then(res=>{
-      console.log(res);
-    })
+    
   },
 
   /**
@@ -35,7 +31,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    request({
+      url:urls.data.GetTeacherDoors,
+      method:'post',
+      data:{open_id:wx.getStorageSync('loginSessionKey')}
+    }).then(res=>{
+      if(res.errCode==0){
+        this.setData({
+          Doors:res.data
+        })
+      }
+    })
   },
 
   /**
@@ -78,6 +84,12 @@ Page({
     })
   },
   onDoorTap(e){
-    console.log(e);
+    var _that = this;
+    var doorId = e.currentTarget.dataset.id;
+    var doorName = e.currentTarget.dataset.name;
+    //'../Manage/Manage?doorId='+doorId,
+    wx.navigateTo({
+      url: `../Manage/Manage?doorId=${doorId}&doorName=${doorName}`
+    })
   }
 })
