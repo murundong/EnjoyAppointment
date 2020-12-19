@@ -1,0 +1,36 @@
+<view class="content">
+
+  <view class="conten-header">
+    <view>会员卡模板</view>
+  </view>
+
+  <view class="content-body">
+    <view class="content-form-item">
+      <l-input label-width="150" label="名称" placeholder="会员卡名称" required="true" bind:lininput="onNameiput"
+        value="{{cardName}}" />
+    </view>
+    <view class="content-form-item">
+      <l-input disabled="true" label-width="250" label="会员卡类型"   value="{{cardTypeRange[cardType].value}}">
+      <picker class="content-card-type" slot="right" range="{{cardTypeRange}}" mode="selector" bindchange="bindTypeChange" value="{{cardType}}" range-key="value">
+      <view class="picker">
+        <text>点击选择类型</text>
+        <l-icon class="picker-down" color="#333" name="down" size="25" />
+      </view>
+    </picker>
+    </l-input>
+    </view>
+
+    
+
+    <view class="content-form-item">
+      <l-textarea placeholder="会原卡简介" l-class="textarea-body" maxlength="200" indicator="true"
+        bind:lininput="onDesciput" value="{{cardDesc}}" />
+    </view>
+
+   
+    
+  </view>
+  <view class="content-footer">
+    <view bindtap="onSaveInfo" class="foot-btn">保存</view>
+  </view>
+</view>

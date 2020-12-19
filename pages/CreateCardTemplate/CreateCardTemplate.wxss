@@ -1,0 +1,63 @@
+/* pages/AddDoor/AddDoor.wxss */
+.content{
+  font-family: "Arial", "KaiTi", sans-serif;
+  color: #525562;
+  display: flex;
+  flex-direction: column;
+  width: 93%;
+  margin: 30rpx auto;
+}
+.conten-header view::before{
+  content: '';
+  height: 30rpx;
+  border-left:10rpx solid #ff6f11;
+  margin-right: 4rpx;
+  border-radius: 6rpx;
+}
+.item-text{
+  display: block;
+  margin-bottom: 10rpx;
+}
+.item-text::before{
+  content: '';
+  height: 30rpx;
+  border-left:10rpx solid #ff6f11;
+  margin-right: 4rpx;
+  border-radius: 6rpx;
+}
+.content-form-item{
+  margin-top: 20rpx;
+}
+.textarea-body{
+  height: 300rpx;
+}
+.item-radio{
+  margin-right: 20rpx;
+}
+.content-footer{
+  border-top: 2rpx solid #f3f3f3;
+}
+.foot-btn{
+  width: 70%;
+    height: 80rpx;
+    border-radius: 50rpx;
+    margin: 50rpx auto;
+    background: linear-gradient(to top right, rgba(253, 77, 77,1), rgba(255, 111, 17, 0.8));
+    color: white;
+    font-weight: bold;
+    letter-spacing: 10rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.picker{
+  display: flex;
+  align-items: center;
+}
+.content-card-type{
+  color: #333;
+}
+.picker-down{
+  margin-left: 10rpx;
+}

@@ -74,14 +74,14 @@
           "scene": null
         },
         {
-          "name": "pages/AddDoor/AddDoor",
-          "pathName": "pages/AddDoor/AddDoor",
-          "query": "doorId=10000",
+          "name": "pages/CardTemplate/CardTemplate",
+          "pathName": "pages/CardTemplate/CardTemplate",
+          "query": "doorId=10001",
           "scene": null
         },
         {
-          "name": "pages/appointment/appointment",
-          "pathName": "pages/appointment/appointment",
+          "name": "pages/CreateCardTemplate/CreateCardTemplate",
+          "pathName": "pages/CreateCardTemplate/CreateCardTemplate",
           "query": "",
           "scene": null
         },

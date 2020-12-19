@@ -1,0 +1,43 @@
+<view class="content">
+  <view class="content-head">
+    <view class="content-title">我的卡片模板</view>
+    <view class="content-add" bindtap="onTemplateAdd">
+      <l-icon class="add-icon" color="#525562" size="28" name="add" />新增模板
+    </view>
+  </view>
+
+  <view class="content-card">
+    <block wx:for="{{cardTemplate}}" wx:key="id">
+      <view class="card-body" bindtap="onCardTap" data-id="{{item.id}}">
+        <view class="card-body-left">
+          <view class="body-left-title">{{item.card_name}}</view>
+          <image class="body-left-img" src="{{baseURL+_img}}"></image>
+        </view>
+        <view class="card-body-right">
+
+          <view class="body-right">
+            <view>
+              <text class="body-right-l"> 频次/周：</text>
+              <text class="body-right-r">--</text>
+            </view>
+            <view>
+              <text class="body-right-l">频次/日：</text>
+              <text class="body-right-r">--</text>
+            </view>
+            <view>
+              <text class="body-bottom-tips">注意:仅限本人使用</text>
+            </view>
+          </view>
+        </view>
+     
+        <view class="body-subscript">{{item.card_type}}</view>
+        <view class="body-right-tips">
+          <text>有效期至:--</text>
+          <text class="tips-time" >次数:--</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+
+</view>

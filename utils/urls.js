@@ -8,11 +8,20 @@ export default{
     GetTeacherDoors:'/Data/GetTeacherDoors',
     GetDoorsById:'/Data/GetDoorsById'
   },
+  cardTemplate:{
+    GetTemplates:'/Data/GetCardTempalte',
+    GetCardTemplateById:'/Data/GetCardTemplateById',
+    CreateCardTempalte:'/Data/CreateCardTempalte',
+    UpdateCardtemplate:'/Data/UpdateCardtemplate',
+  },
   process:{
     UploadFile:'/Home/UploadFile',
     MvcUploadFile:'/Homemvc/UploadFile',
     CreateDoors:'/Data/CreateDoors',
     UpdateDoors:'/Data/UpdateDoors',
     UpdateUInfoSetting:'/Data/UpdateUserInfoSetting'
+  },
+  Lessons:{
+    GetDoorInfo:'/Data/GetDoorInfo'
   }
 }

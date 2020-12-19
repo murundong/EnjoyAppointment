@@ -1,4 +1,4 @@
-// pages/MyDoors/MyDoors.js
+// pages/CardTemplate/CardTemplate.js
 import urls from '../../utils/urls';
 import request from '../../utils/network.js';
 const app = getApp();
@@ -9,18 +9,25 @@ Page({
    * 页面的初始数据
    */
   data: {
+    baseURL:baseURL,
     pageIndex:1,
     pageSize:10,
     pageTotal:'',
-    baseURL:baseURL,
-    Doors:[]
+    _doorId:'',
+    _doorName:'',
+    _img:'',
+    cardTemplate:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.data._doorId = options.doorId;
+    this.data._doorName=options.doorName;
+    wx.setNavigationBarTitle({
+      title: `${options.doorName}的卡片模板`,
+    })
   },
 
   /**
@@ -35,17 +42,18 @@ Page({
    */
   onShow: function () {
     request({
-      url:urls.data.GetTeacherDoors,
+      url:urls.cardTemplate.GetTemplates,
       method:'post',
       data: {
         page_index:this.data.pageIndex,
         page_size:this.data.pageSize,
-        open_id: wx.getStorageSync('loginSessionKey')
+        door_id: this.data._doorId
       }
     }).then(res=>{
       if(res.errCode==0){
         this.setData({
-          Doors:res.data.data,
+          cardTemplate:res.data.data.temps,
+          _img:res.data.data.img,
           pageTotal:Math.floor(res.data.total /this.data.pageSize)
         })
       }
@@ -87,22 +95,24 @@ Page({
     else{
       this.data.page_index++;
       request({
-        url:urls.data.GetTeacherDoors,
+        url:urls.cardTemplate.GetTemplates,
         method:'post',
         data: {
           page_index:this.data.pageIndex,
           page_size:this.data.pageSize,
-          open_id: wx.getStorageSync('loginSessionKey')
+          door_id: this.data._doorId
         }
       }).then(res=>{
         if(res.errCode==0){
           this.setData({
-            Doors:res.data.data,
+            cardTemplate:res.data.data.temps,
+            _img:res.data.data.img,
             pageTotal:Math.floor(res.data.total /this.data.pageSize)
           })
         }
       })
     }
+    
   },
 
   /**
@@ -111,18 +121,15 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onDoorAdd(e){
+  onTemplateAdd(e){
     wx.navigateTo({
-      url: '../AddDoor/AddDoor',
+      url: '../CreateCardTemplate/CreateCardTemplate?doorId='+this.data._doorId,
     })
   },
-  onDoorTap(e){
-    var _that = this;
-    var doorId = e.currentTarget.dataset.id;
-    var doorName = e.currentTarget.dataset.name;
-    //'../Manage/Manage?doorId='+doorId,
+  onCardTap(e){
+    var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `../Manage/Manage?doorId=${doorId}&doorName=${doorName}`
+      url: `../CreateCardTemplate/CreateCardTemplate?cardId=${id}&doorId=${this.data._doorId}`,
     })
   }
 })

@@ -10,6 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    pageIndex:1,
+    pageSize:10,
+    pageTotal:'',
     baseURL:baseURL,
      Banners:[],
      Doors:[],
@@ -51,7 +54,7 @@ Page({
    */
   onShow: function () {
     request({
-      url:urls.data.GetBanners
+      url:urls.data.GetBanners,
     }).then(res=>{
       if(res.errCode==0){
         this.setData({
@@ -62,11 +65,16 @@ Page({
 
     request({
       url:urls.data.GetDoors,
+      data:{
+        page_index:this.data.pageIndex,
+        page_size:this.data.pageSize,
+      },
       method:'post',
     }).then(res=>{
       if(res.errCode==0)
         this.setData({
-          Doors:res.data
+          Doors:res.data.data,
+          pageTotal:Math.floor(res.data.total /this.data.pageSize)
         })
     })
 
@@ -97,22 +105,45 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('onReachBottom')
+    if(this.data.pageIndex > this.data.pageTotal){
+      wx.showToast({
+        title: '没有更多数据了',
+        icon:'none',
+        duration:2000
+      })
+    }
+    else{
+      this.data.page_index++;
+      request({
+        url:urls.data.GetDoors,
+        data:{
+          page_index:this.data.pageIndex,
+          page_size:this.data.pageSize,
+        },
+        method:'post',
+      }).then(res=>{
+        if(res.errCode==0)
+          this.setData({
+            Doors:res.data.data,
+            pageTotal:Math.floor(res.data.total /this.data.pageSize)
+          })
+      })
+    }
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    console.log('onShareAppMessage')
   },
   onScan(option){
     utils.scan_event(option);
   },
   onDoorNav(e){
     var doorId = e.currentTarget.dataset.doorId;
+    var doorName = e.currentTarget.dataset.doorName;
     wx.navigateTo({
-      url:`../Lesson/Lesson?doorId=${doorId}`
+      url:`../Lesson/Lesson?doorId=${doorId}&doorName=${doorName}`
     })
   },
   bindRegionChange(e){

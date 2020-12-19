@@ -1,32 +1,64 @@
 // pages/Lesson/Lesson.js
-import { local_classes_type, local_classes } from '../../MockData/data.js'
+import {
+  local_classes_type,
+  local_classes
+} from '../../MockData/data.js'
+import request from '../../utils/network.js';
+import urls from '../../utils/urls.js';
+const app = getApp();
+var baseURL= app.globalData.baseMVCURL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    DoorId: 200,
-    doorName:local_classes.data.doorName,
+    baseURL:baseURL,
+    doorId: '',
+    doorName: '',
+    banners:'',
+    doorAddress:'',
+    doorDesc:'',
+    doorNamanger:'',
+    doorTel:'',
     classes_type: local_classes_type,
     classes: local_classes.data.lstClasses,
-    NewMessage:'场馆通知',
-    startDay:''
+    NewMessage: '场馆通知',
+    startDay: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var _that = this;
     var now = new Date();
     var year = now.getFullYear();
-    var month = now.getMonth()+1;
+    var month = now.getMonth() + 1;
     var day = now.getDate();
+    var did = options.doorId;
+    request({
+      url:urls.Lessons.GetDoorInfo,
+      data:{doorid:did}
+    }).then(res=>{
+      if(res.data){
+        this.setData({
+          doorAddress:res.data.door_address,
+          banners:res.data.banners,
+          doorDesc:res.data.door_desc,
+          doorNamanger:res.data.door_manager,
+          doorTel:res.data.door_tel
+        })
+      }
+    })
 
     this.setData({
-      DoorId: options.doorId,
-      startDay:`${year}-${month}-${day}`
+      doorId: did,
+      doorName: options.doorName,
+      startDay: `${year}-${month}-${day}`
     })
+
+
   },
 
   /**
@@ -104,24 +136,24 @@ Page({
       content: '确定要取消预约吗？',
       success: function (res) {
         if (res.confirm) {
-            // 用户点击了确定 可以调用删除方法了
-          }
+          // 用户点击了确定 可以调用删除方法了
         }
-      })
+      }
+    })
   },
   onOrderTap(e) {
     wx.navigateTo({
       url: `../EnsureAppointment/EnsureAppointment?doorId=${e.currentTarget.dataset.cid}`,
     })
-  }, 
-  onPageScroll(res) {
-   
   },
-  onDateChange(e){
+  onPageScroll(res) {
+
+  },
+  onDateChange(e) {
     this.setData({
-      startDay:e.detail.value
+      startDay: e.detail.value
     })
-    this.componentCalender.onGenerateDate(new Date( e.detail.value));
+    this.componentCalender.onGenerateDate(new Date(e.detail.value));
     this.componentClass.selectInit();
   }
 })

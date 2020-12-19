@@ -99,12 +99,14 @@ Page({
         break;
         case 4:
         {
-
+          wx.navigateTo({
+            url: `../CardTemplate/CardTemplate?doorId=${_that.data._doorId}&doorName=${_that.data._doorName}`,
+          })
         }
         break;
         case 5:
         {
-
+         
         }
         break;
         case 6:
