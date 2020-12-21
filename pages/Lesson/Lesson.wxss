@@ -6,14 +6,60 @@ page {
   width: 100%;
   overflow: hidden;
 }
-.sticky-top{
+.banner-content{
+  padding: 10rpx 20rpx;
+}
+.banner-title-name{
+  font-size: 45rpx;
+  text-align: center;
+  color: #525562;
+}
+.banner-title-desc{
+  color: #525562;
+  margin-top: -10rpx;
+  margin-bottom: 10rpx;
+}
+.banner-content-manager{
+  display: flex;
+  padding-bottom:15rpx;
+}
+.banner-content-manager image{
+  height: 130rpx;
+  width: 130rpx;
+  border-radius: 65rpx;
+}
+.banner-manager-detail{
+  margin-left: 26rpx;
+}
+.banner-content-form{
+  display: flex;
+  color: #b3b6bd;
+  font-size: 26rpx;
+}
+.banner-form-right{
+  margin-left: 20rpx;
+}
+.swipper{
+  height: 342rpx;
+}
+.swipper image{
+  width: 100%;
+  height: 342rpx;
+  text-align: center;
+  line-height: 342rpx;
+}
+.l-sticky-head{
+  background-color: #fff;
+    z-index: 9;
+}
+/* .sticky-top{
   position: fixed;
   top: 0;
   z-index: 9999;
   background-color: white;
   padding-left: 5rpx;
   width: 100%;
-}
+} */
 .sticky-cal{
   width: 98%;
 }
@@ -52,11 +98,8 @@ page {
   display: flex;
   flex-direction: column;
   font-family:KaiTi;
-  margin-top: 258rpx;
 }
-.notice-bar{
-  margin-left: -20rpx;
-}
+
 .class-card:first-child{
   margin-top: 10rpx;
 }

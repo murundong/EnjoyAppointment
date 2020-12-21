@@ -1,71 +1,116 @@
-<!--pages/Lesson/Lesson.wxml-->
-
 <view class="content-root">
-
-  <view class="sticky-top">
-    <view class="choose-date">
-      <view class="choose-date-title">
-        <text class="date-title-icon"></text>
-        <text class="date-title-text">周课表</text>
-      </view>
-      <view class="choose-date-cal">
-        <l-icon class="choose-date-icon" size="28" color="#525562" name="history" />
-        <picker mode="date" value="{{startDay}}" bindchange="onDateChange">
-          <view>{{startDay}}</view>
-        </picker>
-
-      </view>
-    </view>
-    <r-calender id="r-cal" StartDay="{{startDay}}" class="sticky-cal" bind:onItemTap="onCanlenderItemTap"></r-calender>
-    <view class="r-line-dash"></view>
-    <r-class id="comp-class" datalist="{{classes_type}}" bind:onItemTap="onTopbarItemTap"></r-class>
-    <view class="r-line"></view>
-   
-  </view>
-  <view class="content">
-    <l-notice-bar l-class="notice-bar" speed="2000" front-icon-name="notification" close="true" type="roll" show="{{true}}">{{NewMessage}}
-      </l-notice-bar>
-      <block wx:for="{{classes}}" wx:key="id">
-        <view class="class-card">
-          <view class="class-card-img">
-            <image src="{{item.teacher_img}}"></image>
+  <l-notice-bar l-class="notice-bar" speed="2000" front-icon-name="notification" close="true" type="roll"
+    show="{{true}}">{{NewMessage}}
+  </l-notice-bar>
+  <l-sticky scrollTop="{{scrollTop}}">
+    <l-sticky-item top="0">
+      <view slot="body">
+        <swiper wx:if="{{banners}}" class="swipper" indicator-dots="true" autoplay="true" interval="3000">
+          <block wx:for="{{banners}}" wx:key="id">
+            <swiper-item>
+              <image src="{{baseURL+item}}" bindtap="onPreviewImg" data-src="{{baseURL+item}}">
+               </image>
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class="banner-content">
+          <view class="banner-content-title">
+            <view class="banner-title-name">{{doorName}}</view>
+            <view class="banner-title-desc">
+              <text>简介:</text>
+              <text>{{doorDesc}}</text>
+            </view>
           </view>
-          <view class="class-card-content">
-            <view class="class-card-title">
-              <text class="card-title">{{item.title}}</text>
-              <!-- <text class="{{item.status==''?'':'card-title-status'}}">{{item.status}}</text> -->
-            </view>
+          <view class="banner-content-body">
+            <view class="banner-content-manager">
+              <image src="{{doorManagerImg}}"></image>
+              <view class="banner-manager-detail">
+                <view class="banner-content-form">
+                  <text>馆主:</text>
+                  <text class="banner-form-right">{{doorMananger}}</text>
+                </view>
+                <view class="banner-content-form">
+                  <l-icon name='phone' size="26" color="#525562" />
+                  <text class="banner-form-right">{{doorTel}}</text>
+                </view>
+                <view class="banner-content-form">
+                  <l-icon name='address' size="26" color="#525562" />
+                  <text class="banner-form-right">{{doorAddress}}</text>
+                </view>
+              </view>
 
-            <view class="class-card-tag">
-              <block wx:for="{{item.tags}}" wx:for-item="itags" wx:key="index">
-                <text>{{itags}}</text>
-              </block>
             </view>
-            <view class="class-card-time">
-              <text class="card-time-teacher">{{item.teacher}}</text>
-              <text class="card-time-time">{{item.timeStr}}</text>
+          </view>
+          <view class="r-line"></view>
+        </view>
+      </view>
+    </l-sticky-item>
+    <l-sticky-item top="0" l-header-class="l-sticky-head">
+      <view slot="header">
+        <view class="choose-date">
+          <view class="choose-date-title">
+            <text class="date-title-icon"></text>
+            <text class="date-title-text">周课表</text>
+          </view>
+          <view class="choose-date-cal">
+            <l-icon class="choose-date-icon" size="28" color="#525562" name="history" />
+            <picker mode="date" value="{{startDay}}" bindchange="onDateChange">
+              <view>{{startDay}}</view>
+            </picker>
+
+          </view>
+        </view>
+        <r-calender id="r-cal" StartDay="{{startDay}}" class="sticky-cal" bind:onItemTap="onCanlenderItemTap">
+        </r-calender>
+        <view class="r-line-dash"></view>
+        <r-class id="comp-class" datalist="{{classes_type}}" bind:onItemTap="onTopbarItemTap"></r-class>
+        <view class="r-line"></view>
+      </view>
+
+      <view slot="body" class="content">
+        <block wx:for="{{classes}}" wx:key="id">
+          <view class="class-card">
+            <view class="class-card-img">
+              <image src="{{item.teacher_img}}"></image>
             </view>
-            <view class="class-card-status">
-              <!-- <text class="{{item.nowNum<item.lessNum?'dot':''}}">{{item.lessNum}}人/最低</text>
+            <view class="class-card-content">
+              <view class="class-card-title">
+                <text class="card-title">{{item.title}}</text>
+                <!-- <text class="{{item.status==''?'':'card-title-status'}}">{{item.status}}</text> -->
+              </view>
+
+              <view class="class-card-tag">
+                <block wx:for="{{item.tags}}" wx:for-item="itags" wx:key="index">
+                  <text>{{itags}}</text>
+                </block>
+              </view>
+              <view class="class-card-time">
+                <text class="card-time-teacher">{{item.teacher}}</text>
+                <text class="card-time-time">{{item.timeStr}}</text>
+              </view>
+              <view class="class-card-status">
+                <!-- <text class="{{item.nowNum<item.lessNum?'dot':''}}">{{item.lessNum}}人/最低</text>
               <text class="{{item.nowNum>=item.fullNum?'dot':''}}">{{item.fullNum}}人/满员</text>
               <text class="{{item.nowNum>=item.lessNum?'dot':''}}">{{item.nowNum}}人/已约</text>
               <text class="already-appoint" wx:if="{{item.btnStatus==-1}}">已预约</text> -->
-              <view class="class-card-status-border">
-                <text class="status-num">{{item.nowNum}}人/{{item.fullNum}}人</text>
-                <text class="status-less">(最低{{item.lessNum}}人)</text>
-              </view>
-              <view>
-                <text class="already-appoint" wx:if="{{item.btnStatus==-1}}">已预约</text>
-              </view>
+                <view class="class-card-status-border">
+                  <text class="status-num">{{item.nowNum}}人/{{item.fullNum}}人</text>
+                  <text class="status-less">(最低{{item.lessNum}}人)</text>
+                </view>
+                <view>
+                  <text class="already-appoint" wx:if="{{item.btnStatus==-1}}">已预约</text>
+                </view>
 
+              </view>
+              <view bindtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.btnStatus==0}}">
+                预约
+              </view>
+              <view bindtap="onFullTap" class="card-order-unbtn" data-cid="{{item.id}}" wx:else>取消</view>
             </view>
-            <view bindtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.btnStatus==0}}">
-              预约
-            </view>
-            <view bindtap="onFullTap" class="card-order-unbtn" data-cid="{{item.id}}" wx:else>取消</view>
+
           </view>
-
-        </view>
-      </block>
-    </view>
+        </block>
+      </view>
+    </l-sticky-item>
+  </l-sticky>
 </view>

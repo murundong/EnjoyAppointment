@@ -38,11 +38,14 @@
   </view>
   <swiper class="swipper" indicator-dots="true" autoplay="true" interval="3000">
     <block wx:for="{{Banners}}" wx:key="id">
-      <navigator url="{{item.url}}">
+      <!-- <navigator url="{{item.url}}">
         <swiper-item>
           <image src="{{item.img}}"></image>
         </swiper-item>
-      </navigator>
+      </navigator> -->
+      <swiper-item>
+          <image src="{{item.img}}" bindtap="onPreviewImg" data-src="{{item.img}}"></image>
+        </swiper-item>
     </block>
   </swiper>
   

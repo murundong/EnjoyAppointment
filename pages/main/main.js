@@ -151,5 +151,15 @@ Page({
       Region: e.detail.value,
       Position: e.detail.value[0]+'-'+ e.detail.value[1]+'-'+ e.detail.value[2]
     })
+  },
+  onPreviewImg(e){
+    var src = e.currentTarget.dataset.src;
+    // var srcArr = this.data.Banners.map(x => this.data.baseURL + x.img);
+    var srcArr = this.data.Banners.map(x => x.img);
+    console.log(src);
+    wx.previewImage({
+      urls: srcArr,
+      current: src
+    })
   }
 })

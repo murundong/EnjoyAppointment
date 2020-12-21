@@ -1,4 +1,3 @@
-// pages/Lesson/Lesson.js
 import {
   local_classes_type,
   local_classes
@@ -6,21 +5,23 @@ import {
 import request from '../../utils/network.js';
 import urls from '../../utils/urls.js';
 const app = getApp();
-var baseURL= app.globalData.baseMVCURL;
+var baseURL = app.globalData.baseMVCURL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    baseURL:baseURL,
+    scrollTop: undefined,
+    baseURL: baseURL,
     doorId: '',
     doorName: '',
-    banners:'',
-    doorAddress:'',
-    doorDesc:'',
-    doorNamanger:'',
-    doorTel:'',
+    banners: '',
+    doorAddress: '',
+    doorDesc: '',
+    doorMananger: '',
+    doorManagerImg: '',
+    doorTel: '',
     classes_type: local_classes_type,
     classes: local_classes.data.lstClasses,
     NewMessage: '场馆通知',
@@ -38,16 +39,19 @@ Page({
     var day = now.getDate();
     var did = options.doorId;
     request({
-      url:urls.Lessons.GetDoorInfo,
-      data:{doorid:did}
-    }).then(res=>{
-      if(res.data){
+      url: urls.Lessons.GetDoorInfo,
+      data: {
+        doorid: did
+      }
+    }).then(res => {
+      if (res.data) {
         this.setData({
-          doorAddress:res.data.door_address,
-          banners:res.data.banners,
-          doorDesc:res.data.door_desc,
-          doorNamanger:res.data.door_manager,
-          doorTel:res.data.door_tel
+          doorAddress: res.data.door_address,
+          banners: res.data.banners,
+          doorDesc: res.data.door_desc,
+          doorMananger: res.data.door_manager,
+          doorTel: res.data.door_tel,
+          doorManagerImg: res.data.door_manager_img
         })
       }
     })
@@ -116,7 +120,7 @@ Page({
   onCanlenderItemTap(e) {
     console.log(e.detail.citem);
     this.componentClass.selectInit();
-    // wx.lin.flushSticky();
+    wx.lin.flushSticky();
     wx.pageScrollTo({
       scrollTop: 0
     })
@@ -147,7 +151,10 @@ Page({
     })
   },
   onPageScroll(res) {
-
+    wx.lin.setScrollTop(res.scrollTop)
+    // this.setData({
+    //   scrollTopHeight: res.scrollTop
+    // })
   },
   onDateChange(e) {
     this.setData({
@@ -155,5 +162,13 @@ Page({
     })
     this.componentCalender.onGenerateDate(new Date(e.detail.value));
     this.componentClass.selectInit();
+  },
+  onPreviewImg(e) {
+    var src = e.currentTarget.dataset.src;
+    var srcArr = this.data.banners.map(x => this.data.baseURL + x);
+    wx.previewImage({
+      urls: srcArr,
+      current: src
+    })
   }
 })
