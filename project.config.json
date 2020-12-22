@@ -62,9 +62,9 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/Manage/Manage",
-          "pathName": "pages/Manage/Manage",
-          "query": "cid=1",
+          "name": "pages/CreateSubject/CreateSubject",
+          "pathName": "pages/CreateSubject/CreateSubject",
+          "query": "subjectId=1&doorId=10000",
           "scene": null
         },
         {

@@ -1,0 +1,55 @@
+<view class="content">  
+  <view class="content-header">
+    <view>课程信息</view>
+  </view>
+
+  <view class="content-body">
+    <view class="content-form-item">
+      <l-input label-width="200" label="课程名称" placeholder="请输入课程名称" required="true"  bind:lininput="onNameiput" value="{{subjectName}}" />
+    </view>
+
+    <view class="content-form-item">
+      <l-textarea placeholder="课程简介" l-class="textarea-body" maxlength="500" indicator="true" bind:lininput="onDesciput" value="{{subjectDesc}}"/>
+    </view>
+
+    <view class="content-form-item">
+      <l-input label-width="200" label="会员卡"   placeholder="会员卡类型" required="true"  bind:lininput="onCardsiput" value="{{needCards}}"/>
+    </view>
+
+
+    <view class="content-form-item">
+      <l-input label-width="200" label="授课老师" placeholder="请输入授课老师" required="true"  bind:lininput="onTeacheriput" value="{{subjectTeacher}}"/>
+    </view>
+
+
+    <view class="content-form-item">
+      <l-input label-width="200" label="课程时长"   type="number" placeholder="课程时长" required="true"  bind:lininput="onDurationiput" value="{{subjectDuration}}">
+        <text slot="right">分钟</text>
+        </l-input>
+    </view>
+
+    <view class="content-form-item">
+      <l-input label-width="200" label="课时费用"   type="number" placeholder="课时费用" required="true"  bind:lininput="onPriceiput" value="{{subjectPrice}}">
+        <text slot="right">元</text>
+        </l-input>
+    </view>
+
+    <view class="content-form-item">
+      <text class="item-text">课程图片展示</text>
+      <l-image count="1" bind:linchange="onImgChangeTap" bind:linremove="onImgRemoveTap" urls="{{editImgs}}"	/>
+    </view>
+
+    <view class="content-form-item">
+      <text class="item-text">生效</text>
+      <l-radio-group bind:linchange="onActiveChanged" current="{{active?1:2}}" none-checked="false" placement="row">
+        <l-radio class="item-radio" key="1" select-color="#ff6f11">生效</l-radio>
+        <l-radio class="item-radio" key="2" select-color="#ff6f11">不生效</l-radio>
+      </l-radio-group>
+    </view>
+
+  </view>
+
+  <view class="content-footer">
+    <view bindtap="onSaveInfo" class="foot-btn">保存</view>
+  </view>
+</view>

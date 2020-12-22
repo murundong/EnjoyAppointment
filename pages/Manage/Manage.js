@@ -89,7 +89,9 @@ Page({
         break;
         case 2:
         {
-
+          wx.navigateTo({
+            url: `../Subjects/Subjects?doorId=${_that.data._doorId}&doorName=${_that.data._doorName}`,
+          })
         }
         break;
         case 3:

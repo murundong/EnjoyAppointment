@@ -1,0 +1,16 @@
+<view class="content">
+  <view class="content-head">
+    <view class="content-title">课程列表</view>
+    <view class="content-add" bindtap="onSubjectAdd">
+      <l-icon class="add-icon" color="#525562" size="28" name="add" />新增课程
+    </view>
+  </view>
+
+  <view class="content-subject">
+    <block wx:for="{{subjectsArr}}" wx:key="id">
+      <view class="subject-body" bindtap="onSubjectsTap" data-id="{{item.id}}">
+      
+      </view>
+    </block>
+  </view>
+</view>

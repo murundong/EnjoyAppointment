@@ -16,7 +16,9 @@
     "pages/MyDoors/MyDoors",
     "pages/AddDoor/AddDoor",
     "pages/CardTemplate/CardTemplate",
-    "pages/CreateCardTemplate/CreateCardTemplate"
+    "pages/CreateCardTemplate/CreateCardTemplate",
+    "pages/Subjects/Subjects",
+    "pages/CreateSubject/CreateSubject"
   ],
   "tabBar": {
     "list": [

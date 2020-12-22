@@ -14,6 +14,13 @@ export default{
     CreateCardTempalte:'/Data/CreateCardTempalte',
     UpdateCardtemplate:'/Data/UpdateCardtemplate',
   },
+  Subject:{
+    GetSubjects:'/Data/GetSubjects',
+    CreateSubject:'/Data/CreateSubject',
+    GetSubjectById:'/Data/GetSubjectById',
+    UpdateSubject:'/Data/UpdateSubject',
+    GetDoorInfo:'/Data/GetDoorInfo',
+  },
   process:{
     UploadFile:'/Home/UploadFile',
     MvcUploadFile:'/Homemvc/UploadFile',
