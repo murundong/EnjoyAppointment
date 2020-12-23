@@ -16,6 +16,7 @@ Page({
     imgs:[],
 
     subjectName:'',
+    subjectTag:'',
     subjectTeacher:'',
     subjectDuration:'',
     subjectPrice:'',
@@ -38,9 +39,10 @@ Page({
       subjectId:options.subjectId,
       doorId : options.doorId,
     })
+    console.log(this.data.doorId);
     if(options.subjectId){
       wx.setNavigationBarTitle({
-        title: '编辑场馆',
+        title: '编辑课程',
       })
       request({
         url:urls.Subject.GetSubjectById,
@@ -48,11 +50,12 @@ Page({
       }).then(res=>{
         if(res.data){
           this.setData({
-            doorId:res.data.id,
+            doorId:res.data.door_id,
             subjectName:res.data.subject_name,
             subjectTeacher:res.data.subject_teacher,
             subjectDuration:res.data.subject_duration,
             subjectPrice:res.data.subject_price,
+            subjectTag:res.data.subject_tag,
             subjectImg:res.data.subject_img,
             subjectDesc:res.data.subject_desc,
             needCards:res.data.need_cards,
@@ -139,6 +142,11 @@ Page({
       subjectName:e.detail.value
     })
   },
+  onTagiput(e){
+    this.setData({
+      subjectTag:e.detail.value
+    })
+  },
   onDesciput(e){
     this.setData({
       subjectDesc:e.detail.value
@@ -191,6 +199,7 @@ Page({
       id:this.data.subjectId,
       door_id:this.data.doorId,
       subject_name:this.data.subjectName,
+      subject_tag:this.data.subjectTag,
       subject_desc:this.data.subjectDesc,
       subject_teacher:this.data.subjectTeacher,
       subject_duration:this.data.subjectDuration,

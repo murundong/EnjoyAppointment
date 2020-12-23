@@ -27,3 +27,14 @@
 .add-icon{
   margin-right: 12rpx;
 }
+.tag-container{
+  color: #b3b6bd;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20rpx;
+}
+.tag-item{
+  border: 1px solid #b3b6bd;
+  padding: 2rpx 10rpx;
+  border-radius: 20rpx;
+}

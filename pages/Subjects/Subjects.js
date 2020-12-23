@@ -51,7 +51,7 @@ Page({
     }).then(res=>{
       if(res.errCode==0){
         this.setData({
-          subjectsArr:res.data.data.temps,
+          subjectsArr:res.data.data,
           pageTotal:Math.floor(res.data.total /this.data.pageSize)
         })
       }
