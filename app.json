@@ -18,7 +18,8 @@
     "pages/CardTemplate/CardTemplate",
     "pages/CreateCardTemplate/CreateCardTemplate",
     "pages/Subjects/Subjects",
-    "pages/CreateSubject/CreateSubject"
+    "pages/CreateSubject/CreateSubject",
+    "pages/Course/Course"
   ],
   "tabBar": {
     "list": [

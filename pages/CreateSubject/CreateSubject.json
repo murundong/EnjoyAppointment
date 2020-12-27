@@ -5,7 +5,9 @@
     "l-image":"../../miniprogram_npm/lin-ui/image-picker/index",
     "l-radio":"../../miniprogram_npm/lin-ui/radio/index",
     "l-radio-group":"../../miniprogram_npm/lin-ui/radio-group/index",
-    "l-textarea":"../../miniprogram_npm/lin-ui/textarea/index"
+    "l-textarea":"../../miniprogram_npm/lin-ui/textarea/index",
+    "l-checkbox":"../../miniprogram_npm/lin-ui/checkbox",
+    "l-checkbox-group":"../../miniprogram_npm/lin-ui/checkbox-group"
   },
   "navigationBarTitleText": "新增课程"
 }

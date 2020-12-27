@@ -62,9 +62,9 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/CreateSubject/CreateSubject",
-          "pathName": "pages/CreateSubject/CreateSubject",
-          "query": "subjectId=1&doorId=10000",
+          "name": "pages/Course/Course",
+          "pathName": "pages/Course/Course",
+          "query": "doorId=10000&doorName=是个课程",
           "scene": null
         },
         {

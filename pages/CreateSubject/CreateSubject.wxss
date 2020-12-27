@@ -14,6 +14,12 @@
   margin-right: 4rpx;
   border-radius: 6rpx;
 }
+.t-tips{
+  color: #ff6f11;
+  font-size: 27rpx;
+  vertical-align: text-bottom;
+  margin-left: 10rpx;
+}
 .item-text{
   display: block;
   margin-bottom: 10rpx;

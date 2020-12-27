@@ -1,7 +1,4 @@
 <view class="content-root">
-  <l-notice-bar l-class="notice-bar" speed="2000" front-icon-name="notification" close="true" type="roll"
-    show="{{true}}">{{NewMessage}}
-  </l-notice-bar>
   <l-sticky scrollTop="{{scrollTop}}">
     <l-sticky-item top="0">
       <view slot="body">
@@ -9,7 +6,7 @@
           <block wx:for="{{banners}}" wx:key="id">
             <swiper-item>
               <image src="{{baseURL+item}}" bindtap="onPreviewImg" data-src="{{baseURL+item}}">
-               </image>
+              </image>
             </swiper-item>
           </block>
         </swiper>
@@ -41,6 +38,10 @@
 
             </view>
           </view>
+          <l-notice-bar l-class="notice-bar" speed="2000" front-icon-name="notification" close="true" type="roll"
+            show="{{true}}">
+            {{NewMessage}}
+          </l-notice-bar>
           <view class="r-line"></view>
         </view>
       </view>

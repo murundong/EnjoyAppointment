@@ -1,3 +1,10 @@
+<wxs module='validate'>
+var CheckSelect = function(arr,item){
+  return arr.indexOf(item)>=0;
+}
+
+module.exports.CheckSelect = CheckSelect;
+</wxs>
 <view class="content">  
   <view class="content-header">
     <view>课程信息</view>
@@ -9,7 +16,7 @@
     </view>
 
     <view class="content-form-item">
-      <l-input label-width="200" label="课程标签" placeholder="请输入课程标签"  bind:lininput="onTagiput" value="{{subjectTag}}" />
+      <l-input label-width="200" label="课程标签" placeholder="多个标签逗号分隔(,)"  bind:lininput="onTagiput" value="{{subjectTag}}" />
     </view>
 
     <view class="content-form-item">
@@ -17,7 +24,21 @@
     </view>
 
     <view class="content-form-item">
-      <l-input label-width="200" label="会员卡"   placeholder="会员卡类型"   bind:lininput="onCardsiput" value="{{needCards}}"/>
+    <view class="item-text">
+    <text>会员卡选择</text>
+    <text class="t-tips">(什么都不选表示不限制会员卡)</text> 
+    </view>
+     
+      <l-checkbox-group bind:linchange="onCardsChange">
+        <l-checkbox 
+        wx:for-items="{{cards}}"
+        wx:key="id"
+        key="{{item.id}}" 
+        checked="{{validate.CheckSelect(needCards,item.id)}}"
+        select-color="#ff6f11" >
+       {{item.card_name}}
+        </l-checkbox>
+      </l-checkbox-group>
     </view>
 
 

@@ -13,6 +13,7 @@ export default{
     GetCardTemplateById:'/Data/GetCardTemplateById',
     CreateCardTempalte:'/Data/CreateCardTempalte',
     UpdateCardtemplate:'/Data/UpdateCardtemplate',
+    GetDoorCardSelect:'/Data/GetDoorCardSelect'
   },
   Subject:{
     GetSubjects:'/Data/GetSubjects',
@@ -30,5 +31,9 @@ export default{
   },
   Lessons:{
     GetDoorInfo:'/Data/GetDoorInfo'
+  },
+  Courses:{
+    GetAdminCourseByDate:"/Data/GetAdminCourseByDate",
+    CreateCourse:"/Data/CreateCourse" 
   }
 }
