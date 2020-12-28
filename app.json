@@ -19,7 +19,8 @@
     "pages/CreateCardTemplate/CreateCardTemplate",
     "pages/Subjects/Subjects",
     "pages/CreateSubject/CreateSubject",
-    "pages/Course/Course"
+    "pages/Course/Course",
+    "pages/CreateCourse/CreateCourse"
   ],
   "tabBar": {
     "list": [

@@ -1,0 +1,126 @@
+<wxs module='validate'>
+  var CheckSelect = function (arr, item) {
+    return arr.indexOf(item) >= 0;
+  }
+
+  module.exports.CheckSelect = CheckSelect;
+</wxs>
+<view class="content">
+  <view class="content-header">
+    <view>排课信息</view>
+  </view>
+
+  <view class="content-body">
+    <view class="content-form-item">
+      <l-input label-width="200" disabled="true" label="排课日期" value="{{courseDate}}">
+        <picker slot="right" class="input-right-slot" mode="date" bindchange="bindDateChange" value="{{courseDate}}">
+          <view class="picker">
+            <text>排课日期</text>
+            <l-icon class="picker-down" color="#333" name="down" size="25" />
+          </view>
+        </picker>
+      </l-input>
+    </view>
+
+    <view class="content-form-item">
+      <l-input label-width="200" disabled="true" label="排课时间" value="{{courseTime}}">
+        <picker slot="right" class="input-right-slot" mode="time" bindchange="bindTimeChange" value="{{courseTime}}">
+          <view class="picker">
+            <text>排课时间</text>
+            <l-icon class="picker-down" color="#333" name="down" size="25" />
+          </view>
+        </picker>
+      </l-input>
+    </view>
+
+    <view class="content-form-item">
+      <l-input label-width="200" disabled="true" label="课程选择" value="{{subjectArr[subjectSelect].subject_name}}">
+        <picker slot="right" class="input-right-slot" mode="selector" bindchange="onSubjectChange"
+          value="{{subjectSelect}}" range="{{subjectArr}}" range-key="subject_name">
+          <view class="picker">
+            <text>课程选择</text>
+            <l-icon class="picker-down" color="#333" name="down" size="25" />
+          </view>
+        </picker>
+      </l-input>
+    </view>
+
+    <view class="content-form-item">
+      <l-input label-width="200" label="临时老师" placeholder="有事临时换老师" bind:lininput="onTeacheriput"
+        value="{{tempTeacher}}" />
+    </view>
+
+
+    <view class="content-form-item">
+      <view class="item-text">
+        <text>预约限制</text>
+      </view>
+      <l-input label-width="200"  type="number" label="人数上限" bind:lininput="onMaxAllowiput" value="{{maxAllow}}">
+        <view slot="right">人</view>
+      </l-input>
+    </view>
+
+    <view class="content-form-item">
+      <l-input label-width="200" type="number" label="人数下限" bind:lininput="onMinAllowiput" value="{{minAllow}}">
+        <view slot="right">人</view>
+      </l-input>
+    </view>
+    <view class="content-form-item">
+      <l-input label-width="200" type="number" label="取消时限" bind:lininput="onCancelDurationiput" value="{{cancelDuration}}">
+        <view slot="right">分钟</view>
+      </l-input>
+    </view>
+
+    <view class="content-form-item">
+      <l-input label-width="220" type="number" label="最短预约时限" bind:lininput="onLimitDurationiput" value="{{limitAppointDuration}}">
+        <view slot="right">分钟</view>
+      </l-input>
+    </view>
+
+    <view class="content-form-item">
+      <text class="item-text">是否允许排队</text>
+      <l-radio-group bind:linchange="onAllowQueueChanged" current="{{allowQueue?1:2}}" none-checked="false"
+        placement="row">
+        <l-radio class="item-radio" key="2" select-color="#ff6f11">不允许</l-radio>
+        <l-radio class="item-radio" key="1" select-color="#ff6f11">允许</l-radio>
+
+      </l-radio-group>
+    </view>
+
+    <view class="content-form-item">
+      <text class="item-text">是否只允许当天预约</text>
+      <l-radio-group bind:linchange="onOnlyTodayAppointChanged" current="{{onlyTodayAppoint?1:2}}" none-checked="false"
+        placement="row">
+        <l-radio class="item-radio" key="2" select-color="#ff6f11">不允许</l-radio>
+        <l-radio class="item-radio" key="1" select-color="#ff6f11">允许</l-radio>
+
+      </l-radio-group>
+    </view>
+
+
+    <view class="content-form-item">
+      <view class="item-text">
+        <text>会员卡设置</text>
+        <text class="t-tips">(什么都不选表示不限制会员卡)</text>
+      </view>
+
+      <l-checkbox-group bind:linchange="onCardsChange">
+        <l-checkbox wx:for-items="{{cards}}" wx:key="id" key="{{item.id}}"
+          checked="{{validate.CheckSelect(needCards,item.id)}}" select-color="#ff6f11">
+          {{item.card_name}}
+        </l-checkbox>
+      </l-checkbox-group>
+    </view>
+
+    <view class="content-form-item">
+      <text class="item-text">预约备注</text>
+      <l-textarea placeholder="预约备注" l-class="textarea-body" maxlength="200" indicator="true"
+        bind:lininput="onCourseDesciput" value="{{courseDesc}}" />
+    </view>
+
+  </view>
+
+  <view class="content-footer">
+    <view bindtap="onSaveInfo" class="foot-btn">保存</view>
+  </view>
+</view>

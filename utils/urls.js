@@ -20,7 +20,7 @@ export default{
     CreateSubject:'/Data/CreateSubject',
     GetSubjectById:'/Data/GetSubjectById',
     UpdateSubject:'/Data/UpdateSubject',
-    GetDoorInfo:'/Data/GetDoorInfo',
+    GetDoorInfo:'/Data/GetDoorInfo'
   },
   process:{
     UploadFile:'/Home/UploadFile',
@@ -34,6 +34,7 @@ export default{
   },
   Courses:{
     GetAdminCourseByDate:"/Data/GetAdminCourseByDate",
-    CreateCourse:"/Data/CreateCourse" 
+    CreateCourse:"/Data/CreateCourse" ,
+    GetAddCourseData:'/Data/GetAddCourseData'
   }
 }

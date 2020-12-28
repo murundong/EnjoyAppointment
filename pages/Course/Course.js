@@ -22,15 +22,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-    this.data._doorId = options.doorId;
     this.data._doorName= options.doorName
-    
     var now = new Date();
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
     var day = now.getDate();
     this.setData({
+      _doorId:options.doorId,
       _currendDate: `${year}-${month}-${day}`
     })
   },
@@ -98,5 +96,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onAddCourse(e){
+    var did= e.currentTarget.dataset.doorid;
+    wx.navigateTo({
+      url: `../CreateCourse/CreateCourse?doorId=${this.data._doorId}`,
+    })
   }
 })
