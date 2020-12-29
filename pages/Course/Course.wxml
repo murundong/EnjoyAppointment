@@ -19,7 +19,12 @@
 
     <!-- 自定义描述内容 -->
     <l-steps direction="column" dot="true" wx:if="{{!_noData}}">
-      <l-step title="2019-9-25 11:30">
+    <l-step wx:for="{{_courses}}" title="{{item.course_time}}" describe="往左滑动编辑" wx:key="id">
+    <view slot="describe">
+    {{item.Subject.subject_name}}
+    </view>
+    </l-step>
+      <!-- <l-step title="2019-9-25 11:30">
         <view class="describe-container" slot="describe">
           广大群众反映步骤条问题
         </view>
@@ -33,7 +38,7 @@
         <view class="describe-container" slot="describe">
           步骤条更新完成😄
         </view>
-      </l-step>
+      </l-step> -->
     </l-steps>
   </view>
 </view>

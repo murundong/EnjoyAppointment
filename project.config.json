@@ -68,9 +68,9 @@
           "scene": null
         },
         {
-          "name": "pages/MyDoors/MyDoors",
-          "pathName": "pages/MyDoors/MyDoors",
-          "query": "cid=1",
+          "name": "pages/CreateCourse/CreateCourse",
+          "pathName": "pages/CreateCourse/CreateCourse",
+          "query": "doorId=10000&courseId=1",
           "scene": null
         },
         {

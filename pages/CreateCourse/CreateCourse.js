@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    courseId:'',
     doorId: '',
     courseDate:'',
     courseTime:'08:00',
@@ -22,7 +23,9 @@ Page({
     subjectArr:[],
     limitAppointDuration:30,
     tempTeacher:'',
-    
+
+    ISUPDATE: false,
+
     subjectSelect:0
   },
 
@@ -31,14 +34,50 @@ Page({
    */
   onLoad: function (options) {
     var now = new Date();
+    
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
     var day = now.getDate();
     this.setData({
+      courseId:options.courseId,
       doorId:options.doorId,
       courseDate:`${year}-${month}-${day}`
     })
     this.InitAddCourseData();
+    if(options.courseId){
+      wx.setNavigationBarTitle({
+        title: '编辑排课',
+      })
+      request({
+        url:urls.Courses.GetCourseById,
+        data:{
+          'id':options.courseId
+        }
+      }).then(res=>{
+        if(res.data){
+          this.setData({
+            doorId: res.data.door_id,
+            courseDate:res.data.course_date,
+            courseTime:res.data.course_time,
+            courseDesc:res.data.course_desc,
+            subjectId:res.data.subject_id,
+            maxAllow:res.data.max_allow,
+            minAllow:res.data.min_allow,
+            cancelDuration:res.data.cancel_duration,
+            allowQueue:res.data.allow_queue,
+            onlyTodayAppoint:res.data.only_today_appoint,
+            limitAppointDuration:res.data.limit_appoint_duration,
+            tempTeacher:res.data.temp_teacher,
+            ISUPDATE: true,
+          })
+          if(res.data.need_cards){
+            this.setData({
+              needCards: res.data.need_cards.split(',').map(x=>{return parseInt(x)}),
+            })
+          }
+        }
+      })
+    }
   },
 
   /**
@@ -199,6 +238,7 @@ Page({
       return;
     }
     var data ={
+      id:this.data.courseId,
       door_id:this.data.doorId,
       course_date:this.data.courseDate,
       course_time:this.data.courseTime,
@@ -219,7 +259,9 @@ Page({
   },
   EndSave(data){
     var _that = this;
-    var url = urls.Courses.CreateCourse;
+    var url = _that.data.ISUPDATE ?
+      urls.Courses.UpdateCourse:
+      urls.Courses.CreateCourse;
 
     request({
       url:url,

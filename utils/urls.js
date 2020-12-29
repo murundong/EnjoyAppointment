@@ -35,6 +35,8 @@ export default{
   Courses:{
     GetAdminCourseByDate:"/Data/GetAdminCourseByDate",
     CreateCourse:"/Data/CreateCourse" ,
-    GetAddCourseData:'/Data/GetAddCourseData'
+    GetAddCourseData:'/Data/GetAddCourseData',
+    GetCourseById:'/Data/GetCourseById',
+    UpdateCourse:'/Data/UpdateCourse'
   }
 }
