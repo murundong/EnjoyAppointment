@@ -8,20 +8,60 @@
   </view>
   <view class="r-line"></view>
   <view class="content-second">
-    <view class="second-date">
-      <l-icon class="date-icon" color="#525562" size="28" name="history" />{{_currendDate}}
-    </view>
+    <picker class="second-date" mode="date" bindchange="bindDayChange" value="{{_selectDate}}" >
+      <view class="picker">
+        <l-icon class="date-icon" color="#525562" size="28" name="history" />
+        <view>{{_selectDate}}</view>
+      </view>
+    </picker>
   </view>
   <view class="content-body">
+    <view class="content-body-week">{{_showWeek}}</view>
     <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
       describe="所选日期暂时还没有排课数据哦~"></l-status-show>
-
-
     <!-- 自定义描述内容 -->
     <l-steps direction="column" dot="true" wx:if="{{!_noData}}">
     <l-step wx:for="{{_courses}}" title="{{item.course_time}}" describe="往左滑动编辑" wx:key="id">
     <view slot="describe">
-    {{item.Subject.subject_name}}
+      <!-- {{item.Subject.subject_name}} -->
+      <l-slide-view height="186" width="650" slide-width="340" auto-close="true">
+        <view slot="left" class="slide-left">
+          <view class="slide-left-top">
+            <view class="slide-top-min">{{item.Subject.subject_duration}} 分钟</view>
+            <view class="slide-top-stat"> 已结束</view>
+            <view class="slide-top-num">满员人数{{item.max_allow}}人</view>
+            <view class="slide-top-self">  
+              <l-icon class="add-icon" color="#525562" size="22" name="user" />
+              自助预约</view>
+          </view>
+          <view class="r-line"></view>
+          <view class="slide-left-bottom">
+            <view class="slide-left-img">
+              <image src="{{baseURL+item.Subject.subject_img}}" />
+            </view>
+            <view class="slide-body">
+              <text>{{item.Subject.subject_name}}</text>
+              <view class="slid-body-teacher">
+                <view wx:if="{{item.temp_teacher!=''}}" class="slide-body-tempteacher">
+                  <l-icon name="warning" color="#fd4d4d" size="20"/>
+                  临时老师:
+                </view>
+                <view>{{item.temp_teacher==''? item.Subject.subject_teacher:item.temp_teacher}}</view>
+              </view>
+            </view>
+            <view class="slide-body-end">
+              <view>已约</view>
+              <view>2 人</view>
+            </view>
+          </view>
+        
+        </view>
+        <view slot="right" class="slide-right">
+          <text class="slide-right-edit" bindtap="onSlideEdit" data-id="{{item.id}}">编辑</text>
+          <text class="slide-right-cancel" bindtap="onSlideCancel" data-id="{{item.id}}">取消</text>
+          <text class="slide-right-delete" bindtap="onSlideDelete" data-id="{{item.id}}">删除</text>
+        </view>
+      </l-slide-view>
     </view>
     </l-step>
       <!-- <l-step title="2019-9-25 11:30">
