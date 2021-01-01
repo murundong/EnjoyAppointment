@@ -3,7 +3,8 @@ import urls from '../../utils/urls';
 import request from '../../utils/network.js';
 var util  = require('../../libs/util.js')
 const app = getApp();
-var baseURL= app.globalData.baseMVCURL;
+const baseURL = app.globalData.baseMVCURL;
+const baseImgURL = app.globalData.baseImgURL;
 Page({
 
   /**
@@ -13,7 +14,8 @@ Page({
 
     _noData:false,
     _courses:[],
-    baseURL:baseURL,
+      baseURL: baseURL,
+      baseImgURL: baseImgURL,
     _doorId:'',
     _doorName:'',
     _currendDate:'',

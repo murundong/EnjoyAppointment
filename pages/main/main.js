@@ -3,7 +3,8 @@ import request from '../../utils/network.js';
 var utils = require ('../../utils/util.js');
 var bmap = require('../../libs/bmap-wx.min');
 const app = getApp();
-var baseURL= app.globalData.baseMVCURL;
+const baseURL = app.globalData.baseMVCURL;
+const baseImgURL = app.globalData.baseImgURL;
 Page({
 
   /**
@@ -13,7 +14,8 @@ Page({
     pageIndex:1,
     pageSize:10,
     pageTotal:'',
-    baseURL:baseURL,
+      baseURL: baseURL,
+      baseImgURL: baseImgURL,
      Banners:[],
      Doors:[],
      Region:[],

@@ -2,14 +2,16 @@
 import urls from '../../utils/urls';
 import request from '../../utils/network.js';
 const app = getApp();
-var baseURL= app.globalData.baseMVCURL;
+const baseURL = app.globalData.baseMVCURL;
+const baseImgURL = app.globalData.baseImgURL
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    baseURL:baseURL,
+      baseURL: baseURL,
+      baseImgURL: baseImgURL,
     pageIndex:1,
     pageSize:10,
     pageTotal:'',

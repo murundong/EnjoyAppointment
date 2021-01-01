@@ -2,7 +2,8 @@
 import urls from '../../utils/urls';
 import request from '../../utils/network.js';
 const app = getApp();
-var baseURL= app.globalData.baseMVCURL;
+const baseURL = app.globalData.baseMVCURL;
+const baseImgURL = app.globalData.baseImgURL;
 Page({
 
   /**
@@ -12,7 +13,8 @@ Page({
     pageIndex:1,
     pageSize:10,
     pageTotal:'',
-    baseURL:baseURL,
+      baseURL: baseURL,
+      baseImgURL: baseImgURL,
     Doors:[]
   },
 

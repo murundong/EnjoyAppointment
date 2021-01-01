@@ -5,7 +5,8 @@ import {
 import request from '../../utils/network.js';
 import urls from '../../utils/urls.js';
 const app = getApp();
-var baseURL = app.globalData.baseMVCURL;
+const baseURL = app.globalData.baseMVCURL;
+const baseImgURL = app.globalData.baseImgURL;
 Page({
 
   /**
@@ -13,7 +14,8 @@ Page({
    */
   data: {
     scrollTop: undefined,
-    baseURL: baseURL,
+      baseURL: baseURL,
+      baseImgURL: baseImgURL,
     doorId: '',
     doorName: '',
     banners: '',
@@ -165,7 +167,7 @@ Page({
   },
   onPreviewImg(e) {
     var src = e.currentTarget.dataset.src;
-    var srcArr = this.data.banners.map(x => this.data.baseURL + x);
+    var srcArr = this.data.banners.map(x => this.data.baseImgURL + x);
     wx.previewImage({
       urls: srcArr,
       current: src

@@ -37,7 +37,7 @@
           <view class="r-line"></view>
           <view class="slide-left-bottom">
             <view class="slide-left-img">
-              <image src="{{baseURL+item.Subject.subject_img}}" />
+              <image src="{{baseImgURL+item.Subject.subject_img}}" />
             </view>
             <view class="slide-body">
               <text>{{item.Subject.subject_name}}</text>

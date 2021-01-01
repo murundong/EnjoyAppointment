@@ -6,13 +6,15 @@ import request from '../../utils/network.js';
 import urls from '../../utils/urls.js';
 const app = getApp();
 const baseMVCURL = app.globalData.baseMVCURL;
+const baseImgURL = app.globalData.baseImgURL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    baseMVCURL: baseMVCURL,
+      baseMVCURL: baseMVCURL,
+      baseImgURL: baseImgURL,
     doorId: '',
     subjectId: '',
     imgs: [],
@@ -151,7 +153,7 @@ Page({
   },
   GenerateEditUrls(data) {
     var arr = new Array();
-    var baseurl = this.data.baseMVCURL;
+      var baseurl = this.data.baseImgURL;
     if (data) {
       arr.push({
         url: baseurl + data

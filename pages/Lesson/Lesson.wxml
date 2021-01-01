@@ -5,7 +5,7 @@
         <swiper wx:if="{{banners}}" class="swipper" indicator-dots="true" autoplay="true" interval="3000">
           <block wx:for="{{banners}}" wx:key="id">
             <swiper-item>
-              <image src="{{baseURL+item}}" bindtap="onPreviewImg" data-src="{{baseURL+item}}">
+              <image src="{{baseImgURL+item}}" bindtap="onPreviewImg" data-src="{{baseImgURL+item}}">
               </image>
             </swiper-item>
           </block>

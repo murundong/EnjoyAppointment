@@ -9,7 +9,7 @@
 
   <view class="content-doors">
     <block wx:for="{{Doors}}" wx:key="id">
-      <l-card data-id="{{item.id}}" data-name="{{item.door_name}}" bindtap="onDoorTap"  type="cover"  image="{{baseURL+item.door_img}}"
+      <l-card data-id="{{item.id}}" data-name="{{item.door_name}}" bindtap="onDoorTap"  type="cover"  image="{{baseImgURL+item.door_img}}"
        title="{{item.door_name}}"
        >
         <view class="content-door-desc">

@@ -52,7 +52,7 @@
  
   <view class="door">
     <block wx:for="{{Doors}}" wx:key="id">
-      <view bindtap="onDoorNav" class="door-box" data-door-name="{{item.door_name}}" data-door-id="{{item.id}}" style="background:url('{{baseURL+item.door_img}}') no-repeat;background-size:100% 100%; ">
+      <view bindtap="onDoorNav" class="door-box" data-door-name="{{item.door_name}}" data-door-id="{{item.id}}" style="background:url('{{baseImgURL+item.door_img}}') no-repeat;background-size:100% 100%; ">
         <view class="door-status {{ProcessStatus.status(item.status)}}">{{ProcessStatus.statusTxt(item.status)}}</view>
         <view class="door-text">
           <view class="door-name">{{item.door_name}}</view>

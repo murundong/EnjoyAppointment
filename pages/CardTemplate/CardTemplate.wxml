@@ -11,7 +11,7 @@
       <view class="card-body" bindtap="onCardTap" data-id="{{item.id}}">
         <view class="card-body-left">
           <view class="body-left-title">{{item.card_name}}</view>
-          <image class="body-left-img" src="{{baseURL+_img}}"></image>
+          <image class="body-left-img" src="{{baseImgURL+_img}}"></image>
         </view>
         <view class="card-body-right">
 
