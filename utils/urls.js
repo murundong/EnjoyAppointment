@@ -37,6 +37,8 @@ export default{
     CreateCourse:"/Data/CreateCourse" ,
     GetAddCourseData:'/Data/GetAddCourseData',
     GetCourseById:'/Data/GetCourseById',
-    UpdateCourse:'/Data/UpdateCourse'
+    UpdateCourse:'/Data/UpdateCourse',
+    QuickCourse:'/Data/QuickCourse',
+    DeleteCourse:'/Data/DeleteCourse'
   }
 }

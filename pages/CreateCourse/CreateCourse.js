@@ -1,6 +1,7 @@
 // pages/CreateCourse/CreateCourse.js
 import request from '../../utils/network.js';
 import urls from '../../utils/urls.js';
+var util  = require('../../libs/util.js')
 Page({
 
   /**
@@ -35,13 +36,10 @@ Page({
   onLoad: function (options) {
     var now = new Date();
     
-    var year = now.getFullYear();
-    var month = now.getMonth() + 1;
-    var day = now.getDate();
     this.setData({
       courseId:options.courseId,
       doorId:options.doorId,
-      courseDate:`${year}-${month}-${day}`
+      courseDate:util.dateFormat("YYYY-mm-dd",now)
     })
     this.InitAddCourseData();
     if(options.courseId){

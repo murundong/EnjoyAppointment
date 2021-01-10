@@ -13,6 +13,9 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+
+
+
  const scan_event= e=>{
   wx.scanCode({
     onlyFromCamera: true,

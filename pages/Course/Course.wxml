@@ -1,7 +1,13 @@
 <view class="content">
   <view class="content-head">
     <view class="head-week">本周课表</view>
-    <view class="head-quick">快速排课</view>
+    <view class="head-quick">
+      <picker  mode="date" start="{{_currendDate}}" end="{{_endDate}}" bindchange="bindQuickDate">
+        <view>
+          快速排课
+        </view>
+      </picker>
+    </view>
     <view class="head-add" bindtap="onAddCourse" data-doorid="{{_doorId}}">
       <l-icon class="add-icon" color="#525562" size="28" name="add" />新增排课
     </view>
