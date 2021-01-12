@@ -9,21 +9,18 @@
   <view class="content-subject">
     <block wx:for="{{subjectsArr}}" wx:key="id">
       <view class="subject-body" bindtap="onSubjectsTap" data-id="{{item.id}}" data-door-id="{{item.door_id}}">
-        <l-card type="avatar" l-class="card" image="{{baseImgURL+item.subject_img}}" title="{{item.subject_name}}" describe="{{item.subject_teacher}}">
+        <l-card type="avatar" l-class="card" image="{{baseImgURL+item.subject_img}}" title="{{item.subject_name}}"
+          describe="{{item.subject_teacher}}">
           <view class="avter-content">
             {{item.subject_desc}}
           </view>
           <view class="tag-container">
-            <view class="tag-item">{{item.subject_tag}}</view>
-        </view>
-          <l-tag  shape="circle" 
-                bg-color="#f3f3f3" 
-                font-color="#525562" 
-                slot="more"
-                size="large">
-                {{item.subject_duration}} 分钟
-                <text wx:if="{{item.subject_price != null}}">/{{item.subject_price}}元</text>
-        </l-tag>
+            <view class="tag-item"  wx:if="{{item.subject_tag!=''}}">{{item.subject_tag}}</view>
+          </view>
+          <l-tag shape="circle" bg-color="#f3f3f3" font-color="#525562" slot="more" size="large">
+            {{item.subject_duration}} 分钟
+            <text wx:if="{{item.subject_price != null}}">/{{item.subject_price}}元</text>
+          </l-tag>
         </l-card>
       </view>
     </block>

@@ -175,6 +175,15 @@
   border-radius: 30rpx;
   letter-spacing: 2rpx;
 }
+.nostart{
+  color:#ffc107 ;
+}
+.processing{
+  color: #84d271;
+}
+.over{
+  color: #fd4d4d;
+}
 .slide-right-edit {
   background-color: #b3b6bd;
   display: flex;

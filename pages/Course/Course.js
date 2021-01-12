@@ -11,17 +11,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-
-    _noData:false,
-    _courses:[],
-      baseURL: baseURL,
-      baseImgURL: baseImgURL,
-    _doorId:'',
-    _doorName:'',
-    _currendDate:'',
-    _selectDate:'',
-    _showWeek:'',
-    _endDate:'',
+    _stepActiveIndex: 0,
+    _noData: false,
+    _courses: [],
+    baseURL: baseURL,
+    baseImgURL: baseImgURL,
+    _doorId: '',
+    _doorName: '',
+    _currendDate: '',
+    _selectDate: '',
+    _showWeek: '',
+    _endDate: '',
   },
 
   /**
@@ -103,9 +103,43 @@ Page({
       if(res.errCode==0){
         _that.setData({
           _courses:res.data.data,
-          _noData:res.data.total==0
+          _noData:res.data.total==0,
+          _stepActiveIndex:-1
         })
-        
+        if(res.data.total>0){
+       
+        var newArr= res.data.data.map(function(cv,index,arr)
+         {
+           var tm =  new Date(`${cv.course_date} ${cv.course_time}`);
+           var tm_end =new Date(tm);
+           tm_end.setMinutes(tm_end.getMinutes()+cv.Subject.subject_duration);
+            if(new Date() >tm_end)
+            {
+              cv.status = "已结束";
+              cv.status_class = "over";
+              return cv;
+            }
+            else if(new Date()> tm)
+            {
+              cv.status = "进行中";
+              cv.status_class = "processing";
+              return cv;
+            }
+            else{
+              if(_that.data._stepActiveIndex==-1){
+                _that.setData({
+                  _stepActiveIndex:index
+                })
+              }
+              cv.status = "未开始";
+              cv.status_class = "nostart";
+              return cv;
+            }
+          })
+          _that.setData({
+            _courses:newArr,
+          })
+        }
       }
     })
   },
@@ -185,7 +219,7 @@ Page({
    
     wx.showModal({
       title:'确认',
-      content:'快速排课只能复制当前日期自己创建的排课，非自己创建的排课将不会进行复制！临时教师也不会被复制',
+      content:'快速排课只能复制当前日期自己创建的排课，非自己创建的排课将不会进行复制！临时教师也不会被复制！为避免数据混乱，不要重复复制！',
       confirmText:'我已了解',
       confirmColor:'#fd4d4d',
       success(res){
@@ -193,7 +227,6 @@ Page({
           request({
             url:`${urls.Courses.QuickCourse}?sdate=${_that.data._selectDate}&cdate=${date}&doorid=${_that.data._doorId}&openid=${wx.getStorageSync("loginSessionKey")}`
           }).then(res=>{
-            console.log(res);
             if(res.errCode==0){
               _that.setData({
                 _selectDate:date
