@@ -1,8 +1,8 @@
 <view class="content">
   <view class="content-head">
-    <view class="head-week">本周课表</view>
+    <view class="head-week" bindtap="bindShowWeekModel">本周课表</view>
     <view class="head-quick">
-      <picker  mode="date" start="{{_currendDate}}" end="{{_endDate}}" bindchange="bindQuickDate">
+      <picker mode="date" start="{{_currendDate}}" end="{{_endDate}}" bindchange="bindQuickDate">
         <view>
           快速排课
         </view>
@@ -14,7 +14,7 @@
   </view>
   <view class="r-line"></view>
   <view class="content-second">
-    <picker class="second-date" mode="date" bindchange="bindDayChange" value="{{_selectDate}}" >
+    <picker class="second-date" mode="date" bindchange="bindDayChange" value="{{_selectDate}}">
       <view class="picker">
         <l-icon class="date-icon" color="#525562" size="28" name="history" />
         <view>{{_selectDate}}</view>
@@ -26,65 +26,63 @@
     <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
       describe="所选日期暂时还没有排课数据哦~"></l-status-show>
     <!-- 自定义描述内容 -->
-    <l-steps direction="column"  wx:if="{{!_noData}}"  active-index="{{_stepActiveIndex}}" color="#ff6f11">
-    <l-step wx:for="{{_courses}}" title="{{item.course_time}}" describe="往左滑动编辑" wx:key="id">
-    <view slot="describe">
-      <!-- {{item.Subject.subject_name}} -->
-      <l-slide-view height="186" width="650" slide-width="260" auto-close="true">
-        <view slot="left" class="slide-left">
-          <view class="slide-left-top">
-            <view class="slide-top-min">{{item.Subject.subject_duration}} 分钟</view>
-            <view class="slide-top-stat {{item.status_class}}"> {{item.status}}</view>
-            <view class="slide-top-num">满员人数{{item.max_allow}}人</view>
-            <view class="slide-top-self">  
-              <l-icon class="add-icon" color="#525562" size="22" name="user" />
-              自助预约</view>
-          </view>
-          <view class="r-line"></view>
-          <view class="slide-left-bottom">
-            <view class="slide-left-img">
-              <image src="{{baseImgURL+item.Subject.subject_img}}" />
-            </view>
-            <view class="slide-body">
-              <text>{{item.Subject.subject_name}}</text>
-              <view class="slid-body-teacher">
-                <view wx:if="{{item.temp_teacher!=''}}" class="slide-body-tempteacher">
-                  <l-icon name="warning" color="#fd4d4d" size="20"/>
-                  临时老师:
-                </view>
-                <view>{{item.temp_teacher==''? item.Subject.subject_teacher:item.temp_teacher}}</view>
+    <l-steps direction="column" wx:if="{{!_noData}}" active-index="{{_stepActiveIndex}}" color="#ff6f11">
+      <l-step wx:for="{{_courses}}" title="{{item.course_time}}" describe="往左滑动编辑(仅未开始课程有效)" wx:key="id">
+        <view slot="describe">
+          <!-- {{item.Subject.subject_name}} -->
+          <l-slide-view height="186" width="650" slide-width="300" auto-close="true" disabled="{{item.status_class != 'nostart'}}">
+            <view slot="left" class="slide-left">
+              <view class="slide-left-top">
+                <view class="slide-top-min">{{item.Subject.subject_duration}} 分钟</view>
+                <view class="slide-top-stat {{item.status_class}}"> {{item.status}}</view>
+                <view class="slide-top-num">满员人数{{item.max_allow}}人</view>
+                <view class="slide-top-self">
+                  <l-icon class="add-icon" color="#525562" size="22" name="user" />
+                  自助预约</view>
               </view>
+              <view class="r-line"></view>
+              <view class="slide-left-bottom">
+                <view class="slide-left-img">
+                  <image src="{{baseImgURL+item.Subject.subject_img}}" />
+                </view>
+                <view class="slide-body">
+                  <text>{{item.Subject.subject_name}}</text>
+                  <view class="slid-body-teacher">
+                    <view wx:if="{{item.temp_teacher!=''}}" class="slide-body-tempteacher">
+                      <l-icon name="warning" color="#fd4d4d" size="20" />
+                      临时老师:
+                    </view>
+                    <view>{{item.temp_teacher==''? item.Subject.subject_teacher:item.temp_teacher}}</view>
+                  </view>
+                </view>
+                <view class="slide-body-end">
+                  <view>已约</view>
+                  <view>2 人</view>
+                </view>
+              </view>
+
             </view>
-            <view class="slide-body-end">
-              <view>已约</view>
-              <view>2 人</view>
+            <view slot="right" class="slide-right">
+              <text class="slide-right-edit" bindtap="onSlideEdit" data-id="{{item.id}}">编辑</text>
+              <text wx:if="{{item.status_class == 'nostart'}}" class="slide-right-cancel" bindtap="onSlideCancel"
+                data-id="{{item.id}}">取消</text>
+              <text class="slide-right-delete" bindtap="onSlideDelete" data-id="{{item.id}}">删除</text>
             </view>
-          </view>
-        
-        </view>
-        <view slot="right" class="slide-right">
-          <text class="slide-right-edit" bindtap="onSlideEdit" data-id="{{item.id}}">编辑</text>
-          <text wx:if="{{item.status_class == 'nostart'}}" class="slide-right-cancel" bindtap="onSlideCancel" data-id="{{item.id}}">取消</text>
-          <text class="slide-right-delete" bindtap="onSlideDelete" data-id="{{item.id}}">删除</text>
-        </view>
-      </l-slide-view>
-    </view>
-    </l-step>
-      <!-- <l-step title="2019-9-25 11:30">
-        <view class="describe-container" slot="describe">
-          广大群众反映步骤条问题
+          </l-slide-view>
         </view>
       </l-step>
-      <l-step title="2019-10-05 12:30">
-        <view class="describe-container" slot="describe">
-          拾玖重构步骤条
-        </view>
-      </l-step>
-      <l-step title="2019-10-25 13:30">
-        <view class="describe-container" slot="describe">
-          步骤条更新完成😄
-        </view>
-      </l-step> -->
     </l-steps>
   </view>
+
+  <view class="cotent-popup">
+    <l-popup show="{{_showWeekModel}}" content-align="bottom" locked="{{true}}">
+      <view class="pop-week-content">
+        
+      </view>
+      <!-- <view class='pupop-content'>
+        <view class='pupop-close' bindtap='bindHideWeekModel'>关闭弹出层</view>
+      </view> -->
+    </l-popup>
+  </view>
+
 </view>

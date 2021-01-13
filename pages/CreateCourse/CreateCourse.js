@@ -227,7 +227,7 @@ Page({
       });
       return;
     }
-    let _datetime = `${this.data.courseDate} ${this.data.courseTime }`;
+    let _datetime = `${this.data.courseDate.replace(/-/g,'/')} ${this.data.courseTime }`;
     if( new Date(_datetime) <= new Date()){
       wx.showToast({
         title: '请设置未来时间！',

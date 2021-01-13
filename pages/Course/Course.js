@@ -22,6 +22,10 @@ Page({
     _selectDate: '',
     _showWeek: '',
     _endDate: '',
+
+    _showWeekModel:false,
+    _showSelfModel:false,
+    _showWeekModelTp:0
   },
 
   /**
@@ -110,11 +114,14 @@ Page({
        
         var newArr= res.data.data.map(function(cv,index,arr)
          {
-           var tm =  new Date(`${cv.course_date} ${cv.course_time}`);
+           var tm =  new Date(`${cv.course_date.replace(/-/g,"/")} ${cv.course_time}`);
            var tm_end =new Date(tm);
            tm_end.setMinutes(tm_end.getMinutes()+cv.Subject.subject_duration);
             if(new Date() >tm_end)
             {
+              _that.setData({
+                _stepActiveIndex:index+1
+              })
               cv.status = "已结束";
               cv.status_class = "over";
               return cv;
@@ -173,24 +180,31 @@ Page({
   onSlideDelete(e){
     var cid = e.currentTarget.dataset.id;
     var _that = this;
-    request({
-     url:urls.Courses.DeleteCourse,
-     data:{
-      cid:cid
-     }
-    }).then(res=>{
-      if(res.errCode==0){
-        wx.showToast({
-          title: '删除成功！',
-          icon:'none'
-        })
-        _that.InitCourseData();
-      }
-      else{
-        wx.showToast({
-          title: '删除失败！',
-          icon:'none'
-        })
+    wx.showModal({
+      content:'确认删除么',
+      success(res){
+        if(res.confirm){
+          request({
+            url:urls.Courses.DeleteCourse,
+            data:{
+             cid:cid
+            }
+           }).then(res=>{
+             if(res.errCode==0){
+               wx.showToast({
+                 title: '删除成功！',
+                 icon:'none'
+               })
+               _that.InitCourseData();
+             }
+             else{
+               wx.showToast({
+                 title: '删除失败！',
+                 icon:'none'
+               })
+             }
+           })
+        }
       }
     })
   },
@@ -236,6 +250,30 @@ Page({
           })
         }
       }
+    })
+  },
+  InitWeekCourse(){
+    var _that = this;
+    request({
+      url:urls.Courses.GetWeekCourse,
+      data:{
+        door_id:_that.data._doorId,
+        tp:_that.data._showWeekModelTp
+      },
+      method:'post'
+    }).then(res=>{
+      console.log(res);
+    });
+  },
+  bindShowWeekModel(){
+    this.setData({
+      _showWeekModel:true
+    })
+    this.InitWeekCourse();
+  },
+  bindHideWeekModel(){
+    this.setData({
+      _showWeekModel:false
     })
   }
 })

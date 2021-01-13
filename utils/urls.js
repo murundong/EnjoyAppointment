@@ -39,6 +39,7 @@ export default{
     GetCourseById:'/Data/GetCourseById',
     UpdateCourse:'/Data/UpdateCourse',
     QuickCourse:'/Data/QuickCourse',
-    DeleteCourse:'/Data/DeleteCourse'
+    DeleteCourse:'/Data/DeleteCourse',
+    GetWeekCourse:'/Data/GetWeekCourse'
   }
 }
