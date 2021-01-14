@@ -1,3 +1,13 @@
+<wxs module="CourseWxs">
+  var GenerateDuration = function(st,duration){
+    var st_out= getDate('1970/01/01 '+st);
+    st_out.setMinutes(st_out.getMinutes()+1);
+    var hours = st_out.getHours();
+    var minutes = st_out.getMinutes();
+    return  st+ ' ~ '+ (hours.toString().length>1?hours:'0'+hours) +":"+(minutes.toString().length>1?minutes:'0'+minutes) ;
+  }
+  module.exports.GenerateDuration = GenerateDuration;
+</wxs>
 <view class="content">
   <view class="content-head">
     <view class="head-week" bindtap="bindShowWeekModel">本周课表</view>
@@ -30,7 +40,8 @@
       <l-step wx:for="{{_courses}}" title="{{item.course_time}}" describe="往左滑动编辑(仅未开始课程有效)" wx:key="id">
         <view slot="describe">
           <!-- {{item.Subject.subject_name}} -->
-          <l-slide-view height="186" width="650" slide-width="300" auto-close="true" disabled="{{item.status_class != 'nostart'}}">
+          <l-slide-view height="186" width="650" slide-width="300" auto-close="true"
+            disabled="{{item.status_class != 'nostart'}}">
             <view slot="left" class="slide-left">
               <view class="slide-left-top">
                 <view class="slide-top-min">{{item.Subject.subject_duration}} 分钟</view>
@@ -75,13 +86,37 @@
   </view>
 
   <view class="cotent-popup">
-    <l-popup show="{{_showWeekModel}}" content-align="bottom" locked="{{true}}">
-      <view class="pop-week-content">
-        
+    <l-popup show="{{_showWeekModel}}" content-align="bottom">
+      <view class="pop-real-content">
+        <view>
+          <picker model="selector" range="{{_showWeekModelSelectData}}" range-key="{{'name'}}"
+            value="{{_showWeekModelSelectIndex}}" bindchange="onPickerWeekChange">
+            <view class="pop-picker">
+              <text> {{_showWeekModelSelectData[_showWeekModelSelectIndex].name}}</text>
+              <l-icon class="picker-down" color="#333" name="down" size="25" />
+             </view>
+          </picker>
+        </view>
+        <scroll-view scroll-X="true">
+          <view class="pop-week-content">
+            <view wx:for="{{_showWeekModelData}}" wx:key="index">
+              <view class="pop-week-title">
+                <view>{{item.date}}</view>
+                <view>{{item.week}}</view>
+              </view>
+              <view wx:for="{{item.Courses}}" wx:key="id" class="pop-week-course">
+                <view class="pop-week-course-item">
+                  <view>{{item.Subject.subject_name}}</view>
+                  <view>{{CourseWxs.GenerateDuration( item.course_time,item.Subject.subject_duration)}}</view>
+                  <view>{{item.Subject.subject_teacher}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
       </view>
-      <!-- <view class='pupop-content'>
-        <view class='pupop-close' bindtap='bindHideWeekModel'>关闭弹出层</view>
-      </view> -->
+
+
     </l-popup>
   </view>
 

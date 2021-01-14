@@ -205,3 +205,55 @@
   justify-content: center;
   align-items: center;
 }
+.pop-real-content{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20rpx;
+  padding-bottom:30rpx
+}
+scroll-view{
+  width: 710rpx;
+  min-height: 500rpx;
+  background-color: white;
+  border: 1px solid #eaeaea;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-top: 12rpx;
+}
+.pop-week-content{
+  display: flex;
+}
+.pop-picker {
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  border: 1px solid #b3b6bd;
+  padding: 1rpx 25rpx;
+  justify-content: center;
+}
+.picker-down{
+  margin-left: 10rpx;
+}
+.pop-week-title{
+  display: flex;
+  flex-direction: column;
+  width: 200rpx;
+  border: 1px solid #eaeaea;
+  align-items: center;
+}
+.pop-week-course{
+  display: flex;
+  flex-direction: column;
+}
+.pop-week-course-item{
+  border: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28rpx;
+  padding: 0 10rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

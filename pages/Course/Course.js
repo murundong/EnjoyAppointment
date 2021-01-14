@@ -25,7 +25,11 @@ Page({
 
     _showWeekModel:false,
     _showSelfModel:false,
-    _showWeekModelTp:0
+    _showWeekModelTp:0,
+    _showWeekModelSelectIndex:1,
+    _showWeekModelData:[],
+    _showWeekModelSelectData:[{"id":-1,"name":"上周"},{"id":0,"name":"本周"},{"id":1,"name":"下周"}],
+    
   },
 
   /**
@@ -177,6 +181,11 @@ Page({
       url: `../CreateCourse/CreateCourse?doorId=${this.data._doorId}&courseId=${cid}`,
     })
   },
+  scrollToTop() {
+    this.setAction({
+      scrollTop: 0
+    })
+  },
   onSlideDelete(e){
     var cid = e.currentTarget.dataset.id;
     var _that = this;
@@ -262,8 +271,20 @@ Page({
       },
       method:'post'
     }).then(res=>{
-      console.log(res);
+      if(res.data){
+        _that.setData({
+          _showWeekModelData:res.data
+        })
+      }
     });
+  },
+  onPickerWeekChange(e){
+    var v = e.detail.value;
+    this.setData({
+      _showWeekModelSelectIndex:v,
+      _showWeekModelTp:this.data._showWeekModelSelectData[v].id
+    })
+    this.InitWeekCourse();
   },
   bindShowWeekModel(){
     this.setData({
