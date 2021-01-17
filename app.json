@@ -20,7 +20,8 @@
     "pages/Subjects/Subjects",
     "pages/CreateSubject/CreateSubject",
     "pages/Course/Course",
-    "pages/CreateCourse/CreateCourse"
+    "pages/CreateCourse/CreateCourse",
+    "pages/AdminUser/AdminUser"
   ],
   "tabBar": {
     "list": [

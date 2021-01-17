@@ -41,5 +41,8 @@ export default{
     QuickCourse:'/Data/QuickCourse',
     DeleteCourse:'/Data/DeleteCourse',
     GetWeekCourse:'/Data/GetWeekCourse'
+  },
+  UInfo:{
+    GetUserLst_Admin:'/Data/GetUserLst_Admin'
   }
 }

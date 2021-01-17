@@ -30,7 +30,8 @@
       <l-list l-content-class="content-list-item" icon-color="#525562" title="消息通知" icon="comment" url="../Message/Message" />
       <l-list l-content-class="content-list-item" icon-color="#525562" title="我的卡片" icon="phone" url="../Card/Card" />
       <l-list l-content-class="content-list-item" icon-color="#525562" title="个人信息" icon="user" url="../Person/Person"/>
-      <l-list wx:if="{{_userInfo.role!=0}}" l-content-class="content-list-item" icon-color="#525562" title="管理场馆" icon="setting" url="../MyDoors/MyDoors"/>
+      <l-list wx:if="{{_userInfo.role>0}}" l-content-class="content-list-item" icon-color="#525562" title="管理场馆" icon="edit" url="../MyDoors/MyDoors"/>
+      <l-list wx:if="{{_userInfo.role==3}}" l-content-class="content-list-item" icon-color="#525562" title="分配角色" icon="setting" url="../AdminUser/AdminUser"/>
     </view>
   </view>
 </view>

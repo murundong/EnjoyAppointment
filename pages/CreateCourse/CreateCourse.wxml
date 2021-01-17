@@ -46,7 +46,7 @@
     </view>
 
     <view class="content-form-item">
-      <l-input label-width="200" label="临时老师" placeholder="有事临时换老师" bind:lininput="onTeacheriput"
+      <l-input label-width="200" label="代课老师" placeholder="有事临时换老师" bind:lininput="onTeacheriput"
         value="{{tempTeacher}}" />
     </view>
 

@@ -1,7 +1,7 @@
 <wxs module="CourseWxs">
   var GenerateDuration = function(st,duration){
     var st_out= getDate('1970/01/01 '+st);
-    st_out.setMinutes(st_out.getMinutes()+1);
+    st_out.setMinutes(st_out.getMinutes()+duration);
     var hours = st_out.getHours();
     var minutes = st_out.getMinutes();
     return  st+ ' ~ '+ (hours.toString().length>1?hours:'0'+hours) +":"+(minutes.toString().length>1?minutes:'0'+minutes) ;
@@ -61,7 +61,7 @@
                   <view class="slid-body-teacher">
                     <view wx:if="{{item.temp_teacher!=''}}" class="slide-body-tempteacher">
                       <l-icon name="warning" color="#fd4d4d" size="20" />
-                      临时老师:
+                      代课老师:
                     </view>
                     <view>{{item.temp_teacher==''? item.Subject.subject_teacher:item.temp_teacher}}</view>
                   </view>

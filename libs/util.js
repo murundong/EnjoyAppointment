@@ -37,13 +37,6 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
-// 两位数以内的数字自动补零
-function formatNumber(n) {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
-
-
 // 计算变化多少天后的日期
 function DateAddDay(d, days) {
 
