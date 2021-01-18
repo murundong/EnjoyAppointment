@@ -77,9 +77,10 @@ App({
 
   globalData: {
     userInfo: null,
-    baseURL: 'http://localhost:54180/api',
-    baseMVCURL:'http://localhost:54180/',
-    // baseImgURL:'http://localhost:54180/',
+    baseURL: 'http://localhost:54688/',
+    baseMVCURL:'http://localhost:54688/',
+
+    //baseImgURL:'http://localhost:54180/',
 
     // baseURL: 'https://www.appoint.icu/api',
     // baseMVCURL: 'https://www.appoint.icu/',

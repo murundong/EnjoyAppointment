@@ -24,7 +24,7 @@ export default{
   },
   process:{
     UploadFile:'/Home/UploadFile',
-    MvcUploadFile:'/Homemvc/UploadFile',
+    MvcUploadFile:'/Home/UploadFile',
     CreateDoors:'/Data/CreateDoors',
     UpdateDoors:'/Data/UpdateDoors',
     UpdateUInfoSetting:'/Data/UpdateUserInfoSetting'

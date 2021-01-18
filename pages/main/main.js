@@ -58,6 +58,7 @@ Page({
     request({
       url:urls.data.GetBanners,
     }).then(res=>{
+      console.log(res);
       if(res.errCode==0){
         this.setData({
           Banners:res.data,
@@ -73,6 +74,7 @@ Page({
       },
       method:'post',
     }).then(res=>{
+      console.log(res);
       if(res.errCode==0)
         this.setData({
           Doors:res.data.data,

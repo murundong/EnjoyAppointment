@@ -1,8 +1,8 @@
 {
   "usingComponents": {
     "l-input":"../../miniprogram_npm/lin-ui/input/index",
-    "l-slide-view":"../../miniprogram_npm/lin-ui/slide-view/index"
-
+    "l-slide-view":"../../miniprogram_npm/lin-ui/slide-view/index",
+    "l-arc-popup":"../../miniprogram_npm/lin-ui/arc-popup/index"
   },
   "navigationBarTitleText": "分配角色"
 }

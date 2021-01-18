@@ -12,6 +12,7 @@ Page({
     slideData:[],
     userLst:[],
     scrollTop:0,
+    roleLst:[{"role":-1,"name":"拉黑"},{"role":0,"name":"普通会员"},{"role":1,"name":"馆主"},{"role":3,"name":"管理员"}],
   },
 
   /**
@@ -43,15 +44,28 @@ Page({
   },
   onEditModel(e){
     var uid = e.currentTarget.dataset.id;
-    wx.showActionSheet({
-      itemList: ['A', 'B', 'C'],
-      success (res) {
-        console.log(res.tapIndex)
-      },
-      fail (res) {
-        console.log(res.errMsg)
-      }
-    })
+    var role = e.currentTarget.dataset.role;
+    // wx.lin.showActionSheet({
+    //   title: '选择下列角色：',
+    //   itemList: [{
+    //     name: '系统管理员',
+    //     icon: 'success',
+    //     imageStyle:'width:40rpx;height:100rpx;',
+    //     color:'#ff6f11'
+    //   },
+    //   {
+    //     name: '馆主',
+    //     icon: ''
+    //   },
+    //   {
+    //     name: '拉黑',
+    //     icon: ''
+    //   }],
+    //   success(res){
+    //     console.log(res);
+    //   }
+    // })
+   
   },
   onPageScroll(res) {
     // this.setData({
