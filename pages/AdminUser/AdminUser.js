@@ -12,7 +12,12 @@ Page({
     slideData:[],
     userLst:[],
     scrollTop:0,
-    roleLst:[{"role":-1,"name":"拉黑"},{"role":0,"name":"普通会员"},{"role":1,"name":"馆主"},{"role":3,"name":"管理员"}],
+    roleLst:[{"role":0,"name":"游客"},{"role":1,"name":"馆主"},{"role":3,"name":"管理员"},{"role":-1,"name":"拉黑"}],
+    userRole:0,
+    _showModel:false,
+    _showModelTitle:'',
+    _selectRole:'',
+    _selectUid:'',
   },
 
   /**
@@ -43,29 +48,63 @@ Page({
     })
   },
   onEditModel(e){
+    var _that = this;
     var uid = e.currentTarget.dataset.id;
     var role = e.currentTarget.dataset.role;
-    // wx.lin.showActionSheet({
-    //   title: '选择下列角色：',
-    //   itemList: [{
-    //     name: '系统管理员',
-    //     icon: 'success',
-    //     imageStyle:'width:40rpx;height:100rpx;',
-    //     color:'#ff6f11'
-    //   },
-    //   {
-    //     name: '馆主',
-    //     icon: ''
-    //   },
-    //   {
-    //     name: '拉黑',
-    //     icon: ''
-    //   }],
-    //   success(res){
-    //     console.log(res);
-    //   }
-    // })
-   
+    var name = e.currentTarget.dataset.name;
+    this.setData({
+      _showModel:true,
+      userRole:role,
+      _showModelTitle:name,
+      _selectRole:role,
+      _selectUid:uid,
+    })
+  },
+  onArcClose(e){
+    this.setData({
+      userRole:0,
+      _showModelTitle:'',
+      _selectRole:'',
+      _selectUid:''
+    })
+  },
+  bindAlloc(e){
+    var _that = this;
+    if(_that.data._selectUid!='' &&_that.data._selectRole!='' ){
+      request({
+        url:urls.UInfo.AllocRole,
+        method:'post',
+        data:{
+          uid:_that.data._selectUid,
+          role:_that.data._selectRole
+        }
+      }).then(res=>{
+        if(res&& res.errCode==0){
+          wx.showToast({
+            title: '操作成功！',
+            icon:'success'
+          })
+          setTimeout(() => {
+            _that.setData({
+              _showModel:false
+            })
+            _that.GetUserLst();
+          }, 1000);
+        }
+        else{
+          wx.showToast({
+            title: res.msg,
+            icon:'none'
+          })
+        }
+      })
+    }
+  },
+  onRoleChanged(e){
+    var role = e.detail.currentKey;
+    this.setData({
+      _selectRole:role
+    })
   },
   onPageScroll(res) {
     // this.setData({

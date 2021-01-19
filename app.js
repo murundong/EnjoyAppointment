@@ -82,7 +82,7 @@ App({
 
     //baseImgURL:'http://localhost:54180/',
 
-    // baseURL: 'https://www.appoint.icu/api',
+    // baseURL: 'https://www.appoint.icu/',
     // baseMVCURL: 'https://www.appoint.icu/',
     baseImgURL:'https://static.appoint.icu/',
   }

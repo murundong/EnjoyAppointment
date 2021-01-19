@@ -8,10 +8,16 @@
     <view class="user-content-item" wx:for="{{userLst}}" wx:key="index">
       <view class="user-content-initial">{{item.initial}}</view>
       <block  wx:for="{{item.uinfos}}" wx:key="index">
-        <l-slide-view height="100" width="750" slide-width="380" auto-close="true">
+        <l-slide-view height="100" width="750" slide-width="380" auto-close="true" disabled="true">
           <view class="user-content-uinfo" slot="left">
             <image src="{{item.avatar}}" bindtap="onImgShow" data-src="{{item.avatar}}"></image>
-            <view class="user-content-nick" bindtap="onEditModel" data-id="{{item.uid}}" data-role="{{item.role}}">{{item.nick_name}}</view>
+            <view class="user-content-nick" bindtap="onEditModel" data-id="{{item.uid}}" data-role="{{item.role}}"
+                data-name="{{item.nick_name}}">
+              <view >{{item.nick_name}}</view>
+              <l-tag class="role-tag" shape="circle" plain="true" font-color="#fd4d4d" wx:if="{{item.role==3}}">管理员</l-tag>
+              <l-tag class="role-tag" shape="circle" plain="true" font-color="#b3b6bd"  wx:if="{{item.role==1}}">馆主</l-tag>
+              <l-tag class="role-tag" shape="circle" bg-color="#b3b6bd" font-color="white" wx:if="{{item.role==-1}}">已拉黑</l-tag>
+            </view>
           </view>
           <view slot="right" class="slide-right">
             <text bindtap="onSlideEdit" data-id="{{item.uid}}" class="uslide-right-edit">分配</text>
@@ -21,9 +27,19 @@
     </view>
   </view>
   <view class="user-foot"></view>
-  <l-arc-popup show="{{true}}">
+  <l-arc-popup show="{{_showModel}}" bind:linclose="onArcClose">
     <view class="arcpop-content">
-      <view class="arcpop-title"></view>
+      <view class="arcpop-title">
+        <text class="arcpop-title-name">{{_showModelTitle}}</text>-设置角色:
+      </view>
+      <l-radio-group current="{{userRole}}" none-checked="{{false}}" bind:linchange="onRoleChanged">
+        <block wx:for="{{roleLst}}" wx:key="role">
+          <l-radio key="{{item.role}}"  select-color="#ff6f11" class="l-radio-item">
+            {{item.name}}
+          </l-radio>
+        </block>
+      </l-radio-group>
+      <view class="foot-btn" bindtap="bindAlloc">确定</view>
     </view>
   </l-arc-popup>
 </view>

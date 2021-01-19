@@ -43,6 +43,7 @@ export default{
     GetWeekCourse:'/Data/GetWeekCourse'
   },
   UInfo:{
-    GetUserLst_Admin:'/Data/GetUserLst_Admin'
+    GetUserLst_Admin:'/Data/GetUserLst_Admin',
+    AllocRole:'/Data/AllocRole'
   }
 }

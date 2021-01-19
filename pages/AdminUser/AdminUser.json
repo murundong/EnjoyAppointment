@@ -2,7 +2,10 @@
   "usingComponents": {
     "l-input":"../../miniprogram_npm/lin-ui/input/index",
     "l-slide-view":"../../miniprogram_npm/lin-ui/slide-view/index",
-    "l-arc-popup":"../../miniprogram_npm/lin-ui/arc-popup/index"
+    "l-arc-popup":"../../miniprogram_npm/lin-ui/arc-popup/index",
+    "l-radio-group":"../../miniprogram_npm/lin-ui/radio-group/index",
+    "l-radio":"../../miniprogram_npm/lin-ui/radio/index",
+    "l-tag":"../../miniprogram_npm/lin-ui/tag/index"
   },
   "navigationBarTitleText": "分配角色"
 }
