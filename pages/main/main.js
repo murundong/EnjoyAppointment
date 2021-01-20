@@ -146,6 +146,13 @@ Page({
   onDoorNav(e){
     var doorId = e.currentTarget.dataset.doorId;
     var doorName = e.currentTarget.dataset.doorName;
+    request({
+      url:urls.UInfo.AddUserAttention,
+      data:{
+        openid:wx.getStorageSync("loginSessionKey"),
+        doorid:doorId
+      }
+    })
     wx.navigateTo({
       url:`../Lesson/Lesson?doorId=${doorId}&doorName=${doorName}`
     })

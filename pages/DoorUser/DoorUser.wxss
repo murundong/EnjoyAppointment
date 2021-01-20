@@ -29,10 +29,6 @@
  background-color: #fff;
   z-index: 9; 
 }
-/* .l-sticky-head{
-  background-color: #fff;
-  z-index: 9; 
-} */
 .slide-right{
   display: grid;
   height: 100%;
@@ -50,27 +46,7 @@
     display: flex;
     justify-content: space-between;
 }
-.arcpop-title{
-  text-align: center;
-  color: #b3b6bd;
-}
-.arcpop-title-name{
-    font-style: italic;
-}
-.foot-btn {
-  width: 70%;
-  height: 80rpx;
-  border-radius: 50rpx;
-  margin: 50rpx auto;
-  background: linear-gradient(to top right, rgba(253, 77, 77,1), rgba(255, 111, 17, 0.8));
-  color: white;
-  font-weight: bold;
-  letter-spacing: 10rpx;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+
 .role-tag{
   margin-right: 20rpx;
 }
@@ -80,8 +56,4 @@
 }
 .user-nick-line text{
   margin-left: 4rpx;
-}
-.l-radio-item{
-  height: 80rpx;
-  line-height: 80rpx;
 }

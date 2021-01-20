@@ -8,5 +8,5 @@
     "l-radio":"../../miniprogram_npm/lin-ui/radio/index",
     "l-tag":"../../miniprogram_npm/lin-ui/tag/index"
   },
-  "navigationBarTitleText": "分配角色"
+  "navigationBarTitleText": "会员管理"
 }

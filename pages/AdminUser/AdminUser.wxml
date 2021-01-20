@@ -13,7 +13,10 @@
             <image src="{{item.avatar}}" bindtap="onImgShow" data-src="{{item.avatar}}"></image>
             <view class="user-content-nick" bindtap="onEditModel" data-id="{{item.uid}}" data-role="{{item.role}}"
                 data-name="{{item.nick_name}}">
-              <view >{{item.nick_name}}</view>
+              <view class="user-nick-line">
+                <l-icon name="user" size="23" color="{{item.gender==2?'#ff6f11':''}}"/>
+                <text>{{item.nick_name}}</text>
+              </view>
               <l-tag class="role-tag" shape="circle" plain="true" font-color="#fd4d4d" wx:if="{{item.role==3}}">管理员</l-tag>
               <l-tag class="role-tag" shape="circle" plain="true" font-color="#b3b6bd"  wx:if="{{item.role==1}}">馆主</l-tag>
               <l-tag class="role-tag" shape="circle" bg-color="#b3b6bd" font-color="white" wx:if="{{item.role==-1}}">已拉黑</l-tag>

@@ -21,7 +21,8 @@
     "pages/CreateSubject/CreateSubject",
     "pages/Course/Course",
     "pages/CreateCourse/CreateCourse",
-    "pages/AdminUser/AdminUser"
+    "pages/AdminUser/AdminUser",
+    "pages/DoorUser/DoorUser"
   ],
   "tabBar": {
     "list": [

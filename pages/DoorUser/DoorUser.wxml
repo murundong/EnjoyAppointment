@@ -1,0 +1,32 @@
+<!--pages/AdminUser/AdminUser.wxml-->
+<view class="content">
+
+<view class="user-search">
+  <l-input label="昵称" label-width="120" placeholder="请输入昵称(支持模糊搜索)"  bind:lininput="onNickInput"/>
+</view>
+<view class="user-content">
+  <view class="user-content-item" wx:for="{{userLst}}" wx:key="index">
+    <view class="user-content-initial">{{item.initial}}</view>
+    <block  wx:for="{{item.uinfos}}" wx:key="index">
+      <l-slide-view height="100" width="750" slide-width="380" auto-close="true" disabled="true">
+        <view class="user-content-uinfo" slot="left">
+          <image src="{{item.avatar}}" bindtap="onImgShow" data-src="{{item.avatar}}"></image>
+          <view class="user-content-nick" bindtap="onEditUser" data-obj="{{item}}" >
+            <view class="user-nick-line">
+              <l-icon name="user" size="23" color="{{item.gender==2?'#ff6f11':''}}"/>
+              <text>{{item.nick_name}}</text>
+            </view>
+            <l-tag class="role-tag" shape="circle" plain="true" font-color="#fd4d4d" wx:if="{{item.role==1}}">馆主</l-tag>
+            <l-tag class="role-tag" shape="circle" plain="true" font-color="#b3b6bd"  wx:if="{{item.door_role==2}}">教职工</l-tag>
+            <l-tag class="role-tag" shape="circle" bg-color="#b3b6bd" font-color="white" wx:if="{{item.door_role==-1}}">已拉黑</l-tag>
+          </view>
+        </view>
+        <view slot="right" class="slide-right">
+          <text bindtap="onSlideEdit" data-id="{{item.uid}}" class="uslide-right-edit">分配</text>
+        </view>
+      </l-slide-view>
+    </block>
+  </view>
+</view>
+<view class="user-foot"></view>
+</view>

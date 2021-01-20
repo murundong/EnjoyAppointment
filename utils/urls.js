@@ -44,6 +44,8 @@ export default{
   },
   UInfo:{
     GetUserLst_Admin:'/Data/GetUserLst_Admin',
-    AllocRole:'/Data/AllocRole'
+    AllocRole:'/Data/AllocRole',
+    AddUserAttention:'/Data/AddUserAttention',
+    GetUserLst_Door:'/Data/GetUserLst_Door'
   }
 }

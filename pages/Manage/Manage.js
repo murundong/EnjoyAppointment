@@ -84,7 +84,9 @@ Page({
         break;
         case 1:
         {
-
+          wx.navigateTo({
+            url: '../DoorUser/DoorUser?doorId='+_that.data._doorId,
+          })
         }
         break;
         case 2:
