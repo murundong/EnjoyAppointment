@@ -11,6 +11,7 @@ Page({
   data: {
       baseURL: baseURL,
       baseImgURL: baseImgURL,
+      _noData: false,
     pageIndex:1,
     pageSize:10,
     pageTotal:'',
@@ -54,6 +55,7 @@ Page({
       if(res.errCode==0){
         this.setData({
           subjectsArr:res.data.data,
+          _noData:res.data.total==0,
           pageTotal:Math.floor(res.data.total /this.data.pageSize)
         })
       }

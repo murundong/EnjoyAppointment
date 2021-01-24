@@ -14,11 +14,11 @@
        >
         <view class="content-door-desc">
           <text>简介：</text>
-          <text>{{item.door_desc}}</text>
+          <text>{{item.door_desc!=null?item.door_desc:''}}</text>
         </view>
         <view class="content-door-address">
           <text>地址：</text>
-          <text>{{item.door_address}}</text>
+          <text>{{item.door_address!=null?item.door_address:''}}</text>
         </view>
       </l-card>
     </block>

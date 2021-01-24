@@ -14,9 +14,9 @@
           <view class="user-content-nick" bindtap="onEditUser" data-obj="{{item}}" >
             <view class="user-nick-line">
               <l-icon name="user" size="23" color="{{item.gender==2?'#ff6f11':''}}"/>
-              <text>{{item.nick_name}}</text>
+              <text>{{(item.door_remark!=null && item.door_remark!='')?item.door_remark:item.nick_name}}</text>
             </view>
-            <l-tag class="role-tag" shape="circle" plain="true" font-color="#fd4d4d" wx:if="{{item.role==1}}">馆主</l-tag>
+            <l-tag class="role-tag" shape="circle" plain="true" font-color="#fd4d4d" wx:if="{{item.door_role==1}}">馆主</l-tag>
             <l-tag class="role-tag" shape="circle" plain="true" font-color="#b3b6bd"  wx:if="{{item.door_role==2}}">教职工</l-tag>
             <l-tag class="role-tag" shape="circle" bg-color="#b3b6bd" font-color="white" wx:if="{{item.door_role==-1}}">已拉黑</l-tag>
           </view>
@@ -29,4 +29,57 @@
   </view>
 </view>
 <view class="user-foot"></view>
+<l-arc-popup show="{{_showModel}}" bind:linclose="onArcClose">
+    <view class="lst-title">昵称：{{_showModelData.nick_name}}</view>
+    <l-list icon-color="#525562" icon="order" title="备注" bind:lintap="onLstRmk"/>
+    <l-list icon-color="#525562" icon="picture" title="发卡" bind:lintap="onLstAllocCard"/>
+    <l-list icon-color="#525562" icon="picture" title="持有卡片" bind:lintap="onLstUserCard"/>
+    <l-list icon-color="#525562" icon="edit" title="分配角色" bind:lintap="onLstAllocRole"/>
+    <l-list icon-color="#525562" icon="eye" title="预约统计" bind:lintap="onLstStatic"/>
+    <l-list icon-color="#525562" icon="user" title="个人信息" bind:lintap="onLstUinfo"/>
+  </l-arc-popup>
+
+  <l-arc-popup show="{{_showModelRmk}}" >
+    <view class="arcpop-content">
+      <view  class="lst-title">
+        昵称：{{_showModelData.nick_name}}
+      </view>
+      <l-input label="备注："  placeholder="请输入备注"  value="{{_showModelRmkValue}}" l-class="arc-remark-input" bind:lininput="onRemarkInput"/>
+      <view class="foot-btn" bindtap="bindEditRemark">确定</view>
+    </view>
+  </l-arc-popup>
+
+  <l-arc-popup show="{{_showModelUinfo}}" max-height="900">
+    <view class="arcpop-content">
+      <view  class="lst-title">
+        个人信息
+      </view>
+      <view class="lst-uinfo">
+        <l-input disabled="true" label="昵称" value="{{_showModelData.nick_name}}" />
+        <l-input disabled="true" label="性别" value="{{_showModelData.gender==1?'男':'女'}}" />
+        <l-input disabled="true" label="真实姓名"  value="{{_showModelData.real_name}}" />
+        <l-input disabled="true" label="电话号码" value="{{_showModelData.tel}}" />
+        <l-input disabled="true" label="出生年月" value="{{_showModelData.str_birthday}}" />
+        <l-input disabled="true" label="年龄" value="{{_showModeUinfoAge}}">
+          <text slot="right">岁</text>
+        </l-input>
+      </view>
+    </view>
+  </l-arc-popup>
+
+  <l-arc-popup show="{{_showModelRole}}" bind:linclose="onArcClose">
+    <view class="arcpop-content">
+      <view class="lst-title">
+        昵称：{{_showModelData.nick_name}}
+      </view>
+      <l-radio-group current="{{_showModelData.door_role}}" none-checked="{{false}}" bind:linchange="onRoleChanged">
+        <block wx:for="{{roleLst}}" wx:key="role">
+          <l-radio key="{{item.role}}"  select-color="#ff6f11" class="l-radio-item">
+            {{item.name}}
+          </l-radio>
+        </block>
+      </l-radio-group>
+      <view class="foot-btn" bindtap="bindAlloc">确定</view>
+    </view>
+  </l-arc-popup>
 </view>

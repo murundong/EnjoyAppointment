@@ -18,6 +18,11 @@ Page({
     _showModelTitle:'',
     _selectRole:'',
     _selectUid:'',
+
+    _showModelRmk:false,
+    _showModelRmkTitle:'',
+    _showModelRmkValue:'',
+    _showModelRmkUid:'',
   },
 
   /**
@@ -35,8 +40,17 @@ Page({
   },
   onSlideEdit(e){
     var uid = e.currentTarget.dataset.id;
+    var rmk = e.currentTarget.dataset.rmk;
+    var name = e.currentTarget.dataset.name;
     var _that = this;
-    console.log(uid);
+    
+    this.setData({
+      _showModelRmk:true,
+      _showModelRmkTitle:name,
+      _showModelRmkValue:rmk==null?'':rmk,
+      _showModelRmkUid:uid
+    })
+
   },
   onImgShow(e){
     var src = e.currentTarget.dataset.src;
@@ -45,6 +59,12 @@ Page({
     wx.previewImage({
       urls: srcArr,
       current: src
+    })
+  },
+  onRemarkInput(e){
+    var rmk = e.detail.value;
+    this.setData({
+      _showModelRmkValue:rmk
     })
   },
   onEditModel(e){
@@ -66,6 +86,44 @@ Page({
       _showModelTitle:'',
       _selectRole:'',
       _selectUid:''
+    })
+  },
+  onArcRmkClose(e){
+    this.setData({
+      _showModelRmkTitle:'',
+      _showModelRmkValue:'',
+      _showModelRmkUid:'',
+    })
+  },
+  bindEditRemark(e){
+    var _that = this;
+    request({
+      url:urls.UInfo.RemarkUser,
+      method:'post',
+      data:{
+        uid:_that.data._showModelRmkUid,
+        rmk:_that.data._showModelRmkValue
+      }
+    }).then(res=>{
+      if(res&& res.errCode==0){
+        wx.showToast({
+          title: '操作成功！',
+          icon:'success'
+        })
+        setTimeout(() => {
+          _that.setData({
+            _showModelRmk:false,
+            _showModelRmkValue:'',
+          })
+          _that.GetUserLst();
+        }, 1000);
+      }
+      else{
+        wx.showToast({
+          title: res.msg,
+          icon:'none'
+        })
+      }
     })
   },
   bindAlloc(e){

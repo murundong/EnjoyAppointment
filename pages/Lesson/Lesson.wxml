@@ -15,7 +15,7 @@
             <view class="banner-title-name">{{doorName}}</view>
             <view class="banner-title-desc">
               <text>简介:</text>
-              <text>{{doorDesc}}</text>
+              <text>{{doorDesc==null?'':doorDesc}}</text>
             </view>
           </view>
           <view class="banner-content-body">
@@ -28,11 +28,11 @@
                 </view>
                 <view class="banner-content-form">
                   <l-icon name='phone' size="26" color="#525562" />
-                  <text class="banner-form-right">{{doorTel}}</text>
+                  <text class="banner-form-right">{{doorTel==null?'':doorTel}}</text>
                 </view>
                 <view class="banner-content-form">
                   <l-icon name='address' size="26" color="#525562" />
-                  <text class="banner-form-right">{{doorAddress}}</text>
+                  <text class="banner-form-right">{{doorAddress==null?'':doorAddress}}</text>
                 </view>
               </view>
 

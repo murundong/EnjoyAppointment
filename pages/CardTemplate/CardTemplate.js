@@ -12,6 +12,7 @@ Page({
   data: {
       baseURL: baseURL,
       baseImgURL: baseImgURL,
+      _noData:false,
     pageIndex:1,
     pageSize:10,
     pageTotal:'',
@@ -54,6 +55,7 @@ Page({
     }).then(res=>{
       if(res.errCode==0){
         this.setData({
+          _noData:res.data.total==0,
           cardTemplate:res.data.data.temps,
           _img:res.data.data.img,
           pageTotal:Math.floor(res.data.total /this.data.pageSize)

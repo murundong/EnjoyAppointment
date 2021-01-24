@@ -7,6 +7,8 @@
   </view>
 
   <view class="content-card">
+    <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
+      describe="暂时还没有卡片数据哦~"></l-status-show>
     <block wx:for="{{cardTemplate}}" wx:key="id">
       <view class="card-body" bindtap="onCardTap" data-id="{{item.id}}">
         <view class="card-body-left">

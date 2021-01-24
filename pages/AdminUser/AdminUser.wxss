@@ -50,9 +50,16 @@
     display: flex;
     justify-content: space-between;
 }
-.arcpop-title{
+/* .arcpop-title{
   text-align: center;
   color: #b3b6bd;
+} */
+.arcpop-title::before{
+  content: '';
+  height: 30rpx;
+  border-left: 10rpx solid #ff6f11;
+  margin-right: 4rpx;
+  border-radius: 6rpx;
 }
 .arcpop-title-name{
     font-style: italic;
@@ -84,4 +91,7 @@
 .l-radio-item{
   height: 80rpx;
   line-height: 80rpx;
+}
+.arc-remark-input{
+  margin-top: 20rpx;
 }

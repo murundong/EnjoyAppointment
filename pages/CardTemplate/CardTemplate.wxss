@@ -120,3 +120,7 @@
 .tips-time{
   margin-left: 20rpx;
 }
+.status-show {
+  margin: 230rpx auto;
+  align-items: center;
+}

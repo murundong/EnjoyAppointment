@@ -6,7 +6,8 @@
     "l-arc-popup":"../../miniprogram_npm/lin-ui/arc-popup/index",
     "l-radio-group":"../../miniprogram_npm/lin-ui/radio-group/index",
     "l-radio":"../../miniprogram_npm/lin-ui/radio/index",
-    "l-tag":"../../miniprogram_npm/lin-ui/tag/index"
+    "l-tag":"../../miniprogram_npm/lin-ui/tag/index",
+    "l-list":"../../miniprogram_npm/lin-ui/list/index"
   },
   "navigationBarTitleText": "会员管理"
 }

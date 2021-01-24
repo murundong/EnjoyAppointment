@@ -1,7 +1,7 @@
 {
   "usingComponents": {
     "l-card":"../../miniprogram_npm/lin-ui/card/index",
-    "l-icon":"../../miniprogram_npm/lin-ui/icon/index"
-   
+    "l-icon":"../../miniprogram_npm/lin-ui/icon/index",
+    "l-status-show":"../../miniprogram_npm/lin-ui/status-show/index"
   }
 }

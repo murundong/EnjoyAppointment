@@ -6,7 +6,7 @@
       <image src="{{_userInfo.avatar}}" />
       <view class="mine-content-head-info">
         <text class="head-info-name">{{_userInfo.nick_name}}</text>
-        <text class="head-info-tel">{{_userInfo.tel}}</text>
+        <text class="head-info-tel">{{_userInfo.tel!=null?_userInfo.tel:''}}</text>
       </view>
     </view>
     <view class="content-title">

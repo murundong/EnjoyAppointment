@@ -9,6 +9,10 @@
   padding-right: 30rpx;
   padding-left: 10rpx;
 }
+.status-show {
+  margin: 230rpx auto;
+  align-items: center;
+}
 .content-title::before{
   content: '';
   height: 30rpx;

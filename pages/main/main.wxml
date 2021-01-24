@@ -56,7 +56,7 @@
         <view class="door-status {{ProcessStatus.status(item.status)}}">{{ProcessStatus.statusTxt(item.status)}}</view>
         <view class="door-text">
           <view class="door-name">{{item.door_name}}</view>
-          <view class="door-add">{{item.door_address}}</view>
+          <view class="door-add">{{item.door_address!=null?item.door_address:''}}</view>
         </view>
 
       </view>

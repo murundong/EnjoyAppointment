@@ -8,14 +8,14 @@
     <view class="user-content-item" wx:for="{{userLst}}" wx:key="index">
       <view class="user-content-initial">{{item.initial}}</view>
       <block  wx:for="{{item.uinfos}}" wx:key="index">
-        <l-slide-view height="100" width="750" slide-width="380" auto-close="true" disabled="true">
+        <l-slide-view height="100" width="750" slide-width="200" auto-close="true" >
           <view class="user-content-uinfo" slot="left">
             <image src="{{item.avatar}}" bindtap="onImgShow" data-src="{{item.avatar}}"></image>
             <view class="user-content-nick" bindtap="onEditModel" data-id="{{item.uid}}" data-role="{{item.role}}"
-                data-name="{{item.nick_name}}">
+                data-name="{{(item.remark!=null && item.remark !='')?item.remark:item.nick_name}}">
               <view class="user-nick-line">
                 <l-icon name="user" size="23" color="{{item.gender==2?'#ff6f11':''}}"/>
-                <text>{{item.nick_name}}</text>
+                <text>{{(item.remark!=null && item.remark !='')?item.remark:item.nick_name}}</text>
               </view>
               <l-tag class="role-tag" shape="circle" plain="true" font-color="#fd4d4d" wx:if="{{item.role==3}}">管理员</l-tag>
               <l-tag class="role-tag" shape="circle" plain="true" font-color="#b3b6bd"  wx:if="{{item.role==1}}">馆主</l-tag>
@@ -23,7 +23,7 @@
             </view>
           </view>
           <view slot="right" class="slide-right">
-            <text bindtap="onSlideEdit" data-id="{{item.uid}}" class="uslide-right-edit">分配</text>
+            <text bindtap="onSlideEdit" data-id="{{item.uid}}"  data-rmk="{{item.remark}}" data-name="{{item.nick_name}}" class="uslide-right-edit">备注</text>
           </view>
         </l-slide-view>
       </block>
@@ -33,7 +33,7 @@
   <l-arc-popup show="{{_showModel}}" bind:linclose="onArcClose">
     <view class="arcpop-content">
       <view class="arcpop-title">
-        <text class="arcpop-title-name">{{_showModelTitle}}</text>-设置角色:
+       昵称：{{_showModelTitle}}
       </view>
       <l-radio-group current="{{userRole}}" none-checked="{{false}}" bind:linchange="onRoleChanged">
         <block wx:for="{{roleLst}}" wx:key="role">
@@ -45,4 +45,15 @@
       <view class="foot-btn" bindtap="bindAlloc">确定</view>
     </view>
   </l-arc-popup>
+
+  <l-arc-popup show="{{_showModelRmk}}" bind:linclose="onArcRmkClose">
+    <view class="arcpop-content">
+      <view class="arcpop-title">
+        昵称：{{_showModelRmkTitle}}
+      </view>
+      <l-input label="备注："  placeholder="请输入备注"  value="{{_showModelRmkValue}}" l-class="arc-remark-input" bind:lininput="onRemarkInput"/>
+      <view class="foot-btn" bindtap="bindEditRemark">确定</view>
+    </view>
+  </l-arc-popup>
+
 </view>

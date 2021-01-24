@@ -59,11 +59,11 @@
                 <view class="slide-body">
                   <text>{{item.Subject.subject_name}}</text>
                   <view class="slid-body-teacher">
-                    <view wx:if="{{item.temp_teacher!=''}}" class="slide-body-tempteacher">
+                    <view wx:if="{{item.temp_teacher!='' && item.temp_teacher!=null}}" class="slide-body-tempteacher">
                       <l-icon name="warning" color="#fd4d4d" size="20" />
                       代课老师:
                     </view>
-                    <view>{{item.temp_teacher==''? item.Subject.subject_teacher:item.temp_teacher}}</view>
+                    <view>{{(item.temp_teacher==''||item.temp_teacher==null)? item.Subject.subject_teacher:item.temp_teacher}}</view>
                   </view>
                 </view>
                 <view class="slide-body-end">
