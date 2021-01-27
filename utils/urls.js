@@ -48,5 +48,8 @@ export default{
     AllocRole:'/Data/AllocRole',
     AddUserAttention:'/Data/AddUserAttention',
     GetUserLst_Door:'/Data/GetUserLst_Door'
+  },
+  Cards:{
+    GetUserCards:'/Data/GetUserCards'
   }
 }

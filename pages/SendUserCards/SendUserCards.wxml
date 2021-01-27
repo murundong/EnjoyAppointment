@@ -1,0 +1,35 @@
+<view class="content">
+
+  <view class="content-prev">
+    <text class="content-title">预览</text>
+    <l-card cardInfo="{{item}}" />
+  </view>
+
+  <view class="content-body">
+    <text class="content-title">基本信息</text>
+    <l-input label="卡片类型" disabled="true">
+      <picker slot="right" mode="selector">
+        <view>
+          <text>请选择卡片</text>
+          <l-icon class="picker-down" color="#333" name="down" size="25" />
+        </view>
+      </picker>
+    </l-input>
+    <l-input disabled="true" label="开卡日期">
+      <picker slot="right" mode="date">
+        <view class="picker">
+          <text>请选择开卡日期</text>
+          <l-icon class="picker-down" color="#333" name="down" size="25" />
+        </view>
+      </picker>
+    </l-input>
+    <l-input disabled="true" label="截止日期">
+      <picker slot="right" mode="date">
+        <view class="picker">
+          <text>请选择截止日期</text>
+          <l-icon class="picker-down" color="#333" name="down" size="25" />
+        </view>
+      </picker>
+    </l-input>
+  </view>
+</view>

@@ -1,17 +1,11 @@
-// pages/Card/Card.js
-// import {local_card_info} from '../../MockData/data.js'
-import request from '../../utils/network.js';
-import urls from '../../utils/urls.js';
+// pages/SendUserCards/SendUserCards.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    _cardLst : '' ,//local_card_info.data
-    _openid:'',
-    _cardType:0,
-    _noData:false,
+    _uid:''
   },
 
   /**
@@ -19,9 +13,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      _openid:wx.getStorageSync('loginSessionKey')
+      _uid:options.uid
     })
-    this.GetCardLst();
+    console.log(this.data._uid);
   },
 
   /**
@@ -71,29 +65,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  onTabChange: function (e) {
-    var index= e.detail.currentIndex;
-    this.setData({
-      _cardType:index
-    })
-    this.GetCardLst();
-  },
-  GetCardLst(){
-    var _that = this;
-    request({
-      url:urls.Cards.GetUserCards,
-      method:'post',
-      data:{
-        openid:_that.data._openid,
-        cardStatus:_that.data._cardType
-      }
-    }).then(res=>{
-
-      this.setData({
-        _noData:res.data.length<=0,
-        _cardLst:res.data
-      })
-    })
   }
 })

@@ -15,6 +15,7 @@ Page({
     pageTotal:'',
       baseURL: baseURL,
       baseImgURL: baseImgURL,
+      _noData:false,
     Doors:[]
   },
 
@@ -48,6 +49,7 @@ Page({
       if(res.errCode==0){
         this.setData({
           Doors:res.data.data,
+          _noData:res.data.total <=0,
           pageTotal:Math.floor(res.data.total /this.data.pageSize)
         })
       }

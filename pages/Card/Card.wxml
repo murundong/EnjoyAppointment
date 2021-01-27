@@ -1,18 +1,23 @@
 <l-tabs  bind:linchange="onTabChange" inactive-color="#b3b6bd" active-color="#525562" animated-for-line="true"  l-header-line-class="tab-header-line">
   <l-tabpanel tab="我的卡片" key="mycard" slot="mycard">
-   
     <block wx:for="{{_cardLst}}" wx:key="index">
       <l-card cardInfo="{{item}}" />
     </block>
+    <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
+      describe="暂无有效会员卡数据哦，去看看其他分类吧~" />
   </l-tabpanel>
   <l-tabpanel tab="过期卡片" key="excard" slot="excard">
     <block wx:for="{{_cardLst}}" wx:key="index">
       <l-card cardInfo="{{item}}" Expired="true"/>
     </block>
+    <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
+      describe="暂无过期会员卡数据哦，去看看其他分类吧~" />
   </l-tabpanel>
   <l-tabpanel tab="冻结卡片" key="freezcard" slot="freezcard">
     <block wx:for="{{_cardLst}}" wx:key="index">
       <l-card cardInfo="{{item}}" Freeze="true"/>
     </block>
+    <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
+      describe="暂无冻结会员卡数据哦，去看看其他分类吧~" />
   </l-tabpanel>
 </l-tabs>

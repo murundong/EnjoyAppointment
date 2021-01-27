@@ -3,3 +3,8 @@
   width: 70%;
   margin: 0 auto;
 } */
+
+.status-show {
+  margin: 230rpx auto;
+  align-items: center;
+}

@@ -33,7 +33,7 @@
   <l-arc-popup show="{{_showModel}}" bind:linclose="onArcClose">
     <view class="arcpop-content">
       <view class="arcpop-title">
-       昵称：{{_showModelTitle}}
+       备注/昵称：{{_showModelTitle}}
       </view>
       <l-radio-group current="{{userRole}}" none-checked="{{false}}" bind:linchange="onRoleChanged">
         <block wx:for="{{roleLst}}" wx:key="role">

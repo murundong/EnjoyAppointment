@@ -29,15 +29,18 @@
   </view>
 </view>
 <view class="user-foot"></view>
-<l-arc-popup show="{{_showModel}}" bind:linclose="onArcClose">
-    <view class="lst-title">昵称：{{_showModelData.nick_name}}</view>
-    <l-list icon-color="#525562" icon="order" title="备注" bind:lintap="onLstRmk"/>
-    <l-list icon-color="#525562" icon="picture" title="发卡" bind:lintap="onLstAllocCard"/>
-    <l-list icon-color="#525562" icon="picture" title="持有卡片" bind:lintap="onLstUserCard"/>
-    <l-list icon-color="#525562" icon="edit" title="分配角色" bind:lintap="onLstAllocRole"/>
-    <l-list icon-color="#525562" icon="eye" title="预约统计" bind:lintap="onLstStatic"/>
-    <l-list icon-color="#525562" icon="user" title="个人信息" bind:lintap="onLstUinfo"/>
-  </l-arc-popup>
+<l-arc-popup show="{{_showModel}}" bind:linclose="onArcClose" max-height="900">
+  <view class="arcpop-content">
+    <view class="lst-title">备注/昵称：{{(_showModelData.door_remark!=null && _showModelData.door_remark!='')? _showModelData.door_remark:_showModelData.nick_name}}</view>
+    <l-list icon-color="#525562" icon="order" title="备注" bind:lintap="onLstRmk" />
+    <l-list icon-color="#525562" icon="picture" title="会员卡" bind:lintap="onLstAllocCard" />
+    <!-- <l-list icon-color="#525562" icon="picture" title="持有卡片" bind:lintap="onLstUserCard" /> -->
+    <l-list icon-color="#525562" icon="edit" title="分配角色" bind:lintap="onLstAllocRole" />
+    <l-list icon-color="#525562" icon="eye" title="预约统计" bind:lintap="onLstStatic" />
+    <l-list icon-color="#525562" icon="user" title="个人信息" bind:lintap="onLstUinfo" />
+  </view>
+
+</l-arc-popup>
 
   <l-arc-popup show="{{_showModelRmk}}" >
     <view class="arcpop-content">
@@ -69,9 +72,7 @@
 
   <l-arc-popup show="{{_showModelRole}}" bind:linclose="onArcClose">
     <view class="arcpop-content">
-      <view class="lst-title">
-        昵称：{{_showModelData.nick_name}}
-      </view>
+      <view class="lst-title">备注/昵称：{{(_showModelData.door_remark!=null && _showModelData.door_remark!='')? _showModelData.door_remark:_showModelData.nick_name}}</view>
       <l-radio-group current="{{_showModelData.door_role}}" none-checked="{{false}}" bind:linchange="onRoleChanged">
         <block wx:for="{{roleLst}}" wx:key="role">
           <l-radio key="{{item.role}}"  select-color="#ff6f11" class="l-radio-item">

@@ -2,6 +2,7 @@
   "usingComponents": {
     "l-tabs": "../../miniprogram_npm/lin-ui/tabs/index",
     "l-tabpanel": "../../miniprogram_npm/lin-ui/tabpanel/index",
+    "l-status-show":"../../miniprogram_npm/lin-ui/status-show/index",
     "l-card":"../../Components/CardComp/index",
     "l-icon":"../../miniprogram_npm/lin-ui/icon/index"
   }

@@ -22,6 +22,8 @@
         </view>
       </l-card>
     </block>
+    <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
+      describe="暂时还没有场馆数据哦，快去新增吧~" />
   </view>
 
 

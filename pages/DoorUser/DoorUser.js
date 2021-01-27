@@ -1,6 +1,7 @@
 // pages/DoorUser/DoorUser.js
 import request from '../../utils/network.js';
 import urls from '../../utils/urls.js';
+const app = getApp();
 Page({
 
   /**
@@ -135,13 +136,16 @@ Page({
     })
   },
   onLstAllocCard(e){
-
+    wx.navigateTo({
+      url: `../SendUserCards/SendUserCards?uid=${this.data._showModelData.id}`,
+    })
   },
   onLstUserCard(e){
 
   },
   onLstAllocRole(e) {
-    if(this.data._showModelData.door_role==1){
+    if(app.globalData.userInfo.role!=3 &&  
+      this.data._showModelData.door_role==1){
       wx.showToast({
         title: '馆主的角色不能被更改！',
         icon:'none'
@@ -208,7 +212,7 @@ Page({
   },
   bindAlloc(e){
     var _that = this;
-    if(_that.data._showModelData.door_role==1){
+    if(app.globalData.userInfo.role!=3 && _that.data._showModelData.door_role==1){
       wx.showToast({
         title: '馆主的角色不能被更改！',
         icon:'none'

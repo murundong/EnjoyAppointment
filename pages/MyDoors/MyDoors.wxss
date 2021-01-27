@@ -33,3 +33,7 @@
   margin-top: 10rpx;
   color: #b3b6bd;
 }
+.status-show {
+  margin: 230rpx auto;
+  align-items: center;
+}

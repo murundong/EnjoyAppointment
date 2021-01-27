@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "l-card":"../../Components/CardComp/index",
+    "l-input":"../../miniprogram_npm/lin-ui/input/index"
+  }
+}
