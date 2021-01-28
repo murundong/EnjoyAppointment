@@ -80,7 +80,7 @@ Page({
   },
   onCarSend(e){
     wx.navigateTo({
-      url: `../SendUserCards/SendUserCards?uid=${this.data._id}`,
+      url: `../SendUserCards/SendUserCards?uid=${this.data._id}&doorId=${this.data._doorId}`,
     })
   },
   GetCardLst(){

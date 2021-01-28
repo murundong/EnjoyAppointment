@@ -31,5 +31,6 @@
         </view>
       </picker>
     </l-input>
+    <view class="foot-btn" bindtap="bindAlloc">确定</view>
   </view>
 </view>

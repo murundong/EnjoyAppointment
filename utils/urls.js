@@ -47,10 +47,12 @@ export default{
     GetUserLst_Admin:'/Data/GetUserLst_Admin',
     AllocRole:'/Data/AllocRole',
     AddUserAttention:'/Data/AddUserAttention',
-    GetUserLst_Door:'/Data/GetUserLst_Door'
+    GetUserLst_Door:'/Data/GetUserLst_Door',
+    GetUserCardsInfo:'/Data/GetUserCardsInfo',
   },
   Cards:{
     GetUserCards:'/Data/GetUserCards',
-    GetUserDoorCards:'/Data/GetUserDoorCards'
+    GetUserDoorCards:'/Data/GetUserDoorCards',
+    GetDoorCardTemplates:'/Data/GetDoorCardTemplates'
   }
 }

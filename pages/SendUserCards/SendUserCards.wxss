@@ -1,1 +1,15 @@
 /* pages/SendUserCards/SendUserCards.wxss */
+.foot-btn {
+  width: 70%;
+  height: 80rpx;
+  border-radius: 50rpx;
+  margin: 50rpx auto;
+  background: linear-gradient(to top right, rgba(253, 77, 77,1), rgba(255, 111, 17, 0.8));
+  color: white;
+  font-weight: bold;
+letter-spacing: 10rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

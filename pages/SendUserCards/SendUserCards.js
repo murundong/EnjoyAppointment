@@ -1,11 +1,16 @@
 // pages/SendUserCards/SendUserCards.js
+import urls from '../../utils/urls';
+import request from '../../utils/network.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    _uid:''
+    _uid:'',
+    _doorId:'',
+    _cardTemplate:[],
+    _UINFO:Object
   },
 
   /**
@@ -13,9 +18,11 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      _uid:options.uid
+      _uid:options.uid,
+      _doorId:options.doorId
     })
-    console.log(this.data._uid);
+    this.GetDoorCardTemplates();
+    this.GetUserCardsInfo();
   },
 
   /**
@@ -65,5 +72,33 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  GetDoorCardTemplates(){
+    var _that = this;
+    request({
+      url:urls.Cards.GetDoorCardTemplates,
+      method:'post',
+      data:{
+        doorId:_that.data._doorId
+      }
+    }).then(res=>{
+      _that.setData({
+        _cardTemplate:res.data
+      })
+    })
+  },
+  GetUserCardsInfo(){
+    var _that= this;
+    request({
+      url:urls.UInfo.GetUserCardsInfo,
+      method:'post',
+      data:{
+        id:_that.data._uid
+      }
+    }).then(res=>{
+      _that.setData({
+        _UINFO:res.data
+      })
+    })
   }
 })
