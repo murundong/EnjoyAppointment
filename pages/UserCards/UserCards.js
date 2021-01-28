@@ -1,5 +1,4 @@
-// pages/Card/Card.js
-// import {local_card_info} from '../../MockData/data.js'
+// pages/UserCards/UserCards.js
 import request from '../../utils/network.js';
 import urls from '../../utils/urls.js';
 Page({
@@ -8,10 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    _cardLst : [] ,//local_card_info.data
+    _id:'',
+    _doorId:'',
+    _uname:'',
     _openid:'',
-    _cardType:0,
     _noData:false,
+    _cardLst : []
   },
 
   /**
@@ -19,9 +20,14 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
+      _id:options.uid,
+      _doorId:options.doorId,
+      _uname:options.uname,
       _openid:wx.getStorageSync('loginSessionKey')
     })
-    this.GetCardLst();
+   wx.setNavigationBarTitle({
+     title: `${this.data._uname} 的会员卡`,
+   })
   },
 
   /**
@@ -35,7 +41,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.GetCardLst();
   },
 
   /**
@@ -72,21 +78,19 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onTabChange: function (e) {
-    var index= e.detail.currentIndex;
-    this.setData({
-      _cardType:index
+  onCarSend(e){
+    wx.navigateTo({
+      url: `../SendUserCards/SendUserCards?uid=${this.data._id}`,
     })
-    this.GetCardLst();
   },
   GetCardLst(){
     var _that = this;
     request({
-      url:urls.Cards.GetUserCards,
+      url:urls.Cards.GetUserDoorCards,
       method:'post',
       data:{
         openid:_that.data._openid,
-        cardStatus:_that.data._cardType
+        doorId:_that.data._doorId,
       }
     }).then(res=>{
 
@@ -95,5 +99,5 @@ Page({
         _cardLst:res.data
       })
     })
-  }
+  },
 })

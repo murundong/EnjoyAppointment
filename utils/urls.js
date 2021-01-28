@@ -50,6 +50,7 @@ export default{
     GetUserLst_Door:'/Data/GetUserLst_Door'
   },
   Cards:{
-    GetUserCards:'/Data/GetUserCards'
+    GetUserCards:'/Data/GetUserCards',
+    GetUserDoorCards:'/Data/GetUserDoorCards'
   }
 }

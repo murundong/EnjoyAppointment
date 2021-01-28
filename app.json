@@ -23,7 +23,8 @@
     "pages/CreateCourse/CreateCourse",
     "pages/AdminUser/AdminUser",
     "pages/DoorUser/DoorUser",
-    "pages/SendUserCards/SendUserCards"
+    "pages/SendUserCards/SendUserCards",
+    "pages/UserCards/UserCards"
   ],
   "tabBar": {
     "list": [

@@ -1,0 +1,17 @@
+
+<view class="content">
+  <view class="content-head">
+    <view class="content-title">{{_uname}} 的会员卡</view>
+    <view class="content-add" bindtap="onCarSend">
+      <l-icon class="add-icon" color="#525562" size="28" name="add" />发卡
+    </view>
+  </view>
+
+  <view class="content-doors">
+    <block wx:for="{{_cardLst}}" wx:key="index">
+      <l-card cardInfo="{{item}}" Expired="{{item.is_freeze}}"/>
+    </block>
+    <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
+      describe="暂时还没有会员卡数据哦~" />
+  </view>
+</view>
