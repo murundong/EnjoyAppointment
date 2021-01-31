@@ -6,7 +6,7 @@
   "setting": {
     "urlCheck": false,
     "es6": true,
-    "enhance": false,
+    "enhance": true,
     "postcss": true,
     "preloadBackgroundData": false,
     "minified": false,
@@ -63,9 +63,9 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/Course/Course",
-          "pathName": "pages/Course/Course",
-          "query": "doorId=10000&doorName=是个课程",
+          "name": "pages/SendUserCards/SendUserCards",
+          "pathName": "pages/SendUserCards/SendUserCards",
+          "query": "uid=3&doorId=10000",
           "scene": null
         },
         {

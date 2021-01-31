@@ -8,9 +8,7 @@
   </view>
 
   <view class="content-doors">
-    <block wx:for="{{_cardLst}}" wx:key="index">
-      <l-card cardInfo="{{item}}" Expired="{{item.is_freeze}}"/>
-    </block>
+    <l-card ClickEdit="true" cardInfo="{{_cardLst}}" baseImgURL="{{baseImgURL}}"  bind:onTapEdit="bindTapEdit" bind:onTaDel="bindTapDel"/>
     <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
       describe="暂时还没有会员卡数据哦~" />
   </view>

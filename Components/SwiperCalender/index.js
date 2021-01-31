@@ -24,7 +24,6 @@ Component({
       this.setData({
         currentday:this.GetCurrentDay(new Date())
       })
-      console.log(this.data.currentday);
       let _start= this.data.StartDay ?new Date( this.data.StartDay ) : new Date();
       this.onGenerateDate(_start)
     },

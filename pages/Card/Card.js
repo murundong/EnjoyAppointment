@@ -2,6 +2,7 @@
 // import {local_card_info} from '../../MockData/data.js'
 import request from '../../utils/network.js';
 import urls from '../../utils/urls.js';
+const app = getApp();
 Page({
 
   /**
@@ -12,6 +13,7 @@ Page({
     _openid:'',
     _cardType:0,
     _noData:false,
+    baseImgURL:app.globalData.baseImgURL,
   },
 
   /**
@@ -89,8 +91,7 @@ Page({
         cardStatus:_that.data._cardType
       }
     }).then(res=>{
-
-      this.setData({
+      _that.setData({
         _noData:res.data.length<=0,
         _cardLst:res.data
       })

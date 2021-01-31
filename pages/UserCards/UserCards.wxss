@@ -9,6 +9,9 @@
   padding-right: 30rpx;
   padding-left: 10rpx;
 }
+.content-doors{
+  padding: 0 10rpx;
+}
 .content-title::before{
   content: '';
   height: 30rpx;

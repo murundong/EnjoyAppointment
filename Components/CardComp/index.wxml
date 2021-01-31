@@ -1,43 +1,74 @@
+<wxs module="Calculate"> 
+  var CalculateTimeOff = function(str_edtime){
+    if(str_edtime!=null && str_edtime!=''){
+      var now = getDate();
+      var edTime = getDate(str_edtime);
+      return now >= edTime;
+    }
+    return false;
+  }
+  module.exports.CalculateTimeOff = CalculateTimeOff;
+</wxs>
+
 <view class="card-content">
-  <view class="card-title">
-    {{cardInfo.door_name}}
-  </view>
+  <block wx:for="{{cardInfo}}" wx:key="index">
 
-  <block wx:for="{{cardInfo.cards}}" wx:key="index">
-    <view class="card-body">
-    <view class="card-body-left">
-      <view class="body-left-title">{{item.card_name}}</view>
-      <image class="body-left-img" src="{{cardInfo.door_img}}"></image>
-    </view>
-    <view class="card-body-right">
-      
-      <view class="body-right">
-        <view wx:if="{{Freeze}}">
-          <text class="body-right-lf">冻结至：</text>
-          <text class="body-right-r">{{item.ed_time}}</text>
-        </view>
-        <view>
-          <text class="body-right-l"> 频次/周：</text>
-          <text class="body-right-r">{{item.perweek<=0?'无限制':(item.perweek+'次/周')}}</text>
-        </view>
-        <view> 
-          <text class="body-right-l">频次/日：</text>
-          <text class="body-right-r">{{item.peerday<=0?'无限制':(item.peerday+'次/日')}}</text>
-        </view>
-        <view>
-          <text class="body-bottom-tips">注意:仅限本人使用</text>
+    <view class="card-body" bindtap="onItemTap" data-obj="{{item}}">
+      <view class="card-body-left">
+        <view class="body-left-title">{{item.card_name}}</view>
+        <image class="body-left-img" src="{{baseImgURL+item.door_img}}"></image>
+      </view>
+      <view class="card-body-right">
+        <view class="body-right">
+          <view wx:if="{{item.is_freeze}}">
+            <text class="body-right-lf">冻结至：</text>
+            <text
+              class="body-right-r">{{(item.freeze_edtime!=null && item.freeze_edtime!='')?item.freeze_edtime:'--'}}</text>
+          </view>
+          <view>
+            <text class="body-right-l"> 频次/周：</text>
+            <text class="body-right-r">{{item.limit_week_time<=0?'无限制':(item.limit_week_time+'次/周')}}</text>
+          </view>
+          <view>
+            <text class="body-right-l">频次/日：</text>
+            <text class="body-right-r">{{item.limit_day_time<=0?'无限制':(item.limit_day_time+'次/日')}}</text>
+          </view>
+          <view wx:if="item.card_desc!=null &&item.card_desc!=''">
+            <text class="body-right-l" style="letter-spacing:16rpx">简介：</text>
+            <text class="body-right-r">{{item.card_desc}}</text>
+          </view>
+          <view>
+            <text class="body-bottom-tips">注意:仅限本人使用</text>
+          </view>
         </view>
       </view>
-    </view>
-    <view wx:if="{{Expired}}" class="body-expired">已过期</view>
-    <view wx:elif="{{Freeze}}" class="body-freeze">冻结中</view>
-    <view wx:else class="body-subscript">{{item.card_type}}</view>
-    <view class="body-right-tips">
-        <text>有效期至:{{item.st_time}}</text>
-        <text class="tips-time" wx:if="{{item.times>0}}">次数:{{item.times}}</text>
+      <view wx:if="{{Calculate.CalculateTimeOff(item.str_card_edtime)}}" class="body-expired">已过期</view>
+      <view wx:elif="{{item.is_freeze}}" class="body-freeze">冻结中</view>
+      <view class="body-subscript">{{item.str_ctype}}</view>
+      <view class="body-right-tips">
+        <text
+          wx:if="{{item.str_card_edtime!=null&&item.str_card_edtime!=''}}">有效期至:{{(item.str_card_edtime!=null&&item.str_card_edtime!='') ? item.str_card_edtime:'--'}}</text>
+        <text class="tips-time" wx:if="{{item.effective_time>0}}">次数:{{item.effective_time}}</text>
       </view>
-  </view>
+    </view>
+   
   </block>
-
+  <l-arc-popup show="{{ShowPopUp}}">
+    <view class="arcpop-content">
+      <view class="lst-title">
+        会员卡：{{ShowPopupData.card_name}}
+      </view>
+      <view class="rlst-item"  bindtap="onTapEdit">
+        <l-icon name="edit" color="#525562" size="30"/>
+        <text class="rlst-txt">编辑</text>
+      </view>
+      <view class="r-line"></view>
+      <view class="rlst-item" bindtap="onTapDelet">
+        <l-icon name="delete" color="#525562" size="30"/>
+        <text class="rlst-txt">删除</text>
+      </view>
+      <view class="r-line"></view>
+    </view>
+  </l-arc-popup>
   
 </view>

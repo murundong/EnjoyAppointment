@@ -2,14 +2,6 @@
 .card-content{
   font-family: Tahoma,Helvetica,Arial,’宋体’,sans-serif;
   color: #525562;
-  border:1px solid #eaeaea;
-  width: 90%;
-  margin: 0 auto;
-  padding:10rpx 20rpx;
-  border-radius: 20rpx;
-  /* box-shadow: 2rpx 10rpx 4rpx -6rpx #ebeef3; */
-  box-shadow: -2rpx 10rpx 30rpx -22rpx #0b0c0c;
-  margin-top: 10rpx;
 }
 .card-title{
   display: flex;
@@ -90,7 +82,7 @@
   border: 1px dashed #b3b6bd;
   position: absolute;
   right: 30rpx;
-  top: 50rpx;
+  top: 70rpx;
 }
 
 .body-freeze::before{
@@ -114,7 +106,7 @@
   border: 1px dashed #fd4d4d;
   position: absolute;
   right: 30rpx;
-  top: 50rpx;
+  top: 70rpx;
 }
 
 .body-right{
@@ -139,4 +131,30 @@
 }
 .tips-time{
   margin-left: 20rpx;
+}
+.lst-title::before{
+  content: '';
+  height: 30rpx;
+  border-left: 10rpx solid #ff6f11;
+  margin-right: 4rpx;
+  border-radius: 6rpx;
+}
+.arcpop-content{
+  margin-bottom: 30rpx;
+}
+.rlst-item{
+  display: flex;
+  padding-left: 10rpx;
+  color: #525562;
+  margin-top: 28rpx;
+}
+.rlst-item:active{
+  color:#b3b6bd ;
+}
+.rlst-txt{
+  margin-left: 15rpx;
+}
+.r-line{
+  border-bottom: 3rpx solid #f7f0f0;
+  margin-top: 15rpx;
 }

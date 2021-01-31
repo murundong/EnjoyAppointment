@@ -1,36 +1,81 @@
 <view class="content">
 
   <view class="content-prev">
-    <text class="content-title">预览</text>
-    <l-card cardInfo="{{item}}" />
+    <view class="content-title">会员卡预览</view>
+    <view class="content-prevcard">
+      <l-card wx:if="{{_cardTemplate.length>0}}" cardInfo="{{SelectCardTemplate}}" baseImgURL="{{baseImgURL}}" />
+      <l-card wx:if="{{_cardTemplate.length<=0}}" />
+    </view>
+  
   </view>
 
   <view class="content-body">
-    <text class="content-title">基本信息</text>
-    <l-input label="卡片类型" disabled="true">
-      <picker slot="right" mode="selector">
-        <view>
-          <text>请选择卡片</text>
+    <view class="content-title">基本信息</view>
+    <l-input label="卡片类型" disabled="true" value="{{_cardTemplate[SelectCardValue].card_name}}" label-width="210">
+      <picker slot="right" mode="selector" range="{{_cardTemplate}}" range-key="card_name" bindchange="onCardPickerChanged" value="{{SelectCardValue}}">
+        <view class="input-right">
+          <text>选择卡片</text>
           <l-icon class="picker-down" color="#333" name="down" size="25" />
         </view>
       </picker>
     </l-input>
-    <l-input disabled="true" label="开卡日期">
-      <picker slot="right" mode="date">
-        <view class="picker">
-          <text>请选择开卡日期</text>
+    <l-input disabled="true" label="开卡日期" value="{{SelectStTime}}" label-width="210">
+      <picker slot="right" mode="date" bindchange="onStTimeChanged">
+        <view class="input-right">
+          <text>开卡日期</text>
           <l-icon class="picker-down" color="#333" name="down" size="25" />
         </view>
       </picker>
     </l-input>
-    <l-input disabled="true" label="截止日期">
-      <picker slot="right" mode="date">
-        <view class="picker">
-          <text>请选择截止日期</text>
+    <l-input disabled="true" l-input-class="{{FreezeChecked?'input-edclass':''}}" label="截止日期" value="{{SelectEdTime}}" label-width="210" > 
+      <view slot="right" class="input-clear-line">
+        <picker  mode="date" bindchange="onEdTimeChanged">
+        <view class="input-right">
+          <text>截止日期</text>
           <l-icon class="picker-down" color="#333" name="down" size="25" />
         </view>
       </picker>
+      <view class="clear-date" bindtap="onEdTimeClear">清除</view>
+      </view>
     </l-input>
-    <view class="foot-btn" bindtap="bindAlloc">确定</view>
+
+    <l-input  type="number" label="有效次数" placeholder="无限制则无需填写"  bind:lininput="onEffectTimes">
+      <text slot="right">次</text>
+    </l-input>
+    <l-input  type="number" label="频次 / 周" placeholder="无限制则无需填写"   bind:lininput="onLimitWeekTimes">
+      <text slot="right">次</text>
+    </l-input>
+    <l-input  type="number" label="频次 / 日" placeholder="无限制则无需填写"   bind:lininput="onLimitDayTimes">
+      <text slot="right">次</text>
+    </l-input>
+    <l-list title="冻结卡片" link-type="switchTab" is-link="{{false}}" l-class="freeze-lst" >
+      <view slot="right-section">
+        <switch color="#ff6f11"  bindchange="onFreezeChanged" checked="{{FreezeChecked}}"/>
+      </view>
+    </l-list>
+    <l-list title="自动延长截止日期"  wx:if="{{FreezeChecked}}" link-type="switchTab" is-link="{{false}}" l-class="freeze-lst" >
+      <view slot="right-section">
+        <switch color="#ff6f11" type="checkbox"   bindchange="onAutoEdtimeChanged" checked="{{AutoEdtimeExtend}}"/>
+      </view>
+    </l-list>
+    <l-input disabled="true" wx:if="{{FreezeChecked}}" label="冻结至" value="{{FreezeEdTime}}" label-width="210">
+      <view slot="right" class="input-clear-line">
+        <picker mode="date" bindchange="onFreezeEndChanged">
+          <view class="input-right">
+            <text>冻结结束日期</text>
+            <l-icon class="picker-down" color="#333" name="down" size="25" />
+          </view>
+        </picker>
+        <view class="clear-date" bindtap="onFreezeEdTimeClear">清除</view>
+      </view>
+    
+    </l-input>
+
+    <view class="content-title">持卡人</view>
+    <view class="content-uinfo">
+      <image src="{{avatar}}"/>
+      <view>备注/昵称:{{(door_remark!=nul && door_remark!='')?door_remark:nick_name}}</view>
+    </view>
+    <view class="foot-btn" bindtap="bindSubmit">确定</view>
   </view>
 </view>

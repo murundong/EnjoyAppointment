@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "l-icon":"../../miniprogram_npm/lin-ui/icon/index"
+    "l-icon":"../../miniprogram_npm/lin-ui/icon/index",
+    "l-arc-popup":"../../miniprogram_npm/lin-ui/arc-popup/index"
   }
 }

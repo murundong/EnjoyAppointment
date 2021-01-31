@@ -32,6 +32,7 @@ Page({
       Region:['上海市','上海市','浦东新区'],
       Position:'上海市-上海市-浦东新区'
     })
+   
   },
 
   /**
@@ -144,6 +145,22 @@ Page({
     utils.scan_event(option);
   },
   onDoorNav(e){
+    if(app.globalData.userInfo==null){
+      wx.showModal({
+        title:'提示',
+        content:'该小程序需要用户授权后方可使用所有功能，请切换到 “我的” 点击授权！',
+        confirmText:'确认',
+        confirmColor:'#ff6f11',
+        success(res){
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/mine/mine',
+            })
+          } 
+        }
+      })
+      return;
+    }
     var doorId = e.currentTarget.dataset.doorId;
     var doorName = e.currentTarget.dataset.doorName;
     request({

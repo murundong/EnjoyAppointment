@@ -1,16 +1,18 @@
 // pages/UserCards/UserCards.js
 import request from '../../utils/network.js';
 import urls from '../../utils/urls.js';
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    baseImgURL:app.globalData.baseImgURL,
     _id:'',
+    _uid:'',
     _doorId:'',
     _uname:'',
-    _openid:'',
     _noData:false,
     _cardLst : []
   },
@@ -20,14 +22,12 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      _id:options.uid,
+      _id:options.id,
+      _uid:options.uid,
       _doorId:options.doorId,
       _uname:options.uname,
-      _openid:wx.getStorageSync('loginSessionKey')
     })
-   wx.setNavigationBarTitle({
-     title: `${this.data._uname} 的会员卡`,
-   })
+  
   },
 
   /**
@@ -89,15 +89,22 @@ Page({
       url:urls.Cards.GetUserDoorCards,
       method:'post',
       data:{
-        openid:_that.data._openid,
+        uid:_that.data._uid,
         doorId:_that.data._doorId,
       }
     }).then(res=>{
-
       this.setData({
         _noData:res.data.length<=0,
         _cardLst:res.data
       })
     })
   },
+  bindTapEdit(e){
+    var obj = e.detail.obj;
+    console.log('bindTapEdit',obj);
+  },
+  bindTapDel(e){
+    var obj = e.detail.obj;
+    console.log('bindTapDel',obj);
+  }
 })

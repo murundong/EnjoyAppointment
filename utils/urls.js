@@ -13,7 +13,7 @@ export default{
     GetCardTemplateById:'/Data/GetCardTemplateById',
     CreateCardTempalte:'/Data/CreateCardTempalte',
     UpdateCardtemplate:'/Data/UpdateCardtemplate',
-    GetDoorCardSelect:'/Data/GetDoorCardSelect'
+    GetDoorCardSelect:'/Data/GetDoorCardSelect',
   },
   Subject:{
     GetSubjects:'/Data/GetSubjects',
@@ -53,6 +53,8 @@ export default{
   Cards:{
     GetUserCards:'/Data/GetUserCards',
     GetUserDoorCards:'/Data/GetUserDoorCards',
-    GetDoorCardTemplates:'/Data/GetDoorCardTemplates'
+    GetDoorCardTemplates:'/Data/GetDoorCardTemplates',
+    AddUserACard:'/Data/AddUserACard',
+    GetDoorUserInfo:'/Data/GetDoorUserInfo'
   }
 }

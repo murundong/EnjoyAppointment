@@ -8,3 +8,12 @@
   margin: 230rpx auto;
   align-items: center;
 }
+.card-title{
+  border:1px solid #eaeaea;
+  width: 90%;
+  margin: 0 auto;
+  padding:10rpx 20rpx;
+  border-radius: 20rpx;
+  box-shadow: -2rpx 10rpx 30rpx -22rpx #0b0c0c;
+  margin-top: 10rpx;
+}

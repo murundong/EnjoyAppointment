@@ -31,7 +31,6 @@ Page({
     this.setData({
       _doorId:options.doorId
     })
-    this.GetUserLst();
   },
 
   /**
@@ -45,7 +44,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.GetUserLst();
   },
 
   /**
@@ -137,7 +136,7 @@ Page({
   },
   onLstAllocCard(e){
       wx.navigateTo({
-      url: `../UserCards/UserCards?uid=${this.data._showModelData.id}&doorId=${this.data._doorId}&uname=${(this.data._showModelData.door_remark!=null &&this.data._showModelData.door_remark!='')? this.data._showModelData.door_remark:this.data._showModelData.nick_name}`,
+      url: `../UserCards/UserCards?id=${this.data._showModelData.id}&uid=${this.data._showModelData.uid}&doorId=${this.data._doorId}&uname=${(this.data._showModelData.door_remark!=null &&this.data._showModelData.door_remark!='')? this.data._showModelData.door_remark:this.data._showModelData.nick_name}`,
     })
   },
   onLstUserCard(e){

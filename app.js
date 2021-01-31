@@ -3,7 +3,6 @@ import urls from './utils/urls.js';
 App({
   onLaunch: function () {
 
-
     //启动时更新
     const updateManager = wx.getUpdateManager();
     const _that = this;
@@ -64,9 +63,23 @@ App({
                     }
                   })
                 }
+                else{
+                  wx.showModal({
+                    title:'提示',
+                    content:'该小程序需要用户授权后方可使用所有功能，请切换到 “我的” 点击授权！',
+                    confirmText:'确认',
+                    confirmColor:'#ff6f11',
+                    success(res){
+                      if (res.confirm) {
+                        wx.switchTab({
+                          url: '/pages/mine/mine',
+                        })
+                      } 
+                    }
+                  })
+                }
               }
             })
-
 
           }
         })

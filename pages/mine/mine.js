@@ -13,27 +13,15 @@ Page({
     _userInfo:{},
     total_minutes:0,
     total_count:0,
-    total_days:0
+    total_days:0,
+    ISAUTH:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   if(app.globalData.userInfo) 
-      this.setData({
-        _userInfo:app.globalData.userInfo
-      })
-    else{
-      request({
-        url:urls.data.GetUInfoByOpenId,
-        data:{openid:wx.getStorageSync('loginSessionKey')}
-      }).then(res=>{
-        this.setData({
-          _userInfo: res.data
-        })
-      })
-    }
+   
   },
 
   /**
@@ -47,7 +35,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (app.globalData.userInfo)
+     {
+      this.setData({
+        _userInfo: app.globalData.userInfo,
+        ISAUTH: app.globalData.userInfo != null
+      })
+     }
+ 
+    request({
+      url: urls.data.GetUInfoByOpenId,
+      data: { openid: wx.getStorageSync('loginSessionKey') }
+    }).then(res => {
+      this.setData({
+        _userInfo: res.data
+      })
+    })
   },
 
   /**
@@ -86,5 +89,38 @@ Page({
   },
   onScanTap(e){
     utils.scan_event(e);
+  },
+  OnGetUserInfo(e){
+    wx.getSetting({
+      success: res_setting => {
+        if (res_setting.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: res_uinfo => {
+              wx.request({
+                url: app.globalData.baseURL + urls.data.UpdateUserInfoHome,
+                method: 'post',
+                data: {
+                  'nick_name': res_uinfo.userInfo.nickName,
+                  'avatar': res_uinfo.userInfo.avatarUrl,
+                  'gender': res_uinfo.userInfo.gender,
+                  'open_id': wx.getStorageSync('loginSessionKey')
+                },
+                success:function(res_saved){
+                  if(res_saved.data.errCode==0){
+                    app.globalData.userInfo = res_saved.data.data
+                    wx.reLaunch({
+                      url: '/pages/mine/mine',
+                    })
+                  }
+                }
+              })
+              if (app.userInfoReadyCallback) {
+                app.userInfoReadyCallback(res_setting)
+              }
+            }
+          })
+        }
+      }
+    })
   }
 })
