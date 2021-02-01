@@ -29,7 +29,7 @@
     </l-input>
     <l-input disabled="true" l-input-class="{{FreezeChecked?'input-edclass':''}}" label="截止日期" value="{{SelectEdTime}}" label-width="210" > 
       <view slot="right" class="input-clear-line">
-        <picker  mode="date" bindchange="onEdTimeChanged">
+        <picker  mode="date" bindchange="onEdTimeChanged" value="{{SelectEdTime}}">
         <view class="input-right">
           <text>截止日期</text>
           <l-icon class="picker-down" color="#333" name="down" size="25" />
@@ -39,13 +39,13 @@
       </view>
     </l-input>
 
-    <l-input  type="number" label="有效次数" placeholder="无限制则无需填写"  bind:lininput="onEffectTimes">
+    <l-input  type="number" label="有效次数" placeholder="无限制则无需填写"  bind:lininput="onEffectTimes" value="{{effective_time}}">
       <text slot="right">次</text>
     </l-input>
-    <l-input  type="number" label="频次 / 周" placeholder="无限制则无需填写"   bind:lininput="onLimitWeekTimes">
+    <l-input  type="number" label="频次 / 周" placeholder="无限制则无需填写"   bind:lininput="onLimitWeekTimes" value="{{limit_week_time}}">
       <text slot="right">次</text>
     </l-input>
-    <l-input  type="number" label="频次 / 日" placeholder="无限制则无需填写"   bind:lininput="onLimitDayTimes">
+    <l-input  type="number" label="频次 / 日" placeholder="无限制则无需填写"   bind:lininput="onLimitDayTimes" value="{{limit_day_time}}">
       <text slot="right">次</text>
     </l-input>
     <l-list title="冻结卡片" link-type="switchTab" is-link="{{false}}" l-class="freeze-lst" >
@@ -60,7 +60,7 @@
     </l-list>
     <l-input disabled="true" wx:if="{{FreezeChecked}}" label="冻结至" value="{{FreezeEdTime}}" label-width="210">
       <view slot="right" class="input-clear-line">
-        <picker mode="date" bindchange="onFreezeEndChanged">
+        <picker mode="date" bindchange="onFreezeEndChanged" value="{{FreezeEdTime}}">
           <view class="input-right">
             <text>冻结结束日期</text>
             <l-icon class="picker-down" color="#333" name="down" size="25" />

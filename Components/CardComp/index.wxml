@@ -23,7 +23,7 @@
           <view wx:if="{{item.is_freeze}}">
             <text class="body-right-lf">冻结至：</text>
             <text
-              class="body-right-r">{{(item.freeze_edtime!=null && item.freeze_edtime!='')?item.freeze_edtime:'--'}}</text>
+              class="body-right-r">{{(item.str_freeze_edtime!=null && item.str_freeze_edtime!='')?item.str_freeze_edtime:'--'}}</text>
           </view>
           <view>
             <text class="body-right-l"> 频次/周：</text>

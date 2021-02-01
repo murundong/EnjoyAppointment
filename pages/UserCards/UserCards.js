@@ -101,10 +101,49 @@ Page({
   },
   bindTapEdit(e){
     var obj = e.detail.obj;
-    console.log('bindTapEdit',obj);
+    wx.navigateTo({
+      url: `../SendUserCards/SendUserCards?uid=${this.data._id}&doorId=${this.data._doorId}&dcid=${obj.id}`,
+    })
   },
   bindTapDel(e){
+    var _that = this;
     var obj = e.detail.obj;
-    console.log('bindTapDel',obj);
+    wx.showModal({
+      title:'提示',
+      content:'确定删除用户的该张会员卡么？！',
+      confirmText:'确认',
+      confirmColor:'#ff6f11',
+      success(res){
+        if (res.confirm) {
+          _that.DeleteCards(obj);
+        }
+      }
+    })
+  },
+  DeleteCards(obj){
+    var _that = this;
+    request({
+      url:urls.Cards.DeleteUserCards,
+      data:{
+        id:obj.id 
+      },
+      method:'post'
+    }).then(res=>{
+      if(res.errCode==0){
+        _that.GetCardLst();
+        wx.showToast({
+          title: '删除成功！',
+          icon:'none',
+          duration:3000
+        })
+      }
+      else{
+        wx.showToast({
+          title: res.msg,
+          icon:'none',
+          duration:3000
+        })
+      }
+    })
   }
 })

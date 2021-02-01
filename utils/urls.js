@@ -55,6 +55,8 @@ export default{
     GetUserDoorCards:'/Data/GetUserDoorCards',
     GetDoorCardTemplates:'/Data/GetDoorCardTemplates',
     AddUserACard:'/Data/AddUserACard',
-    GetDoorUserInfo:'/Data/GetDoorUserInfo'
+    GetDoorUserInfo:'/Data/GetDoorUserInfo',
+    DeleteUserCards:'/Data/DeleteUserCards',
+    UpdateUserCardsInfo:'/Data/UpdateUserCardsInfo'
   }
 }

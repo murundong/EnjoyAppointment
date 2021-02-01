@@ -37,11 +37,13 @@ Component({
       this.triggerEvent("onTapEdit", {
         obj: this.data.ShowPopupData
       });
+      this.setData({ShowPopUp:false});
     },
     onTapDelet(e){
       this.triggerEvent("onTaDel", {
         obj: this.data.ShowPopupData
       });
+      this.setData({ShowPopUp:false});
     },
     onItemTap(e){
       var _that = this;
