@@ -4,6 +4,7 @@ import {
 } from '../../MockData/data.js'
 import request from '../../utils/network.js';
 import urls from '../../utils/urls.js';
+var util  = require('../../libs/util.js')
 const app = getApp();
 const baseURL = app.globalData.baseMVCURL;
 const baseImgURL = app.globalData.baseImgURL;
@@ -13,6 +14,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    pageIndex:1,
+    pageSize:10,
+    pageTotal:'',
+    SelectTag:'',
+    SelectDate:'',
     scrollTop: undefined,
       baseURL: baseURL,
       baseImgURL: baseImgURL,
@@ -24,10 +30,11 @@ Page({
     doorMananger: '',
     doorManagerImg: '',
     doorTel: '',
-    classes_type: local_classes_type,
-    classes: local_classes.data.lstClasses,
+    classes_type: [],
+    classes: [],
     NewMessage: '场馆通知',
-    startDay: ''
+    startDay: '',
+    _noData:false,
   },
 
   /**
@@ -36,32 +43,13 @@ Page({
   onLoad: function (options) {
     var _that = this;
     var now = new Date();
-    var year = now.getFullYear();
-    var month = now.getMonth() + 1;
-    var day = now.getDate();
     var did = options.doorId;
-    request({
-      url: urls.Lessons.GetDoorInfo,
-      data: {
-        doorid: did
-      }
-    }).then(res => {
-      if (res.data) {
-        this.setData({
-          doorAddress: res.data.door_address,
-          banners: res.data.banners,
-          doorDesc: res.data.door_desc,
-          doorMananger: res.data.door_manager,
-          doorTel: res.data.door_tel,
-          doorManagerImg: res.data.door_manager_img
-        })
-      }
-    })
-
+    
     this.setData({
       doorId: did,
       doorName: options.doorName,
-      startDay: `${year}-${month}-${day}`
+      startDay: util.dateFormat("YYYY-mm-dd",now),
+      SelectDate:util.dateFormat("YYYY-mm-dd",now),
     })
 
 
@@ -82,7 +70,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.GetDoorInfo();
+    this.GetSubjectTags();
+    this.GetAppointLessons();
   },
 
   /**
@@ -120,21 +110,22 @@ Page({
 
   },
   onCanlenderItemTap(e) {
-    console.log(e.detail.citem);
-    this.componentClass.selectInit();
-    wx.lin.flushSticky();
-    wx.pageScrollTo({
-      scrollTop: 0
+    var edate=e.detail.citem;
+    this.setData({
+      SelectDate:edate.str_date,
     })
-
+    if(this.componentClass)
+      this.componentClass.selectInit();
+    wx.lin.flushSticky();
+    this.GetAppointLessons();
   },
   onTopbarItemTap(e) {
-    wx.pageScrollTo({
-      scrollTop: 0
+    this.setData({
+      SelectTag:e.detail.titemStr,
     })
+    this.GetAppointLessons();
   },
   onFullTap(e) {
-
     var id = e.currentTarget.dataset.cid;
     console.log(id);
     wx.showModal({
@@ -154,16 +145,16 @@ Page({
   },
   onPageScroll(res) {
     wx.lin.setScrollTop(res.scrollTop)
-    // this.setData({
-    //   scrollTopHeight: res.scrollTop
-    // })
   },
   onDateChange(e) {
     this.setData({
-      startDay: e.detail.value
+      startDay: e.detail.value,
+      SelectDate: e.detail.value,
     })
     this.componentCalender.onGenerateDate(new Date(e.detail.value));
-    this.componentClass.selectInit();
+    if(this.componentClass)
+      this.componentClass.selectInit();
+    this.GetAppointLessons();
   },
   onPreviewImg(e) {
     var src = e.currentTarget.dataset.src;
@@ -171,6 +162,61 @@ Page({
     wx.previewImage({
       urls: srcArr,
       current: src
+    })
+  },
+  GetSubjectTags(){
+    var _that = this;
+    request({
+      url:urls.Lessons.GetDoorTags,
+      method:'post',
+      data:{
+        doorId:_that.data.doorId
+      }
+    }).then(res=>{
+      if(res.data){
+        _that.setData({
+          classes_type:res.data
+        })
+      }
+    });
+  },
+  GetDoorInfo(){
+    var _that = this;
+    request({
+      url: urls.Lessons.GetDoorInfo,
+      data: {
+        doorid: _that.data.doorId,
+      }
+    }).then(res => {
+      if (res.data) {
+        _that.setData({
+          doorAddress: res.data.door_address,
+          banners: res.data.banners,
+          doorDesc: res.data.door_desc,
+          doorMananger: res.data.door_manager,
+          doorTel: res.data.door_tel,
+          doorManagerImg: res.data.door_manager_img
+        })
+      }
+    })
+  },
+  GetAppointLessons(){
+    var _that  = this;
+    request({
+      url:urls.Lessons.GetAppointLessons,
+      method:'post',
+      data:{
+        page_index:this.data.pageIndex,
+        page_size:this.data.pageSize,
+        date:_that.data.SelectDate,
+        doorId:_that.data.doorId,
+        tag:_that.data.SelectTag,
+      }
+    }).then(res=>{
+      _that.setData({
+        classes:res.data.data==null?[]:res.data.data,
+        _noData:res.data.total==0,
+      })
     })
   }
 })

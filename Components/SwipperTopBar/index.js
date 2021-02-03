@@ -32,7 +32,6 @@ Component({
       })
     },
     selectInit(index=0){
-      console.log(index);
       this.setData({
         _selectedIndex:index
       })

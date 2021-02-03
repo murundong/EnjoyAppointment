@@ -30,7 +30,9 @@ export default{
     UpdateUInfoSetting:'/Data/UpdateUserInfoSetting'
   },
   Lessons:{
-    GetDoorInfo:'/Data/GetDoorInfo'
+    GetDoorInfo:'/Data/GetDoorInfo',
+    GetDoorTags:'/Appoint/GetDoorTags',
+    GetAppointLessons:'/Appoint/GetAppointLessons'
   },
   Courses:{
     GetAdminCourseByDate:"/Data/GetAdminCourseByDate",

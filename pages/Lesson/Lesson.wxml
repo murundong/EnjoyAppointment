@@ -64,49 +64,46 @@
         <r-calender id="r-cal" StartDay="{{startDay}}" class="sticky-cal" bind:onItemTap="onCanlenderItemTap">
         </r-calender>
         <view class="r-line-dash"></view>
-        <r-class id="comp-class" datalist="{{classes_type}}" bind:onItemTap="onTopbarItemTap"></r-class>
+        <r-class wx:if="{{classes_type.length>0}}" id="comp-class" datalist="{{classes_type}}" bind:onItemTap="onTopbarItemTap"></r-class>
         <view class="r-line"></view>
       </view>
 
       <view slot="body" class="content">
-        <block wx:for="{{classes}}" wx:key="id">
+        <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
+      describe="所选日期暂时还没有排课哦~" />
+        <block wx:for="{{classes}}" wx:key="index">
           <view class="class-card">
             <view class="class-card-img">
-              <image src="{{item.teacher_img}}"></image>
+              <image src="{{baseImgURL+item.Subject.subject_img}}"></image>
             </view>
             <view class="class-card-content">
               <view class="class-card-title">
-                <text class="card-title">{{item.title}}</text>
-                <!-- <text class="{{item.status==''?'':'card-title-status'}}">{{item.status}}</text> -->
+                <text class="card-title">{{item.Subject.subject_name}}</text>
               </view>
 
               <view class="class-card-tag">
-                <block wx:for="{{item.tags}}" wx:for-item="itags" wx:key="index">
+                <block wx:for="{{item.Subject.lst_subject_tag}}" wx:for-item="itags" wx:key="index">
                   <text>{{itags}}</text>
                 </block>
               </view>
               <view class="class-card-time">
-                <text class="card-time-teacher">{{item.teacher}}</text>
-                <text class="card-time-time">{{item.timeStr}}</text>
+                <text class="card-time-teacher">{{item.Subject.subject_teacher}}</text>
+                <text class="card-time-time">{{item.course_time}}</text>
               </view>
               <view class="class-card-status">
-                <!-- <text class="{{item.nowNum<item.lessNum?'dot':''}}">{{item.lessNum}}人/最低</text>
-              <text class="{{item.nowNum>=item.fullNum?'dot':''}}">{{item.fullNum}}人/满员</text>
-              <text class="{{item.nowNum>=item.lessNum?'dot':''}}">{{item.nowNum}}人/已约</text>
-              <text class="already-appoint" wx:if="{{item.btnStatus==-1}}">已预约</text> -->
                 <view class="class-card-status-border">
-                  <text class="status-num">{{item.nowNum}}人/{{item.fullNum}}人</text>
-                  <text class="status-less">(最低{{item.lessNum}}人)</text>
+                  <text class="status-num">{{item.NowAppointCount}}人/{{item.max_allow}}人</text>
+                  <text class="status-less">(最低{{item.min_allow}}人)</text>
                 </view>
                 <view>
-                  <text class="already-appoint" wx:if="{{item.btnStatus==-1}}">已预约</text>
+                  <text class="already-appoint" wx:if="{{item.AppointStatus==2}}">已预约</text>
                 </view>
 
               </view>
-              <view bindtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.btnStatus==0}}">
+              <view bindtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.AppointStatus==1}}">
                 预约
               </view>
-              <view bindtap="onFullTap" class="card-order-unbtn" data-cid="{{item.id}}" wx:else>取消</view>
+              <view bindtap="onFullTap" class="card-order-unbtn" data-cid="{{item.id}}" wx:elif="{{item.AppointStatus==2}}">取消</view>
             </view>
 
           </view>

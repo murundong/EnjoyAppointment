@@ -37,7 +37,7 @@ Component({
   /**
    * 组件的方法列表
    */
-  methods: {
+  methods: { 
     onGenerateDate(dt){
       let ds = this.data.days;
       this.setData({
@@ -58,6 +58,7 @@ Component({
       obj.year = dt.getFullYear();
       obj.month = dt.getMonth() + 1;
       obj.day = dt.getDate();
+      obj.str_date = util.dateFormat("YYYY-mm-dd",dt);
       obj.week = '周' + util.toWeekDay(dt.getDay());
       return obj;
     },
