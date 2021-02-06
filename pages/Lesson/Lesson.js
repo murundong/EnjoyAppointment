@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    UID:'',
     pageIndex:1,
     pageSize:10,
     pageTotal:'',
@@ -35,6 +36,9 @@ Page({
     NewMessage: '场馆通知',
     startDay: '',
     _noData:false,
+
+    _showModel:false,
+    _showModelData:Object,
   },
 
   /**
@@ -44,12 +48,13 @@ Page({
     var _that = this;
     var now = new Date();
     var did = options.doorId;
-    
+    console.log(getApp().globalData.userInfo.uid);
     this.setData({
       doorId: did,
       doorName: options.doorName,
       startDay: util.dateFormat("YYYY-mm-dd",now),
       SelectDate:util.dateFormat("YYYY-mm-dd",now),
+      UID:getApp().globalData.userInfo.uid
     })
 
 
@@ -59,7 +64,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.componentClass = this.selectComponent('#comp-class');
     wx.setNavigationBarTitle({
       title: this.data.doorName,
     })
@@ -125,6 +129,13 @@ Page({
     })
     this.GetAppointLessons();
   },
+  onShowItemDetail(e){
+    var obj = e.currentTarget.dataset.obj;
+    this.setData({
+      _showModel:true,
+      _showModelData:obj
+    })
+  },
   onFullTap(e) {
     var id = e.currentTarget.dataset.cid;
     console.log(id);
@@ -137,6 +148,9 @@ Page({
         }
       }
     })
+  },
+  onQueueTap(e){
+    var id = e.currentTarget.dataset.cid;
   },
   onOrderTap(e) {
     wx.navigateTo({
@@ -177,6 +191,7 @@ Page({
         _that.setData({
           classes_type:res.data
         })
+        _that.componentClass = this.selectComponent('#comp-class');
       }
     });
   },
@@ -211,6 +226,7 @@ Page({
         date:_that.data.SelectDate,
         doorId:_that.data.doorId,
         tag:_that.data.SelectTag,
+        uid:_that.data.UID
       }
     }).then(res=>{
       _that.setData({

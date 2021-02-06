@@ -97,7 +97,15 @@ var parse = function (fmt) {
     if (st_dt > now_dt) res = '未开始';
     else if (now_dt >= st_dt && now_dt < ed_dt) res = '进行中'; 
     return res;
+  } 
+  var GenerateDuration = function(st,duration){
+    var st_out= getDate('1970/01/01 '+st);
+    st_out.setMinutes(st_out.getMinutes()+duration);
+    var hours = st_out.getHours();
+    var minutes = st_out.getMinutes();
+    return  st+ ' ~ '+ (hours.toString().length>1?hours:'0'+hours) +":"+(minutes.toString().length>1?minutes:'0'+minutes) ;
   }
+  module.exports.GenerateDuration=GenerateDuration;
   module.exports.GenerateTime = GenerateTime;
   module.exports.GenerateTimeNoYear =GenerateTimeNoYear;
   module.exports.GenerateStatus = GenerateStatus;

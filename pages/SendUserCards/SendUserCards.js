@@ -404,6 +404,7 @@ Page({
       door_id: _that.data._doorId,
       du_id: _that.data._uid,
       cid: _that.data._cardTemplate[_that.data.SelectCardValue].id,
+      uid:_that.data.UID,
       ctype: _that.data._cardTemplate[_that.data.SelectCardValue].card_type,
       card_sttime: _that.data.SelectStTime,
       card_edtime: _that.data.SelectEdTime,

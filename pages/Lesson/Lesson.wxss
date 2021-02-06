@@ -231,7 +231,18 @@ page {
   top: 85rpx;
   right: 0;
 }
-
+.card-queue-unbtn{
+  width: 120rpx;
+  height: 60rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  line-height: 60rpx;
+  position: absolute;
+  top: 85rpx;
+  right: 0;
+  background-color: #ffe300;
+  color: #525562;
+}
 .card-order-unbtn{
   width: 120rpx;
   height: 60rpx;
@@ -247,4 +258,29 @@ page {
 .status-show {
   margin: 230rpx auto;
   align-items: center;
+}
+.card-status{
+  float: right;
+  border: 1px solid #ffe300;
+  color: #ffe300;
+  font-size: 22rpx;
+  padding: 2rpx 10rpx;
+  border-radius: 5rpx;
+  margin-top: 8rpx;
+}
+.arcpop-content{
+  margin-bottom: 30rpx;
+}
+.arcpop-header{
+  display: flex;
+  align-items: center;
+}
+.arcpop-header image{
+  width: 90rpx;
+    height: 90rpx;
+    border-radius: 45rpx;
+    margin-right: 20rpx;
+}
+.arcpop-body-line{
+  display: flex;
 }

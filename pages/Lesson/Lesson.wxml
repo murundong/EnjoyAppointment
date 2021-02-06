@@ -1,3 +1,4 @@
+<wxs module="LessonWxs" src="../../WXS/UtilWxs.wxs" />
 <view class="content-root">
   <l-sticky scrollTop="{{scrollTop}}">
     <l-sticky-item top="0">
@@ -76,8 +77,9 @@
             <view class="class-card-img">
               <image src="{{baseImgURL+item.Subject.subject_img}}"></image>
             </view>
-            <view class="class-card-content">
-              <view class="class-card-title">
+            <view class="class-card-content" data-obj="{{item}}" bindtap="onShowItemDetail">
+              <view class="class-card-title" >
+                <text class="card-status" wx:if="{{item.AppointStatus==-2}}">满员</text>
                 <text class="card-title">{{item.Subject.subject_name}}</text>
               </view>
 
@@ -88,11 +90,11 @@
               </view>
               <view class="class-card-time">
                 <text class="card-time-teacher">{{item.Subject.subject_teacher}}</text>
-                <text class="card-time-time">{{item.course_time}}</text>
+                <text class="card-time-time">{{LessonWxs.GenerateDuration(item.course_time,item.Subject.subject_duration) }}</text>
               </view>
               <view class="class-card-status">
                 <view class="class-card-status-border">
-                  <text class="status-num">{{item.NowAppointCount}}人/{{item.max_allow}}人</text>
+                  <text class="status-num">{{item.AppointUsers.length}}人/{{item.max_allow}}人</text>
                   <text class="status-less">(最低{{item.min_allow}}人)</text>
                 </view>
                 <view>
@@ -100,15 +102,69 @@
                 </view>
 
               </view>
-              <view bindtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.AppointStatus==1}}">
+              <view catchtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.AppointStatus==1}}">
                 预约
               </view>
-              <view bindtap="onFullTap" class="card-order-unbtn" data-cid="{{item.id}}" wx:elif="{{item.AppointStatus==2}}">取消</view>
+              <view catchtap="onFullTap" class="card-order-unbtn" 
+              data-cid="{{item.id}}" wx:elif="{{item.AppointStatus==2}}">取消</view>
+              <view catchtap="onQueueTap" class="card-queue-unbtn" data-cid="{{item.id}}" wx:elif="{{item.AppointStatus==3}}">排队</view>
             </view>
-
           </view>
         </block>
       </view>
     </l-sticky-item>
   </l-sticky>
+  <l-arc-popup show="{{_showModel}}" max-height="900">
+    <view class="arcpop-content">
+     <view class="arcpop-header" slot="header">
+      <image src="{{baseImgURL+_showModelData.Subject.subject_img}}" />
+      <view>{{_showModelData.Subject.subject_name}}</view>
+     </view>
+     <view class="arcpop-body">
+      <view class="arcpop-body-line">
+        <view>
+          <l-icon name="time" color="#525562" size="22"/>
+          <text>取消时限</text>
+        </view>
+        <view>{{_showModelData.cancel_duration}} 分钟</view>
+      </view>
+      <view class="arcpop-body-line">
+        <view>
+          <l-icon name="picture" color="#525562" size="22"/>
+          <text>可用会员卡</text>
+        </view>
+        <!-- <view class="class-card-tag">
+                <block wx:for="{{_showModelData.Subject.lst_subject_tag}}" wx:for-item="itags" wx:key="index">
+                  <text>{{itags}}</text>
+                </block>
+        </view> -->
+      </view> 
+      <view class="r-line"></view>
+      <view class="arcpop-body-line">
+        <view>
+          <l-icon name="comment" color="#525562" size="22"/>
+          <text>课程备注</text>
+        </view>
+        <view>{{_showModelData.course_desc}}</view>
+      </view>
+      <view class="r-line"></view>
+      <view class="arcpop-body-line">
+        <view>
+          <l-icon name="user" color="#525562" size="22"/>
+          <text>预约名单</text>
+        </view>
+        <view>
+          <block wx:for="{{_showModelData.AppointUsers}}" wx:key="index">
+            <view class="arcpop-user-line">
+              <image src="{{item.avatar}}"/>
+              <view>{{item.door_remark!=null  &&item.door_remark!='' ? item.door_remark:item.nick_name }}</view>
+            </view>
+            <view>第{{index}}名</view>
+          </block>
+        </view>
+      </view>
+
+     </view>
+    </view>
+  </l-arc-popup>
 </view>
