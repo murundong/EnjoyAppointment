@@ -110,6 +110,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    var _that = this;
     if(this.data.pageIndex > this.data.pageTotal){
       wx.showToast({
         title: '没有更多数据了',
@@ -118,7 +119,7 @@ Page({
       })
     }
     else{
-      this.data.page_index++;
+      this.data.pageIndex++;
       request({
         url:urls.data.GetDoors,
         data:{
@@ -129,8 +130,7 @@ Page({
       }).then(res=>{
         if(res.errCode==0)
           this.setData({
-            Doors:res.data.data,
-            pageTotal:Math.floor(res.data.total /this.data.pageSize)
+            Doors:_that.data.Doors.concat( res.data.data),
           })
       })
     }

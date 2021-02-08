@@ -48,7 +48,6 @@ Page({
     var _that = this;
     var now = new Date();
     var did = options.doorId;
-    console.log(getApp().globalData.userInfo.uid);
     this.setData({
       doorId: did,
       doorName: options.doorName,
@@ -56,8 +55,6 @@ Page({
       SelectDate:util.dateFormat("YYYY-mm-dd",now),
       UID:getApp().globalData.userInfo.uid
     })
-
-
   },
 
   /**
@@ -76,7 +73,7 @@ Page({
   onShow: function () {
     this.GetDoorInfo();
     this.GetSubjectTags();
-    this.GetAppointLessons();
+    this.GetAppointLessons(false);
   },
 
   /**
@@ -103,8 +100,37 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
+  onPullDownRefresh(e){
+    console.log("onPullDownRefresh");
+  },
   onReachBottom: function () {
-    console.log('onReachBottom');
+    var _that = this;
+    if(this.data.pageIndex > this.data.pageTotal){
+      // wx.showToast({
+      //   title: '没有更多数据了',
+      //   icon:'none',
+      //   duration:2000
+      // })
+    }
+    else{
+      this.data.pageIndex++;
+      request({
+        url:urls.Lessons.GetAppointLessons,
+        method:'post',
+        data:{
+          page_index:this.data.pageIndex,
+          page_size:this.data.pageSize,
+          date:_that.data.SelectDate,
+          doorId:_that.data.doorId,
+          tag:_that.data.SelectTag,
+          uid:_that.data.UID
+        }
+      }).then(res=>{
+        _that.setData({
+          classes:_that.data.classes.concat( res.data.data),
+        })
+      })
+    }
   },
 
   /**
@@ -121,6 +147,9 @@ Page({
     if(this.componentClass)
       this.componentClass.selectInit();
     wx.lin.flushSticky();
+    this.setData({
+      SelectTag:'',
+    })
     this.GetAppointLessons();
   },
   onTopbarItemTap(e) {
@@ -158,7 +187,7 @@ Page({
     })
   },
   onPageScroll(res) {
-    wx.lin.setScrollTop(res.scrollTop)
+    wx.lin.setScrollTop(res.scrollTop);
   },
   onDateChange(e) {
     this.setData({
@@ -173,6 +202,15 @@ Page({
   onPreviewImg(e) {
     var src = e.currentTarget.dataset.src;
     var srcArr = this.data.banners.map(x => this.data.baseImgURL + x);
+    wx.previewImage({
+      urls: srcArr,
+      current: src
+    })
+  },
+  onShowSubjectImg(e){
+    var src = e.currentTarget.dataset.src;
+    var srcArr = new Array();
+    srcArr.push(src);
     wx.previewImage({
       urls: srcArr,
       current: src
@@ -215,14 +253,17 @@ Page({
       }
     })
   },
-  GetAppointLessons(){
+  GetAppointLessons(flag=true){
     var _that  = this;
+    _that.setData({
+      pageIndex:1
+    })
     request({
       url:urls.Lessons.GetAppointLessons,
       method:'post',
       data:{
-        page_index:this.data.pageIndex,
-        page_size:this.data.pageSize,
+        page_index:_that.data.pageIndex,
+        page_size:_that.data.pageSize,
         date:_that.data.SelectDate,
         doorId:_that.data.doorId,
         tag:_that.data.SelectTag,
@@ -232,7 +273,13 @@ Page({
       _that.setData({
         classes:res.data.data==null?[]:res.data.data,
         _noData:res.data.total==0,
+        pageTotal:Math.floor(res.data.total /this.data.pageSize)
       })
+      if(flag){
+        wx.pageScrollTo({
+          selector:'.content'
+        })
+      }
     })
   }
 })

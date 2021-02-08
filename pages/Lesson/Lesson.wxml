@@ -1,5 +1,8 @@
 <wxs module="LessonWxs" src="../../WXS/UtilWxs.wxs" />
 <view class="content-root">
+  <l-notice-bar speed="2000" front-icon-name="notification" type="roll" show="{{true}}">
+            {{NewMessage}}
+   </l-notice-bar>
   <l-sticky scrollTop="{{scrollTop}}">
     <l-sticky-item top="0">
       <view slot="body">
@@ -39,11 +42,7 @@
 
             </view>
           </view>
-          <l-notice-bar l-class="notice-bar" speed="2000" front-icon-name="notification" close="true" type="roll"
-            show="{{true}}">
-            {{NewMessage}}
-          </l-notice-bar>
-          <view class="r-line"></view>
+          <view class="r-line" />
         </view>
       </view>
     </l-sticky-item>
@@ -59,23 +58,21 @@
             <picker mode="date" value="{{startDay}}" bindchange="onDateChange">
               <view>{{startDay}}</view>
             </picker>
-
           </view>
         </view>
         <r-calender id="r-cal" StartDay="{{startDay}}" class="sticky-cal" bind:onItemTap="onCanlenderItemTap">
         </r-calender>
         <view class="r-line-dash"></view>
         <r-class wx:if="{{classes_type.length>0}}" id="comp-class" datalist="{{classes_type}}" bind:onItemTap="onTopbarItemTap"></r-class>
-        <view class="r-line"></view>
+        <view class="r-line" />
       </view>
-
       <view slot="body" class="content">
         <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
       describe="所选日期暂时还没有排课哦~" />
         <block wx:for="{{classes}}" wx:key="index">
           <view class="class-card">
             <view class="class-card-img">
-              <image src="{{baseImgURL+item.Subject.subject_img}}"></image>
+              <image src="{{baseImgURL+item.Subject.subject_img}}" bindtap="onShowSubjectImg" data-src="{{baseImgURL+item.Subject.subject_img}}"/>
             </view>
             <view class="class-card-content" data-obj="{{item}}" bindtap="onShowItemDetail">
               <view class="class-card-title" >
@@ -89,7 +86,13 @@
                 </block>
               </view>
               <view class="class-card-time">
-                <text class="card-time-teacher">{{item.Subject.subject_teacher}}</text>
+                <view class="slid-body-teacher">
+                  <view class="slid-flex" wx:if="{{item.temp_teacher!='' && item.temp_teacher!=null}}">
+                  <l-icon name="warning" color="#fd4d4d" size="20" />
+                      代课:
+                </view>
+                <text class="card-time-teacher">{{(item.temp_teacher!='' && item.temp_teacher!=null)?item.temp_teacher:item.Subject.subject_teacher}}</text>
+                </view>
                 <text class="card-time-time">{{LessonWxs.GenerateDuration(item.course_time,item.Subject.subject_duration) }}</text>
               </view>
               <view class="class-card-status">
@@ -114,57 +117,64 @@
       </view>
     </l-sticky-item>
   </l-sticky>
-  <l-arc-popup show="{{_showModel}}" max-height="900">
-    <view class="arcpop-content">
-     <view class="arcpop-header" slot="header">
-      <image src="{{baseImgURL+_showModelData.Subject.subject_img}}" />
+  <l-arc-popup show="{{_showModel}}" max-height="900" header-fixed="{{true}}" l-panel-class="arcpop-content">
+    <view class="arcpop-header" slot="header">
+      <image wx:if="{{_showModelData!=null}}" src="{{baseImgURL+_showModelData.Subject.subject_img}}" />
       <view>{{_showModelData.Subject.subject_name}}</view>
-     </view>
-     <view class="arcpop-body">
-      <view class="arcpop-body-line">
-        <view>
-          <l-icon name="time" color="#525562" size="22"/>
-          <text>取消时限</text>
+      <text>{{LessonWxs.GenerateDuration(_showModelData.course_time,_showModelData.Subject.subject_duration) }}</text>
+    </view>
+    <view>
+      <view class="arcpop-body">
+        <view class="arcpop-body-fixline">
+          <view class="arcpop-line-left">
+            <l-icon name="time" color="#525562" size="28" />
+            <text>取消时限</text>
+          </view>
+          <view>{{_showModelData.cancel_duration}} 分钟</view>
         </view>
-        <view>{{_showModelData.cancel_duration}} 分钟</view>
+        <view class="arcpop-body-line">
+          <view class="arcpop-line-left">
+            <l-icon name="picture" color="#525562" size="28" />
+            <text>会员卡</text>
+          </view>
+          <view class="arcpop-line-tag">
+            <view class="arcpop-card-noneed" wx:if="{{_showModelData.NeedCardNames.length<=0}}">无需会员卡</view>
+            <block wx:for="{{_showModelData.NeedCardNames}}" wx:key="index">
+              <text>{{item}}</text>
+            </block>
+          </view>
+        </view>
+        <view class="r-line" />
+        <view class="arcpop-body-line">
+          <view class="arcpop-line-left">
+            <l-icon name="comment" color="#525562" size="28" />
+            <text>课程备注</text>
+          </view>
+          <view class="arcpop-line-remark">
+            <view wx:if="{{_showModelData.limit_appoint_duration>0}}">课程开始前{{_showModelData.limit_appoint_duration}}分钟不可以预约</view>
+            <view>{{_showModelData.course_desc}}</view>
+          </view>
+        </view>
+        <view class="r-line" />
+        <view class="arcpop-body-line">
+          <view class="arcpop-line-left">
+            <l-icon name="user" color="#525562" size="28" />
+            <text>预约名单</text>
+          </view>
+          <l-status-show l-class="status-show" show="{{_showModelData.AppointUsers.length<=0}}" type="data"
+            full-screen="{{false}}" describe="还没有人预约哦~" />
+          <view>
+            <block wx:for="{{_showModelData.AppointUsers}}" wx:key="index">
+              <view class="arcpop-user-line">
+                <image src="{{item.avatar}}" />
+                <view>{{item.door_remark!=null  &&item.door_remark!='' ? item.door_remark:item.nick_name }}</view>
+              </view>
+              <view>第{{index}}名</view>
+            </block>
+          </view>
+        </view>
+  
       </view>
-      <view class="arcpop-body-line">
-        <view>
-          <l-icon name="picture" color="#525562" size="22"/>
-          <text>可用会员卡</text>
-        </view>
-        <!-- <view class="class-card-tag">
-                <block wx:for="{{_showModelData.Subject.lst_subject_tag}}" wx:for-item="itags" wx:key="index">
-                  <text>{{itags}}</text>
-                </block>
-        </view> -->
-      </view> 
-      <view class="r-line"></view>
-      <view class="arcpop-body-line">
-        <view>
-          <l-icon name="comment" color="#525562" size="22"/>
-          <text>课程备注</text>
-        </view>
-        <view>{{_showModelData.course_desc}}</view>
-      </view>
-      <view class="r-line"></view>
-      <view class="arcpop-body-line">
-        <view>
-          <l-icon name="user" color="#525562" size="22"/>
-          <text>预约名单</text>
-        </view>
-        <view>
-          <block wx:for="{{_showModelData.AppointUsers}}" wx:key="index">
-            <view class="arcpop-user-line">
-              <image src="{{item.avatar}}"/>
-              <view>{{item.door_remark!=null  &&item.door_remark!='' ? item.door_remark:item.nick_name }}</view>
-            </view>
-            <view>第{{index}}名</view>
-          </block>
-        </view>
-      </view>
-
-     </view>
     </view>
   </l-arc-popup>
 </view>

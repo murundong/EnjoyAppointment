@@ -14,9 +14,7 @@ page {
   text-align: center;
   color: #525562;
 }
-.notice-bar{
-  margin-left: -20rpx;
-}
+
 .banner-title-desc{
   color: #525562;
   margin-top: -10rpx;
@@ -101,6 +99,7 @@ page {
   display: flex;
   flex-direction: column;
   font-family:KaiTi;
+  min-height: 1180rpx;
 }
 
 .class-card:first-child{
@@ -165,6 +164,7 @@ page {
   color: #b3b6bd;
   margin-top: 2rpx;
   margin-bottom: 2rpx;
+  display: flex;
 }
 .class-card-time text{
   height: 45rpx;
@@ -274,6 +274,8 @@ page {
 .arcpop-header{
   display: flex;
   align-items: center;
+  padding: 20rpx 0 0 20rpx;
+  margin-bottom: -20rpx;
 }
 .arcpop-header image{
   width: 90rpx;
@@ -281,6 +283,67 @@ page {
     border-radius: 45rpx;
     margin-right: 20rpx;
 }
+.arcpop-header text{
+  font-size: 26rpx;
+    margin-left: 20rpx;
+    color: #b3b6bd;
+}
 .arcpop-body-line{
   display: flex;
+}
+.arcpop-line-left{
+  display: flex;
+  align-items: center;
+}
+.arcpop-line-left text{
+  margin-left: 10rpx;
+}
+.arcpop-body-fixline{
+  display: flex;
+  justify-content: space-between;
+}
+.arcpop-body-line{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rpx;
+}
+.arcpop-line-tag{
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-top: 6rpx;
+}
+.arcpop-card-noneed{
+  text-align: center;
+  color: #b3b6bd;
+  font-size: 28rpx;
+}
+.arcpop-line-tag text{
+  margin-right: 15rpx;
+  padding: 8rpx 20rpx;
+  background-color: #F1F2F5;
+  color: #525562;
+  border-radius: 4rpx;
+  font-size: 24rpx;
+}
+.arcpop-line-remark{
+  margin: 6rpx 0 20rpx 20rpx;
+  font-size: 28rpx;
+  color: #b3b6bd;
+}
+.slid-body-teacher {
+  display: flex;
+  color: #b3b6bd;
+  align-items: center;
+}
+.slide-body-tempteacher{
+  color: #fd4d4d;
+  display: flex;
+  align-items: center;
+  margin-right: 10rpx;
+}
+.slid-flex{
+  display: flex;
+  color: red;
+  font-size: 26rpx;
+  align-items: center;
 }

@@ -2,7 +2,7 @@
   "usingComponents": {
     "l-icon":"../../miniprogram_npm/lin-ui/icon/index",
     "l-notice-bar":"../../miniprogram_npm/lin-ui/notice-bar/index"
-  }
-
+  },
+  "enablePullDownRefresh":false
   
 }
