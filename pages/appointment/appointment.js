@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    UID:'',
     SelectTabs:0,
     baseImgURL:baseImgURL,
     pageIndex_wait:1,
@@ -43,28 +44,36 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var _that = this;
     if(app.globalData.userInfo==null){
-      wx.showModal({
-        title:'提示',
-        content:'该小程序需要用户授权后方可使用所有功能，请切换到 “我的” 点击授权,或稍后重试！',
-        confirmText:'确认',
-        confirmColor:'#ff6f11',
-        success(res){
-          if (res.confirm) {
-            wx.switchTab({
-              url: '/pages/mine/mine',
-            })
-          } 
-        }
-      })
-      return;
-    }
-    if(this.data.SelectTabs==0){
-      this.GetWaitCourses();
+      _that.ProcessUserInfo();
+      // wx.showModal({
+      //   title:'提示',
+      //   content:'该小程序需要用户授权后方可使用所有功能，请切换到 “我的” 点击授权,或稍后重试！',
+      //   confirmText:'确认',
+      //   confirmColor:'#ff6f11',
+      //   success(res){
+      //     if (res.confirm) {
+      //       wx.switchTab({
+      //         url: '/pages/mine/mine',
+      //       })
+      //     } 
+      //   }
+      // })
+      // return;
     }
     else{
-      this.GetCompCourses();
+      _that.setData({
+        UID:app.globalData.userInfo.uid
+      })
+      if(this.data.SelectTabs==0){
+        this.GetWaitCourses();
+      }
+      else{
+        this.GetCompCourses();
+      }
     }
+  
     
   },
 
@@ -144,7 +153,7 @@ Page({
     var cid = e.currentTarget.dataset.id;
     var data = {
       courseid:cid,
-      uid:app.globalData.userInfo.uid,
+      uid:_that.data.UID,
     };
     wx.showModal({
       title: '提示',
@@ -166,7 +175,7 @@ Page({
       data:{
         page_index:_that.data.pageIndex_wait,
         page_size:_that.data.pageSize_wait,
-        uid:app.globalData.userInfo.uid
+        uid:_that.data.UID
       }
     }).then(res=>{
       if(res.errCode==0 ){
@@ -195,7 +204,7 @@ Page({
       data:{
         page_index:_that.data.pageIndex_comp,
         page_size:_that.data.pageSize_comp,
-        uid:app.globalData.userInfo.uid
+        uid:_that.data.UID
       }
     }).then(res=>{
       console.log(res);
@@ -236,5 +245,24 @@ Page({
         })
       }
     })
-  }
+  }, 
+  ProcessUserInfo(){
+    var _that = this;
+    setTimeout(() => {
+      request({
+        url: urls.data.GetUInfoByOpenId,
+        data: { openid: wx.getStorageSync('loginSessionKey') }
+      }).then(res => {
+        _that.setData({
+          UID:res.data.uid,
+        })
+        if(this.data.SelectTabs==0){
+          this.GetWaitCourses();
+        }
+        else{
+          this.GetCompCourses();
+        }
+      })
+    }, 500);
+  },
 })
