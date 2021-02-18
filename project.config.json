@@ -63,9 +63,9 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/SendUserCards/SendUserCards",
-          "pathName": "pages/SendUserCards/SendUserCards",
-          "query": "uid=3&doorId=10000",
+          "name": "pages/Lesson/Lesson",
+          "pathName": "pages/Lesson/Lesson",
+          "query": "doorId=10000&doorName=是个场馆",
           "scene": null
         },
         {

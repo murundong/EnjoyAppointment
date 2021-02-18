@@ -15,6 +15,7 @@ Page({
     total_count:0,
     total_days:0,
     ISAUTH:false,
+    HasAdminMenu:false,
   },
 
   /**
@@ -35,6 +36,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var _that = this;
     if (app.globalData.userInfo)
      {
       this.setData({
@@ -47,9 +49,10 @@ Page({
       url: urls.data.GetUInfoByOpenId,
       data: { openid: wx.getStorageSync('loginSessionKey') }
     }).then(res => {
-      this.setData({
-        _userInfo: res.data
+      _that.setData({
+        _userInfo: res.data,
       })
+      if(_that.data.ISAUTH) _that.CheckUserHasManageMenu();
     })
   },
 
@@ -89,6 +92,20 @@ Page({
   },
   onScanTap(e){
     utils.scan_event(e);
+  },
+  CheckUserHasManageMenu(){
+    var _that = this;
+    request({
+      url:urls.UInfo.CheckUserHasManageMenu,
+      method:'post',
+      data:{
+        uid:_that.data._userInfo.uid
+      }
+    }).then(res=>{
+      _that.setData({
+        HasAdminMenu:res.data
+      })
+    })
   },
   OnGetUserInfo(e){
     wx.getSetting({

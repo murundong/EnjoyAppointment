@@ -68,6 +68,7 @@ page {
   display: flex;
   justify-content: space-between;
   width: 96%;
+  margin-top: 30rpx;
 }
 .choose-date-cal{
   display: flex;
@@ -99,7 +100,9 @@ page {
   display: flex;
   flex-direction: column;
   font-family:KaiTi;
-  min-height: 1180rpx;
+  /* min-height: 1180rpx; */
+  /* min-height:80vh ; */
+  padding-bottom: 100rpx;
 }
 
 .class-card:first-child{
@@ -255,6 +258,19 @@ page {
   background-color: #b3b6bd;
   color: #525562;
 }
+.card-unqueue-unbtn{
+  width: 120rpx;
+    height: 60rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    line-height: 60rpx;
+    position: absolute;
+    top: 85rpx;
+    right: 0;
+    background-color: #b3b6bd;
+    color: #525562;
+    font-size:26rpx;
+}
 .status-show {
   margin: 230rpx auto;
   align-items: center;
@@ -288,9 +304,7 @@ page {
     margin-left: 20rpx;
     color: #b3b6bd;
 }
-.arcpop-body-line{
-  display: flex;
-}
+
 .arcpop-line-left{
   display: flex;
   align-items: center;
@@ -306,6 +320,7 @@ page {
   display: flex;
   flex-direction: column;
   margin-top: 10rpx;
+  padding-bottom: 30rpx;
 }
 .arcpop-line-tag{
   margin-bottom: 20rpx;
@@ -346,4 +361,35 @@ page {
   color: red;
   font-size: 26rpx;
   align-items: center;
+}
+.arc-user-cardtitle{
+  color: #b3b6bd;
+  text-align: center;
+  font-size:28rpx;
+}
+.arc-user-cardcontent{
+  margin-bottom: 30rpx;
+}
+.arc-user-carditem{
+  text-align: center;
+  font-size: 36rpx;
+  margin: 20rpx 0 20rpx 0;
+}
+.arcpop-user-lineparent{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10rpx;
+  color: #525562;
+}
+.arcpop-user-line{
+  display: flex;
+  align-items: center;
+}
+.arcpop-user-line image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  margin-right: 20rpx;
+  font-size: 28rpx;
 }

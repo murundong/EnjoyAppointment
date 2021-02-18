@@ -20,10 +20,10 @@
       <l-icon name="phone" color="#525562"/>
       <view class="text">会员卡模板</view>
     </l-grid-item>
-    <l-grid-item key="freeze" slot="freeze">
+    <!-- <l-grid-item key="freeze" slot="freeze">
       <l-icon name="picture" color="#525562"/>
       <view class="text">冻结卡片</view>
-    </l-grid-item>
+    </l-grid-item> -->
     <l-grid-item key="notice" slot="notice">
       <l-icon name="soud" color="#525562"/>
       <view class="text">新增公告</view>

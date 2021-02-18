@@ -24,10 +24,13 @@
   height: 150rpx;
   border-radius: 75rpx;
 }
-
-.judge-teacher text {
-  font-size: 20rpx;
+.judge-teacher-name{
+  font-size: 25rpx;
   margin-top: 13rpx;
+  letter-spacing: 3rpx;
+}
+.judge-teacher-time{
+  font-size: 25rpx;
   letter-spacing: 3rpx;
 }
 

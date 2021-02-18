@@ -164,7 +164,7 @@ Page({
     this.setData({tempTeacher:e.detail.value})
   },
   onMaxAllowiput(e){
-    this.setData({tempTemaxAllowacher:e.detail.value})
+    this.setData({maxAllow:e.detail.value})
   },
   onMinAllowiput(e){
     this.setData({minAllow:e.detail.value})

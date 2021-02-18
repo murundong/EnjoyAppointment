@@ -66,8 +66,9 @@ App({
                 else{
                   wx.showModal({
                     title:'提示',
-                    content:'该小程序需要用户授权后方可使用所有功能，请切换到 “我的” 点击授权！',
+                    content:'该小程序需要用户授权后方可使用所有功能，请切换到 “我的” 点击授权,或稍后再试！',
                     confirmText:'确认',
+                    showCancel:false,
                     confirmColor:'#ff6f11',
                     success(res){
                       if (res.confirm) {
@@ -90,13 +91,13 @@ App({
 
   globalData: {
     userInfo: null,
-    // baseURL: 'http://localhost:54688/',
-    // baseMVCURL:'http://localhost:54688/',
+    baseURL: 'http://localhost:54688/',
+    baseMVCURL:'http://localhost:54688/',
 
     //baseImgURL:'http://localhost:54180/',
 
-    baseURL: 'https://www.appoint.icu/',
-    baseMVCURL: 'https://www.appoint.icu/',
+    // baseURL: 'https://www.appoint.icu/',
+    // baseMVCURL: 'https://www.appoint.icu/',
     baseImgURL:'https://static.appoint.icu/',
   }
 })

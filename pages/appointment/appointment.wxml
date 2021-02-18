@@ -3,26 +3,26 @@
       l-header-line-class="tab-header-line">
       <l-tabpanel tab="待完成" key="wait" slot="wait">
         <scroll-view class="wait-content" scroll-y="true">
+          <l-status-show l-class="status-show" show="{{_showWaitModel}}" type="data" full-screen="{{false}}" describe="暂时还没有待完成约课记录哦~" />
           <block wx:for="{{wait_classes}}" wx:key="id">
             <view class="wait-class-card">
               <view class="wait-class-card-img">
-                <image src="{{item.teacher_img}}"></image>
+                <image src="{{baseImgURL+item.subject_img}}"></image>
               </view>
               <view class="wait-class-card-content">
                 <view class="wait-class-card-title">
-                  <text class="wait-card-title">{{item.title}}</text>
+                  <text class="wait-card-title">{{item.subject_name}}</text>
                   <text
-                    class="wait-card-title-status {{AppointWxs.GenerateStatus( item.startTime,item.endTime)=='未开始'?'no-start':'' }}">{{AppointWxs.GenerateStatus( item.startTime,item.endTime)}}</text>                 
+                    class="wait-card-title-status {{AppointWxs.GenerateStatus( item.st_time,item.ed_time)=='未开始'?'no-start':'' }}">{{AppointWxs.GenerateStatus( item.st_time,item.ed_time)}}</text>                 
                 </view>
                 <view class="wait-class-card-body">
-                  <text>人数：{{item.nowNum}}人</text>
-                  <!-- <text>时间：{{item.timeStr2}}</text> -->
-                  <text>时间：{{AppointWxs.GenerateTime( item.startTime,item.endTime)}}</text>
-                  <text>场馆：{{item.Venue}}</text>
-                  <text>地址：{{item.address}}</text>
+                  <text>人数：已约{{item.now_user}}人 / 最低{{item.min_allow}}人 / 满员{{item.max_allow}}人</text>
+                  <text>时间：{{item.str_time}}</text>
+                  <text>场馆：{{item.door_name}}</text>
+                  <text class="door-address">地址：{{item.door_address}}</text>
                 </view>
-                <view class="wait-class-card-foot">
-                  <view data-id="{{item.id}}" bindtap="onCancelAppointment">取消预约</view>   
+                <view wx:if="{{item.AppointStatus!=-4}}" class="wait-class-card-foot">
+                  <view data-id="{{item.course_id}}" bindtap="onCancelAppointment">取消预约</view>   
                 </view>
               </view>
             </view>
@@ -33,7 +33,8 @@
     </view> -->
       </l-tabpanel>
       <l-tabpanel tab="已完成" key="comp" slot="comp" >
-        <l-collapse expand-item-id="{{default_expand}}">
+        <l-collapse expand-item-id="comp-0"  disabled="{{ture}}">
+          <l-status-show l-class="status-show" show="{{_showCompModel}}" type="data" full-screen="{{false}}" describe="暂时还没有已完成约课记录哦~" />
           <block wx:for="{{comp_classes}}" wx:key="index">
             <l-collapse-item customTitle="true" item-id="comp-{{index}}">
               <view slot="title" class="com-coll-title">
@@ -42,24 +43,25 @@
                   <text class="coll-title-year">{{item.year}} </text>
                 </view>
                 <view class="com-coll-title-right">
-                  <text>总计{{item.count}}次训练</text>
+                  <text>总计{{item.ct}}次训练</text>
                   <l-icon name="down" size="16" color="#999" />
                 </view>
               </view>
               <scroll-view class="coll-wait-content" scroll-y="true">
-                <block wx:for="{{item.lst}}" wx:key="id">
+                <block wx:for="{{item.courses}}" wx:key="id">
                   <view class="coll-wait-class-card">
                     <view class="coll-wait-class-card-img">
-                      <image src="{{item.teacher_img}}"></image>
+                      <image src="{{baseImgURL+item.subject_img }}"></image>
                     </view>
                     <view class="coll-wait-class-card-content">
                       <view class="coll-wait-class-card-title">
-                        <text class="coll-wait-card-title">{{item.title}}</text>
-                       <text data-id="{{item.id}}" bindtap="onJudge" class="coll-wait-class-card-judge {{item.judgeStatus?'no-judge':''}}">{{item.judgeStatus?'已评':'评价'}}</text>
+                        <text class="coll-wait-card-title">{{item.subject_name}}</text>
+                        <text wx:if="{{item.judge<=0}}" data-id="{{item.course_id}}" bindtap="onJudge" class="coll-wait-class-card-judge ">评价</text>
+                        <text class="coll-wait-class-card-judge no-judge" wx:else>已评</text>
                       </view>
                       <view class="coll-wait-class-card-body">
-                        <text>{{AppointWxs.GenerateTimeNoYear(item.startTime,item.endTime)}}</text>
-                        <text>{{item.Venue}}</text>
+                        <text>{{item.str_time}}</text>
+                        <text>{{item.door_name}}</text>
                       </view>
                     </view>
                   </view>

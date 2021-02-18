@@ -30,6 +30,9 @@ Page({
     _showWeekModelData:[],
     _showWeekModelSelectData:[{"id":-1,"name":"上周"},{"id":0,"name":"本周"},{"id":1,"name":"下周"}],
     
+    _showAppointUsers:false,
+    _showAppointUsersData:[],
+    _showQueueAppointUsersData:[],
   },
 
   /**
@@ -296,5 +299,19 @@ Page({
     this.setData({
       _showWeekModel:false
     })
+  },
+  onShowAppointUser(e){
+    var obj = e.currentTarget.dataset.obj;
+    var users = obj.AppointUsers;
+    var queues = obj.QueueAppointUsers;
+    this.setData({
+      _showAppointUsers:users.length>0,
+      _showAppointUsersData:users,
+      _showQueueAppointUsersData:queues
+    })
+  },
+  onSelfAppoint(e){
+    var obj = e.currentTarget.dataset.obj;
+    console.log(obj);
   }
 })

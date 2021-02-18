@@ -32,7 +32,12 @@ export default{
   Lessons:{
     GetDoorInfo:'/Data/GetDoorInfo',
     GetDoorTags:'/Appoint/GetDoorTags',
-    GetAppointLessons:'/Appoint/GetAppointLessons'
+    GetAppointLessons:'/Appoint/GetAppointLessons',
+    GetUserCanUseDoorCards:'/Appoint/GetUserCanUseDoorCards',
+    AppointCourse:'/Appoint/AppointCourse',
+    CancelAppointCourse:'/Appoint/CancelAppointCourse',
+    QueueAppointCourse:'/Appoint/QueueAppointCourse',
+    CancelQueue:'/Appoint/CancelQueue'
   },
   Courses:{
     GetAdminCourseByDate:"/Data/GetAdminCourseByDate",
@@ -42,7 +47,9 @@ export default{
     UpdateCourse:'/Data/UpdateCourse',
     QuickCourse:'/Data/QuickCourse',
     DeleteCourse:'/Data/DeleteCourse',
-    GetWeekCourse:'/Data/GetWeekCourse'
+    GetWeekCourse:'/Data/GetWeekCourse',
+    GetJudgeCourseInfo:'/Appoint/GetJudgeCourseInfo',
+    JudgeCourse:'/Appoint/JudgeCourse'
   },
   UInfo:{
     RemarkUser:'/Data/RemarkUser',
@@ -51,6 +58,8 @@ export default{
     AddUserAttention:'/Data/AddUserAttention',
     GetUserLst_Door:'/Data/GetUserLst_Door',
     GetUserCardsInfo:'/Data/GetUserCardsInfo',
+    CheckUserBlack:'/Data/CheckUserBlack',
+    CheckUserHasManageMenu:'/Data/CheckUserHasManageMenu'
   },
   Cards:{
     GetUserCards:'/Data/GetUserCards',
@@ -60,5 +69,9 @@ export default{
     GetDoorUserInfo:'/Data/GetDoorUserInfo',
     DeleteUserCards:'/Data/DeleteUserCards',
     UpdateUserCardsInfo:'/Data/UpdateUserCardsInfo'
+  },
+  Appoint:{
+    GetMyAppointWait:'/Appoint/GetMyAppointWait',
+    GetMyAppointComp:'/Appoint/GetMyAppointComp'
   }
 }

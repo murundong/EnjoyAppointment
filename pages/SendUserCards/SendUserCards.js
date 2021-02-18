@@ -31,6 +31,7 @@ Page({
     avatar: '',
     door_remark: '',
     nick_name: '',
+    UID:'',
   },
 
   /**
@@ -41,6 +42,7 @@ Page({
     var now = new Date();
     this.setData({
       _uid: options.uid,
+      UID:options.realUid,
       _doorId: options.doorId,
       SelectStTime: util.dateFormat("YYYY-mm-dd", now),
       _dcid: options.dcid

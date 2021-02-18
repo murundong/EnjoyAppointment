@@ -112,14 +112,14 @@ Page({
         break;
         case 5:
         {
-         
+           //新增公告
         }
         break;
-        case 6:
-        {
+        // case 6:
+        // {
 
-        }
-        break;
+        // }
+        // break;
       default:
         break;
     }

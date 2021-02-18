@@ -40,7 +40,7 @@
     </view>
 
     <view class="content-form-item">
-      <text class="item-text">生效</text>
+      <text class="item-text">生效:(选择不生效后首页不可见)</text>
       <l-radio-group bind:linchange="onActiveChanged" current="{{active?1:2}}" none-checked="false" placement="row">
         <l-radio class="item-radio" key="1" select-color="#ff6f11">生效</l-radio>
         <l-radio class="item-radio" key="2" select-color="#ff6f11">不生效</l-radio>

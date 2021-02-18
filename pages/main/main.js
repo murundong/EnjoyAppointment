@@ -59,7 +59,6 @@ Page({
     request({
       url:urls.data.GetBanners,
     }).then(res=>{
-      console.log(res);
       if(res.errCode==0){
         this.setData({
           Banners:res.data,
@@ -75,7 +74,6 @@ Page({
       },
       method:'post',
     }).then(res=>{
-      console.log(res);
       if(res.errCode==0)
         this.setData({
           Doors:res.data.data,
@@ -148,7 +146,7 @@ Page({
     if(app.globalData.userInfo==null){
       wx.showModal({
         title:'提示',
-        content:'该小程序需要用户授权后方可使用所有功能，请切换到 “我的” 点击授权！',
+        content:'该小程序需要用户授权后方可使用所有功能，请切换到 “我的” 点击授权,或稍后重试！',
         confirmText:'确认',
         confirmColor:'#ff6f11',
         success(res){
@@ -164,15 +162,33 @@ Page({
     var doorId = e.currentTarget.dataset.doorId;
     var doorName = e.currentTarget.dataset.doorName;
     request({
-      url:urls.UInfo.AddUserAttention,
+      url:urls.UInfo.CheckUserBlack,
       data:{
         openid:wx.getStorageSync("loginSessionKey"),
         doorid:doorId
+      },
+      method:'post'
+    }).then(res=>{
+      if(!res.data){
+        request({
+          url:urls.UInfo.AddUserAttention,
+          data:{
+            openid:wx.getStorageSync("loginSessionKey"),
+            doorid:doorId
+          }
+        })
+        wx.navigateTo({
+          url:`../Lesson/Lesson?doorId=${doorId}&doorName=${doorName}`
+        })
+      }
+      else {
+        wx.showToast({
+          title: '暂时不能访问该场馆~',
+          icon:'none'
+        })
       }
     })
-    wx.navigateTo({
-      url:`../Lesson/Lesson?doorId=${doorId}&doorName=${doorName}`
-    })
+
   },
   bindRegionChange(e){
     this.setData({
@@ -184,7 +200,6 @@ Page({
     var src = e.currentTarget.dataset.src;
     // var srcArr = this.data.Banners.map(x => this.data.baseURL + x.img);
     var srcArr = this.data.Banners.map(x => x.img);
-    console.log(src);
     wx.previewImage({
       urls: srcArr,
       current: src

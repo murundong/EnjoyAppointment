@@ -3,5 +3,5 @@
     "l-rate":"../../miniprogram_npm/lin-ui/rate/index",
     "l-textarea":"../../miniprogram_npm/lin-ui/textarea/index"
   },
-  "navigationBarTitleText":"评价教练"
+  "navigationBarTitleText":"评价课程"
 }

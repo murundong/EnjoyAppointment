@@ -5,7 +5,7 @@
     "l-steps":"../../miniprogram_npm/lin-ui/steps/index",
     "l-step":"../../miniprogram_npm/lin-ui/step/index",
     "l-slide-view":"../../miniprogram_npm/lin-ui/slide-view/index",
-    "l-popup":"../../miniprogram_npm/lin-ui/popup/index"
-    
+    "l-popup":"../../miniprogram_npm/lin-ui/popup/index",
+    "l-arc-popup":"../../miniprogram_npm/lin-ui/arc-popup/index"
   }
 }

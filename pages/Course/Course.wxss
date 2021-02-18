@@ -104,7 +104,7 @@
 }
 
 .slide-body {
-  width: 440rpx;
+  width: 430rpx;
 
 }
 
@@ -134,6 +134,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .slide-body-end view:first-child {
@@ -141,7 +142,7 @@
 }
 
 .slide-body-end view:last-child {
-  padding: 2rpx 14rpx;
+  padding: 2rpx 20rpx;
   background: #b3b6bd;
   color: white;
   border-radius: 20rpx;
@@ -256,4 +257,66 @@ scroll-view{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.arcpop-content{
+  margin-bottom: 30rpx;
+}
+
+.arcpop-line-left{
+  display: flex;
+  align-items: center;
+}
+.arcpop-line-left text{
+  margin-left: 10rpx;
+}
+.arcpop-body-fixline{
+  display: flex;
+  justify-content: space-between;
+}
+.arcpop-body-line{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rpx;
+  padding-bottom: 30rpx;
+}
+.arcpop-line-tag{
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-top: 6rpx;
+}
+.arcpop-card-noneed{
+  text-align: center;
+  color: #b3b6bd;
+  font-size: 28rpx;
+}
+.arcpop-user-lineparent{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10rpx;
+  color: #525562;
+}
+.arcpop-user-line{
+  display: flex;
+  align-items: center;
+}
+.arcpop-user-line image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  margin-right: 20rpx;
+  font-size: 28rpx;
+}
+.arcpop-line-tag text{
+  margin-right: 15rpx;
+  padding: 8rpx 20rpx;
+  background-color: #F1F2F5;
+  color: #525562;
+  border-radius: 4rpx;
+  font-size: 24rpx;
+}
+.arcpop-line-remark{
+  margin: 6rpx 0 20rpx 20rpx;
+  font-size: 28rpx;
+  color: #b3b6bd;
 }

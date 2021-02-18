@@ -1,47 +1,46 @@
-// pages/judge/judge.js
-
-import {local_rate_class} from '../../MockData/data.js'
-
+import request from '../../utils/network.js';
+import urls from '../../utils/urls.js';
+const app = getApp();
+const baseImgURL = app.globalData.baseImgURL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    _cid:0,
-    textarea_value:'',
-    class_data:local_rate_class.data,
+    _cid: 0,
+    textarea_value: '',
+    class_data: Object,
 
-    rate_score1:0,
-    rate_score2:0,
-    rate_score3:0,
+    baseImgURL: baseImgURL,
+    rate_score1: 0,
+    rate_score2: 0,
+    rate_score3: 0,
 
-    rate_status1:'',
-    rate_status2:'',
-    rate_status3:'',
+    rate_status1: '',
+    rate_status2: '',
+    rate_status3: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._cid = options.cid;
-    
-    
+    this.setData({ _cid: options.cid });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.GetCourseInfo();
   },
 
   /**
@@ -78,44 +77,72 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onJudgeSubmit:function(e){
-    var res=new Object();
-    res.rate1 = this.data.rate_score1;
-    res.rate2 = this.data.rate_score2;
-    res.rate3 = this.data.rate_score3;
-    res.content = this.data.textarea_value
-    wx.showToast({
-      title: '评价成功~',
-      duration:3000,
-      icon:'loading'
-    })
-    setTimeout(() => {
-      wx.navigateBack({
-        delta: 0,
+  onJudgeSubmit: function (e) {
+    var _that = this;
+    var data = {
+      uid: app.globalData.userInfo.uid,
+      course_id: _that.data._cid,
+      star1: _that.data.rate_score1,
+      star2: _that.data.rate_score2,
+      star3: _that.data.rate_score3,
+      comment: _that.data.textarea_value
+    };
+    console.log(data);
+    if (data.star1 == 0 || data.star2 == 0 || data.star3 == 0 || data.comment == '') {
+      wx.showModal({
+        title: '提示',
+        content: '请给出至少一星，并填写文字评价哦~',
+        confirmText: '确认',
+        confirmColor: '#ff6f11',
+        showCancel: false
       })
-    }, 1000);
+      return;
+    }
+    request({
+      url: urls.Courses.JudgeCourse,
+      method: 'post',
+      data: data
+    }).then(res => {
+      if (res.errCode == 0) {
+        wx.showToast({
+          title: '评价成功~',
+          icon: 'loading'
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 0,
+          })
+        }, 1000);
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
+
   },
-  onTextareaComplete:function(e){
+  onTextareaComplete: function (e) {
     this.setData({
-      textarea_value:e.detail.value
+      textarea_value: e.detail.value
     })
   },
-  onRate1Tap:function(e){
+  onRate1Tap: function (e) {
     this.setData({
-      rate_status1:this.onGetRateStr(e.detail.score),
-      rate_score1:e.detail.score
+      rate_status1: this.onGetRateStr(e.detail.score),
+      rate_score1: e.detail.score
     })
   },
-  onRate2Tap:function(e){
+  onRate2Tap: function (e) {
     this.setData({
-      rate_status2:this.onGetRateStr(e.detail.score),
-      rate_score2:e.detail.score
+      rate_status2: this.onGetRateStr(e.detail.score),
+      rate_score2: e.detail.score
     })
   },
-  onRate3Tap:function(e){
+  onRate3Tap: function (e) {
     this.setData({
-      rate_status3:this.onGetRateStr(e.detail.score),
-      rate_score3:e.detail.score
+      rate_status3: this.onGetRateStr(e.detail.score),
+      rate_score3: e.detail.score
     })
   },
   onGetRateStr: function (score) {
@@ -131,7 +158,21 @@ Page({
       case 5:
         return '非常满意'
       default:
-          return ''
+        return ''
     }
+  },
+  GetCourseInfo() {
+    var _that = this;
+    request({
+      url: urls.Courses.GetJudgeCourseInfo,
+      method: 'post',
+      data: { cid: _that.data._cid }
+    }).then(res => {
+      if (res.errCode == 0) {
+        _that.setData({
+          class_data: res.data
+        })
+      }
+    })
   }
 })

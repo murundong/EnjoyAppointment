@@ -1,8 +1,5 @@
 <wxs module="LessonWxs" src="../../WXS/UtilWxs.wxs" />
 <view class="content-root">
-  <l-notice-bar speed="2000" front-icon-name="notification" type="roll" show="{{true}}">
-            {{NewMessage}}
-   </l-notice-bar>
   <l-sticky scrollTop="{{scrollTop}}">
     <l-sticky-item top="0">
       <view slot="body">
@@ -46,8 +43,11 @@
         </view>
       </view>
     </l-sticky-item>
-    <l-sticky-item top="0" l-header-class="l-sticky-head">
+    <l-sticky-item top="0" class="l-sticky-head">
       <view slot="header">
+        <l-notice-bar speed="2000" front-icon-name="notification" type="roll" show="{{true}}">
+          {{NewMessage}}
+        </l-notice-bar>
         <view class="choose-date">
           <view class="choose-date-title">
             <text class="date-title-icon"></text>
@@ -63,20 +63,22 @@
         <r-calender id="r-cal" StartDay="{{startDay}}" class="sticky-cal" bind:onItemTap="onCanlenderItemTap">
         </r-calender>
         <view class="r-line-dash"></view>
-        <r-class wx:if="{{classes_type.length>0}}" id="comp-class" datalist="{{classes_type}}" bind:onItemTap="onTopbarItemTap"></r-class>
+        <r-class wx:if="{{classes_type.length>0}}" id="comp-class" datalist="{{classes_type}}"
+          bind:onItemTap="onTopbarItemTap"></r-class>
         <view class="r-line" />
       </view>
       <view slot="body" class="content">
         <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
-      describe="所选日期暂时还没有排课哦~" />
+          describe="所选日期暂时还没有排课哦~" />
         <block wx:for="{{classes}}" wx:key="index">
           <view class="class-card">
             <view class="class-card-img">
-              <image src="{{baseImgURL+item.Subject.subject_img}}" bindtap="onShowSubjectImg" data-src="{{baseImgURL+item.Subject.subject_img}}"/>
+              <image src="{{baseImgURL+item.Subject.subject_img}}" bindtap="onShowSubjectImg"
+                data-src="{{baseImgURL+item.Subject.subject_img}}" />
             </view>
             <view class="class-card-content" data-obj="{{item}}" bindtap="onShowItemDetail">
-              <view class="class-card-title" >
-                <text class="card-status" wx:if="{{item.AppointStatus==-2}}">满员</text>
+              <view class="class-card-title">
+                <text class="card-status" wx:if="{{item.max_allow == item.AppointUsers.length}}">满员</text>
                 <text class="card-title">{{item.Subject.subject_name}}</text>
               </view>
 
@@ -88,12 +90,14 @@
               <view class="class-card-time">
                 <view class="slid-body-teacher">
                   <view class="slid-flex" wx:if="{{item.temp_teacher!='' && item.temp_teacher!=null}}">
-                  <l-icon name="warning" color="#fd4d4d" size="20" />
-                      代课:
+                    <l-icon name="warning" color="#fd4d4d" size="20" />
+                    代课:
+                  </view>
+                  <text
+                    class="card-time-teacher">{{(item.temp_teacher!='' && item.temp_teacher!=null)?item.temp_teacher:item.Subject.subject_teacher}}</text>
                 </view>
-                <text class="card-time-teacher">{{(item.temp_teacher!='' && item.temp_teacher!=null)?item.temp_teacher:item.Subject.subject_teacher}}</text>
-                </view>
-                <text class="card-time-time">{{LessonWxs.GenerateDuration(item.course_time,item.Subject.subject_duration) }}</text>
+                <text
+                  class="card-time-time">{{LessonWxs.GenerateDuration(item.course_time,item.Subject.subject_duration) }}</text>
               </view>
               <view class="class-card-status">
                 <view class="class-card-status-border">
@@ -101,16 +105,20 @@
                   <text class="status-less">(最低{{item.min_allow}}人)</text>
                 </view>
                 <view>
-                  <text class="already-appoint" wx:if="{{item.AppointStatus==2}}">已预约</text>
+                  <text class="already-appoint" wx:if="{{item.AppointStatus==2 || item.AppointStatus==-4}}">已预约</text>
                 </view>
 
               </view>
-              <view catchtap="onOrderTap" class="card-order-btn" data-cid="{{item.id}}" wx:if="{{item.AppointStatus==1}}">
+              <view catchtap="onOrderTap" class="card-order-btn" data-obj="{{item}}"
+                wx:if="{{item.AppointStatus==1}}">
                 预约
               </view>
-              <view catchtap="onFullTap" class="card-order-unbtn" 
-              data-cid="{{item.id}}" wx:elif="{{item.AppointStatus==2}}">取消</view>
-              <view catchtap="onQueueTap" class="card-queue-unbtn" data-cid="{{item.id}}" wx:elif="{{item.AppointStatus==3}}">排队</view>
+              <view catchtap="onFullTap" class="card-order-unbtn" data-obj="{{item}}"
+                wx:elif="{{item.AppointStatus==2}}">取消</view>
+              <view catchtap="onQueueTap" class="card-queue-unbtn" data-obj="{{item}}"
+                wx:elif="{{item.AppointStatus==3}}">排队</view>
+             <view catchtap="onCancelQueueTap" class="card-unqueue-unbtn" data-obj="{{item}}"
+                wx:elif="{{item.AppointStatus==4}}">取消排队</view>
             </view>
           </view>
         </block>
@@ -132,6 +140,7 @@
           </view>
           <view>{{_showModelData.cancel_duration}} 分钟</view>
         </view>
+        
         <view class="arcpop-body-line">
           <view class="arcpop-line-left">
             <l-icon name="picture" color="#525562" size="28" />
@@ -151,7 +160,8 @@
             <text>课程备注</text>
           </view>
           <view class="arcpop-line-remark">
-            <view wx:if="{{_showModelData.limit_appoint_duration>0}}">课程开始前{{_showModelData.limit_appoint_duration}}分钟不可以预约</view>
+            <view wx:if="{{_showModelData.limit_appoint_duration>0}}">
+              课程开始前{{_showModelData.limit_appoint_duration}}分钟不可以预约</view>
             <view>{{_showModelData.course_desc}}</view>
           </view>
         </view>
@@ -163,18 +173,57 @@
           </view>
           <l-status-show l-class="status-show" show="{{_showModelData.AppointUsers.length<=0}}" type="data"
             full-screen="{{false}}" describe="还没有人预约哦~" />
-          <view>
             <block wx:for="{{_showModelData.AppointUsers}}" wx:key="index">
-              <view class="arcpop-user-line">
-                <image src="{{item.avatar}}" />
-                <view>{{item.door_remark!=null  &&item.door_remark!='' ? item.door_remark:item.nick_name }}</view>
+              <view class="arcpop-user-lineparent">
+                <view class="arcpop-user-line">
+                  <image src="{{item.avatar}}" />
+                  <view>{{item.nick_name }}</view>
+                </view>
+                <view>第{{index+1}}名</view>
               </view>
-              <view>第{{index}}名</view>
             </block>
-          </view>
         </view>
-  
+        <view class="r-line" />
+        <view class="arcpop-body-line" wx:if="{{_showModelData.QueueAppointUsers.length>0}}">
+          <view class="arcpop-line-left">
+            <l-icon name="user" color="#525562" size="28" />
+            <text>排队名单</text>
+          </view>
+            <block wx:for="{{_showModelData.QueueAppointUsers}}" wx:key="index">
+              <view class="arcpop-user-lineparent">
+                <view class="arcpop-user-line">
+                  <image src="{{item.avatar}}" />
+                  <view>{{item.nick_name }}</view>
+                </view>
+                <view>第{{index+1}}名</view>
+              </view>
+            </block>
+        </view>
       </view>
+    </view>
+  </l-arc-popup>
+
+  <l-arc-popup show="{{_showAppointModel}}" max-height="900">
+    <view class="arc-user-cardtitle">
+      请选择您持有的卡片
+    </view>
+    <view class="arc-user-cardcontent">
+      <block wx:for="{{UserDoorCards}}" wx:key="index">
+        <view class="arc-user-carditem" bindtap="onUserCardTap" data-cid="{{item.id}}">{{item.card_name}}</view>
+        <view class="r-line" />
+      </block>
+    </view>
+  </l-arc-popup>
+
+  <l-arc-popup show="{{_showQueueAppointModel}}" max-height="900">
+    <view class="arc-user-cardtitle">
+      请选择您持有的卡片
+    </view>
+    <view class="arc-user-cardcontent">
+      <block wx:for="{{UserDoorCards}}" wx:key="index">
+        <view class="arc-user-carditem" bindtap="onQueueUserCardTap" data-cid="{{item.id}}">{{item.card_name}}</view>
+        <view class="r-line" />
+      </block>
     </view>
   </l-arc-popup>
 </view>

@@ -89,6 +89,9 @@ var parse = function (fmt) {
     else return st + '~' + ed;
   }
   var GenerateStatus = function (st, ed) {
+    var reg = getRegExp("-", "g");
+    st = st.replace(reg, '/');
+    ed = ed.replace(reg, '/');
     var st_dt = getDate(st);
     var ed_dt = getDate(ed);
     var now_dt = getDate();

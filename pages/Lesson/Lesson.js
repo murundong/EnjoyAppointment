@@ -1,10 +1,6 @@
-import {
-  local_classes_type,
-  local_classes
-} from '../../MockData/data.js'
 import request from '../../utils/network.js';
 import urls from '../../utils/urls.js';
-var util  = require('../../libs/util.js')
+var util = require('../../libs/util.js')
 const app = getApp();
 const baseURL = app.globalData.baseMVCURL;
 const baseImgURL = app.globalData.baseImgURL;
@@ -15,14 +11,14 @@ Page({
    */
   data: {
     UID:'',
-    pageIndex:1,
-    pageSize:10,
-    pageTotal:'',
-    SelectTag:'',
-    SelectDate:'',
+    pageIndex: 1,
+    pageSize: 10,
+    pageTotal: '',
+    SelectTag: '',
+    SelectDate: '',
     scrollTop: undefined,
-      baseURL: baseURL,
-      baseImgURL: baseImgURL,
+    baseURL: baseURL,
+    baseImgURL: baseImgURL,
     doorId: '',
     doorName: '',
     banners: '',
@@ -35,26 +31,31 @@ Page({
     classes: [],
     NewMessage: '场馆通知',
     startDay: '',
-    _noData:false,
+    _noData: false,
+    UserDoorCards: [],
+    _showModel: false,
+    _showModelData: Object,
 
-    _showModel:false,
-    _showModelData:Object,
+    _showAppointModel: false,
+    _ShowAppointModelCourseID: '',
+
+    ScenesValue:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _that = this;
     var now = new Date();
     var did = options.doorId;
+  
     this.setData({
       doorId: did,
       doorName: options.doorName,
-      startDay: util.dateFormat("YYYY-mm-dd",now),
-      SelectDate:util.dateFormat("YYYY-mm-dd",now),
-      UID:getApp().globalData.userInfo.uid
+      startDay: util.dateFormat("YYYY-mm-dd", now),
+      SelectDate: util.dateFormat("YYYY-mm-dd", now),
     })
+    
   },
 
   /**
@@ -71,9 +72,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.GetDoorInfo();
-    this.GetSubjectTags();
-    this.GetAppointLessons(false);
+    var Scene= wx.getLaunchOptionsSync()
+    console.log('场景值',Scene.scene);
+    var _that = this;
+    if(app.globalData.userInfo==null){
+      _that.ProcessUserInfo();
+    }
+    else{
+      _that.setData({
+        UID:app.globalData.userInfo.uid
+      })
+      _that.GetUserCards();
+      _that.GetDoorInfo();
+      _that.GetSubjectTags();
+      _that.GetAppointLessons(false);
+    }
   },
 
   /**
@@ -100,34 +113,34 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onPullDownRefresh(e){
+  onPullDownRefresh(e) {
     console.log("onPullDownRefresh");
   },
   onReachBottom: function () {
     var _that = this;
-    if(this.data.pageIndex > this.data.pageTotal){
+    if (this.data.pageIndex > this.data.pageTotal) {
       // wx.showToast({
       //   title: '没有更多数据了',
       //   icon:'none',
       //   duration:2000
       // })
     }
-    else{
+    else {
       this.data.pageIndex++;
       request({
-        url:urls.Lessons.GetAppointLessons,
-        method:'post',
-        data:{
-          page_index:this.data.pageIndex,
-          page_size:this.data.pageSize,
-          date:_that.data.SelectDate,
-          doorId:_that.data.doorId,
-          tag:_that.data.SelectTag,
-          uid:_that.data.UID
+        url: urls.Lessons.GetAppointLessons,
+        method: 'post',
+        data: {
+          page_index: this.data.pageIndex,
+          page_size: this.data.pageSize,
+          date: _that.data.SelectDate,
+          doorId: _that.data.doorId,
+          tag: _that.data.SelectTag,
+          uid: _that.data.UID
         }
-      }).then(res=>{
+      }).then(res => {
         _that.setData({
-          classes:_that.data.classes.concat( res.data.data),
+          classes: _that.data.classes.concat(res.data.data),
         })
       })
     }
@@ -140,54 +153,110 @@ Page({
 
   },
   onCanlenderItemTap(e) {
-    var edate=e.detail.citem;
+    var edate = e.detail.citem;
     this.setData({
-      SelectDate:edate.str_date,
+      SelectDate: edate.str_date,
     })
-    if(this.componentClass)
+    if (this.componentClass)
       this.componentClass.selectInit();
-    wx.lin.flushSticky();
+    // wx.lin.flushSticky();
     this.setData({
-      SelectTag:'',
+      SelectTag: '',
     })
     this.GetAppointLessons();
   },
   onTopbarItemTap(e) {
     this.setData({
-      SelectTag:e.detail.titemStr,
+      SelectTag: e.detail.titemStr,
     })
     this.GetAppointLessons();
   },
-  onShowItemDetail(e){
+  onShowItemDetail(e) {
     var obj = e.currentTarget.dataset.obj;
     this.setData({
-      _showModel:true,
-      _showModelData:obj
+      _showModel: true,
+      _showModelData: obj
     })
   },
   onFullTap(e) {
-    var id = e.currentTarget.dataset.cid;
-    console.log(id);
+    var _that = this;
+    var obj = e.currentTarget.dataset.obj;
+    var data = {
+      uid: _that.data.UID,
+      courseid: obj.id
+    }
     wx.showModal({
       title: '提示',
       content: '确定要取消预约吗？',
       success: function (res) {
         if (res.confirm) {
-          // 用户点击了确定 可以调用删除方法了
+          _that.CancelCourse(data);
         }
       }
     })
   },
-  onQueueTap(e){
-    var id = e.currentTarget.dataset.cid;
+  onQueueTap(e) {
+    var obj = e.currentTarget.dataset.obj;
+    var cid = obj.id;
+    if (obj.need_cards == null || obj.need_cards == '') {
+      var data = {
+        course_id: cid,
+        uid: this.data.UID,
+        door_id: this.data.doorId
+      };
+      this.QueueAppointCourse(data);
+    }
+    else {
+      this.setData({
+        _showQueueAppointModel: true,
+        _ShowAppointModelCourseID: cid
+      })
+    }
   },
   onOrderTap(e) {
-    wx.navigateTo({
-      url: `../EnsureAppointment/EnsureAppointment?doorId=${e.currentTarget.dataset.cid}`,
-    })
+    var obj = e.currentTarget.dataset.obj;
+    var cid = obj.id;
+    if (obj.need_cards == null || obj.need_cards == '') {
+      var data = {
+        course_id: cid,
+        uid: this.data.UID,
+        door_id: this.data.doorId
+      };
+      this.AppointCourse(data);
+    }
+    else {
+      this.setData({
+        _showAppointModel: true,
+        _ShowAppointModelCourseID: cid
+      })
+    }
+
+    // wx.navigateTo({
+    //   url: `../EnsureAppointment/EnsureAppointment?doorId=${e.currentTarget.dataset.cid}`,
+    // })
+  },
+  onUserCardTap(e) {
+    var cid = e.currentTarget.dataset.cid;
+    var data = {
+      course_id: this.data._ShowAppointModelCourseID,
+      uid: this.data.UID,
+      card_id: cid,
+      door_id: this.data.doorId
+    };
+    this.AppointCourse(data);
+  },
+  onQueueUserCardTap(e) {
+    var cid = e.currentTarget.dataset.cid;
+    var data = {
+      course_id: this.data._ShowAppointModelCourseID,
+      uid: this.data.UID,
+      card_id: cid,
+      door_id: this.data.doorId
+    };
+    this.QueueAppointCourse(data);
   },
   onPageScroll(res) {
-    wx.lin.setScrollTop(res.scrollTop);
+    // wx.lin.setScrollTop(res.scrollTop);
   },
   onDateChange(e) {
     this.setData({
@@ -195,7 +264,7 @@ Page({
       SelectDate: e.detail.value,
     })
     this.componentCalender.onGenerateDate(new Date(e.detail.value));
-    if(this.componentClass)
+    if (this.componentClass)
       this.componentClass.selectInit();
     this.GetAppointLessons();
   },
@@ -207,7 +276,7 @@ Page({
       current: src
     })
   },
-  onShowSubjectImg(e){
+  onShowSubjectImg(e) {
     var src = e.currentTarget.dataset.src;
     var srcArr = new Array();
     srcArr.push(src);
@@ -216,24 +285,24 @@ Page({
       current: src
     })
   },
-  GetSubjectTags(){
+  GetSubjectTags() {
     var _that = this;
     request({
-      url:urls.Lessons.GetDoorTags,
-      method:'post',
-      data:{
-        doorId:_that.data.doorId
+      url: urls.Lessons.GetDoorTags,
+      method: 'post',
+      data: {
+        doorId: _that.data.doorId
       }
-    }).then(res=>{
-      if(res.data){
+    }).then(res => {
+      if (res.data) {
         _that.setData({
-          classes_type:res.data
+          classes_type: res.data
         })
         _that.componentClass = this.selectComponent('#comp-class');
       }
     });
   },
-  GetDoorInfo(){
+  GetDoorInfo() {
     var _that = this;
     request({
       url: urls.Lessons.GetDoorInfo,
@@ -253,32 +322,212 @@ Page({
       }
     })
   },
-  GetAppointLessons(flag=true){
-    var _that  = this;
+  GetUserCards() {
+    var _that = this;
+    request({
+      url: urls.Lessons.GetUserCanUseDoorCards,
+      method: 'post',
+      data: {
+        doorId: _that.data.doorId,
+        uid: _that.data.UID,
+      }
+    }).then(res => {
+      _that.setData({
+        UserDoorCards: res.data
+      })
+    })
+  },
+  GetAppointLessons(flag = true) {
+    var _that = this;
     _that.setData({
-      pageIndex:1
+      pageIndex: 1
     })
     request({
-      url:urls.Lessons.GetAppointLessons,
-      method:'post',
-      data:{
-        page_index:_that.data.pageIndex,
-        page_size:_that.data.pageSize,
-        date:_that.data.SelectDate,
-        doorId:_that.data.doorId,
-        tag:_that.data.SelectTag,
-        uid:_that.data.UID
+      url: urls.Lessons.GetAppointLessons,
+      method: 'post',
+      data: {
+        page_index: _that.data.pageIndex,
+        page_size: _that.data.pageSize,
+        date: _that.data.SelectDate,
+        doorId: _that.data.doorId,
+        tag: _that.data.SelectTag,
+        uid: _that.data.UID
       }
-    }).then(res=>{
+    }).then(res => {
       _that.setData({
-        classes:res.data.data==null?[]:res.data.data,
-        _noData:res.data.total==0,
-        pageTotal:Math.floor(res.data.total /this.data.pageSize)
+        classes: res.data.data == null ? [] : res.data.data,
+        _noData: res.data.total == 0,
+        pageTotal: Math.floor(res.data.total / this.data.pageSize)
       })
-      if(flag){
+      if (flag) {
         wx.pageScrollTo({
-          selector:'.content'
+          selector: '.content'
         })
+      }
+    })
+  },
+  QueueAppointCourse(data) {
+    var _that = this;
+    request({
+      url: urls.Lessons.QueueAppointCourse,
+      method: 'post',
+      data: data
+    }).then(res => {
+      _that.setData({
+        _showQueueAppointModel: false
+      })
+      if (res.errCode == 0) {
+        wx.showModal({
+          content: '排队成功！',
+          showCancel: false,
+          success: function (res) {
+            _that.GetAppointLessons();
+          }
+        })
+      }
+      else {
+        _that.GetAppointLessons();
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+  AppointCourse(data) {
+    var _that = this;
+    request({
+      url: urls.Lessons.AppointCourse,
+      method: 'post',
+      data: data
+    }).then(res => {
+      _that.setData({
+        _showAppointModel: false
+      })
+      if (res.errCode == 0) {
+        wx.showModal({
+          title: '预约成功',
+          content: '成功预约，如需取消，请在取消时限之前操作！',
+          showCancel: false,
+          success: function (res) {
+            _that.GetAppointLessons();
+          }
+        })
+      }
+      else {
+        _that.GetAppointLessons();
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+  CancelCourse(data) {
+    var _that = this;
+    request({
+      url: urls.Lessons.CancelAppointCourse,
+      method: 'post',
+      data: data
+    }).then(res => {
+      _that.GetAppointLessons();
+      if (res.errCode == 0) {
+        wx.showToast({
+          title: "取消成功！",
+          icon: 'none'
+        })
+      }
+      else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+  onCancelQueueTap(e) {
+    var _that = this;
+    var obj = e.currentTarget.dataset.obj;
+    var data = {
+      uid: _that.data.UID,
+      courseid: obj.id
+    }
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消排队吗？',
+      success: function (res) {
+        if (res.confirm) {
+          request({
+            url: urls.Lessons.CancelQueue,
+            method: 'post',
+            data: data
+          }).then(res => {
+            _that.GetAppointLessons();
+            if (res.errCode == 0) {
+              wx.showToast({
+                title: "取消成功！",
+                icon: 'none'
+              })
+            }
+            else {
+              wx.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            }
+          })
+        }
+      }
+    })
+  },
+  ProcessUserInfo(){
+    var _that = this;
+    setTimeout(() => {
+      request({
+        url: urls.data.GetUInfoByOpenId,
+        data: { openid: wx.getStorageSync('loginSessionKey') }
+      }).then(res => {
+        _that.setData({
+          UID:res.data.uid,
+        })
+        _that.CheckUserBlack();
+        _that.GetUserCards();
+        _that.GetDoorInfo();
+        _that.GetSubjectTags();
+        _that.GetAppointLessons(false);
+      })
+    }, 500);
+  },
+  CheckUserBlack(){
+    var _that = this;
+    var openid = wx.getStorageSync("loginSessionKey");
+    request({
+      url:urls.UInfo.CheckUserBlack,
+      data:{
+        openid:openid,
+        doorid:_that.data.doorId
+      },
+      method:'post'
+    }).then(res=>{
+      if(!res.data){
+        request({
+          url:urls.UInfo.AddUserAttention,
+          data:{
+            openid:openid,
+            doorid:_that.data.doorId
+          }
+        })
+      }
+      else {
+        wx.showToast({
+          title: '暂时不能访问该场馆~',
+          icon:'none'
+        })
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/main/main',
+          })  
+        }, 1000);
       }
     })
   }

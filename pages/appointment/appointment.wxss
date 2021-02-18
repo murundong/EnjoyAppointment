@@ -1,14 +1,16 @@
 /* pages/appointment/appointment.wxss */
-.l-header-tabs{
+.l-header-tabs {
   position: sticky;
   top: 0;
   z-index: 9999;
   background-color: white;
 }
-.l-tabpanel-swiper{
+
+.l-tabpanel-swiper {
   border: 1px solid red;
   height: 960rpx;
 }
+
 .tab-header-line {
   width: 70%;
   margin: 0 auto;
@@ -32,34 +34,41 @@
  border-radius: 10rpx; */
   border-bottom: 1rpx solid #ececec;
 }
-.wait-class-card:first-child{
+
+.wait-class-card:first-child {
   margin-top: 30rpx;
 }
-.wait-class-card-img{
+
+.wait-class-card-img {
   display: flex;
   flex-direction: column;
   margin-right: 25rpx;
 }
-.wait-class-card-img image{
+
+.wait-class-card-img image {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50rpx;
   margin-top: 16rpx;
 }
-.wait-class-card-content{
+
+.wait-class-card-content {
   display: flex;
   flex-direction: column;
 }
-.wait-class-card-title .no-start{
+
+.wait-class-card-title .no-start {
   color: #525562;
 }
-.wait-card-title{
+
+.wait-card-title {
   font-size: 35rpx;
   font-weight: bold;
-  font-family:KaiTi;
+  font-family: KaiTi;
   color: #525562;
 }
-.wait-card-title-status{
+
+.wait-card-title-status {
   color: #fd4d4d;
   padding: 5rpx 10rpx;
   font-size: 26rpx;
@@ -68,21 +77,24 @@
   line-height: 50rpx;
   float: right;
 }
-.wait-class-card-body{
+
+.wait-class-card-body {
   display: flex;
   flex-direction: column;
-  font-family: "Arial","KaiTi",sans-serif;
+  font-family: "Arial", "KaiTi", sans-serif;
 }
-.wait-class-card-body text{
+
+.wait-class-card-body text {
   color: #808082;
   font-size: 30rpx;
 }
 
-.wait-class-card-foot{
+.wait-class-card-foot {
   display: flex;
-    justify-content: flex-end;  
+  justify-content: flex-end;
 }
-.wait-class-card-foot view{
+
+.wait-class-card-foot view {
   background-color: #fd4d4d;
   color: #fff;
   width: 200rpx;
@@ -92,12 +104,14 @@
   line-height: 50rpx;
   font-size: 25rpx;
 }
+
 /*tab2*/
 .coll-wait-content {
   padding: 0 25rpx 0 20rpx;
   display: flex;
   flex-direction: column;
 }
+
 .coll-wait-class-card {
   height: 128rpx;
   display: flex;
@@ -107,25 +121,29 @@
   margin-bottom: 20rpx;
   border-bottom: 1rpx solid #ececec;
 }
+
 /* .wait-class-card:first-child{
   margin-top: 30rpx;
 } */
-.coll-wait-class-card-img{
+.coll-wait-class-card-img {
   display: flex;
   flex-direction: column;
   margin-right: 25rpx;
 }
-.coll-wait-class-card-img image{
+
+.coll-wait-class-card-img image {
   width: 80rpx;
   height: 80rpx;
   border-radius: 40rpx;
   margin-top: 16rpx;
 }
-.coll-wait-class-card-content{
+
+.coll-wait-class-card-content {
   display: flex;
   flex-direction: column;
 }
-.coll-wait-class-card-judge{
+
+.coll-wait-class-card-judge {
   color: #fd4d4d;
   border: 3rpx solid #fd4d4d;
   padding: 2rpx 14rpx;
@@ -134,29 +152,33 @@
   font-weight: bold;
   border-radius: 5rpx;
 }
-.coll-wait-class-card-title .no-judge{
-    border-radius: 5rpx;
-    background-color: #b3b6bd;
-    color: #525562;
-    border: none;
+
+.coll-wait-class-card-title .no-judge {
+  border-radius: 5rpx;
+  background-color: #b3b6bd;
+  color: #525562;
+  border: none;
 }
-.coll-wait-card-title{
+
+.coll-wait-card-title {
   font-size: 35rpx;
   font-weight: bold;
-  font-family:KaiTi;
+  font-family: KaiTi;
   color: #525562;
 }
 
-.coll-wait-class-card-body{
+.coll-wait-class-card-body {
   display: flex;
   flex-direction: column;
-  font-family: "Arial","KaiTi",sans-serif;
+  font-family: "Arial", "KaiTi", sans-serif;
 }
-.coll-wait-class-card-body text{
+
+.coll-wait-class-card-body text {
   color: #808082;
-    font-size: 30rpx;
+  font-size: 30rpx;
 }
-.com-coll-title{
+
+.com-coll-title {
   background-color: #dddfe2;
   color: #525562;
   display: flex;
@@ -164,21 +186,39 @@
   width: 100%;
   height: 66rpx;
   line-height: 66rpx;
-  font-family: "Arial","KaiTi",sans-serif;
+  font-family: "Arial", "KaiTi", sans-serif;
 }
-.com-coll-title-left{
+
+.com-coll-title-left {
   width: 70%;
   padding-left: 30rpx;
 }
-.com-coll-title-right{
+
+.com-coll-title-right {
   font-size: 25rpx;
   letter-spacing: 1px;
   display: flex;
   flex-direction: row;
 }
-.coll-title-month{
+
+.coll-title-month {
   font-weight: bold;
 }
-.coll-title-year{
+
+.coll-title-year {
   font-size: 27rpx;
+}
+
+.door-address {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 92%;
+}
+.status-show {
+  margin: 230rpx auto;
+  align-items: center;
 }
