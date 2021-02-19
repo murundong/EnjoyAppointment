@@ -69,9 +69,9 @@
           "scene": null
         },
         {
-          "name": "pages/CreateCourse/CreateCourse",
-          "pathName": "pages/CreateCourse/CreateCourse",
-          "query": "doorId=10000&courseId=1",
+          "name": "pages/Course/Course",
+          "pathName": "pages/Course/Course",
+          "query": "doorId=10000&doorName=是个课程",
           "scene": null
         },
         {

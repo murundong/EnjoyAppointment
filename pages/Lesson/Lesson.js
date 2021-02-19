@@ -51,7 +51,7 @@ Page({
   
     this.setData({
       doorId: did,
-      doorName: options.doorName,
+      doorName:decodeURI(options.doorName),
       startDay: util.dateFormat("YYYY-mm-dd", now),
       SelectDate: util.dateFormat("YYYY-mm-dd", now),
     })

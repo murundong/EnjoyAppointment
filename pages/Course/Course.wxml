@@ -113,21 +113,28 @@
 
     </l-popup>
   </view>
-  <l-arc-popup show="{{_showAppointUsers}}" max-height="900" l-panel-class="arcpop-content">
+  <l-arc-popup show="{{_showAppointUsers}}" max-height="900" l-panel-class="arcpop-content" bind:linclose="onAcrPopClose">
     <view class="arcpop-body">
       <view class="arcpop-body-line">
         <view class="arcpop-line-left">
           <l-icon name="user" color="#525562" size="28" />
           <text>预约名单</text>
+          <text class="acrpop-appoint-tips">(左滑可进行操作)</text>
         </view>
         <block wx:for="{{_showAppointUsersData}}" wx:key="index">
-          <view class="arcpop-user-lineparent">
-            <view class="arcpop-user-line">
-              <image src="{{item.avatar}}" />
-              <view>{{item.door_remark!=null  && item.door_remark!='' ? item.door_remark:item.nick_name }}</view>
+          <l-slide-view height="80" width="680" slide-width="150" auto-close="true">
+            <view class="arcpop-user-lineparent" slot="left">
+              <view class="arcpop-user-line">
+                <image src="{{item.avatar}}" />
+                <view>{{item.door_remark!=null  && item.door_remark!='' ? item.door_remark:item.nick_name }}</view>
+              </view>
+              <view>第{{index+1}}名</view>
             </view>
-            <view>第{{index+1}}名</view>
-          </view>
+            <view slot="right" class="slide-right-quit">
+              <text bindtap="onQuitCard" data-obj="{{item}}" class="uslide-right-edit">退课</text>
+            </view>
+          </l-slide-view>
+
         </block>
       </view>
       <view class="r-line" />
@@ -148,4 +155,27 @@
       </view>
     </view>
   </l-arc-popup>
+
+  <l-popup show="{{_showSelfAppointModel}}" content-align="left">
+    <view class="popup-userinfo">
+      <view class="user-search">
+        <l-input label="昵称" label-width="120" placeholder="输入昵称(支持模糊搜索)" bind:lininput="onNickInput" />
+      </view>
+      <view class="user-content">
+        <view class="user-content-item" wx:for="{{userLst}}" wx:key="index">
+          <view class="user-content-initial">{{item.initial}}</view>
+          <block wx:for="{{item.uinfos}}" wx:key="index">
+            <view class="user-content-uinfo" bindtap="onUinfoTap" data-obj="{{item}}">
+              <image src="{{item.avatar}}" />
+              <view class="user-nick-line">
+                <l-icon name="user" size="23" color="{{item.gender==2?'#ff6f11':''}}" />
+                <text>{{(item.door_remark!=null && item.door_remark !='')?item.door_remark:item.nick_name}}</text>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </l-popup>
+
 </view>

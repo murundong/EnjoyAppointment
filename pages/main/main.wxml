@@ -44,7 +44,7 @@
         </swiper-item>
       </navigator> -->
       <swiper-item>
-          <image src="{{item.img}}" bindtap="onPreviewImg" data-src="{{item.img}}"></image>
+          <image src="{{item.img}}" bindtap="onPreviewImg" data-src="{{item.img}}" mode="aspectFill"/>
         </swiper-item>
     </block>
   </swiper>

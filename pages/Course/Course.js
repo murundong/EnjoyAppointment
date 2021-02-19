@@ -33,6 +33,10 @@ Page({
     _showAppointUsers:false,
     _showAppointUsersData:[],
     _showQueueAppointUsersData:[],
+
+    _showSelfAppointModel:false,
+    nick:'',
+    userLst:[],
   },
 
   /**
@@ -310,8 +314,51 @@ Page({
       _showQueueAppointUsersData:queues
     })
   },
+  onAcrPopClose(){
+      this.setData({
+        _showAppointUsersData:[]
+      })
+  },
+   onNickInput(e){
+    var input = e.detail.value;
+    this.setData({
+      nick:input
+    })
+    console.log(input);
+    this.GetUserLst();
+  },
+  onUinfoTap(e){
+    var obj = e.currentTarget.dataset.obj;
+    console.log(obj);
+  },
+  onQuitCard(e){
+    var obj = e.currentTarget.dataset.obj;
+    console.log(obj);
+  },
   onSelfAppoint(e){
     var obj = e.currentTarget.dataset.obj;
     console.log(obj);
-  }
+    this.setData({
+      _showSelfAppointModel:true,
+    })
+    this.GetUserLst();
+  },
+ 
+  GetUserLst(){
+    var _that = this;
+    request({
+      url:urls.UInfo.GetUserLst_Door,
+      data:{
+        doorid:_that.data._doorId,
+        nick:_that.data.nick
+      }
+    }).then(res=>{
+      if(res.errCode==0){
+        _that.setData({
+          //slideData:res.data.initials,
+          userLst:res.data.uinfos
+        })
+      }
+    })
+  },
 })
