@@ -22,6 +22,8 @@ Page({
     _showModelRole:false,
     _selectRole:'',
     roleLst:[{"role":0,"name":"游客"},{"role":1,"name":"馆主"},{"role":2,"name":"教职工"},{"role":4,"name":"持卡会员"},{"role":-1,"name":"拉黑"}],
+    myselfuid:'',
+    myselfrole:0,
   },
 
   /**
@@ -29,7 +31,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      _doorId:options.doorId
+      _doorId:options.doorId,
+      myselfuid:app.globalData.userInfo.uid
     })
   },
 
@@ -95,6 +98,15 @@ Page({
           slideData:res.data.initials,
           userLst:res.data.uinfos
         })
+        res.data.uinfos.filter(item=>{
+          item.uinfos.filter(s=>{
+            if(s.uid == _that.data.myselfuid){
+              _that.setData({
+                myselfrole:s.door_role
+              })
+            }
+          })
+        });
       }
     })
   },
@@ -143,14 +155,24 @@ Page({
 
   },
   onLstAllocRole(e) {
-    if(app.globalData.userInfo.role!=3 &&  
-      this.data._showModelData.door_role==1){
-      wx.showToast({
-        title: '馆主的角色不能被更改！',
-        icon:'none'
-      })
-      return;
-    }
+    var arr = [-1,0,4];
+    if (app.globalData.userInfo.role != 3) {
+      if (this.data.myselfuid == this.data._showModelData.uid) {
+        wx.showToast({
+          title: '不能对自身角色进行操作！',
+          icon: 'none'
+        })
+        return;
+      }
+      else if(this.data.myselfrole!=1 && arr.indexOf(this.data._showModelData.door_role)<0)
+      {
+        wx.showToast({
+          title: '没有足够的操作权限！',
+          icon: 'none'
+        })
+        return;
+      }
+    } 
     this.setData({
       _showModelRole: true
     })
@@ -211,13 +233,42 @@ Page({
   },
   bindAlloc(e){
     var _that = this;
-    if(app.globalData.userInfo.role!=3 && _that.data._showModelData.door_role==1){
-      wx.showToast({
-        title: '馆主的角色不能被更改！',
-        icon:'none'
-      })
-      return;
-    }
+    var arr = [-1,0,4];
+    if (app.globalData.userInfo.role != 3) {
+      if (this.data.myselfuid == this.data._showModelData.uid) {
+        wx.showToast({
+          title: '不能对自身角色进行操作！',
+          icon: 'none'
+        })
+        return;
+      }
+      else if(this.data.myselfrole!=1 
+        &&arr.indexOf(this.data._showModelData.door_role)<0)
+      {
+        wx.showToast({
+          title: '没有足够的操作权限！',
+          icon: 'none'
+        })
+        return;
+      }
+      else if (this.data.myselfrole!=1 &&
+        arr.indexOf(parseInt( this.data._selectRole))<0){
+          wx.showToast({
+            title: '没有足够的操作权限！',
+            icon: 'none'
+          })
+          return;
+        }
+    } 
+
+
+    // if(app.globalData.userInfo.role!=3 && _that.data._showModelData.door_role==1){
+    //   wx.showToast({
+    //     title: '馆主的角色不能被更改！',
+    //     icon:'none'
+    //   })
+    //   return;
+    // }
     if(_that.data._showModelData.id!='' &&_that.data._selectRole!='' ){
       request({
         url:urls.UInfo.AllocRole,
