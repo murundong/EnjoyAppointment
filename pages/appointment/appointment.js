@@ -197,7 +197,7 @@ Page({
   GetCompCourses(flag=true){
     var _that = this;
     if(flag)
-      _that.setData({pageIndex_wait:1});
+      _that.setData({pageIndex_comp:1});
     request({
       url:urls.Appoint.GetMyAppointComp,
       method:'post',
@@ -207,15 +207,38 @@ Page({
         uid:_that.data.UID
       }
     }).then(res=>{
-      console.log(res);
       if(res.errCode==0 ){
         _that.setData({
-          comp_classes:!flag
-          ?_that.data.comp_classes.concat(res.data.data)  
-          :res.data.data,
+          // comp_classes:!flag
+          // ?_that.data.comp_classes.concat(res.data.data)  
+          // :res.data.data,
           pageTotal_comp :Math.floor(res.data.total / _that.data.pageSize_comp),
           _showCompModel :res.data.total<=0
         })
+        if(!flag){
+          var copyArr = _that.data.comp_classes;
+          if(res.data.data.length>0 && 
+            res.data.data[0].dt ==copyArr[copyArr.length-1].dt )
+            {
+              copyArr[copyArr.length-1].courses=
+              copyArr[copyArr.length-1].courses.concat(res.data.data[0].courses)
+              if(res.data.data.length>1){
+                res.data.data.shift();
+                copyArr = copyArr.concat(res.data.data);
+              }
+           }
+           else{
+            copyArr = copyArr.concat(res.data.data);
+           }
+           _that.setData({
+            comp_classes:copyArr
+          })
+        }
+        else{
+          _that.setData({
+            comp_classes:res.data.data
+          })
+        }
       }
       else{
         wx.showToast({

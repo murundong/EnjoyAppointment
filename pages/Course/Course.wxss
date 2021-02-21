@@ -374,3 +374,19 @@ scroll-view{
   border-radius: 6rpx;
   margin-right: 6rpx;
 }
+.arc-user-cardcontent{
+  margin-bottom: 30rpx;
+}
+.arc-user-carditem{
+  text-align: center;
+  font-size: 36rpx;
+  margin: 20rpx 0 20rpx 0;
+}
+.arc-user-cardtitle{
+  color: #b3b6bd;
+  text-align: center;
+  font-size:28rpx;
+}
+.arc-user-cardtitle text{
+  color: #fd4d4d;
+}

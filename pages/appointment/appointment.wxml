@@ -13,7 +13,10 @@
                 <view class="wait-class-card-title">
                   <text class="wait-card-title">{{item.subject_name}}</text>
                   <text
-                    class="wait-card-title-status {{AppointWxs.GenerateStatus( item.st_time,item.ed_time)=='未开始'?'no-start':'' }}">{{AppointWxs.GenerateStatus( item.st_time,item.ed_time)}}</text>                 
+                    class="wait-card-title-status {{AppointWxs.GenerateStatus( item.st_time,item.ed_time)=='未开始'?'no-start':'' }}">{{AppointWxs.GenerateStatus( item.st_time,item.ed_time)}}</text>     
+                    <text  wx:if="{{item.is_returncard}}" class="coll-quite-course">
+                          已退课
+                    </text>            
                 </view>
                 <view class="wait-class-card-body">
                   <text>人数：已约{{item.now_user}}人 / 最低{{item.min_allow}}人 / 满员{{item.max_allow}}人</text>
@@ -21,7 +24,7 @@
                   <text>场馆：{{item.door_name}}</text>
                   <text class="door-address">地址：{{item.door_address}}</text>
                 </view>
-                <view wx:if="{{item.AppointStatus!=-4}}" class="wait-class-card-foot">
+                <view wx:if="{{item.AppointStatus!=-4 && !item.is_returncard }}" class="wait-class-card-foot">
                   <view data-id="{{item.course_id}}" bindtap="onCancelAppointment">取消预约</view>   
                 </view>
               </view>
@@ -56,8 +59,11 @@
                     <view class="coll-wait-class-card-content">
                       <view class="coll-wait-class-card-title">
                         <text class="coll-wait-card-title">{{item.subject_name}}</text>
-                        <text wx:if="{{item.judge<=0}}" data-id="{{item.course_id}}" bindtap="onJudge" class="coll-wait-class-card-judge ">评价</text>
-                        <text class="coll-wait-class-card-judge no-judge" wx:else>已评</text>
+                        <text wx:if="{{item.judge<=0 && !item.is_returncard}}" data-id="{{item.course_id}}" bindtap="onJudge" class="coll-wait-class-card-judge ">评价</text>
+                        <text class="coll-wait-class-card-judge no-judge" wx:elif="{{item.judge>0}}">已评</text>
+                        <text  wx:elif="{{item.is_returncard}}" class="coll-quite-course">
+                          已退课
+                        </text>
                       </view>
                       <view class="coll-wait-class-card-body">
                         <text>{{item.str_time}}</text>

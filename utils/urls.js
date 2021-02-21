@@ -35,9 +35,11 @@ export default{
     GetAppointLessons:'/Appoint/GetAppointLessons',
     GetUserCanUseDoorCards:'/Appoint/GetUserCanUseDoorCards',
     AppointCourse:'/Appoint/AppointCourse',
+    SelfAppointCourse:'/Appoint/SelfAppointCourse',
     CancelAppointCourse:'/Appoint/CancelAppointCourse',
     QueueAppointCourse:'/Appoint/QueueAppointCourse',
     CancelQueue:'/Appoint/CancelQueue'
+
   },
   Courses:{
     GetAdminCourseByDate:"/Data/GetAdminCourseByDate",
@@ -49,7 +51,9 @@ export default{
     DeleteCourse:'/Data/DeleteCourse',
     GetWeekCourse:'/Data/GetWeekCourse',
     GetJudgeCourseInfo:'/Appoint/GetJudgeCourseInfo',
-    JudgeCourse:'/Appoint/JudgeCourse'
+    JudgeCourse:'/Appoint/JudgeCourse',
+    QuitAppointCards:'/Appoint/QuitAppointCards',
+    CheckCourseNeedCards:'/Appoint/CheckCourseNeedCards'
   },
   UInfo:{
     RemarkUser:'/Data/RemarkUser',
@@ -57,6 +61,7 @@ export default{
     AllocRole:'/Data/AllocRole',
     AddUserAttention:'/Data/AddUserAttention',
     GetUserLst_Door:'/Data/GetUserLst_Door',
+    GetUserLst_SelfAppint:'/Data/GetUserLst_SelfAppint',
     GetUserCardsInfo:'/Data/GetUserCardsInfo',
     CheckUserBlack:'/Data/CheckUserBlack',
     CheckUserHasManageMenu:'/Data/CheckUserHasManageMenu'

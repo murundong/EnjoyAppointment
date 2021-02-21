@@ -178,4 +178,16 @@
     </view>
   </l-popup>
 
+  <l-arc-popup show="{{_showUserCardsModel}}" max-height="900">
+    <view class="arc-user-cardtitle">
+      <text >{{(_showUserCardsUserObj.door_remark!=null && _showUserCardsUserObj.door_remark !='')?_showUserCardsUserObj.door_remark:_showUserCardsUserObj.nick_name}}</text>
+       的会员卡
+    </view>
+    <view class="arc-user-cardcontent">
+      <block wx:for="{{_selfAppointUserCards}}" wx:key="index">
+        <view class="arc-user-carditem" bindtap="onUserCardTap" data-cid="{{item.id}}">{{item.card_name}}</view>
+        <view class="r-line" />
+      </block>
+    </view>
+  </l-arc-popup>
 </view>
