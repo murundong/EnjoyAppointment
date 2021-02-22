@@ -390,3 +390,13 @@ scroll-view{
 .arc-user-cardtitle text{
   color: #fd4d4d;
 }
+.cancel-class-status{
+  border: 1px solid #ff6f11;
+  color: #ff6f11;
+  position: absolute;
+  left: 280rpx;
+  bottom: 60rpx;
+  transform: rotate(45deg);
+  z-index: 99;
+  font-size: 30rpx;
+}

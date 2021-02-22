@@ -53,7 +53,8 @@ export default{
     GetJudgeCourseInfo:'/Appoint/GetJudgeCourseInfo',
     JudgeCourse:'/Appoint/JudgeCourse',
     QuitAppointCards:'/Appoint/QuitAppointCards',
-    CheckCourseNeedCards:'/Appoint/CheckCourseNeedCards'
+    CheckCourseNeedCards:'/Appoint/CheckCourseNeedCards',
+    CancelTheCourse:'/Appoint/CancelTheCourse'
   },
   UInfo:{
     RemarkUser:'/Data/RemarkUser',

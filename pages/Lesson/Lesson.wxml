@@ -72,6 +72,7 @@
           describe="所选日期暂时还没有排课哦~" />
         <block wx:for="{{classes}}" wx:key="index">
           <view class="class-card">
+          <view wx:if="{{!item.active}}" class="cancel-class-status">课程取消</view>
             <view class="class-card-img">
               <image src="{{baseImgURL+item.Subject.subject_img}}" bindtap="onShowSubjectImg"
                 data-src="{{baseImgURL+item.Subject.subject_img}}" />

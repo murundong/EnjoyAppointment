@@ -386,11 +386,14 @@ Page({
         })
       }
       else {
-        _that.GetAppointLessons();
-        wx.showToast({
-          title: res.msg,
-          icon: 'none'
-        })
+          _that.GetAppointLessons();
+          setTimeout(() => {
+              wx.showToast({
+                  title: res.msg,
+                  icon: 'none'
+              })
+          }, 500);
+      
       }
     })
   },
@@ -415,11 +418,14 @@ Page({
         })
       }
       else {
-        _that.GetAppointLessons();
-        wx.showToast({
-          title: res.msg,
-          icon: 'none'
-        })
+          _that.GetAppointLessons();
+          setTimeout(() => {
+              wx.showToast({
+                  title: res.msg,
+                  icon: 'none'
+              })
+          }, 500);
+      
       }
     })
   },
@@ -431,17 +437,23 @@ Page({
       data: data
     }).then(res => {
       _that.GetAppointLessons();
-      if (res.errCode == 0) {
-        wx.showToast({
-          title: "取消成功！",
-          icon: 'none'
-        })
+        if (res.errCode == 0) {
+            setTimeout(() => {
+                wx.showToast({
+                    title: "取消成功！",
+                    icon: 'none'
+                })
+            }, 500);
+     
       }
-      else {
-        wx.showToast({
-          title: res.msg,
-          icon: 'none'
-        })
+        else {
+            setTimeout(() => {
+                wx.showToast({
+                    title: res.msg,
+                    icon: 'none'
+                })
+            }, 500);
+     
       }
     })
   },
@@ -463,17 +475,22 @@ Page({
             data: data
           }).then(res => {
             _that.GetAppointLessons();
-            if (res.errCode == 0) {
-              wx.showToast({
-                title: "取消成功！",
-                icon: 'none'
-              })
+              if (res.errCode == 0) {
+                  setTimeout(() => {
+                      wx.showToast({
+                          title: "取消成功！",
+                          icon: 'none'
+                      })
+                  }, 500);
+           
             }
-            else {
-              wx.showToast({
-                title: res.msg,
-                icon: 'none'
-              })
+              else {
+                  setTimeout(() => {
+                      wx.showToast({
+                          title: res.msg,
+                          icon: 'none'
+                      })
+                  }, 500);
             }
           })
         }

@@ -90,7 +90,6 @@ Page({
       });
       return;
     }
-    console.log(this.data.selectCard);
     // if(this.data.selectCard)
     wx.showToast({
       title: '预约成功~',

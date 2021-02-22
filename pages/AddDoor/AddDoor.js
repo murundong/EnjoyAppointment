@@ -248,11 +248,15 @@ Page({
           })
         }, 1000);
       }
-      else{
-        wx.showToast({
-          title: '失败：'+res.msg,
-          icon:'none'
-        })
+      else {
+          setTimeout(() => {
+              wx.showToast({
+                  title: '失败：' + res.msg,
+                  icon: 'none'
+              })
+          }, 500);
+
+       
       }
     });
     

@@ -31,6 +31,7 @@
     <l-steps direction="column" wx:if="{{!_noData}}" active-index="{{_stepActiveIndex}}" color="#ff6f11">
       <l-step wx:for="{{_courses}}" title="{{item.course_time}}" describe="往左滑动编辑(仅未开始课程有效)" wx:key="id">
         <view slot="describe">
+          <view wx:if="{{!item.active}}" class="cancel-class-status">课程取消</view>
           <!-- {{item.Subject.subject_name}} -->
           <l-slide-view height="186" width="650" slide-width="300" auto-close="true"
             disabled="{{item.status_class != 'nostart'}}">
@@ -68,8 +69,8 @@
 
             </view>
             <view slot="right" class="slide-right">
-              <text class="slide-right-edit" bindtap="onSlideEdit" data-id="{{item.id}}">编辑</text>
-              <text wx:if="{{item.status_class == 'nostart'}}" class="slide-right-cancel" bindtap="onSlideCancel"
+              <text wx:if="{{item.active}}" class="slide-right-edit" bindtap="onSlideEdit" data-id="{{item.id}}">编辑</text>
+              <text wx:if="{{item.status_class == 'nostart' && item.active}}" class="slide-right-cancel" bindtap="onSlideCancel"
                 data-id="{{item.id}}">取消</text>
               <text class="slide-right-delete" bindtap="onSlideDelete" data-id="{{item.id}}">删除</text>
             </view>

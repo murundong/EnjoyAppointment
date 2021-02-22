@@ -11,7 +11,6 @@ Page({
     scrollTop: 0,
     slideData:[],
     userLst:[],
-    scrollTop:0,
     roleLst:[{"role":0,"name":"游客"},{"role":1,"name":"馆主"},{"role":3,"name":"管理员"},{"role":-1,"name":"拉黑"}],
     userRole:0,
     _showModel:false,
@@ -118,11 +117,14 @@ Page({
           _that.GetUserLst();
         }, 1000);
       }
-      else{
-        wx.showToast({
-          title: res.msg,
-          icon:'none'
-        })
+      else {
+          setTimeout(() => {
+              wx.showToast({
+                  title: res.msg,
+                  icon: 'none'
+              })
+          }, 500);
+       
       }
     })
   },
@@ -149,11 +151,14 @@ Page({
             _that.GetUserLst();
           }, 1000);
         }
-        else{
-          wx.showToast({
-            title: res.msg,
-            icon:'none'
-          })
+        else {
+            setTimeout(() => {
+                wx.showToast({
+                    title: res.msg,
+                    icon: 'none'
+                })
+            }, 500);
+         
         }
       })
     }

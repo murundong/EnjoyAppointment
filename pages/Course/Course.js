@@ -200,7 +200,10 @@ Page({
     var cid = e.currentTarget.dataset.id;
     var _that = this;
     wx.showModal({
-      content: '确认删除么',
+      title: '警告',
+      confirmText: '我已了解',
+      confirmColor: '#fd4d4d',
+      content: '确认删除么，删除操作不会进行退卡，删除之前请先确认预约情况，如果有人预约，请先进行“取消”操作，随后在进行“删除”！',
       success(res) {
         if (res.confirm) {
           request({
@@ -210,17 +213,24 @@ Page({
             }
           }).then(res => {
             if (res.errCode == 0) {
-              wx.showToast({
-                title: '删除成功！',
-                icon: 'none'
-              })
               _that.InitCourseData();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '删除成功！',
+                  icon: 'none'
+                })
+              }, 500);
+
+
             }
             else {
-              wx.showToast({
-                title: '删除失败！',
-                icon: 'none'
-              })
+              setTimeout(() => {
+                wx.showToast({
+                  title: '删除失败！',
+                  icon: 'none'
+                })
+              }, 500);
+
             }
           })
         }
@@ -228,8 +238,43 @@ Page({
     })
   },
   onSlideCancel(e) {
+    var _that = this;
     var cid = e.currentTarget.dataset.id;
-    console.log(cid);
+    wx.showModal({
+      title: '确认',
+      content: '确定要取消该课程么，取消该课程后，所有已预约的学员将会进行退卡~',
+      confirmText: '我已了解',
+      confirmColor: '#fd4d4d',
+      success(res) {
+        if (res.confirm) {
+          request({
+            url: urls.Courses.CancelTheCourse,
+            method: 'post',
+            data: {
+              courseid: cid
+            }
+          }).then(res => {
+            _that.InitCourseData();
+            if (res.errCode == 0) {
+              setTimeout(() => {
+                wx.showToast({
+                  title: '操作成功',
+                })
+              }, 500);
+            }
+            else {
+              setTimeout(() => {
+                wx.showToast({
+                  title: res.msg,
+                  icon: 'none'
+                })
+              }, 500);
+            }
+          })
+        }
+      }
+    })
+
   },
   bindQuickDate(e) {
     var _that = this;
@@ -252,7 +297,7 @@ Page({
 
     wx.showModal({
       title: '确认',
-      content: '快速排课只能复制当前日期自己创建的排课，非自己创建的排课将不会进行复制！临时教师也不会被复制！为避免数据混乱，不要重复复制！',
+      content: '快速排课只能复制当前日期自己创建的排课，非自己创建的排课，以及取消的课程 将不会进行复制！临时教师也不会被复制！为避免数据混乱，不要重复复制！',
       confirmText: '我已了解',
       confirmColor: '#fd4d4d',
       success(res) {
@@ -265,6 +310,14 @@ Page({
                 _selectDate: date
               })
               _that.InitCourseData();
+            } else {
+              setTimeout(() => {
+                wx.showToast({
+                  title: res.msg,
+                  icon: 'none'
+                })
+              }, 500);
+
             }
           })
         }
@@ -349,15 +402,21 @@ Page({
           }).then(res => {
             _that.InitCourseData();
             if (res.errCode == 0) {
-              wx.showToast({
-                title: '退课成功！',
-              })
+              setTimeout(() => {
+                wx.showToast({
+                  title: '退课成功！',
+                })
+              }, 500);
+
             }
             else {
-              wx.showToast({
-                title: res.msg,
-                icon: 'none'
-              })
+              setTimeout(() => {
+                wx.showToast({
+                  title: res.msg,
+                  icon: 'none'
+                })
+              }, 500);
+
             }
           })
         }
@@ -484,10 +543,12 @@ Page({
             }
             else {
               _that.InitCourseData();
-              wx.showToast({
-                title: res.msg,
-                icon: 'none'
-              })
+              setTimeout(() => {
+                wx.showToast({
+                  title: res.msg,
+                  icon: 'none',
+                })
+              }, 500);
             }
           })
         }

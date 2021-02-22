@@ -59,11 +59,11 @@ export default function request(option) {
       method: option.method || 'get',
       data: option.data || {},
       success: function (res) {
-        wx.hideLoading();
+        // wx.hideLoading();
         resolve(res.data);
       },
       fail: function (error) {
-        wx.hideLoading();
+        // wx.hideLoading();
         reject(error);
       },
       complete: function () {

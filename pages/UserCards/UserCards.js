@@ -130,19 +130,23 @@ Page({
       method:'post'
     }).then(res=>{
       if(res.errCode==0){
-        _that.GetCardLst();
-        wx.showToast({
-          title: '删除成功！',
-          icon:'none',
-          duration:3000
-        })
+          _that.GetCardLst();
+          setTimeout(() => {
+              wx.showToast({
+                  title: '删除成功！',
+                  icon: 'none'
+              })
+          }, 500);
+       
       }
-      else{
-        wx.showToast({
-          title: res.msg,
-          icon:'none',
-          duration:3000
-        })
+      else {
+          setTimeout(() => {
+              wx.showToast({
+                  title: res.msg,
+                  icon: 'none',
+              })
+          }, 500);
+       
       }
     })
   }

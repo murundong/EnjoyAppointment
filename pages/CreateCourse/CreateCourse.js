@@ -22,7 +22,7 @@ Page({
     needCards:[],
     cards:[],
     subjectArr:[],
-    limitAppointDuration:30,
+    limitAppointDuration:60,
     tempTeacher:'',
 
     ISUPDATE: false,

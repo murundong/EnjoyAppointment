@@ -393,3 +393,11 @@ page {
   margin-right: 20rpx;
   font-size: 28rpx;
 }
+.cancel-class-status{
+  border: 1px solid #ff6f11;
+  color: #ff6f11;
+  position: absolute;
+  right: 20rpx;
+  top: 50rpx;
+  transform: rotate(45deg);
+}
