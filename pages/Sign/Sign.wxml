@@ -1,3 +1,4 @@
+<wxs module="CourseWxs" src="../../WXS/UtilWxs.wxs" />
 <view class="content">
   <view class="content-head">
     <view class="head-icon-out">
@@ -6,12 +7,29 @@
       </view>
     </view>
     
-    <text class="head-msg">恭喜您签到成功！</text>
+    <text class="head-msg">确认扫码现场预约</text>
   </view>
   <view class="content-body">
-    <image src="{{_pageData.teacherImg}}" />
-    <text class="body-title">{{_pageData.title}}</text>
-    <text class="body-sign-num">签到人数：{{_pageData.nowSign}}人</text>
-    <view bindtap="onSignTap" class="body-btn">确定</view>
+    <image wx:if="{{_pageData.Subject.subject_img!=null && _pageData.Subject.subject_img!=''}}"  src="{{baseImgURL+_pageData.Subject.subject_img}}" />
+    <text class="body-title">{{_pageData.Subject.subject_name}}</text>
+    <text class="body-sign-num">时间：{{_pageData.course_date+' '+ CourseWxs.GenerateDuration( _pageData.course_time,_pageData.Subject.subject_duration)}}</text>
+    <text class="body-sign-num">已预约人数：{{_pageData.AppointUsers.length}}人</text>
+    <text wx:if="{{AlreadAppoint}}" class="body-already-sign">我已预约成功,无需重复预约~</text>
+    <view class="foot-btn">
+      <view bindtap="onSignReturn" class="body-cancel">返回</view>
+      <view wx:if="{{!AlreadAppoint}}" bindtap="onAppointTap" class="body-btn">确认预约</view>
+    </view>
   </view>
+
+  <l-arc-popup show="{{_showCardModel}}" max-height="900">
+    <view class="arc-user-cardtitle">
+      请选择您持有的卡片
+    </view>
+    <view class="arc-user-cardcontent">
+      <block wx:for="{{UserDoorCards}}" wx:key="index">
+        <view class="arc-user-carditem" bindtap="onCardTap" data-cid="{{item.id}}">{{item.card_name}}</view>
+        <view class="r-line" />
+      </block>
+    </view>
+  </l-arc-popup>
 </view>

@@ -7,6 +7,7 @@
     "l-slide-view":"../../miniprogram_npm/lin-ui/slide-view/index",
     "l-popup":"../../miniprogram_npm/lin-ui/popup/index",
     "l-arc-popup":"../../miniprogram_npm/lin-ui/arc-popup/index",
-    "l-input":"../../miniprogram_npm/lin-ui/input/index"
+    "l-input":"../../miniprogram_npm/lin-ui/input/index",
+    "l-dialog":"../../miniprogram_npm/lin-ui/dialog/index"
   }
 }

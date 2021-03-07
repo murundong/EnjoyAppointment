@@ -16,6 +16,7 @@ Page({
     _courses: [],
     baseURL: baseURL,
     baseImgURL: baseImgURL,
+    baseURL:baseURL,
     _doorId: '',
     _doorName: '',
     _currendDate: '',
@@ -42,7 +43,10 @@ Page({
     userLst: [],
 
     _showUserCardsModel: false,
-    _showUserCardsUserObj: Object
+    _showUserCardsUserObj: Object,
+
+    _QrCodeUrl:'',
+    _QrCodeShow:false,
   },
 
   /**
@@ -236,6 +240,16 @@ Page({
         }
       }
     })
+  },
+  onSlideQrcode(e){
+    var _that = this;
+    var cid = e.currentTarget.dataset.id;
+    _that.setData({
+      _QrCodeUrl:`${urls.Courses.AppointQrCode}?cid=${cid}`,
+      _QrCodeShow:true,
+    })
+    
+    console.log(_that.data._QrCodeUrl);
   },
   onSlideCancel(e) {
     var _that = this;

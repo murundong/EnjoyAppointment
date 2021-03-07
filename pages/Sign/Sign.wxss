@@ -70,11 +70,14 @@
   color: #b3b6bd;
   font-weight: bold;
 }
-
+.foot-btn{
+  display: flex;
+  width: 100%;
+}
 .body-btn {
-  width: 320rpx;
+  width: 220rpx;
   height: 80rpx;
-  border-radius: 50rpx;
+  border-radius: 20rpx;
   margin: 50rpx auto;
   background-color: #fd4d4d;
   color: white;
@@ -83,4 +86,32 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+.body-cancel{
+  width: 220rpx;
+  height: 80rpx;
+  border-radius: 20rpx;
+  margin: 50rpx auto;
+  background-color: #b3b6bd;
+  letter-spacing: 5rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.arc-user-cardtitle{
+  color: #b3b6bd;
+  text-align: center;
+  font-size:28rpx;
+}
+.arc-user-cardcontent{
+  margin-bottom: 30rpx;
+}
+.arc-user-carditem{
+  text-align: center;
+  font-size: 36rpx;
+  margin: 20rpx 0 20rpx 0;
+}
+.body-already-sign{
+  color: #fd4d4d;
 }

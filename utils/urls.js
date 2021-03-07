@@ -38,8 +38,8 @@ export default{
     SelfAppointCourse:'/Appoint/SelfAppointCourse',
     CancelAppointCourse:'/Appoint/CancelAppointCourse',
     QueueAppointCourse:'/Appoint/QueueAppointCourse',
-    CancelQueue:'/Appoint/CancelQueue'
-
+    CancelQueue:'/Appoint/CancelQueue',
+    SignAppointCourse:'/Appoint/SignAppointCourse'
   },
   Courses:{
     GetAdminCourseByDate:"/Data/GetAdminCourseByDate",
@@ -54,7 +54,9 @@ export default{
     JudgeCourse:'/Appoint/JudgeCourse',
     QuitAppointCards:'/Appoint/QuitAppointCards',
     CheckCourseNeedCards:'/Appoint/CheckCourseNeedCards',
-    CancelTheCourse:'/Appoint/CancelTheCourse'
+    CancelTheCourse:'/Appoint/CancelTheCourse',
+    AppointQrCode:'/Appoint/QrCode',
+    GetSignCourse:'/Appoint/GetSignCourse'
   },
   UInfo:{
     RemarkUser:'/Data/RemarkUser',

@@ -16,18 +16,42 @@ const formatNumber = n => {
 
 
 
- const scan_event= e=>{
+const scan_event = e => {
   wx.scanCode({
     onlyFromCamera: true,
-    success:res=>{
-      console.log(res)
-      wx.navigateTo({
-        url: `../Sign/Sign?cid=1`,
+    success: res => {
+      if (res.result != null && res.result != '') {
+        try {
+          var course= JSON.parse( res.result );
+          console.log(course);
+          if(course.cid){
+            wx.navigateTo({
+              url: `../Sign/Sign?cid=${course.cid}`,
+            })
+          }
+          else{
+            wx.showToast({
+              title: '请扫描正确的二维码！',
+              icon:'none'
+            })
+          }
+        } catch (error) {
+          wx.showToast({
+            title: '请扫描正确的二维码！',
+            icon:'none'
+          })
+        }
+      }
+    },
+    fail: res => {
+      wx.showToast({
+        title: '请扫描正确的二维码！',
+        icon:'none'
       })
     }
   })
 }
 module.exports = {
   formatTime: formatTime,
-  scan_event:scan_event
+  scan_event: scan_event
 }

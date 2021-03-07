@@ -47,20 +47,6 @@ Page({
     var _that = this;
     if(app.globalData.userInfo==null){
       _that.ProcessUserInfo();
-      // wx.showModal({
-      //   title:'提示',
-      //   content:'该小程序需要用户授权后方可使用所有功能，请切换到 “我的” 点击授权,或稍后重试！',
-      //   confirmText:'确认',
-      //   confirmColor:'#ff6f11',
-      //   success(res){
-      //     if (res.confirm) {
-      //       wx.switchTab({
-      //         url: '/pages/mine/mine',
-      //       })
-      //     } 
-      //   }
-      // })
-      // return;
     }
     else{
       _that.setData({

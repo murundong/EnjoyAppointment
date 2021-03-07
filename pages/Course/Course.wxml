@@ -34,7 +34,7 @@
           <view wx:if="{{!item.active}}" class="cancel-class-status">课程取消</view>
           <!-- {{item.Subject.subject_name}} -->
           <l-slide-view height="186" width="650" slide-width="300" auto-close="true"
-            disabled="{{item.status_class != 'nostart'}}">
+            >
             <view slot="left" class="slide-left">
               <view class="slide-left-top">
                 <view class="slide-top-min">{{item.Subject.subject_duration}} 分钟</view>
@@ -69,10 +69,11 @@
 
             </view>
             <view slot="right" class="slide-right">
-              <text wx:if="{{item.active}}" class="slide-right-edit" bindtap="onSlideEdit" data-id="{{item.id}}">编辑</text>
+              <text class="slide-right-edit" bindtap="onSlideEdit" data-id="{{item.id}}">编辑</text>
               <text wx:if="{{item.status_class == 'nostart' && item.active}}" class="slide-right-cancel" bindtap="onSlideCancel"
                 data-id="{{item.id}}">取消</text>
               <text class="slide-right-delete" bindtap="onSlideDelete" data-id="{{item.id}}">删除</text>
+              <text wx:if="{{item.status_class == 'nostart' && item.active}}" class="slide-right-qrcode" bindtap="onSlideQrcode" data-id="{{item.id}}">二维码</text>
             </view>
           </l-slide-view>
         </view>
@@ -191,4 +192,8 @@
       </block>
     </view>
   </l-arc-popup>
+
+  <l-dialog show="{{_QrCodeShow}}" title="扫码进行现场预约" locked="{{false}}">
+    <image class="qrcode-img" wx:if="{{_QrCodeUrl!=''}}" src="{{baseURL+_QrCodeUrl}}" />
+  </l-dialog>
 </view>
