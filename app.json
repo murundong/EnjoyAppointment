@@ -24,7 +24,12 @@
     "pages/AdminUser/AdminUser",
     "pages/DoorUser/DoorUser",
     "pages/SendUserCards/SendUserCards",
-    "pages/UserCards/UserCards"
+    "pages/UserCards/UserCards",
+    "pages/SystemManage/SystemManage",
+    "pages/SystemNotice/SystemNotice",
+    "pages/Notice/Notice",
+    "pages/NoticeAdd/NoticeAdd",
+    "pages/SystemNoticeAdd/SystemNoticeAdd"
   ],
   "tabBar": {
     "list": [

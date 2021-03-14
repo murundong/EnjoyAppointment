@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "l-card":"../../miniprogram_npm/lin-ui/card/index",
+    "l-status-show":"../../miniprogram_npm/lin-ui/status-show/index",
+    "l-arc-popup":"../../miniprogram_npm/lin-ui/arc-popup/index",
+    "l-icon":"../../miniprogram_npm/lin-ui/icon/index",
+    "l-list":"../../miniprogram_npm/lin-ui/list/index"
+  }
+}

@@ -27,12 +27,18 @@
     </view>
     <view class="content-list">
       <button wx:if="{{!ISAUTH}}" open-type="getUserInfo" bindgetuserinfo="OnGetUserInfo">点击获取用户授权</button>
-      <l-list wx:if="{{ISAUTH}}" bind:lintap="onScanTap" l-content-class="content-list-item" icon-color="#525562" title="现场约课" icon="scan" />
-      <l-list wx:if="{{ISAUTH}}" l-content-class="content-list-item" icon-color="#525562" title="消息通知" icon="comment" url="../Message/Message" />
-      <l-list wx:if="{{ISAUTH}}" l-content-class="content-list-item" icon-color="#525562" title="我的卡片" icon="phone" url="../Card/Card" />
-      <l-list wx:if="{{ISAUTH}}" l-content-class="content-list-item" icon-color="#525562" title="个人信息" icon="user" url="../Person/Person"/>
-      <l-list wx:if="{{(ISAUTH && _userInfo.role>0)||HasAdminMenu }}" l-content-class="content-list-item" icon-color="#525562" title="管理场馆" icon="edit" url="../MyDoors/MyDoors"/>
-      <l-list wx:if="{{ISAUTH && _userInfo.role==3}}" l-content-class="content-list-item" icon-color="#525562" title="分配角色" icon="setting" url="../AdminUser/AdminUser"/>
+      <l-list wx:if="{{ISAUTH}}" bind:lintap="onScanTap" l-content-class="content-list-item" icon-color="#525562"
+        title="现场约课" icon="scan" />
+      <l-list wx:if="{{ISAUTH}}" l-content-class="content-list-item" icon-color="#525562" title="消息通知" icon="comment"
+        url="../Message/Message" />
+      <l-list wx:if="{{ISAUTH}}" l-content-class="content-list-item" icon-color="#525562" title="我的卡片" icon="phone"
+        url="../Card/Card" />
+      <l-list wx:if="{{ISAUTH}}" l-content-class="content-list-item" icon-color="#525562" title="个人信息" icon="user"
+        url="../Person/Person" />
+      <l-list wx:if="{{(ISAUTH && _userInfo.role>0)||HasAdminMenu }}" l-content-class="content-list-item"
+        icon-color="#525562" title="管理场馆" icon="edit" url="../MyDoors/MyDoors" />
+      <l-list wx:if="{{ISAUTH && _userInfo.role==3}}" l-content-class="content-list-item" icon-color="#525562"
+        title="系统管理" icon="setting" url="../SystemManage/SystemManage" />
     </view>
   </view>
 </view>

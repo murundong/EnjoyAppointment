@@ -1,0 +1,27 @@
+<view class="content">
+  <view class="content-head">
+    <view class="content-title">我的公告</view>
+    <view class="content-add" bindtap="onNoticeAdd">
+      <l-icon class="add-icon" color="#525562" size="28" name="add" />新增公告
+    </view>
+  </view>
+
+  <view class="content-notice">
+    <l-status-show l-class="status-show" show="{{showNoStatus}}" type="data" full-screen="{{false}}"
+      describe="暂时还没有公告数据哦~" />
+    <block wx:for="{{LstNotices}}" wx:key="index">
+      <l-card title="标题：{{item.title}}" type="primary"  plaintext="{{true}}" l-title-class="card-title" bindtap="onItemTap" data-id="{{item.id}}">
+        <view class="card-content">
+          内容：{{item.msg==null?'':item.msg}}
+        </view>
+      </l-card>
+    </block>
+  </view>
+  <l-arc-popup show="{{_showModel}}"  max-height="900">
+  <view class="arcpop-content">
+    <l-list icon-color="#525562" icon="edit" title="编辑" bind:lintap="onEditNotice" />
+    <l-list icon-color="#525562" icon="delete" title="删除" bind:lintap="onDeleteNotice" />
+  </view>
+</l-arc-popup>
+
+</view>

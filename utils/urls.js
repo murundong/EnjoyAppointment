@@ -81,5 +81,19 @@ export default{
   Appoint:{
     GetMyAppointWait:'/Appoint/GetMyAppointWait',
     GetMyAppointComp:'/Appoint/GetMyAppointComp'
+  },
+  Notice:{
+    GetDoorNotice:'/Notice/GetDoorNotice',
+    CreateDoorNotice:'/Notice/CreateDoorNotice',
+    UpdateDoorNotice:'/Notice/UpdateDoorNotice',
+    DeleteDoorNotice:'/Notice/DeleteDoorNotice',
+    GetDoorNoticeItem:'/Notice/GetDoorNoticeItem',
+
+    GetNotice:'/Notice/GetNotice',
+    CreateNotice:'/Notice/CreateNotice',
+    UpdateNotice:'/Notice/UpdateNotice',
+    DeleteNotice:'/Notice/DeleteNotice',
+    GetNoticeItem:'/Notice/GetNoticeItem',
+
   }
 }

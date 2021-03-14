@@ -1,0 +1,12 @@
+<view class="content">
+  <l-grid show-border="true" bind:lintap="onGridTap">
+    <l-grid-item key="editDoor" slot="editDoor">
+      <l-icon name="edit" color="#525562"/>
+      <view class="text">分配角色</view>
+    </l-grid-item>
+    <l-grid-item key="notice" slot="notice">
+      <l-icon name="soud" color="#525562"/>
+      <view class="text">新增公告</view>
+    </l-grid-item>
+  </l-grid>
+</view>

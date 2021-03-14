@@ -113,13 +113,11 @@ Page({
         case 5:
         {
            //新增公告
+           wx.navigateTo({
+            url: `../Notice/Notice?doorId=${_that.data._doorId}&doorName=${_that.data._doorName}`,
+          })
         }
         break;
-        // case 6:
-        // {
-
-        // }
-        // break;
       default:
         break;
     }

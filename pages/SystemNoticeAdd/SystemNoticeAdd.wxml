@@ -1,0 +1,20 @@
+<view class="content">
+
+<view class="conten-header">
+  <view>新增公告</view>
+</view>
+
+<view class="content-body">
+  <view class="content-form-item">
+    <l-input label-width="150" label="标题" placeholder="公告标题" required="true" bind:lininput="onTitleiput"
+      value="{{title}}" />
+  </view>
+  <view class="content-form-item">
+    <l-textarea placeholder="公告内容" l-class="textarea-body" maxlength="500" indicator="true"
+      bind:lininput="onMsgiput" value="{{msg}}" />
+  </view>
+</view>
+<view class="content-footer">
+  <view bindtap="onSaveInfo" class="foot-btn">保存</view>
+</view>
+</view>

@@ -26,7 +26,7 @@
     </l-grid-item> -->
     <l-grid-item key="notice" slot="notice">
       <l-icon name="soud" color="#525562"/>
-      <view class="text">新增公告</view>
+      <view class="text">公告</view>
     </l-grid-item>
   </l-grid>
 

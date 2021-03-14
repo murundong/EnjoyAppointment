@@ -9,5 +9,6 @@
     "l-arc-popup":"../../miniprogram_npm/lin-ui/arc-popup/index",
     "l-input":"../../miniprogram_npm/lin-ui/input/index",
     "l-dialog":"../../miniprogram_npm/lin-ui/dialog/index"
-  }
+  },
+  "navigationBarTitleText": "排课"
 }

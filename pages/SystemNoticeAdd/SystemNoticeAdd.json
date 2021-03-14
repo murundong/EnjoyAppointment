@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "l-input":"../../miniprogram_npm/lin-ui/input/index",
+    "l-icon":"../../miniprogram_npm/lin-ui/icon/index",
+    "l-textarea":"../../miniprogram_npm/lin-ui/textarea/index"
+  },
+  "navigationBarTitleText": "新增公告"
+}

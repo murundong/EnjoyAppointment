@@ -29,7 +29,7 @@ Page({
     this.data._doorId = options.doorId;
     this.data._doorName=options.doorName;
     wx.setNavigationBarTitle({
-      title: `${options.doorName}的卡片模板`,
+      title: `${options.doorName} 的卡片模板`,
     })
   },
 
