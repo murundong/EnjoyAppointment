@@ -12,7 +12,7 @@ Page({
     pageTotal:'',
 
     showNoStatus:false,
-    msgLst:[]]
+    msgLst:[]
   },
 
   /**
