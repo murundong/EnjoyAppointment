@@ -1,0 +1,42 @@
+<view class="content">
+
+	<view class="content-body">
+
+		<view class="content-form-item">
+			<text class="item-text">图片显示类型</text>
+			<l-radio-group bind:linchange="onImgTypeChanged" current="{{img_type}}" none-checked="false"
+				placement="row">
+				<l-radio class="item-radio" key="0" select-color="#ff6f11">链接</l-radio>
+				<l-radio class="item-radio" key="1" select-color="#ff6f11">本地上传</l-radio>
+			</l-radio-group>
+		</view>
+
+		<view wx:if="{{img_type==0}}" class="content-form-item">
+			<l-textarea placeholder="图片链接" l-class="textarea-body" maxlength="500" indicator="true" bind:lininput="onLinkIput"
+				value="{{img}}" />
+		</view>
+
+		<view  wx:if="{{img_type==1}}"  class="content-form-item">
+			<text class="item-text">Banner图片</text>
+			<l-image count="1" bind:linchange="onImgBannerChangeTap" bind:linremove="onImgBannerRemoveTap"
+				urls="{{editImgs}}" />
+		</view>
+
+		<view class="content-form-item">
+			<text class="item-text">生效</text>
+			<l-radio-group bind:linchange="onActiveChanged" current="{{active?1:0}}" none-checked="false" placement="row">
+				<l-radio class="item-radio" key="1" select-color="#ff6f11">生效</l-radio>
+				<l-radio class="item-radio" key="0" select-color="#ff6f11">不生效</l-radio>
+			</l-radio-group>
+		</view>
+<!-- 
+		<view class="content-form-item">
+			<l-input label-width="150" label="跳转url" placeholder="跳转URL" bind:lininput="onJumpUrliput"
+				value="{{url}}" />
+		</view> -->
+
+	</view>
+	<view class="content-footer">
+		<view bindtap="onSaveInfo" class="foot-btn">保存</view>
+	</view>
+</view>

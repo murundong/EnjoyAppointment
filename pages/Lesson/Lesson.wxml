@@ -44,8 +44,8 @@
       </view>
     </l-sticky-item>
     <l-sticky-item top="0" class="l-sticky-head">
-      <view slot="header">
-        <l-notice-bar speed="2000" front-icon-name="notification" type="roll" show="{{true}}">
+      <view slot="hreader">
+        <l-notice-bar speed="2000" front-icon-name="notification" type="roll" wx:if="{{ShowNewMessage}}">
           {{NewMessage}}
         </l-notice-bar>
         <view class="choose-date">

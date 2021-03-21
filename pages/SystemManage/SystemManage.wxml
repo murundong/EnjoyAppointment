@@ -8,5 +8,9 @@
       <l-icon name="soud" color="#525562"/>
       <view class="text">新增公告</view>
     </l-grid-item>
+    <l-grid-item key="banner" slot="banner">
+      <l-icon name="picture" color="#525562"/>
+      <view class="text">Banner设置</view>
+    </l-grid-item>
   </l-grid>
 </view>

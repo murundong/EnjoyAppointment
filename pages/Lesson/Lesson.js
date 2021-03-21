@@ -29,7 +29,8 @@ Page({
     doorTel: '',
     classes_type: [],
     classes: [],
-    NewMessage: '场馆通知',
+    ShowNewMessage:false,
+    NewMessage: '',
     startDay: '',
     _noData: false,
     UserDoorCards: [],
@@ -72,8 +73,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var Scene= wx.getLaunchOptionsSync()
-    console.log('场景值',Scene.scene);
+    // var Scene= wx.getLaunchOptionsSync()
+    // console.log('场景值',Scene.scene);
+    this.GetNewestDoorNotice();
     var _that = this;
     if(app.globalData.userInfo==null){
       _that.ProcessUserInfo();
@@ -118,7 +120,7 @@ Page({
   },
   onReachBottom: function () {
     var _that = this;
-    if (this.data.pageIndex > this.data.pageTotal) {
+    if (this.data.pageIndex >= this.data.pageTotal) {
       // wx.showToast({
       //   title: '没有更多数据了',
       //   icon:'none',
@@ -514,6 +516,20 @@ Page({
         _that.GetAppointLessons(false);
       })
     }, 500);
+  },
+  GetNewestDoorNotice() {
+    var _that = this;
+    request({
+      url: urls.Notice.GetNewestDoorNotice,
+      data:{door_id:_that.data.doorId}
+    }).then(res => {
+      if (res.data) {
+        _that.setData({
+          NewMessage: `${res.data.title}:${res.data.msg}`,
+          ShowNewMessage:true,
+        })
+      }
+    })
   },
   CheckUserBlack(){
     var _that = this;

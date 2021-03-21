@@ -1,0 +1,54 @@
+.content{
+  font-family: "Arial", "KaiTi", sans-serif;
+  color: #525562;
+}
+.content-head{
+  display: flex;
+  justify-content: space-between;
+  margin: 30rpx auto;
+  padding-right: 30rpx;
+  padding-left: 10rpx;
+}
+.content-title::before{
+  content: '';
+  height: 30rpx;
+  border-left:10rpx solid #ff6f11;
+  margin-right: 4rpx;
+  border-radius: 6rpx;
+}
+.content-add{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #b3b6bd;
+  padding: 1rpx 25rpx;
+  border-radius: 50rpx;
+}
+.add-icon{
+  margin-right: 12rpx;
+}
+.content-banner{
+  font-family: Tahoma,Helvetica,Arial,’宋体’,sans-serif;
+  color: #525562;
+  margin: 0 auto;
+}
+.status-show {
+  margin: 230rpx auto;
+  align-items: center;
+}
+.card-title{
+  color: #525562;
+}
+.card-content{
+  color:#b3b6bd ;
+}
+.arcpop-content{
+  margin-bottom: 30rpx;
+}
+.lst-title::before{
+  content: '';
+  height: 30rpx;
+  border-left: 10rpx solid #ff6f11;
+  margin-right: 4rpx;
+  border-radius: 6rpx;
+}

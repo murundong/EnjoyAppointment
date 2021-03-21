@@ -16,6 +16,7 @@ Page({
     total_days:0,
     ISAUTH:false,
     HasAdminMenu:false,
+    
   },
 
   /**
@@ -43,6 +44,7 @@ Page({
         _userInfo: app.globalData.userInfo,
         ISAUTH: app.globalData.userInfo != null
       })
+      this.GetUserStatistic();
      }
  
     request({
@@ -52,7 +54,7 @@ Page({
       _that.setData({
         _userInfo: res.data,
       })
-      if(_that.data.ISAUTH) _that.CheckUserHasManageMenu();
+      if (_that.data.ISAUTH) _that.CheckUserHasManageMenu();
     })
   },
 
@@ -105,6 +107,21 @@ Page({
       _that.setData({
         HasAdminMenu:res.data
       })
+    })
+  },
+  GetUserStatistic() {
+    var _that = this;
+    request({
+      url: urls.data.GetUserStatistic,
+      data: { uid: app.globalData.userInfo.uid }
+    }).then(res => {
+      if (res.errCode == 0) {
+        _that.setData({
+          total_minutes: res.data.total_minutes,
+          total_count: res.data.total_times,
+          total_days: res.data.total_days,
+        })
+      }
     })
   },
   OnGetUserInfo(e){

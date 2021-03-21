@@ -20,7 +20,9 @@ Page({
      Doors:[],
      Region:[],
      Position:'',
-     NewMessage:'是否显示通告栏'
+     NewMessage:'',
+     ShowNewMessage:false,
+
   },
 
  
@@ -56,6 +58,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.GetNewestNotice();
     request({
       url:urls.data.GetBanners,
     }).then(res=>{
@@ -109,7 +112,7 @@ Page({
    */
   onReachBottom: function () {
     var _that = this;
-    if(this.data.pageIndex > this.data.pageTotal){
+    if(this.data.pageIndex >= this.data.pageTotal){
       wx.showToast({
         title: '没有更多数据了',
         icon:'none',
@@ -196,10 +199,26 @@ Page({
       Position: e.detail.value[0]+'-'+ e.detail.value[1]+'-'+ e.detail.value[2]
     })
   },
+  GetNewestNotice() {
+    var _that = this;
+    request({
+      url: urls.Notice.GetNewestNotice,
+    }).then(res => {
+      if (res.data) {
+        _that.setData({
+          NewMessage: `${res.data.title}:${res.data.msg}`,
+          ShowNewMessage:true,
+        })
+      }
+    })
+  },
   onPreviewImg(e){
     var src = e.currentTarget.dataset.src;
     // var srcArr = this.data.Banners.map(x => this.data.baseURL + x.img);
-    var srcArr = this.data.Banners.map(x => x.img);
+    var srcArr = this.data.Banners.map(x => {
+      if(x.img_type==0) return x.img;
+      else return this.data.baseImgURL+x.img;
+    });
     wx.previewImage({
       urls: srcArr,
       current: src

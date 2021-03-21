@@ -6,7 +6,8 @@ export default{
     GetBanners:'/Data/GetBanners',
     GetDoors:'/Data/GetDoors',
     GetTeacherDoors:'/Data/GetTeacherDoors',
-    GetDoorsById:'/Data/GetDoorsById'
+    GetDoorsById:'/Data/GetDoorsById',
+    GetUserStatistic:'/Data/GetUserStatistic'
   },
   cardTemplate:{
     GetTemplates:'/Data/GetCardTempalte',
@@ -67,7 +68,7 @@ export default{
     GetUserLst_SelfAppint:'/Data/GetUserLst_SelfAppint',
     GetUserCardsInfo:'/Data/GetUserCardsInfo',
     CheckUserBlack:'/Data/CheckUserBlack',
-    CheckUserHasManageMenu:'/Data/CheckUserHasManageMenu'
+    CheckUserHasManageMenu:'/Data/CheckUserHasManageMenu',
   },
   Cards:{
     GetUserCards:'/Data/GetUserCards',
@@ -95,5 +96,14 @@ export default{
     DeleteNotice:'/Notice/DeleteNotice',
     GetNoticeItem:'/Notice/GetNoticeItem',
 
+    GetNewestNotice:'/Notice/GetNewestNotice',
+    GetNewestDoorNotice:'/Notice/GetNewestDoorNotice',
+  },
+  Banner:{
+    CreateBanner:'/Banner/CreateBanner',
+    UpdateBanner:'/Banner/UpdateBanner',
+    DeleteBanner:'/Banner/DeleteBanner',
+    GetBannerItem:'/Banner/GetBannerItem',
+    GetPageBanners:'/Banner/GetPageBanners',
   }
 }

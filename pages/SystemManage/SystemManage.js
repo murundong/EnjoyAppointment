@@ -79,6 +79,13 @@ Page({
         })
       }
       break;
+      case 2:{
+        //Banner
+        wx.navigateTo({
+          url: `../Banner/Banner`,
+        })
+      }
+      break;
     }
   }
 

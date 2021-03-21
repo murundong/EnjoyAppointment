@@ -29,7 +29,9 @@
     "pages/SystemNotice/SystemNotice",
     "pages/Notice/Notice",
     "pages/NoticeAdd/NoticeAdd",
-    "pages/SystemNoticeAdd/SystemNoticeAdd"
+    "pages/SystemNoticeAdd/SystemNoticeAdd",
+    "pages/Banner/Banner",
+    "pages/BannerAdd/BannerAdd"
   ],
   "tabBar": {
     "list": [

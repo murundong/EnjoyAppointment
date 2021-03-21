@@ -87,7 +87,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    if(this.data.pageIndex > this.data.pageTotal){
+    if(this.data.pageIndex >= this.data.pageTotal){
       wx.showToast({
         title: '没有更多数据了',
         icon:'none',

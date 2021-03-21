@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "l-input":"../../miniprogram_npm/lin-ui/input/index",
+    "l-icon":"../../miniprogram_npm/lin-ui/icon/index",
+    "l-image":"../../miniprogram_npm/lin-ui/image-picker/index",
+    "l-radio":"../../miniprogram_npm/lin-ui/radio/index",
+    "l-radio-group":"../../miniprogram_npm/lin-ui/radio-group/index",
+    "l-textarea":"../../miniprogram_npm/lin-ui/textarea/index"
+  },
+  "navigationBarTitleText": "新增Banner"
+}

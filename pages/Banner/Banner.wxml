@@ -1,0 +1,27 @@
+<view class="content">
+  <view class="content-head">
+    <view class="content-title">Banners</view>
+    <view class="content-add" bindtap="onBannerAdd">
+      <l-icon class="add-icon" color="#525562" size="28" name="add" />新增Banner
+    </view>
+  </view>
+
+  <view class="content-banner">
+    <l-status-show l-class="status-show" show="{{showNoStatus}}" type="data" full-screen="{{false}}"
+      describe="暂时还没有banner数据哦~" />
+   <block wx:for="{{LstBanners}}" wx:key="index">
+    <l-card type="cover" bindtap="onItemTap" data-id="{{item.id}}"
+            image-mode="aspectFill"
+            image="{{item.img_type==0?item.img:(baseImgURL+item.img)}}"
+            title="状态：{{item.active?'启用':'未启用'}}">
+    </l-card>
+   </block>
+  </view>
+  <l-arc-popup show="{{_showModel}}"  max-height="900">
+  <view class="arcpop-content">
+    <l-list icon-color="#525562" icon="edit" title="编辑" bind:lintap="onEditBanner" />
+    <l-list icon-color="#525562" icon="delete" title="删除" bind:lintap="onDeleteBanner" />
+  </view>
+</l-arc-popup>
+
+</view>

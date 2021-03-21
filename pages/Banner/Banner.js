@@ -1,20 +1,25 @@
+// pages/Banner/Banner.js
 import urls from '../../utils/urls';
 import request from '../../utils/network.js';
 const app = getApp();
+const baseImgURL = app.globalData.baseImgURL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pageIndex:1,
-    pageSize:10,
-    pageTotal:'',
-    LstNotices:[],
-    showNoStatus:false,
+    baseImgURL: baseImgURL,
 
-    _showModel:false,
-    _showModelId:0,
+    pageIndex: 1,
+    pageSize: 10,
+    pageTotal: '',
+
+    LstBanners: [],
+    showNoStatus: false,
+
+    _showModel: false,
+    _showModelId: 0,
   },
 
   /**
@@ -35,7 +40,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.GetNotices();
+    this.GetBanners();
   },
 
   /**
@@ -64,9 +69,9 @@ Page({
    */
   onReachBottom: function () {
     var _that = this;
-    if(_that.data.pageIndex< _that.data.pageTotal){
+    if (_that.data.pageIndex < _that.data.pageTotal) {
       _that.data.pageIndex++;
-      _that.GetNotices(false);
+      _that.GetBanners(false);
     }
   },
 
@@ -76,40 +81,40 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onItemTap(e){
+  onItemTap(e) {
     this.setData({
-      _showModelId:e.currentTarget.dataset.id,
-      _showModel:true,
+      _showModelId: e.currentTarget.dataset.id,
+      _showModel: true,
     })
   },
-  onNoticeAdd(){
+  onBannerAdd() {
     wx.navigateTo({
-      url: `../SystemNoticeAdd/SystemNoticeAdd`,
+      url: `../BannerAdd/BannerAdd`,
     })
   },
-  onEditNotice(){
+  onEditBanner() {
     wx.navigateTo({
-      url: `../SystemNoticeAdd/SystemNoticeAdd?noticeId=${this.data._showModelId}`,
+      url: `../BannerAdd/BannerAdd?bannerId=${this.data._showModelId}`,
     })
   },
-  onDeleteNotice(){
+  onDeleteBanner() {
     var _that = this;
     wx.showModal({
-      title:'提示',
-      content:'确认删除该条公告么！',
-      confirmText:'确认',
-      confirmColor:'#ff6f11',
-      success(res){
+      title: '提示',
+      content: '确认删除该Banner么！',
+      confirmText: '确认',
+      confirmColor: '#ff6f11',
+      success(res) {
         if (res.confirm) {
-          _that.DeleteNotice();
-        } 
+          _that.DeleteBanner();
+        }
       }
     })
   },
-  DeleteNotice(){
+  DeleteBanner() {
     var _that =this;
     request({
-      url:urls.Notice.DeleteNotice,
+      url:urls.Banner.DeleteBanner,
       data:{id:_that.data._showModelId}
     }).then(res=>{
       if(res.errCode==0){
@@ -117,7 +122,7 @@ Page({
           title: '删除成功！',
         })
        setTimeout(() => {
-        _that.GetNotices();
+        _that.GetBanners();
        }, 500);
       }
       else{
@@ -129,11 +134,11 @@ Page({
       }
     })
   },
-  GetNotices(flag=true){
+  GetBanners(flag = true) {
     var _that = this;
     if(flag) _that.setData({pageIndex:1});
     request({
-      url:urls.Notice.GetNotice,
+      url:urls.Banner.GetPageBanners,
       method:'post',
       data:{
         page_index:_that.data.pageIndex,
@@ -142,8 +147,8 @@ Page({
     }).then(res=>{
       if(res.errCode==0){
         _that.setData({
-          LstNotices:!flag
-              ?_that.data.LstNotices.concat(res.data.data)          
+          LstBanners:!flag
+              ?_that.data.LstBanners.concat(res.data.data)          
               :res.data.data,
           pageTotal:Math.floor(res.data.total /_that.data.pageSize),
           showNoStatus:res.data.total<=0

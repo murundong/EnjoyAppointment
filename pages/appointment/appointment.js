@@ -90,7 +90,7 @@ Page({
   onReachBottom: function () {
     var _that = this;
     if(_that.data.SelectTabs==0){
-      if(_that.data.pageIndex_wait > _that.data.pageTotal_wait){
+      if(_that.data.pageIndex_wait >= _that.data.pageTotal_wait){
         
       }
       else
@@ -101,7 +101,7 @@ Page({
         
     }
     else{
-      if(_that.data.pageIndex_comp > _that.data.pageTotal_comp){
+      if(_that.data.pageIndex_comp >= _that.data.pageTotal_comp){
         
       }
       else{
@@ -198,9 +198,6 @@ Page({
     }).then(res=>{
       if(res.errCode==0 ){
         _that.setData({
-          // comp_classes:!flag
-          // ?_that.data.comp_classes.concat(res.data.data)  
-          // :res.data.data,
           pageTotal_comp :Math.floor(res.data.total / _that.data.pageSize_comp),
           _showCompModel :res.data.total<=0
         })

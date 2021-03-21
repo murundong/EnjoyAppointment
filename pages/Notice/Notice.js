@@ -76,7 +76,7 @@ Page({
    */
   onReachBottom: function () {
     var _that = this;
-    if(_that.data.pageIndex<= _that.data.pageTotal){
+    if(_that.data.pageIndex< _that.data.pageTotal){
       _that.data.pageIndex++;
       _that.GetNotices(false);
     }
