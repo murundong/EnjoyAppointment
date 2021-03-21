@@ -1,5 +1,3 @@
-// pages/Message/Message.js
-import {local_message_lst} from '../../MockData/data.js'
 import urls from '../../utils/urls';
 import request from '../../utils/network.js';
 const app = getApp();
@@ -14,7 +12,7 @@ Page({
     pageTotal:'',
 
     showNoStatus:false,
-    msgLst:local_message_lst.data
+    msgLst:[]
   },
 
   /**
