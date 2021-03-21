@@ -20,6 +20,7 @@ Page({
     img_type:0,
     img:'',
     url:'',
+    sort:0,
     active:true,
 
     ISUPDATE:false,
@@ -118,6 +119,11 @@ Page({
       active:e.detail.key==1
     })
   },
+  onSortIput(e){
+    this.setData({
+      sort:e.detail.all
+    })
+  },
   onJumpUrliput(e){
     this.setData({
       url:e.detail.value
@@ -135,6 +141,7 @@ Page({
           img:res.data.img,
           url:res.data.url,
           active:res.data.active,
+          sort:res.data.sort,
           ISUPDATE:true,
           editImgs:_that.GenerateEditUrls(res.data.img),
         })
@@ -155,6 +162,7 @@ Page({
       img_type:_that.data.img_type,
       img:_that.data.img_type==0?_that.data.img:_that.data.imgs.join(),
       url:_that.data.url,
+      sort:_that.data.sort,
       active:_that.data.active,
     }
 

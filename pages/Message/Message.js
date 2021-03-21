@@ -1,11 +1,19 @@
 // pages/Message/Message.js
 import {local_message_lst} from '../../MockData/data.js'
+import urls from '../../utils/urls';
+import request from '../../utils/network.js';
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    pageIndex:1,
+    pageSize:10,
+    pageTotal:'',
+
+    showNoStatus:false,
     msgLst:local_message_lst.data
   },
 
@@ -27,7 +35,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.GetNotice();
   },
 
   /**
@@ -55,7 +63,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var _that = this;
+    if(_that.data.pageIndex< _that.data.pageTotal){
+      _that.data.pageIndex++;
+      _that.GetNotice(false);
+    }
   },
 
   /**
@@ -63,5 +75,35 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  GetNotice(flag=true){
+    var _that = this;
+    if(flag) _that.setData({pageIndex:1});
+    request({
+      url:urls.Notice.GetUsersNoticeBox,
+      method:'post',
+      data:{
+        page_index:_that.data.pageIndex,
+        page_size:_that.data.pageSize,
+        uid:app.globalData.userInfo.uid,
+      }
+    }).then(res=>{
+      if(res.errCode==0){
+        _that.setData({
+          msgLst:!flag
+              ?_that.data.msgLst.concat(res.data.data)          
+              :res.data.data,
+          pageTotal:Math.floor(res.data.total /_that.data.pageSize),
+          showNoStatus:res.data.total<=0
+        })
+      }
+      else{
+        setTimeout(() => {
+          wx.showToast({
+            title: res.msg,
+          })
+        }, 500);
+      }
+    })
   }
 })

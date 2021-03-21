@@ -6,6 +6,7 @@ export default{
     GetBanners:'/Data/GetBanners',
     GetDoors:'/Data/GetDoors',
     GetTeacherDoors:'/Data/GetTeacherDoors',
+    GetAdminAllDoors:'/Data/GetAdminAllDoors',
     GetDoorsById:'/Data/GetDoorsById',
     GetUserStatistic:'/Data/GetUserStatistic'
   },
@@ -98,6 +99,8 @@ export default{
 
     GetNewestNotice:'/Notice/GetNewestNotice',
     GetNewestDoorNotice:'/Notice/GetNewestDoorNotice',
+
+    GetUsersNoticeBox:'/Notice/GetUsersNoticeBox'
   },
   Banner:{
     CreateBanner:'/Banner/CreateBanner',

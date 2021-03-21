@@ -12,5 +12,9 @@
       <l-icon name="picture" color="#525562"/>
       <view class="text">Banner设置</view>
     </l-grid-item>
+    <l-grid-item key="venue" slot="venue">
+      <l-icon name="history" color="#525562"/>
+      <view class="text">所有场馆</view>
+    </l-grid-item>
   </l-grid>
 </view>

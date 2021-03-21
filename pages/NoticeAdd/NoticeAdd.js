@@ -17,8 +17,7 @@ Page({
 
     title: '',
     msg: '',
-    
-
+    active:true,
   },
 
   /**
@@ -97,6 +96,11 @@ Page({
       msg: e.detail.value
     })
   },
+  onActiveChanged(e){
+    this.setData({
+      active:e.detail.key==1
+    })
+  },
   onSaveInfo() {
     if (!this.data.title) {
       wx.showToast({
@@ -117,6 +121,7 @@ Page({
         du_id: app.globalData.userInfo.uid,
         title: _that.data.title,
         msg: _that.data.msg,
+        active:_that.data.active,
         id:_that.data._noticeId,
       }
     }).then(res => {
@@ -149,7 +154,8 @@ Page({
       if (res.errCode == 0) {
         _that.setData({
           msg: res.data.msg,
-          title: res.data.title
+          title: res.data.title,
+          active:res.data.active,
         })
       }
       else {

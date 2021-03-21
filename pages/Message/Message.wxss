@@ -1,1 +1,8 @@
 /* pages/Message/Message.wxss */
+.status-show {
+  margin: 230rpx auto;
+  align-items: center;
+}
+.card-title,.card-content,.card-describe {
+	color: #ff6f11 !important;
+}

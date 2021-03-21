@@ -13,7 +13,7 @@
     <l-card type="cover" bindtap="onItemTap" data-id="{{item.id}}"
             image-mode="aspectFill"
             image="{{item.img_type==0?item.img:(baseImgURL+item.img)}}"
-            title="状态：{{item.active?'启用':'未启用'}}">
+            title="状态：{{item.active?'启用':'未启用'}}(排序/{{item.sort}})">
     </l-card>
    </block>
   </view>

@@ -12,7 +12,7 @@
         <image mode="aspectFill" class="l-img-class {{ 'card-img-' + type }}" src="{{image}}" mode="{{imageMode}}" lazy-load></image>
         <view class="card-avatar">
           <text class="l-title-class card-title {{'card-title-' + type}}">{{title}}</text>
-          <text class="describe">{{describe}}</text>
+          <text class="describe l-describe-class">{{describe}}</text>
         </view>
       </view>
       <slot name="more"/>

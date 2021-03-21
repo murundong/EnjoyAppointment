@@ -29,6 +29,15 @@
 				<l-radio class="item-radio" key="0" select-color="#ff6f11">不生效</l-radio>
 			</l-radio-group>
 		</view>
+
+		<view class="content-form-item">
+      <view class="item-text">
+        <text>排序</text>
+      </view>
+      <l-input label-width="150"  type="number" label="排序" bind:lininput="onSortIput" value="{{sort}}">
+      </l-input>
+    </view>
+
 <!-- 
 		<view class="content-form-item">
 			<l-input label-width="150" label="跳转url" placeholder="跳转URL" bind:lininput="onJumpUrliput"

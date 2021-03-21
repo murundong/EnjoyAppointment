@@ -1,9 +1,13 @@
 <wxs module="AppointWxs" src="../../WXS/UtilWxs.wxs"/>
 
 <view>
-
+  <l-status-show l-class="status-show" show="{{showNoStatus}}" type="data" full-screen="{{false}}"
+      describe="暂时还没有数据哦~" />
   <block wx:for="{{msgLst}}" wx:key="index">
-    <l-card type="avatar" l-class="card" image="{{item.teacherImg}}" title="{{item.teacherName}}" describe="{{AppointWxs.TimeToNow(item.sendTime)}}">
+    <l-card type="avatar" l-class="{{item.is_system==1?'card-content':''}}"
+    l-describe-class="{{item.is_system==1?'card-describe':''}}"
+    l-title-class="{{item.is_system==1?'card-title':''}}"
+     image="{{item.img}}" title="{{'['+item.nick+']'+(item.is_system==1?'[系统]':'')+'-'+item.title}}" describe="{{AppointWxs.TimeToNow(item.str_create_time)}}">
       <!-- 此处为content -->
       <view class="avter-content">
         {{item.msg}}

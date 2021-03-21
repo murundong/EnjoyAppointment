@@ -1,0 +1,24 @@
+<view class="content">
+  <view class="content-head">
+    <view class="content-title">所有场馆</view>
+  </view>
+
+  <view class="content-doors">
+    <block wx:for="{{Doors}}" wx:key="id">
+      <l-card data-id="{{item.id}}" data-name="{{item.door_name}}" bindtap="onDoorTap"  type="cover"  image="{{baseImgURL+item.door_img}}"
+       title="{{item.door_name}}"
+       >
+        <view class="content-door-desc">
+          <text>简介：</text>
+          <text>{{item.door_desc!=null?item.door_desc:''}}</text>
+        </view>
+        <view class="content-door-address">
+          <text>地址：</text>
+          <text>{{item.door_address!=null?item.door_address:''}}</text>
+        </view>
+      </l-card>
+    </block>
+    <l-status-show l-class="status-show" show="{{_noData}}" type="data" full-screen="{{false}}"
+      describe="暂时还没有场馆数据哦，快去新增吧~" />
+  </view>
+</view>

@@ -86,6 +86,13 @@ Page({
         })
       }
       break;
+      case 3:{
+        //AllDoor
+        wx.navigateTo({
+          url: `../SystemDoorManage/SystemDoorManage`,
+        })
+      }
+      break;
     }
   }
 

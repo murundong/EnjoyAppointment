@@ -27,31 +27,12 @@
 .add-icon{
   margin-right: 12rpx;
 }
-.content-notice{
-  font-family: Tahoma,Helvetica,Arial,’宋体’,sans-serif;
-  color: #525562;
-  margin: 0 auto;
+.content-door-desc,.content-door-address{
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  color: #b3b6bd;
 }
 .status-show {
   margin: 230rpx auto;
   align-items: center;
-}
-.card-title{
-  color: #525562;
-}
-.card-content{
-  color:#b3b6bd ;
-}
-.arcpop-content{
-  margin-bottom: 30rpx;
-}
-.lst-title::before{
-  content: '';
-  height: 30rpx;
-  border-left: 10rpx solid #ff6f11;
-  margin-right: 4rpx;
-  border-radius: 6rpx;
-}
-.active-class{
-  color: #ff6f11;
 }

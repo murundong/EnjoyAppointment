@@ -2,7 +2,9 @@
   "usingComponents": {
     "l-input":"../../miniprogram_npm/lin-ui/input/index",
     "l-icon":"../../miniprogram_npm/lin-ui/icon/index",
-    "l-textarea":"../../miniprogram_npm/lin-ui/textarea/index"
+    "l-textarea":"../../miniprogram_npm/lin-ui/textarea/index",
+    "l-radio":"../../miniprogram_npm/lin-ui/radio/index",
+    "l-radio-group":"../../miniprogram_npm/lin-ui/radio-group/index"
   },
   "navigationBarTitleText": "新增公告"
 }
