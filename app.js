@@ -91,13 +91,13 @@ App({
 
   globalData: {
     userInfo: null,
-    // baseURL: 'http://localhost:54688/',
-    // baseMVCURL:'http://localhost:54688/',
+    baseURL: 'http://localhost:54688/',
+    baseMVCURL:'http://localhost:54688/',
 
     //baseImgURL:'http://localhost:54180/',
 
-    baseURL: 'https://www.appoint.icu/',
-    baseMVCURL: 'https://www.appoint.icu/',
+    // baseURL: 'https://www.appoint.icu/',
+    // baseMVCURL: 'https://www.appoint.icu/',
     baseImgURL:'https://static.appoint.icu/',
   }
 })
