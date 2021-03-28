@@ -401,33 +401,40 @@ Page({
   },
   AppointCourse(data) {
     var _that = this;
-    request({
-      url: urls.Lessons.AppointCourse,
-      method: 'post',
-      data: data
-    }).then(res => {
-      _that.setData({
-        _showAppointModel: false
-      })
-      if (res.errCode == 0) {
-        wx.showModal({
-          title: '预约成功',
-          content: '成功预约，如需取消，请在取消时限之前操作！',
-          showCancel: false,
-          success: function (res) {
-            _that.GetAppointLessons();
+    wx.requestSubscribeMessage({
+      tmplIds: ['fKbjGT04kCNzt6hf5DyPAiIGUPRl4_I5VLosbuRv8NU','9begAa5epuqrQ_7tGlSwbI-57J9VMvepdrv_CzGtJV4','Av2V6KfaTga7pEEWiK-H2pEy2GE0UAoUNYCGbssgDos'],
+      success(res){
+        console.log(res);
+      },
+      complete(res){
+        request({
+          url: urls.Lessons.AppointCourse,
+          method: 'post',
+          data: data
+        }).then(res => {
+          _that.setData({
+            _showAppointModel: false
+          })
+          if (res.errCode == 0) {
+            wx.showModal({
+              title: '预约成功',
+              content: '成功预约，如需取消，请在取消时限之前操作！',
+              showCancel: false,
+              success: function (res) {
+                _that.GetAppointLessons();
+              }
+            })
+          }
+          else {
+              _that.GetAppointLessons();
+              setTimeout(() => {
+                  wx.showToast({
+                      title: res.msg,
+                      icon: 'none'
+                  })
+              }, 500);
           }
         })
-      }
-      else {
-          _that.GetAppointLessons();
-          setTimeout(() => {
-              wx.showToast({
-                  title: res.msg,
-                  icon: 'none'
-              })
-          }, 500);
-      
       }
     })
   },
