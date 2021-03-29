@@ -370,34 +370,43 @@ Page({
   },
   QueueAppointCourse(data) {
     var _that = this;
-    request({
-      url: urls.Lessons.QueueAppointCourse,
-      method: 'post',
-      data: data
-    }).then(res => {
-      _that.setData({
-        _showQueueAppointModel: false
-      })
-      if (res.errCode == 0) {
-        wx.showModal({
-          content: '排队成功！',
-          showCancel: false,
-          success: function (res) {
-            _that.GetAppointLessons();
+    wx.requestSubscribeMessage({
+      tmplIds: ['fKbjGT04kCNzt6hf5DyPAiIGUPRl4_I5VLosbuRv8NU','9begAa5epuqrQ_7tGlSwbI-57J9VMvepdrv_CzGtJV4','Av2V6KfaTga7pEEWiK-H2pEy2GE0UAoUNYCGbssgDos'],
+      success(res){
+        console.log(res);
+      },
+      complete(res){
+        request({
+          url: urls.Lessons.QueueAppointCourse,
+          method: 'post',
+          data: data
+        }).then(res => {
+          _that.setData({
+            _showQueueAppointModel: false
+          })
+          if (res.errCode == 0) {
+            wx.showModal({
+              content: '排队成功！',
+              showCancel: false,
+              success: function (res) {
+                _that.GetAppointLessons();
+              }
+            })
+          }
+          else {
+              _that.GetAppointLessons();
+              setTimeout(() => {
+                  wx.showToast({
+                      title: res.msg,
+                      icon: 'none'
+                  })
+              }, 500);
+          
           }
         })
       }
-      else {
-          _that.GetAppointLessons();
-          setTimeout(() => {
-              wx.showToast({
-                  title: res.msg,
-                  icon: 'none'
-              })
-          }, 500);
-      
-      }
     })
+
   },
   AppointCourse(data) {
     var _that = this;
